@@ -9,5 +9,6 @@
 
 int game_loop()
 {
-
+    int i = 0;
+    return (i);
 }
