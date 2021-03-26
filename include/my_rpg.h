@@ -15,4 +15,8 @@
 #include <SFML/Audio.h>
 #include <SFML/System.h>
 
+// GAME
+    // GAME.C
+        int game_loop(void);
+
 #endif /* !MY_RPG_H_ */
