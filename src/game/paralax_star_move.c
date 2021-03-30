@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** GALAXY
 ** File description:
-** move background
+** move stars
 */
 
 #include "my_rpg.h"
