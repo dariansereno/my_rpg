@@ -12,10 +12,16 @@ paralax_t *paralax_ini(void)
     paralax_t *paralax = malloc(sizeof(paralax_t));
 
     paralax->nebula = sfSprite_create();
-    paralax->nebulat = sfTexture_createFromFile("ressources/space.png",
-    NULL);
+    paralax->nebulat = sfTexture_createFromFile("ressources/space.png", NULL);
     paralax->paralaxr = (sfIntRect) {.height = 1080, .left = 1920, .top = 1080,
     .width = 1920};
+    paralax->paralo = sfClock_create();
+    paralax->star = sfSprite_create();
+    paralax->start = sfTexture_createFromFile("ressources/stars.png", NULL);
+    paralax->starr = (sfIntRect) {.height = 1080, .left = 1920, .top = 1080,
+    .width = 1920};
+    paralax->staro = sfClock_create();
+    return (paralax);
 }
 
 structs_t *all_dat(void)

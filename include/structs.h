@@ -33,6 +33,11 @@ typedef struct paralax_s {
     sfSprite *nebula;
     sfTexture *nebulat;
     sfIntRect paralaxr;
+    sfSprite *star;
+    sfTexture *start;
+    sfIntRect starr;
+    sfClock *paralo;
+    sfClock *staro;
 }paralax_t;
 
 typedef struct scatter {

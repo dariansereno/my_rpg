@@ -32,6 +32,16 @@
         void go_left(st_global *ad);
         void go_down(st_global *ad);
         void go_up(st_global *ad);
+    // PARALAX_MOVE.C
+        void move_up(st_global *ad);
+        void move_down(st_global *ad);
+        void move_left(st_global *ad);
+        void move_right(st_global *ad);
+    // PARALAX_STAR_MOVE.C
+        void move_star_up(st_global *ad);
+        void move_star_down(st_global *ad);
+        void move_star_left(st_global *ad);
+        void move_star_right(st_global *ad);
 // MAP
     // GENERATION_MAP.C
     // MATH.C
