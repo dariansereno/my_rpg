@@ -10,7 +10,8 @@ CFLAGS			=	-W -Wall -Wextra
 CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy
 
-SRC				=	$(wildcard src/*.c)
+SRC				=	$(wildcard src/*.c && src/game/*.c && \
+					src/map/*.c && src/map/list/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 

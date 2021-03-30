@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2021
 ** GALAXY
 ** File description:
-** game
+** generate_map
 */
 
 #include "my_rpg.h"
 
-int game_loop(void) {
-    int i = 0;
-    return (i);
+list_planet generate_all_map(void)
+{
+    return (0);
 }
