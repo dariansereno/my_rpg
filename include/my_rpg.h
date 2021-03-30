@@ -29,6 +29,7 @@
         int game_loop(void);
 // MAP
     // GENERATION_MAP.C
+        list_planet generate_all_map(void);
     // MATH.C
         sfVector2i *scatter_plot(scatter math);
     // LIST
