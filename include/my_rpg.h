@@ -27,6 +27,11 @@
 // GAME
     // GAME.C
         int game_loop(void);
+    // MOVE.C
+        void go_right(st_global *ad);
+        void go_left(st_global *ad);
+        void go_down(st_global *ad);
+        void go_up(st_global *ad);
 // MAP
     // GENERATION_MAP.C
     // MATH.C
@@ -37,5 +42,9 @@
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
             void print_planet_list(list_planet li);
+// STRUCTS
+    st_global *ini(void);
+    structs_t *all_dat(void);
+
 
 #endif /* !MY_RPG_H_ */
