@@ -1,6 +1,5 @@
 /*
 ** EPITECH PROJECT, 2021
-** EPITECH PROJECT, 2021
 ** GALAXY
 ** File description:
 ** game
@@ -23,8 +22,11 @@ void check_status(st_global *ad)
 {
     sfRenderWindow_clear(ad->window->window, sfBlack);
     sfSprite_setTexture(ad->paralax->nebula, ad->paralax->nebulat, sfTrue);
+    sfSprite_setTexture(ad->paralax->star, ad->paralax->start, sfTrue);
+    sfSprite_setTextureRect(ad->paralax->star, ad->paralax->starr);
     sfSprite_setTextureRect(ad->paralax->nebula, ad->paralax->paralaxr);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
+    sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         check_event(ad);
