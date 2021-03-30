@@ -39,10 +39,9 @@ int random_between(int start, int stop)
     return (rand()%((stop+1)-start) + start);
 }
 
-int scatter_plot(scatter math)
+sfVector2i *scatter_plot(scatter math)
 {
-    int *xc = malloc(sizeof(int) * math.kmax);
-    int *yc = malloc(sizeof(int) * math.kmax);
+    sfVector2i *position = malloc(sizeof(sfVector2i) * math.kmax);
     int n2 = 1;
     int i = 0;
     int n = germ(math.germ, math.q);
@@ -53,11 +52,9 @@ int scatter_plot(scatter math)
         n2 = n;
         if (i > 0 && i < math.interval - 1) {
             y[i] = y[i] + 1;
-            xc[k] = i;
-            yc[k] = floor(alea(&n2, math.p, math.q) * math.interval);
+            position[k].x = i;
+            position[k].y = floor(alea(&n2, math.p, math.q) * math.interval);
         }
     }
-    for (int j = 0; j < math.kmax; j++) {
-        printf("[%d, %d] ", xc[j], yc[j]);
-    }
+    return (position);
 }

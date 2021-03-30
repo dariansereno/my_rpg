@@ -9,5 +9,6 @@
 
 list_planet generate_all_map(void)
 {
-    return (0);
+    scatter_plot((scatter){.germ = 469880, .interval = 20000,
+    .kmax = 250, .p = 1288, .q = 1664713});
 }

@@ -30,7 +30,7 @@
 // MAP
     // GENERATION_MAP.C
     // MATH.C
-        int scatter_plot(scatter math);
+        sfVector2i *scatter_plot(scatter math);
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);
