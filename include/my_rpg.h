@@ -47,6 +47,7 @@
         list_planet generate_all_map(void);
     // MATH.C
         sfVector2i *scatter_plot(scatter math);
+        int random_between(int start, int stop);
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);

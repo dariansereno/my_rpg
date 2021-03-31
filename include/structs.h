@@ -48,6 +48,15 @@ typedef enum planet_type {
     SUN7
 } planet_type;
 
+typedef enum planet_climate
+{
+    ARDENT,
+    WARM,
+    NORMAL,
+    COLD,
+    FROSTEN
+} planet_climate;
+
 typedef enum planet_animation {
     ANIMATED,
     NON_ANIMATED
@@ -60,8 +69,7 @@ typedef struct st_planet_stat_s {
     float h2o;
     float co2;
     float n2;
-    float tmp;
-    float pr;
+    float pressure;
 } st_planet_stat;
 
 typedef struct structs_s {
@@ -92,6 +100,9 @@ typedef struct scatter {
 typedef struct st_planet_s {
     st_planet_stat stats;
     sfVector2i pos;
+    planet_type type;
+    planet_animation animated;
+    planet_climate climate;
 } st_planet;
 
 typedef struct list_elem_planet

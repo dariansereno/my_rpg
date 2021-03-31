@@ -10,6 +10,10 @@
 st_planet *general_all_planets_stat(sfVector2i *pos, int size)
 {
     st_planet *planets = malloc(sizeof(st_planet) * size);
+
+    for (int i = 0; i < size; i++) {
+
+    }
 }
 
 list_planet generate_all_map(void)
