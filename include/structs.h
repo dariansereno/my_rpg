@@ -57,6 +57,13 @@ typedef enum planet_climate
     FROSTEN
 } planet_climate;
 
+typedef struct key_pressed {
+    bool Z;
+    bool D;
+    bool S;
+    bool Q;
+} key_pressed;
+
 typedef enum planet_animation {
     ANIMATED,
     NON_ANIMATED
@@ -114,6 +121,7 @@ typedef struct list_elem_planet
 typedef struct st_global_s {
     structs_t *window;
     paralax_t *paralax;
+    key_pressed key_pressed;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
