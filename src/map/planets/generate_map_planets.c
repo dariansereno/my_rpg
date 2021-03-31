@@ -7,6 +7,11 @@
 
 #include "my_rpg.h"
 
+st_planet *general_all_planets_stat(sfVector2i *pos, int size)
+{
+    st_planet *planets = malloc(sizeof(st_planet) * size);
+}
+
 list_planet generate_all_map(void)
 {
     scatter math = {.germ = 469880, .interval = 20000, .kmax = 250, .p = 1288,
