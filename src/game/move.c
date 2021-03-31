@@ -9,32 +9,32 @@
 
 void go_up(st_global *ad)
 {
-    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeyZ) {
+    if (ad->key_pressed.Z == true && (ad->key_pressed.D == false &&
+    ad->key_pressed.Q == false)) {
         move_up(ad);
     }
 }
 
 void go_down(st_global *ad)
 {
-    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeyS) {
+    if (ad->key_pressed.S == true && (ad->key_pressed.Q == false &&
+    ad->key_pressed.D == false)) {
         move_down(ad);
     }
 }
 
 void go_left(st_global *ad)
 {
-    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeyQ) {
+    if ((ad->key_pressed.Q == true) &&
+    (ad->key_pressed.Z == false && ad->key_pressed.S == false)) {
         move_left(ad);
     }
 }
 
 void go_right(st_global *ad)
 {
-    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeyD) {
+    if ((ad->key_pressed.D == true) &&
+    (ad->key_pressed.Z == false && ad->key_pressed.S == false)) {
         move_right(ad);
     }
 }

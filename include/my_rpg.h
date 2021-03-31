@@ -32,11 +32,21 @@
         void go_left(st_global *ad);
         void go_down(st_global *ad);
         void go_up(st_global *ad);
+    // MOVE_DIAGONAL.C
+        void go_upright(st_global *ad);
+        void go_downleft(st_global *ad);
+        void go_upleft(st_global *ad);
+        void go_downright(st_global *ad);
     // PARALAX_MOVE.C
         void move_up(st_global *ad);
         void move_down(st_global *ad);
         void move_left(st_global *ad);
         void move_right(st_global *ad);
+    // PARALAX_MOVE.C
+        void move_upright(st_global *ad);
+        void move_downleft(st_global *ad);
+        void move_upleft(st_global *ad);
+        void move_downright(st_global *ad);
     // PARALAX_STAR_MOVE.C
         void move_star_up(st_global *ad);
         void move_star_down(st_global *ad);
