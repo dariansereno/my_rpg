@@ -27,10 +27,14 @@ int random_between(int start, int stop)
 
     if (fread(&seed, sizeof(seed), 1, in) == 1)
         fclose(in);
-    if (start > stop)
+    if (start > stop) {
+        fclose(in);
         return random_between(stop, start);
-    if (start == stop)
+    }
+    if (start == stop){
+        fclose(in);
         return (start);
+    }
     if (!initialized) {
         initialized = true;
         srand(seed);
