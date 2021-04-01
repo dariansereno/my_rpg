@@ -10,31 +10,24 @@
 
 void go_downleft(st_global *ad)
 {
-    if (ad->key_pressed.S == true && ad->key_pressed.Q == true) {
-        printf("moule\n");
+    if (ad->key_pressed.S == true && ad->key_pressed.Q == true)
         move_downleft(ad);
-    }
 }
 
 void go_upright(st_global *ad)
 {
-    if (ad->key_pressed.Z == true && ad->key_pressed.D == true) {
-        printf("huitre\n");
-        move_upright(ad);}
+    if (ad->key_pressed.Z == true && ad->key_pressed.D == true)
+        move_upright(ad);
 }
 
 void go_upleft(st_global *ad)
 {
-    if (ad->key_pressed.Q == true && ad->key_pressed.Z == true) {
-        printf("chatte\n");
+    if (ad->key_pressed.Q == true && ad->key_pressed.Z == true)
         move_upleft(ad);
-    }
 }
 
 void go_downright(st_global *ad)
 {
-    if (ad->key_pressed.S == true && ad->key_pressed.D == true) {
-        printf("urêtre de chinois en convalescence");
+    if (ad->key_pressed.S == true && ad->key_pressed.D == true)
         move_downright(ad);
-    }
 }

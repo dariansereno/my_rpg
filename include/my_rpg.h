@@ -52,6 +52,11 @@
         void move_star_down(st_global *ad);
         void move_star_left(st_global *ad);
         void move_star_right(st_global *ad);
+    // PARALAX_STAR_MOVE_DIAGONAL.C
+        void move_star_upright(st_global *ad);
+        void move_star_downleft(st_global *ad);
+        void move_star_upleft(st_global *ad);
+        void move_star_downright(st_global *ad);
 // MAP
     // GENERATION_MAP.C
         list_planet generate_all_map(void);

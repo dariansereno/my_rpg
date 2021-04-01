@@ -3,9 +3,6 @@
 ** GALAXY
 ** File description:
 ** move background
-        if (ad->paralax->paralaxr.left >= 3840)
-            ad->paralax->paralaxr.left = 0;
-        sfClock_restart(ad->paralax->paralo);
 */
 
 #include "my_rpg.h"
@@ -16,16 +13,17 @@ void move_upright(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->paralaxr.top -= 10;
-        ad->paralax->paralaxr.left += 10;
+        ad->paralax->paralaxr.top -= 2.5;
+        ad->paralax->paralaxr.left += 2.5;
         if (ad->paralax->paralaxr.top <= 0)
             ad->paralax->paralaxr.top = 2160;
         if (ad->paralax->paralaxr.left >= 3840)
             ad->paralax->paralaxr.left = 0;
         sfClock_restart(ad->paralax->paralo);
     }
-    move_star_up(ad);
+    move_star_upright(ad);
 }
+
 
 void move_downleft(st_global *ad)
 {
@@ -33,15 +31,15 @@ void move_downleft(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->paralaxr.top += 10;
-        ad->paralax->paralaxr.left -= 10;
+        ad->paralax->paralaxr.top += 2.5;
+        ad->paralax->paralaxr.left -= 2.5;
         if (ad->paralax->paralaxr.top >= 2160)
             ad->paralax->paralaxr.top = 0;
         if (ad->paralax->paralaxr.left >= 3840)
             ad->paralax->paralaxr.left = 0;
         sfClock_restart(ad->paralax->paralo);
     }
-    move_star_down(ad);
+    move_star_downleft(ad);
 }
 
 void move_upleft(st_global *ad)
@@ -50,15 +48,15 @@ void move_upleft(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->paralaxr.left -= 10;
-        ad->paralax->paralaxr.top -= 10;
+        ad->paralax->paralaxr.left -= 2.5;
+        ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.left <= 0)
             ad->paralax->paralaxr.left = 3840;
         if (ad->paralax->paralaxr.top <= 0)
             ad->paralax->paralaxr.top = 2160;
         sfClock_restart(ad->paralax->paralo);
     }
-    move_star_left(ad);
+    move_star_upleft(ad);
 }
 
 void move_downright(st_global *ad)
@@ -67,13 +65,13 @@ void move_downright(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->paralaxr.left += 10;
-        ad->paralax->paralaxr.top += 10;
+        ad->paralax->paralaxr.left += 2.5;
+        ad->paralax->paralaxr.top += 2.5;
         if (ad->paralax->paralaxr.left >= 3840)
             ad->paralax->paralaxr.left = 0;
         if (ad->paralax->paralaxr.top >= 2160)
             ad->paralax->paralaxr.top = 0;
         sfClock_restart(ad->paralax->paralo);
     }
-    move_star_right(ad);
+    move_star_downright(ad);
 }
