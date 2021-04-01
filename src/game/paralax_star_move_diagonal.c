@@ -12,6 +12,8 @@ void move_star_upright(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->staro);
     float secondso = timeo.microseconds / 1000000.0;
 
+    ad->paralax->starpos.x += 1;
+    ad->paralax->starpos.y -= 1;
     if (secondso > 0.01) {
         ad->paralax->starr.top -= 7;
         ad->paralax->starr.left += 7;
@@ -28,6 +30,8 @@ void move_star_downleft(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->staro);
     float secondso = timeo.microseconds / 1000000.0;
 
+    ad->paralax->starpos.x -= 1;
+    ad->paralax->starpos.y += 1;
     if (secondso > 0.01) {
         ad->paralax->starr.top += 7;
         ad->paralax->starr.left -= 7;
@@ -44,6 +48,8 @@ void move_star_upleft(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->staro);
     float secondso = timeo.microseconds / 1000000.0;
 
+    ad->paralax->starpos.x -= 1;
+    ad->paralax->starpos.y -= 1;
     if (secondso > 0.01) {
         ad->paralax->starr.top -= 7;
         ad->paralax->starr.left -= 7;
@@ -60,6 +66,8 @@ void move_star_downright(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->staro);
     float secondso = timeo.microseconds / 1000000.0;
 
+    ad->paralax->starpos.x += 1;
+    ad->paralax->starpos.y += 1;
     if (secondso > 0.01) {
         ad->paralax->starr.top += 7;
         ad->paralax->starr.left += 7;
