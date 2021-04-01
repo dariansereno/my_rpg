@@ -7,13 +7,9 @@
 
 #include "my_rpg.h"
 
-st_planet *general_all_planets_stat(sfVector2i *pos, int size)
+sfTexture **generates_planets_textures()
 {
-    st_planet *planets = malloc(sizeof(st_planet) * size);
-
-    for (int i = 0; i < size; i++) {
-
-    }
+    sfTexture **texture = malloc(sizeof(sfTexture *) * 34)
 }
 
 list_planet generate_all_map(void)
@@ -22,7 +18,10 @@ list_planet generate_all_map(void)
     .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
     list_planet planets = NULL;
+    st_planet *stats = general_all_planets(pos, math.kmax);
 
-    for (int i = 0; i < math.kmax; i++)
-        push_back_planet(&planets, (st_planet){.pos = pos[i]});
+    for (int i = 0; i < math.kmax; i++) {
+        stats[i].pos = pos[i];
+        push_back_planet(&planets, stats[i]);
+    }
 }

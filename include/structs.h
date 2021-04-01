@@ -13,14 +13,20 @@
 #include "my_rpg.h"
 
 typedef enum planet_type {
+    SUN1,
+    SUN2,
+    SUN3,
+    SUN4,
+    SUN5,
+    SUN6,
+    SUN7,
+    LAVA1,
+    LAVA2,
+    LAVA3,
     GAS1,
     GAS2,
     GAS3,
     GAS4,
-    ICE,
-    LAVA1,
-    LAVA2,
-    LAVA3,
     OCEAN_N_C,
     OCEAN_C,
     TERRAN_N_C1,
@@ -31,21 +37,15 @@ typedef enum planet_type {
     TECH1,
     TECH2,
     TECH3,
-    BLACKHOLE1,
-    BLACKHOLE2,
-    BLACKHOLE3,
+    ICE,
     ASTEROID1,
     ASTEROID2,
     ASTEROID3,
     ASTEROID4,
     ASTEROID5,
-    SUN1,
-    SUN2,
-    SUN3,
-    SUN4,
-    SUN5,
-    SUN6,
-    SUN7
+    BLACKHOLE1,
+    BLACKHOLE2,
+    BLACKHOLE3,
 } planet_type;
 
 typedef enum planet_climate
@@ -65,17 +65,17 @@ typedef struct key_pressed {
 } key_pressed;
 
 typedef enum planet_animation {
-    ANIMATED,
-    NON_ANIMATED
+    NON_ANIMATED,
+    ANIMATED
 } planet_animation;
 
 typedef struct st_planet_stat_s {
-    float o;
-    float he;
-    float h;
-    float h2o;
-    float co2;
-    float n2;
+    int o;
+    int h;
+    int h2o;
+    int co2;
+    int N;
+    int n2;
     float pressure;
 } st_planet_stat;
 
@@ -127,13 +127,21 @@ typedef struct st_planet_s {
     planet_type type;
     planet_animation animated;
     planet_climate climate;
+    sfSprite *sprite;
+    bool habitable;
 } st_planet;
+
 
 typedef struct list_elem_planet
 {
     st_planet planet;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
+
+typedef struct st_global_planet_s {
+    list_planet planets;
+    sfTexture **textures;
+} st_planet_global;
 
 typedef struct st_global_s {
     structs_t *window;
