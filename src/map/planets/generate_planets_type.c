@@ -30,6 +30,7 @@ st_planet_stat generate_planet_stat2(st_planet planet)
 st_planet_stat generate_planet_stat(st_planet planet)
 {
     int i = 1;
+    planet.stats = (st_planet_stat){0, 0, 0, 0, 0, 0, 0};
 
     switch (i) {
     case 1: if (planet.type >= 0 && planet.type <= 6)

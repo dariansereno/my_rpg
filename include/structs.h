@@ -75,7 +75,7 @@ typedef struct st_planet_stat_s {
     int co2;
     int N;
     int n2;
-    float pressure;
+    int pressure;
 } st_planet_stat;
 
 typedef struct structs_s {

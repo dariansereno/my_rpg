@@ -20,6 +20,7 @@ st_planet_global *generate_all_map(void)
         stats[i].pos = pos[i];
         push_back_planet(&planets->planets, stats[i]);
     }
+    planets->textures = malloc(sizeof(*planets->textures));
     planets->textures = generates_planets_textures();
     return (planets);
 }
