@@ -12,16 +12,16 @@ st_planet_stat generate_planet_stat2(st_planet planet)
     int i = 6;
     switch (i) {
     case 6: if (planet.type >= 20 && planet.type <= 22)
-                return(stats_for_tech());
+                return(stats_for_tech(planet.stats));
             i++;
     case 7: if (planet.type == 23)
-                return(stats_for_ice());
+                return(stats_for_ice(planet.stats));
             i++;
     case 8: if (planet.type >= 24 && planet.type <= 28)
-                return(stats_for_asteroid());
+                return(stats_for_asteroid(planet.stats));
             i++;
     case 9: if (planet.type >= 29)
-                return(stats_for_blackhole());
+                return(stats_for_blackhole(planet.stats));
             i++;
     }
     return (planet.stats);
@@ -34,19 +34,19 @@ st_planet_stat generate_planet_stat(st_planet planet)
 
     switch (i) {
     case 1: if (planet.type >= 0 && planet.type <= 6)
-                return(stats_for_sun());
+                return(stats_for_sun(planet.stats));
             i++;
     case 2: if (planet.type >= 7 && planet.type <= 9)
-                return(stats_for_lava());
+                return(stats_for_lava(planet.stats));
             i++;
     case 3: if (planet.type >= 10 && planet.type <= 13)
-                return(stats_for_gas());
+                return(stats_for_gas(planet.stats));
             i++;
     case 4: if (planet.type >= 14 && planet.type <= 15)
-                return(stats_for_ocean());
+                return(stats_for_ocean(planet.stats));
             i++;
     case 5: if (planet.type >= 16 && planet.type <= 19)
-                return(stats_for_terran());
+                return(stats_for_terran(planet.stats));
             i++;
     }
     return(generate_planet_stat2(planet));

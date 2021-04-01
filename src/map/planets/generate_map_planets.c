@@ -24,6 +24,5 @@ st_planet_global *generate_all_map(void)
         push_back_planet(&planets->planets, stats[i]);
     }
     set_texture_planets(&planets->planets, planets);
-    printf("salut mec\n");
     return (planets);
 }

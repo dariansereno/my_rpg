@@ -7,10 +7,9 @@
 
 #include "my_rpg.h"
 
-st_planet_stat stats_for_gas(void)
+st_planet_stat stats_for_gas(st_planet_stat planet)
 {
     int stat = random_between(50, 100);
-    st_planet_stat planet;
     int total = 100;
 
     planet.h = stat; 
@@ -32,11 +31,10 @@ st_planet_stat stats_for_gas(void)
     return (planet);
 }
 
-st_planet_stat stats_for_ocean(void)
+st_planet_stat stats_for_ocean(st_planet_stat planet)
 {
     int stat = random_between(70, 100);
     int total = 100;
-    st_planet_stat planet;
 
     planet.h2o = stat;
     total -= stat;
@@ -57,11 +55,10 @@ st_planet_stat stats_for_ocean(void)
     return (planet);
 }
 
-st_planet_stat stats_for_terran(void)
+st_planet_stat stats_for_terran(st_planet_stat planet)
 {
     int stat = random_between(50, 100);
     int total = 100;
-    st_planet_stat planet;
 
     planet.n2 = stat; 
     total -= stat;
@@ -82,11 +79,10 @@ st_planet_stat stats_for_terran(void)
     return (planet);
 }
 
-st_planet_stat stats_for_lava(void)
+st_planet_stat stats_for_lava(st_planet_stat planet)
 {
     int stat = random_between(70, 100);
     int total = 100;
-    st_planet_stat planet;
 
     planet.co2 = stat;
     total -= stat;
@@ -107,11 +103,10 @@ st_planet_stat stats_for_lava(void)
     return (planet);
 }
 
-st_planet_stat stats_for_ice(void)
+st_planet_stat stats_for_ice(st_planet_stat planet)
 {
     int stat = random_between(70, 100);
     int total = 100;
-    st_planet_stat planet;
 
     planet.h2o = stat;
     total -= stat;

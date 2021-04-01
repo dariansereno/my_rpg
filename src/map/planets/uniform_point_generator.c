@@ -25,23 +25,16 @@ int random_between(int start, int stop)
     unsigned int seed;
     FILE *in = fopen("/dev/random", "r");
 
-    if (fread(&seed, sizeof(seed), 1, in) == 1) {
+    if (fread(&seed, sizeof(seed), 1, in) == 1)
         fclose(in);
-        return (0);
-    }
-    if (start > stop) {
-        fclose(in);
+    if (start > stop)
         return random_between(stop, start);
-    }
-    if (start == stop){
-        fclose(in);
+    if (start == stop)
         return (start);
-    }
     if (!initialized) {
         initialized = true;
         srand(seed);
     }
-    fclose(in);
     return (rand()%((stop+1)-start) + start);
 }
 
