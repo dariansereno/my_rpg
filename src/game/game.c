@@ -92,7 +92,6 @@ int game_loop(void)
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, 20);
     sfRenderWindow_setFramerateLimit(ad->window->window, 120);
-    generate_all_map();
     while (sfRenderWindow_isOpen(ad->window->window)) {
         ad->ship->view = sfView_createFromRect(ad->ship->viewrect);
         check_status(ad);
