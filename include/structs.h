@@ -107,6 +107,10 @@ typedef struct paralax_s {
     sfVector2i move;
     sfVector2f nebulapos;
     sfVector2f starpos;
+    int i;
+    int j;
+    int k;
+    int l;
 }paralax_t;
 
 typedef struct scatter {
