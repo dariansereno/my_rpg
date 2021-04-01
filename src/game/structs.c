@@ -24,6 +24,10 @@ paralax_t *paralax_ini(void)
     paralax->clock = sfClock_create();
     paralax->nebulapos = (sfVector2f) {0,0};
     paralax->starpos = (sfVector2f) {0,0};
+    paralax->i = 0;
+    paralax->j = 0;
+    paralax->k = 0;
+    paralax->l = 0;
     return (paralax);
 }
 
