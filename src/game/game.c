@@ -44,16 +44,6 @@ void check_event(st_global *ad)
         sfRenderWindow_close(ad->window->window);
         sfMusic_destroy(ad->window->music);
     }
-    printf("%d\n", sfKeyCount);
-    // go_up(ad);
- 
-    // go_down(ad);
-    // go_left(ad);
-    // go_right(ad);
-    // go_upleft(ad);
-    // go_upright(ad);
-    // go_downleft(ad);
-    // go_downright(ad);
 }
 
 void check_status(st_global *ad)

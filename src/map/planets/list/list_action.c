@@ -13,6 +13,7 @@ void push_back_planet(list_planet *li, st_planet planet)
     list_planet lastnode = *li;
 
     node->planet = planet;
+    // printf("%d == %d   \n", planet.type, node->planet.type);
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -54,6 +55,8 @@ void print_planet_list(list_planet li)
 {
     list_planet node = li;
 
-    while (node != NULL)
-        node = node->next;
+    while (node != NULL){
+        printf("%d, ", node->planet.type);
+        node = node->next;}
+    printf("\n");
 }
