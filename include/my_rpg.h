@@ -57,6 +57,10 @@
         void move_star_downleft(st_global *ad);
         void move_star_upleft(st_global *ad);
         void move_star_downright(st_global *ad);
+    // CHANGE_KEY.C
+        void more_key_change(st_global *ad);
+        void extra_change(st_global *ad);
+        void change_key_press(st_global *ad);
 // MAP
     // COLLISIONS
         // COLLISIONS.C
