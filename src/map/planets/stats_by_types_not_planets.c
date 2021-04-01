@@ -7,10 +7,11 @@
 
 #include "my_rpg.h"
 
-st_planet_stat stats_for_sun(st_planet_stat planet)
+st_planet_stat stats_for_sun(void)
 {
     int stat = random_between(70, 100);
     int total = 100;
+    st_planet_stat planet;
 
     planet.co2 = stat;
     total -= stat;
@@ -31,10 +32,11 @@ st_planet_stat stats_for_sun(st_planet_stat planet)
     return (planet);
 }
 
-st_planet_stat stats_for_tech(st_planet_stat planet)
+st_planet_stat stats_for_tech(void)
 {
     int stat = random_between(50, 100);
     int total = 100;
+    st_planet_stat planet;
 
     planet.co2 = 0;
     planet.h2o = stat;
@@ -53,10 +55,11 @@ st_planet_stat stats_for_tech(st_planet_stat planet)
     return (planet);
 }
 
-st_planet_stat stats_for_asteroid(st_planet_stat planet)
+st_planet_stat stats_for_asteroid(void)
 {
     int stat = random_between(70, 100);
     int total = 100;
+    st_planet_stat planet;
 
     planet.co2 = 0;
     stat = 0;
@@ -68,10 +71,11 @@ st_planet_stat stats_for_asteroid(st_planet_stat planet)
     return (planet);
 }
 
-st_planet_stat stats_for_blackhole(st_planet_stat planet)
+st_planet_stat stats_for_blackhole(void)
 {
     int stat = random_between(70, 100);
     int total = 100;
+    st_planet_stat planet;
 
     planet.co2 = stat;
     total -= stat;

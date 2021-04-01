@@ -13,7 +13,6 @@ void push_back_planet(list_planet *li, st_planet planet)
     list_planet lastnode = *li;
 
     node->planet = planet;
-    // printf("%d == %d   \n", planet.type, node->planet.type);
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -24,22 +23,37 @@ void push_back_planet(list_planet *li, st_planet planet)
     }
 }
 
-void pop_position_planet(list_planet *list, sfVector2f pos)
+void set_texture_planets(list_planet *li, st_planet_global *g)
 {
-    list_planet temp = *list;
-    list_planet next = NULL;
+    list_planet node = malloc(sizeof(*node));
+    node = *li;
 
-    if (*list == NULL)
-        return;
-    for (; temp != NULL && temp->next->planet.pos.x != pos.x &&
-    temp->next->planet.pos.y != pos.y;)
-        temp = temp->next;
-    if (temp == NULL || temp->next == NULL)
-        return;
-    next = temp->next->next;
-    free(temp->next);
-    temp->next = next;
+    while (node != NULL) {
+        node->planet.sprite = sfSprite_create();
+        sfSprite_setTexture(node->planet.sprite,
+        g->textures[node->planet.type - 1], NULL);
+        sfSprite_setPosition(node->planet.sprite,
+        (sfVector2f){(float)node->planet.pos.x, (float)node->planet.pos.y});
+        node = node->next;
+    }
 }
+
+// void pop_position_planet(list_planet *list, sfVector2f pos)
+// {
+//     list_planet temp = *list;
+//     list_planet next = NULL;
+
+//     if (*list == NULL)
+//         return;
+//     for (; temp != NULL && temp->next->planet.pos.x != pos.x &&
+//     temp->next->planet.pos.y != pos.y;)
+//         temp = temp->next;
+//     if (temp == NULL || temp->next == NULL)
+//         return;
+//     next = temp->next->next;
+//     free(temp->next);
+//     temp->next = next;
+// }
 
 int size_list_planet(list_planet li)
 {
@@ -51,12 +65,12 @@ int size_list_planet(list_planet li)
     return (i);
 }
 
-void print_planet_list(list_planet li)
+void print_planet_list(list_planet li, sfRenderWindow *window)
 {
-    list_planet node = li;
-
-    while (node != NULL){
-        printf("%d, ", node->planet.type);
-        node = node->next;}
-    printf("\n");
+    while (li != NULL){
+        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
+        sfSprite_setScale(li->planet.sprite, (sfVector2f){3, 3});
+        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+        li = li->next;
+    }
 }

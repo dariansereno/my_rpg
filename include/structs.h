@@ -127,6 +127,7 @@ typedef struct st_planet_s {
     planet_animation animated;
     planet_climate climate;
     sfSprite *sprite;
+    sfIntRect rect;
     bool habitable;
 } st_planet;
 
@@ -147,6 +148,7 @@ typedef struct st_global_s {
     paralax_t *paralax;
     key_pressed key_pressed;
     ship_t *ship;
+    st_planet_global *planets;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

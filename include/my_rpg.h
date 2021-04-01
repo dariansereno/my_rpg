@@ -67,21 +67,22 @@
         st_planet *general_all_planets(sfVector2i *pos, int size);
         sfTexture **generates_planets_textures();
     // STAT_PLANETS.C
-        st_planet_stat stats_for_gas(st_planet_stat planet);
-        st_planet_stat stats_for_ocean(st_planet_stat planet);
-        st_planet_stat stats_for_terran(st_planet_stat planet);
-        st_planet_stat stats_for_lava(st_planet_stat planet);
-        st_planet_stat stats_for_sun(st_planet_stat planet);
-        st_planet_stat stats_for_tech(st_planet_stat planet);
-        st_planet_stat stats_for_asteroid(st_planet_stat planet);
-        st_planet_stat stats_for_ice(st_planet_stat planet);
-        st_planet_stat stats_for_blackhole(st_planet_stat planet);
+        st_planet_stat stats_for_gas(void);
+        st_planet_stat stats_for_ocean(void);
+        st_planet_stat stats_for_terran(void);
+        st_planet_stat stats_for_lava(void);
+        st_planet_stat stats_for_sun(void);
+        st_planet_stat stats_for_tech(void);
+        st_planet_stat stats_for_asteroid(void);
+        st_planet_stat stats_for_ice(void);
+        st_planet_stat stats_for_blackhole(void);
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
-            void print_planet_list(list_planet li);
+            void print_planet_list(list_planet li, sfRenderWindow *window);
+            void set_texture_planets(list_planet *li, st_planet_global *g);
 // STRUCTS
     st_global *ini(void);
     structs_t *all_dat(void);

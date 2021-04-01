@@ -11,7 +11,6 @@
 void go_downleft(st_global *ad)
 {
     int x = ad->paralax->i + ad->paralax->j + ad->paralax->k + ad->paralax->l;
-    printf("%d\n", x);
     if (x <= 2 && ad->key_pressed.S == true && ad->key_pressed.Q == true)
         move_downleft(ad);
 }

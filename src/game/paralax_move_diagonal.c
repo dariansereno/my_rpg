@@ -12,12 +12,12 @@ void move_upright(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x += 1;
-    ad->ship->bshippos.y -= 1;
-    ad->ship->viewrect.left += 1;
-    ad->ship->viewrect.top -= 1;
-    ad->paralax->nebulapos.x += 1;
-    ad->paralax->nebulapos.y -= 1;
+    ad->ship->bshippos.x += 5;
+    ad->ship->bshippos.y -= 5;
+    ad->ship->viewrect.left += 5;
+    ad->ship->viewrect.top -= 5;
+    ad->paralax->nebulapos.x += 5;
+    ad->paralax->nebulapos.y -= 5;
     ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b45.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= 2.5;
@@ -37,12 +37,12 @@ void move_downleft(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x -= 1;
-    ad->ship->bshippos.y += 1;
-    ad->ship->viewrect.left -= 1;
-    ad->ship->viewrect.top += 1;
-    ad->paralax->nebulapos.x -= 1;
-    ad->paralax->nebulapos.y += 1;
+    ad->ship->bshippos.x -= 5;
+    ad->ship->bshippos.y += 5;
+    ad->ship->viewrect.left -= 5;
+    ad->ship->viewrect.top += 5;
+    ad->paralax->nebulapos.x -= 5;
+    ad->paralax->nebulapos.y += 5;
     ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b225.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += 2.5;
@@ -61,12 +61,12 @@ void move_upleft(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x -= 1;
-    ad->ship->bshippos.y -= 1;
-    ad->ship->viewrect.left -= 1;
-    ad->ship->viewrect.top -= 1;
-    ad->paralax->nebulapos.x -= 1;
-    ad->paralax->nebulapos.y -= 1;
+    ad->ship->bshippos.x -= 5;
+    ad->ship->bshippos.y -= 5;
+    ad->ship->viewrect.left -= 5;
+    ad->ship->viewrect.top -= 5;
+    ad->paralax->nebulapos.x -= 5;
+    ad->paralax->nebulapos.y -= 5;
     ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b315.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left -= 2.5;
@@ -85,12 +85,12 @@ void move_downright(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x += 1;
-    ad->ship->bshippos.y += 1;
-    ad->ship->viewrect.left += 1;
-    ad->ship->viewrect.top += 1;
-    ad->paralax->nebulapos.x += 1;
-    ad->paralax->nebulapos.y += 1;
+    ad->ship->bshippos.x += 5;
+    ad->ship->bshippos.y += 5;
+    ad->ship->viewrect.left += 5;
+    ad->ship->viewrect.top += 5;
+    ad->paralax->nebulapos.x += 5;
+    ad->paralax->nebulapos.y += 5;
     ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b135.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left += 2.5;
