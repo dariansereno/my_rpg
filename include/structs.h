@@ -31,7 +31,6 @@ typedef enum planet_type {
     OCEAN_C,
     TERRAN_N_C1,
     TERRAN_N_C2,
-    TERRAN_N_C3,
     TERRAN_C1,
     TERRAN_C2,
     TECH1,

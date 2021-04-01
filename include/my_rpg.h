@@ -59,12 +59,13 @@
         void move_star_downright(st_global *ad);
 // MAP
     // GENERATION_MAP.C
-        list_planet generate_all_map(void);
+        st_planet_global *generate_all_map(void);
     // MATH.C
         sfVector2i *scatter_plot(scatter math);
         int random_between(int start, int stop);
     // GENERATE_PLANET_TYPE.C
         st_planet *general_all_planets(sfVector2i *pos, int size);
+        sfTexture **generates_planets_textures();
     // STAT_PLANETS.C
         st_planet_stat stats_for_gas(st_planet_stat planet);
         st_planet_stat stats_for_ocean(st_planet_stat planet);
