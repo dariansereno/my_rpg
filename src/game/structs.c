@@ -22,6 +22,8 @@ paralax_t *paralax_ini(void)
     .width = 1920};
     paralax->staro = sfClock_create();
     paralax->clock = sfClock_create();
+    paralax->nebulapos = (sfVector2f) {0,0};
+    paralax->starpos = (sfVector2f) {0,0};
     return (paralax);
 }
 
@@ -38,11 +40,26 @@ structs_t *all_dat(void)
     return (window);
 }
 
+ship_t *ship_ini(void)
+{
+    ship_t *ship = malloc(sizeof(ship_t));
+
+    ship->bship = sfSprite_create();
+    ship->bshipt = sfTexture_createFromFile("contents/ships/ships/blue01.png",
+    NULL);
+    ship->bshippos = (sfVector2f) {.x = 937.5, .y = 517.5};
+    ship->viewrect = (sfFloatRect) {.height = 1080, .left = 0, .top = 0,
+    .width = 1920};
+    ship->view = sfView_createFromRect(ship->viewrect);
+    return (ship);
+}
+
 st_global *ini(void)
 {
     st_global *all = malloc(sizeof(st_global));
 
     all->window = all_dat();
     all->paralax = paralax_ini();
+    all->ship = ship_ini();
     return (all);
 }

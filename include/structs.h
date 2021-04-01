@@ -86,6 +86,14 @@ typedef struct structs_s {
     sfMusic *music;
 }structs_t;
 
+typedef struct ship_s {
+    sfSprite *bship;
+    sfTexture *bshipt;
+    sfVector2f bshippos;
+    sfFloatRect viewrect;
+    sfView *view;
+}ship_t;
+
 typedef struct paralax_s {
     sfSprite *nebula;
     sfTexture *nebulat;
@@ -97,6 +105,8 @@ typedef struct paralax_s {
     sfClock *staro;
     sfClock *clock;
     sfVector2i move;
+    sfVector2f nebulapos;
+    sfVector2f starpos;
 }paralax_t;
 
 typedef struct scatter {
@@ -133,6 +143,7 @@ typedef struct st_global_s {
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
+    ship_t *ship;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
