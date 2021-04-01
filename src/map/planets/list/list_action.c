@@ -34,6 +34,7 @@ void set_texture_planets(list_planet *li, st_planet_global *g)
         g->textures[node->planet.type - 1], NULL);
         sfSprite_setPosition(node->planet.sprite,
         (sfVector2f){(float)node->planet.pos.x, (float)node->planet.pos.y});
+        sfSprite_setOrigin(node->planet.sprite, (sfVector2f){24, 24});
         node = node->next;
     }
 }

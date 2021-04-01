@@ -58,24 +58,28 @@
         void move_star_upleft(st_global *ad);
         void move_star_downright(st_global *ad);
 // MAP
-    // GENERATION_MAP.C
-        st_planet_global *generate_all_map(void);
-    // MATH.C
-        sfVector2i *scatter_plot(scatter math);
-        int random_between(int start, int stop);
-    // GENERATE_PLANET_TYPE.C
-        st_planet *general_all_planets(sfVector2i *pos, int size);
-        sfTexture **generates_planets_textures();
-    // STAT_PLANETS.C
-        st_planet_stat stats_for_gas(st_planet_stat planet);
-        st_planet_stat stats_for_ocean(st_planet_stat planet);
-        st_planet_stat stats_for_terran(st_planet_stat planet);
-        st_planet_stat stats_for_lava(st_planet_stat planet);
-        st_planet_stat stats_for_sun(st_planet_stat planet);
-        st_planet_stat stats_for_tech(st_planet_stat planet);
-        st_planet_stat stats_for_asteroid(st_planet_stat planet);
-        st_planet_stat stats_for_ice(st_planet_stat planet);
-        st_planet_stat stats_for_blackhole(st_planet_stat planet);
+    // COLLISIONS
+        // COLLISIONS.C
+            void planet_collision(st_global *ad);
+    // GENERATION
+        // GENERATION_MAP.C
+            st_planet_global *generate_all_map(void);
+        // MATH.C
+            sfVector2i *scatter_plot(scatter math);
+            int random_between(int start, int stop);
+        // GENERATE_PLANET_TYPE.C
+            st_planet *general_all_planets(sfVector2i *pos, int size);
+            sfTexture **generates_planets_textures();
+        // STAT_PLANETS.C
+            st_planet_stat stats_for_gas(st_planet_stat planet);
+            st_planet_stat stats_for_ocean(st_planet_stat planet);
+            st_planet_stat stats_for_terran(st_planet_stat planet);
+            st_planet_stat stats_for_lava(st_planet_stat planet);
+            st_planet_stat stats_for_sun(st_planet_stat planet);
+            st_planet_stat stats_for_tech(st_planet_stat planet);
+            st_planet_stat stats_for_asteroid(st_planet_stat planet);
+            st_planet_stat stats_for_ice(st_planet_stat planet);
+            st_planet_stat stats_for_blackhole(st_planet_stat planet);
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);

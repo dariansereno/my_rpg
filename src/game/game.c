@@ -95,6 +95,7 @@ int game_loop(void)
     while (sfRenderWindow_isOpen(ad->window->window)) {
         ad->ship->view = sfView_createFromRect(ad->ship->viewrect);
         check_status(ad);
+        planet_collision(ad);
         go_up(ad);
         go_down(ad);
         go_left(ad);
