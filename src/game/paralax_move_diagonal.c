@@ -3,6 +3,9 @@
 ** GALAXY
 ** File description:
 ** move background
+        if (ad->paralax->paralaxr.left >= 3840)
+            ad->paralax->paralaxr.left = 0;
+        sfClock_restart(ad->paralax->paralo);
 */
 
 #include "my_rpg.h"
@@ -23,7 +26,6 @@ void move_upright(st_global *ad)
     }
     move_star_up(ad);
 }
-
 
 void move_downleft(st_global *ad)
 {

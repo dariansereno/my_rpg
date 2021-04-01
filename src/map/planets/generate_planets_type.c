@@ -7,4 +7,4 @@
 
 #include "my_rpg.h"
 
-int 
+// int 

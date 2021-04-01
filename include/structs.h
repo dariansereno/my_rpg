@@ -83,6 +83,7 @@ typedef struct structs_s {
     sfRenderWindow *window;
     sfEvent event;
     sfVideoMode mode;
+    sfMusic *music;
 }structs_t;
 
 typedef struct paralax_s {
@@ -94,6 +95,8 @@ typedef struct paralax_s {
     sfIntRect starr;
     sfClock *paralo;
     sfClock *staro;
+    sfClock *clock;
+    sfVector2i move;
 }paralax_t;
 
 typedef struct scatter {

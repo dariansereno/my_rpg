@@ -21,6 +21,7 @@ paralax_t *paralax_ini(void)
     paralax->starr = (sfIntRect) {.height = 1080, .left = 1920, .top = 1080,
     .width = 1920};
     paralax->staro = sfClock_create();
+    paralax->clock = sfClock_create();
     return (paralax);
 }
 
@@ -33,6 +34,7 @@ structs_t *all_dat(void)
     window->mode.bitsPerPixel = 32;
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
+    window->music = sfMusic_createFromFile("ressources/song.wav");
     return (window);
 }
 

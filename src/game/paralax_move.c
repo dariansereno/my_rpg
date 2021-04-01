@@ -13,9 +13,16 @@ void move_up(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->paralaxr.top -= 10;
+        ad->paralax->paralaxr.top += ad->paralax->move.y;
+        ad->paralax->paralaxr.left += ad->paralax->move.x;
         if (ad->paralax->paralaxr.top <= 0)
             ad->paralax->paralaxr.top = 2160;
+        if (ad->paralax->paralaxr.top >= 2160)
+            ad->paralax->paralaxr.top = 0;
+        if (ad->paralax->paralaxr.left <= 0)
+            ad->paralax->paralaxr.left = 3840;
+        if (ad->paralax->paralaxr.left >= 3840)
+            ad->paralax->paralaxr.left = 0;
         sfClock_restart(ad->paralax->paralo);
     }
     move_star_up(ad);
