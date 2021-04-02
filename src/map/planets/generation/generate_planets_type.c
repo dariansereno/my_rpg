@@ -77,7 +77,7 @@ planet_climate climate_from_type(planet_type planet)
 
 planet_animation animation_from_type(planet_type planet)
 {
-    if (planet >= 7 && planet <= 23)
+    if (planet >= 7 && planet <= 21)
         return (ANIMATED);
     return (NON_ANIMATED);
 }
