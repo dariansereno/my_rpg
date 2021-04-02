@@ -51,10 +51,19 @@ ship_t *ship_ini(void)
     ship->bship = sfSprite_create();
     ship->bshipt = sfTexture_createFromFile("contents/ships/ships/blue01.png",
     NULL);
-    ship->bshippos = (sfVector2f) {.x = 937.5, .y = 517.5};
+    sfSprite_setOrigin(ship->bship, (sfVector2f){22.5, 22.5});
+    ship->bshippos = (sfVector2f) {.x = 960, .y = 540};
     ship->viewrect = (sfFloatRect) {.height = 1080, .left = 0, .top = 0,
     .width = 1920};
     ship->view = sfView_createFromRect(ship->viewrect);
+    ship->collisionZ = false;
+    ship->collisionD = false;
+    ship->collisionS = false;
+    ship->collisionQ = false;
+    ship->firstcollisionZ = false;
+    ship->firstcollisionD = false;
+    ship->firstcollisionS = false;
+    ship->firstcollisionQ = false;
     return (ship);
 }
 

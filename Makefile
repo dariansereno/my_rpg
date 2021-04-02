@@ -13,7 +13,8 @@ LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-aud
 SRC				=	$(wildcard src/*.c && src/game/*.c && \
 					src/map/*.c && src/map/planets/*.c && \
 					src/map/planets/list/*.c && src/map/planets/generation/*.c \
-					&& src/map/planets/collisions/*.c)
+					&& src/map/planets/collisions/*.c && \
+					src/map/planets/animation/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 

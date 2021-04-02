@@ -62,6 +62,9 @@
         void extra_change(st_global *ad);
         void change_key_press(st_global *ad);
 // MAP
+    //ANIMATION
+        // ANIMATION.C
+            void animate_planets(st_global *ad);
     // COLLISIONS
         // COLLISIONS.C
             void planet_collision(st_global *ad);

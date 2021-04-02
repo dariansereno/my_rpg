@@ -31,6 +31,7 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
+    animate_planets(ad);
     print_planet_list(ad->planets->planets, ad->window->window);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
@@ -50,8 +51,8 @@ int game_loop(void)
     ad->planets = generate_all_map();
     while (sfRenderWindow_isOpen(ad->window->window)) {
         ad->ship->view = sfView_createFromRect(ad->ship->viewrect);
-        check_status(ad);
         planet_collision(ad);
+        check_status(ad);
         go_up(ad);
         go_down(ad);
         go_left(ad);

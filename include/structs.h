@@ -56,6 +56,13 @@ typedef enum planet_climate
     FROSTEN
 } planet_climate;
 
+typedef struct st_timer
+{
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+} st_timer;
+
 typedef struct key_pressed {
     bool Z;
     bool D;
@@ -90,6 +97,14 @@ typedef struct ship_s {
     sfTexture *bshipt;
     sfVector2f bshippos;
     sfFloatRect viewrect;
+    bool collisionS;
+    bool collisionD;
+    bool collisionQ;
+    bool collisionZ;
+    bool firstcollisionS;
+    bool firstcollisionD;
+    bool firstcollisionQ;
+    bool firstcollisionZ;
     sfView *view;
 }ship_t;
 
@@ -131,10 +146,10 @@ typedef struct st_planet_s {
     bool habitable;
 } st_planet;
 
-
 typedef struct list_elem_planet
 {
     st_planet planet;
+    st_timer timer;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 
