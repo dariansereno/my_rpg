@@ -12,7 +12,7 @@ st_planet_stat stats_for_gas(st_planet_stat planet)
     int stat = random_between(50, 100);
     int total = 100;
 
-    planet.h = stat; 
+    planet.h = stat;
     total -= stat;
     stat = random_between(0, total);
     planet.N = stat;
@@ -45,7 +45,7 @@ st_planet_stat stats_for_ocean(st_planet_stat planet)
     planet.o = stat;
     total -= stat;
     stat = random_between(0, total);
-    planet.h = stat; 
+    planet.h = stat;
     total -= stat;
     stat = random_between(0, total);
     planet.co2 = stat;
@@ -60,7 +60,7 @@ st_planet_stat stats_for_terran(st_planet_stat planet)
     int stat = random_between(50, 100);
     int total = 100;
 
-    planet.n2 = stat; 
+    planet.n2 = stat;
     total -= stat;
     stat = random_between(0, total);
     planet.o = stat;
@@ -87,7 +87,7 @@ st_planet_stat stats_for_lava(st_planet_stat planet)
     planet.co2 = stat;
     total -= stat;
     stat = random_between(0, total);
-    planet.n2 = stat; 
+    planet.n2 = stat;
     total -= stat;
     stat = 0;
     planet.h2o = stat;
@@ -117,7 +117,7 @@ st_planet_stat stats_for_ice(st_planet_stat planet)
     planet.o = stat;
     total -= stat;
     stat = random_between(0, total);
-    planet.h = stat; 
+    planet.h = stat;
     total -= stat;
     stat = random_between(0, total);
     planet.co2 = stat;

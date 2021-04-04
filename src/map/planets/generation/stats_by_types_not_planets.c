@@ -15,7 +15,7 @@ st_planet_stat stats_for_sun(st_planet_stat planet)
     planet.co2 = stat;
     total -= stat;
     stat = random_between(0, total);
-    planet.n2 = stat; 
+    planet.n2 = stat;
     total -= stat;
     stat = 0;
     planet.h2o = stat;
@@ -43,7 +43,7 @@ st_planet_stat stats_for_tech(st_planet_stat planet)
     planet.o = stat;
     total -= stat;
     stat = random_between(0, total);
-    planet.n2 = stat; 
+    planet.n2 = stat;
     total -= stat;
     stat = random_between(0, total);
     planet.N = stat;
@@ -77,7 +77,7 @@ st_planet_stat stats_for_blackhole(st_planet_stat planet)
     total -= stat;
     planet.n2 = 0;
     planet.o = 0;
-    planet.h = total; 
+    planet.h = total;
     planet.h2o = 0;
     planet.N = 0;
     planet.pressure = random_between(100000, 10000000);

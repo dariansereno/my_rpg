@@ -65,9 +65,13 @@
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
-    // COLLISIONS
+            void spatial_object_move(st_global *ad);
+            void display_on_view(st_global *ad);
+    // INTERACTING
         // COLLISIONS.C
             void planet_collision(st_global *ad);
+        // INTERACTION.C
+            void interaction(st_global *ad);
     // GENERATION
         // GENERATION_MAP.C
             st_planet_global *generate_all_map(void);

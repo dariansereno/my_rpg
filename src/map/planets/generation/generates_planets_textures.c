@@ -17,10 +17,10 @@ sfTexture **generates_planets_textures2(sfTexture **texture)
     NULL);
     texture[19] = sfTexture_createFromFile("contents/img/sp/terran_c2.png",
     NULL);
-    texture[20] = sfTexture_createFromFile("contents/img/sp/tech1.png", NULL);
-    texture[21] = sfTexture_createFromFile("contents/img/sp/tech2.png", NULL);
-    texture[22] = sfTexture_createFromFile("contents/img/sp/tech3.png", NULL);
-    texture[23] = sfTexture_createFromFile("contents/img/sp/ice.png", NULL);
+    texture[20] = sfTexture_createFromFile("contents/img/sp/ice.png", NULL);
+    texture[21] = sfTexture_createFromFile("contents/img/sp/tech1.png", NULL);
+    texture[22] = sfTexture_createFromFile("contents/img/sp/tech2.png", NULL);
+    texture[23] = sfTexture_createFromFile("contents/img/sp/tech3.png", NULL);
     texture[24] = sfTexture_createFromFile("contents/img/sp/ast1.png", NULL);
     texture[25] = sfTexture_createFromFile("contents/img/sp/ast2.png", NULL);
     texture[26] = sfTexture_createFromFile("contents/img/sp/ast3.png", NULL);
@@ -53,5 +53,5 @@ sfTexture **generates_planets_textures()
     texture[14] = sfTexture_createFromFile("contents/img/sp/ocean_nc.png",
     NULL);
     texture[15] = sfTexture_createFromFile("contents/img/sp/ocean_c.png", NULL);
-    return(generates_planets_textures2(texture));
+    return (generates_planets_textures2(texture));
 }

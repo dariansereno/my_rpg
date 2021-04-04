@@ -150,6 +150,10 @@ typedef struct list_elem_planet
 {
     st_planet planet;
     st_timer timer;
+    st_timer move;
+    bool interact;
+    bool on_screen;
+    int direction;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 

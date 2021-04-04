@@ -11,9 +11,10 @@ CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm
 
 SRC				=	$(wildcard src/*.c && src/game/*.c && \
+					src/game/inputs/*.c && src/game/paralax/*.c \
 					src/map/*.c && src/map/planets/*.c && \
 					src/map/planets/list/*.c && src/map/planets/generation/*.c \
-					&& src/map/planets/collisions/*.c && \
+					&& src/map/planets/interacting/*.c && \
 					src/map/planets/animation/*.c)
 
 OBJ				=	$(SRC:.c=.o)

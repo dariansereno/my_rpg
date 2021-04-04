@@ -14,6 +14,8 @@ void push_back_planet(list_planet *li, st_planet planet)
 
     node->planet = planet;
     node->timer.clock = sfClock_create();
+    node->move.clock = sfClock_create();
+    node->direction = random_between(0, 7);
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -32,9 +34,10 @@ void set_texture_planets(list_planet *li, st_planet_global *g)
     while (node != NULL) {
         node->planet.sprite = sfSprite_create();
         sfSprite_setTexture(node->planet.sprite,
-        g->textures[node->planet.type - 1], NULL);
+        g->textures[node->planet.type], NULL);
         sfSprite_setPosition(node->planet.sprite,
         (sfVector2f){(float)node->planet.pos.x, (float)node->planet.pos.y});
+        sfSprite_setScale(node->planet.sprite, (sfVector2f){5, 5});
         sfSprite_setOrigin(node->planet.sprite, (sfVector2f){24, 24});
         if (node->planet.type < 7)
             sfSprite_setOrigin(node->planet.sprite, (sfVector2f){32, 32});
@@ -72,9 +75,13 @@ int size_list_planet(list_planet li)
 void print_planet_list(list_planet li, sfRenderWindow *window)
 {
     while (li != NULL){
-        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
-        sfSprite_setScale(li->planet.sprite, (sfVector2f){3, 3});
-        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+        if (li->on_screen == true) { 
+            sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
+            sfSprite_setScale(li->planet.sprite, (sfVector2f){5, 5});
+            sfSprite_setPosition(li->planet.sprite,
+            (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
+            sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+        }
         li = li->next;
     }
 }
