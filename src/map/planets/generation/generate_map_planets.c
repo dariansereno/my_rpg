@@ -29,4 +29,7 @@ st_planet_global *generate_all_map(void)
     return (planets);
 }
 
-planet_kind
+// planet_kind generate_kind()
+// {
+
+// }
