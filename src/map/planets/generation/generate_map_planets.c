@@ -9,8 +9,8 @@
 
 st_planet_global *generate_all_map(void)
 {
-    scatter math = {.germ = 469880, .interval = 50000, .kmax = 500, .p = 1288,
-    .q = 1664713};
+    scatter math = {.germ = 469880, .interval = 50000, .kmax =
+    random_between(400, 800), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
     st_planet_global *planets = malloc(sizeof(st_planet_global *));
     planets->planets = NULL;

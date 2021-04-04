@@ -18,10 +18,27 @@ sfVector2f origin)
     ,NULL);
 }
 
+void selector_interaction(list_planet planets, st_global *ad)
+{
+    if (planets == NULL)
+        return ;
+    if (planets->planet.type >= 0 && planets->planet.type <= 6)
+        display_selector(ad->ui->selector[1], ad, planets,
+        (sfVector2f){39, 39});
+    if (planets->planet.type >= 7 && planets->planet.type <= 23)
+        display_selector(ad->ui->selector[0], ad, planets,
+        (sfVector2f){27, 27});
+    if (planets->planet.type >= 24)
+        display_selector(ad->ui->selector[2], ad, planets,
+        (sfVector2f){31.5, 32});
+}
+
 void display_interaction(st_global *ad)
 {
     list_planet planets = ad->planets->planets;
     sfVector2f disp = {0, 0};
+    int max = 10000;
+    list_planet selected = NULL;
 
     while (planets != NULL) {
         if (planets->interact == true) {
@@ -31,16 +48,12 @@ void display_interaction(st_global *ad)
             sfSprite_setScale(ad->ui->interacting->sprite, (sfVector2f){7, 7});
             sfRenderWindow_drawSprite(ad->window->window,
             ad->ui->interacting->sprite, NULL);
-            if (planets->planet.type >= 0 && planets->planet.type <= 6)
-                display_selector(ad->ui->selector[1], ad, planets,
-                (sfVector2f){39, 39});
-            if (planets->planet.type >= 7 && planets->planet.type <= 23)
-                display_selector(ad->ui->selector[0], ad, planets,
-                (sfVector2f){27, 27});
-            if (planets->planet.type >= 24)
-                display_selector(ad->ui->selector[2], ad, planets,
-                (sfVector2f){31.5, 32});
+            if (abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) + abs(planets->planet.pos.y - (int)ad->ship->bshippos.y) < max){
+                max = abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) + abs(planets->planet.pos.y - (int)ad->ship->bshippos.y);
+                selected = planets;
+            }
         }
         planets = planets->next;
     }
+    selector_interaction(selected, ad);
 }
