@@ -34,6 +34,7 @@ void check_status(st_global *ad)
     animate_planets(ad);
     spatial_object_move(ad);
     print_planet_list(ad->planets->planets, ad->window->window);
+    display_interaction(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);
@@ -56,14 +57,8 @@ int game_loop(void)
         display_on_view(ad);
         interaction(ad);
         check_status(ad);
-        go_up(ad);
-        go_down(ad);
-        go_left(ad);
-        go_right(ad);
-        go_upright(ad);
-        go_upleft(ad);
-        go_downleft(ad);
-        go_downright(ad);
+        paralax_move(ad);
     }
+    destroy_global(ad);
     return (0);
 }

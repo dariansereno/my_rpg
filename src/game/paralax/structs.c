@@ -74,5 +74,14 @@ st_global *ini(void)
     all->window = all_dat();
     all->paralax = paralax_ini();
     all->ship = ship_ini();
+    all->ui = generate_ui();
     return (all);
+}
+
+void destroy_global(st_global *global)
+{
+    destroy_ui(global->ui);
+    destroy_global_planet(global->planets);
+    free(global);
+    global = NULL;
 }

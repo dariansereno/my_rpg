@@ -17,7 +17,7 @@ void animate_planets(st_global *ad)
             != 18) {
                 li->timer.time = sfClock_getElapsedTime(li->timer.clock);
                 li->timer.seconds = li->timer.time.microseconds / 1000000.0;
-                if (li->timer.seconds > 0.05) {
+                if (li->timer.seconds > 0.08) {
                     li->planet.rect.left += 48;
                     if (li->planet.rect.left >= 2880)
                         li->planet.rect.left = 0;
@@ -28,7 +28,7 @@ void animate_planets(st_global *ad)
             li->planet.type == 19 || li->planet.type == 18)) {
                 li->timer.time = sfClock_getElapsedTime(li->timer.clock);
                 li->timer.seconds = li->timer.time.microseconds / 1000000.0;
-                if (li->timer.seconds > 0.05) {
+                if (li->timer.seconds > 0.08) {
                     li->planet.rect.left += 48;
                     if (li->planet.rect.left >= 5760)
                         li->planet.rect.left = 0;

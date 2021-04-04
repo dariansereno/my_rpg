@@ -15,7 +15,8 @@ SRC				=	$(wildcard src/*.c && src/game/*.c && \
 					src/map/*.c && src/map/planets/*.c && \
 					src/map/planets/list/*.c && src/map/planets/generation/*.c \
 					&& src/map/planets/interacting/*.c && \
-					src/map/planets/animation/*.c)
+					src/map/planets/animation/*.c && src/ui/*.c && \
+					src/ui/game/*.c &&src/ui/trade/*.c && src/ui/planet/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 
@@ -25,7 +26,7 @@ all				: $(NAME)
 
 $(NAME)			: lib/my/libmy.a $(OBJ)
 				@echo "\033[1;37mBinary Compilation...\033[0m"
-				$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
+				$(CC) -g -fsanitize=address -o $(NAME) $(OBJ) $(LDFLAGS)
 				@echo "\033[1;34m[OK] \033[1;32mCompilated binary\033[0m\033[1;31m [$(NAME)]\033[0m"
 
 lib/my/libmy.a	:

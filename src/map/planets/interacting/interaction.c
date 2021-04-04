@@ -17,9 +17,9 @@ void interaction(st_global *ad)
     while (planet != NULL) {
         p = sfSprite_getPosition(planet->planet.sprite);
         if (((s.x - p.x) * (s.x - p.x)) + ((s.y - p.y) * (s.y - p.y)) < (r * r))
-        {
-            printf("can interact with : %d\n", planet->planet.type);
-        }
+            planet->interact = true;
+        else
+            planet->interact = false;
         planet = planet->next;
     }
 }

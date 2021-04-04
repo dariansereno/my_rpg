@@ -12,6 +12,7 @@
 #define HEIGHT 1080
 #include "my_rpg.h"
 
+
 typedef enum planet_type {
     SUN1,
     SUN2,
@@ -62,6 +63,14 @@ typedef struct st_timer
     sfTime time;
     float seconds;
 } st_timer;
+
+typedef struct st_object {
+    sfTexture *texture;
+    sfSprite *sprite;
+    st_timer *timer;
+    sfVector2f pos;
+    sfIntRect rect;
+} st_object;
 
 typedef struct key_pressed {
     bool Z;
@@ -162,12 +171,19 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
 } st_planet_global;
 
+
+typedef struct st_ui {
+    st_object *interacting;
+    st_object **selector; // en faire un tableau pour les differentes planètes
+} st_ui;
+
 typedef struct st_global_s {
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
     ship_t *ship;
     st_planet_global *planets;
+    st_ui *ui;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

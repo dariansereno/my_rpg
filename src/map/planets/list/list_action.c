@@ -67,8 +67,9 @@ int size_list_planet(list_planet li)
     list_planet node = li;
     int i = 0;
 
-    for (; node != NULL; i++)
-        node = node->next;
+    for (; node != NULL; ++i){
+        printf("->%d\n", node->planet.type);
+        node = node->next;}
     return (i);
 }
 
