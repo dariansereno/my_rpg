@@ -14,6 +14,7 @@ void check_event(st_global *ad)
         sfRenderWindow_close(ad->window->window);
         sfMusic_destroy(ad->window->music);
     }
+    interaction_input(ad);
 }
 
 void check_status(st_global *ad)

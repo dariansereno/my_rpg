@@ -45,8 +45,20 @@ typedef enum planet_type {
     ASTEROID5,
     BLACKHOLE1,
     BLACKHOLE2,
-    BLACKHOLE3,
+    BLACKHOLE3
 } planet_type;
+
+typedef enum planet_kind {
+    SUN,
+    LAVA,
+    GAS,
+    OCEAN,
+    TERRAN,
+    ICE,
+    TECH,
+    ASTEROID,
+    BLACKHOLE
+} planet_kind;
 
 typedef enum planet_climate
 {
@@ -146,6 +158,7 @@ typedef struct scatter {
 
 typedef struct st_planet_s {
     st_planet_stat stats;
+    planet_kind kind;
     sfVector2i pos;
     planet_type type;
     planet_animation animated;
@@ -163,6 +176,7 @@ typedef struct list_elem_planet
     bool interact;
     bool on_screen;
     int direction;
+    int index;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 

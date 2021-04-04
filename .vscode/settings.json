@@ -2,6 +2,7 @@
     "files.associations": {
         "chrono": "c",
         "ios": "c",
-        "string": "c"
+        "string": "c",
+        "my_rpg.h": "c"
     }
 }

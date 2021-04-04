@@ -61,6 +61,8 @@
             void more_key_change(st_global *ad);
             void extra_change(st_global *ad);
             void change_key_press(st_global *ad);
+        // INTERACTION.C
+            void interaction_input(st_global *ad);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
@@ -76,6 +78,8 @@
     // INTERACTING
         // COLLISIONS.C
             void planet_collision(st_global *ad);
+            void collision_by_first(bool c, st_global *ad);
+            int circle_contains(int r, sfVector2f p, sfVector2f s);
         // INTERACTION.C
             void interaction(st_global *ad);
     // GENERATION

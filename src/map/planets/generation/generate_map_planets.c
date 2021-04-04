@@ -28,3 +28,5 @@ st_planet_global *generate_all_map(void)
     set_texture_planets(&planets->planets, planets);
     return (planets);
 }
+
+planet_kind
