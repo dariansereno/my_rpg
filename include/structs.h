@@ -54,7 +54,7 @@ typedef enum planet_kind {
     GAS,
     OCEAN,
     TERRAN,
-    ICE,
+    ICEP,
     TECH,
     ASTEROID,
     BLACKHOLE
