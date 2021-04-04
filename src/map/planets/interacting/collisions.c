@@ -59,6 +59,30 @@ void renitialise_collisions(st_global *ad)
     ad->ship->collisionZ = false;
 }
 
+void check_good_collision(st_global *ad, list_planet planet)
+{
+    if ((int)ad->ship->bshippos.x < planet->planet.pos.x &&
+    (int)ad->ship->bshippos.y > planet->planet.pos.y) {
+        ad->ship->collisionZ = true;
+        ad->ship->collisionD = true;
+    }
+    if ((int)ad->ship->bshippos.x < planet->planet.pos.x &&
+    (int)ad->ship->bshippos.y < planet->planet.pos.y) {
+        ad->ship->collisionS = true;
+        ad->ship->collisionD = true;
+    }
+    if ((int)ad->ship->bshippos.x > planet->planet.pos.x &&
+    (int)ad->ship->bshippos.y > planet->planet.pos.y) {
+        ad->ship->collisionZ = true;
+        ad->ship->collisionQ = true;
+    }
+    if ((int)ad->ship->bshippos.x > planet->planet.pos.x &&
+    (int)ad->ship->bshippos.y < planet->planet.pos.y) {
+        ad->ship->collisionS = true;
+        ad->ship->collisionQ = true;
+    }
+}
+
 void planet_collision(st_global *ad)
 {
     list_planet planet = ad->planets->planets;
@@ -77,8 +101,10 @@ void planet_collision(st_global *ad)
             SD_collisions(ad);
             ZQ_collisions(ad);
         }
-        if (((s.x - p.x) * (s.x - p.x)) + ((s.y - p.y) * (s.y - p.y)) < (r * r))
+        if (((s.x - p.x) * (s.x - p.x)) + ((s.y - p.y) * (s.y - p.y)) < (r * r)){
             c = true;
+            check_good_collision(ad, planet);
+        }
         planet = planet->next;
     }
     collision_by_first(c, ad);

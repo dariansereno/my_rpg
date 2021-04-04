@@ -48,8 +48,10 @@ void display_interaction(st_global *ad)
             sfSprite_setScale(ad->ui->interacting->sprite, (sfVector2f){7, 7});
             sfRenderWindow_drawSprite(ad->window->window,
             ad->ui->interacting->sprite, NULL);
-            if (abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) + abs(planets->planet.pos.y - (int)ad->ship->bshippos.y) < max){
-                max = abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) + abs(planets->planet.pos.y - (int)ad->ship->bshippos.y);
+            if (abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
+            abs(planets->planet.pos.y - (int)ad->ship->bshippos.y) < max){
+                max = abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
+                abs(planets->planet.pos.y - (int)ad->ship->bshippos.y);
                 selected = planets;
             }
         }
