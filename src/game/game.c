@@ -10,6 +10,7 @@
 st_global *generate_global(void)
 {
     st_global *global = malloc(sizeof(*global));
+
     global->talk_text = malloc(sizeof(*global->talk_text));
     global->talk_text->black_outline = sfRectangleShape_create();
     global->talk_text->purple_outline = sfRectangleShape_create();
@@ -105,9 +106,9 @@ int game_loop(void)
 {
     st_global *ad = ini();
 
-    sfMusic_play(ad->window->music);
-    sfMusic_setLoop(ad->window->music, sfTrue);
-    sfMusic_setVolume(ad->window->music, 20);
+    //sfMusic_play(ad->window->music);
+    //sfMusic_setLoop(ad->window->music, sfTrue);
+    //sfMusic_setVolume(ad->window->music, 20);
     sfRenderWindow_setFramerateLimit(ad->window->window, 120);
     ad->planets = generate_all_map();
     while (sfRenderWindow_isOpen(ad->window->window)) {

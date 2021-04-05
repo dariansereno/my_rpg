@@ -14,6 +14,7 @@ void move_star_upright(st_global *ad)
 
     ad->paralax->starpos.x += 5;
     ad->paralax->starpos.y -= 5;
+    setkeyupright(ad);
     if (secondso > 0.01) {
         ad->paralax->starr.top -= 4;
         ad->paralax->starr.left += 4;
@@ -32,6 +33,7 @@ void move_star_downleft(st_global *ad)
 
     ad->paralax->starpos.x -= 5;
     ad->paralax->starpos.y += 5;
+    setkeydownleft(ad);
     if (secondso > 0.01) {
         ad->paralax->starr.top += 4;
         ad->paralax->starr.left -= 4;
@@ -50,6 +52,7 @@ void move_star_upleft(st_global *ad)
 
     ad->paralax->starpos.x -= 5;
     ad->paralax->starpos.y -= 5;
+    setkeyupleft(ad);
     if (secondso > 0.01) {
         ad->paralax->starr.top -= 4;
         ad->paralax->starr.left -= 4;
@@ -68,6 +71,7 @@ void move_star_downright(st_global *ad)
 
     ad->paralax->starpos.x += 5;
     ad->paralax->starpos.y += 5;
+    setkeydownright(ad);
     if (secondso > 0.01) {
         ad->paralax->starr.top += 4;
         ad->paralax->starr.left += 4;
