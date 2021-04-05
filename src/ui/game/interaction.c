@@ -20,11 +20,13 @@ sfVector2f origin)
 
 char *create_planet_string(int index)
 {
-    char *str = "Planet n°";
+    char *str = "Planet n.";
     char *nb = int_to_str(index);
     char *res = malloc(sizeof(char) * (my_strlen(str) + my_strlen(nb) + 1));
 
     res[0] = '\0';
+    if (index == 0)
+        return ("Planet n.0");
     res = my_strcat(res, str);
     res = my_strcat(res, nb);
     return (res);
