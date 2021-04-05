@@ -29,7 +29,7 @@ void move_down(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     setkeydown(ad);
-    ad->ship->velocity.y += 5;
+    ad->ship->velocity.y = 5;
     ad->ship->bshipt = sfTexture_createFromFile("contents/img/t7.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += 2.5;
