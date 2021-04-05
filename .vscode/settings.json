@@ -1,6 +1,13 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "__locale": "c",
         "sstream": "c"
+=======
+        "chrono": "c",
+        "ios": "c",
+        "string": "c",
+        "my_rpg.h": "c"
+>>>>>>> master
     }
 }
