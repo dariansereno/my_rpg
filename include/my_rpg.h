@@ -63,6 +63,13 @@
             void change_key_press(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
+    // ENNEMIES
+        // ENNEMIES_GENERATION.C
+            sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
+            float radius);
+            void ennemies_spawning(st_global *ad);
+        // LIST
+            void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
@@ -112,6 +119,7 @@
             void print_planet_list(list_planet li, sfRenderWindow *window);
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
+            list_planet planet_from_index(int index, list_planet li);
 // STRUCTS
     st_global *ini(void);
     structs_t *all_dat(void);

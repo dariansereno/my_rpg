@@ -173,22 +173,38 @@ typedef struct list_elem_planet
     st_planet planet;
     st_timer timer;
     st_timer move;
+    st_timer spawning;
     bool interact;
     bool on_screen;
     int direction;
     int index;
+    int ennemies_spawn;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
+
+typedef struct st_ennemies
+{
+    sfSprite *sprite;
+    sfVector2f pos;
+    sfIntRect rect;
+} st_ennemies;
+
+typedef struct list_elem_ennemies
+{
+    st_ennemies ennemies;
+    bool on_screen;
+    int index;
+    struct list_elem_ennemies *next;
+} list_elem_ennemies, *list_ennemies;
 
 typedef struct st_global_planet_s {
     list_planet planets;
     sfTexture **textures;
 } st_planet_global;
 
-
 typedef struct st_ui {
     st_object *interacting;
-    st_object **selector; // en faire un tableau pour les differentes planètes
+    st_object **selector;
 } st_ui;
 
 typedef struct st_global_s {
@@ -198,6 +214,7 @@ typedef struct st_global_s {
     ship_t *ship;
     st_planet_global *planets;
     st_ui *ui;
+    list_ennemies ennemies;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

@@ -15,8 +15,10 @@ void push_back_planet(list_planet *li, st_planet planet)
     node->planet = planet;
     node->timer.clock = sfClock_create();
     node->move.clock = sfClock_create();
+    node->spawning.clock = sfClock_create();
     node->direction = random_between(0, 7);
     node->index = size_list_planet(*li);
+    node->ennemies_spawn = random_between(10, 25);
     node->next = NULL;
     if (*li == NULL)
         *li = node;
