@@ -30,8 +30,7 @@ st_global *generate_global(void)
     return (global);
 }
 
-int game_loop()
-void check_event(st_global *ad)
+int game_loop_2()
 {
     sfEvent event;
     sfRenderWindow *window;
@@ -63,6 +62,10 @@ void check_event(st_global *ad)
         sfRenderWindow_destroy(window);
     }
     return (0);
+}
+
+void check_event(st_global *ad)
+{
     if (ad->window->event.type == sfEvtClosed || (ad->window->event.type ==
     sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape)) {
         sfRenderWindow_close(ad->window->window);
