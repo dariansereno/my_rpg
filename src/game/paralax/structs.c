@@ -76,7 +76,8 @@ st_global *ini(void)
     all->ui = generate_ui();
     all->other = malloc(sizeof(*all->other));
     all->other->planet_text = sfText_create();
-    all->other->font = sfFont_createFromFile("contents/fonts/dogica/TTF/dogica.ttf");
+    all->other->font =
+    sfFont_createFromFile("contents/fonts/dogica/TTF/dogica.ttf");
     sfText_setFont(all->other->planet_text, all->other->font);
     all->var = malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
