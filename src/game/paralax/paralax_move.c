@@ -16,7 +16,8 @@ void move_up(st_global *ad)
     ad->ship->viewrect.top -= 5;
     ad->paralax->starpos.y -= 5;
     ad->paralax->nebulapos.y -= 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
+    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t1.png", NULL);
+    setkeyup(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.top <= 0)
@@ -35,7 +36,8 @@ void move_down(st_global *ad)
     ad->ship->viewrect.top += 5;
     ad->paralax->starpos.y += 5;
     ad->paralax->nebulapos.y += 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b180.png", NULL);
+    setkeydown(ad);
+    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t7.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += 2.5;
         if (ad->paralax->paralaxr.top >= 2160)
@@ -54,7 +56,8 @@ void move_left(st_global *ad)
     ad->ship->viewrect.left -= 5;
     ad->paralax->starpos.x -= 5;
     ad->paralax->nebulapos.x -= 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b270.png", NULL);
+    setkeyleft(ad);
+    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t8.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left -= 2.5;
         if (ad->paralax->paralaxr.left <= 0)
@@ -73,7 +76,8 @@ void move_right(st_global *ad)
     ad->ship->viewrect.left += 5;
     ad->paralax->starpos.x += 5;
     ad->paralax->nebulapos.x += 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b90.png", NULL);
+    setkeyright(ad);
+    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t6.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left += 2.5;
         if (ad->paralax->paralaxr.left >= 3840)

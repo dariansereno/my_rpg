@@ -45,12 +45,15 @@ void go_right(st_global *ad)
 
 void paralax_move(st_global *ad)
 {
-        go_up(ad);
-        go_down(ad);
-        go_left(ad);
-        go_right(ad);
-        go_upright(ad);
-        go_upleft(ad);
-        go_downleft(ad);
-        go_downright(ad);
+    go_up(ad);
+    go_down(ad);
+    go_left(ad);
+    go_right(ad);
+    go_upright(ad);
+    go_upleft(ad);
+    go_downleft(ad);
+    go_downright(ad);
+    if (ad->key_pressed.D == false && ad->key_pressed.Q == false &&
+    ad->key_pressed.S == false && ad->key_pressed.Z == false)
+        check_angle(ad);
 }
