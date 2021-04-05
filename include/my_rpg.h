@@ -22,12 +22,9 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <math.h>
-#include "structs.h"
-#include <stdio.h>
 
 // GAME
     // PARALAX
@@ -74,8 +71,14 @@
             sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
             float radius);
             void ennemies_spawning(st_global *ad);
+        // ENNEMIES_CONDITION.C
+            bool is_on_planet(st_global *ad, sfVector2f object);
+            bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object);
         // LIST
             void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
+            void print_ennemies_list_pos(list_ennemies li);
+            int size_list_ennemies(list_ennemies li);
+            void print_ennemies_list(list_ennemies li, sfRenderWindow *window);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
@@ -109,6 +112,7 @@ void clock_dialogue_text_line3(st_global *global);
             void destroy_global_planet(st_planet_global *planets);
         // GENERATION_MAP.C
             st_planet_global *generate_all_map(void);
+            planet_kind generate_kind(int type);
         // MATH.C
             sfVector2i *scatter_plot(scatter math);
             int random_between(int start, int stop);
@@ -149,5 +153,6 @@ void clock_dialogue_text_line3(st_global *global);
     // GAME
         // INTERACTION.C
             void display_interaction(st_global *ad);
+            char *int_to_str(int nb);
 
 #endif /* !MY_RPG_H_ */

@@ -18,6 +18,30 @@ sfVector2f origin)
     ,NULL);
 }
 
+char *create_planet_string(int index)
+{
+    char *str = "Planet ";
+    char *nb = int_to_str(index);
+    char *res = malloc(sizeof(char) * (my_strlen(str) + my_strlen(nb) + 1));
+
+    res = my_strcat(res, str);
+    res = my_strcat(res, nb);
+    printf("%s\n", res);
+    return (res);
+}
+
+void display_planet_text(list_planet planets, st_global *ad)
+{
+    // create_planet_string(planets->index);
+    sfText_setPosition(ad->other->planet_text,
+    (sfVector2f){(float)planets->planet.pos.x - (planets->planet.rect.width * 2)
+    , (float)(planets->planet.pos.y + (planets->planet.rect.height) * 2 + 80)});
+    sfText_setString(ad->other->planet_text, "Planet 226"); // creer string
+    sfText_setCharacterSize(ad->other->planet_text, 20);
+    sfText_setFillColor(ad->other->planet_text, sfWhite);
+    sfRenderWindow_drawText(ad->window->window, ad->other->planet_text, NULL);
+}
+
 void selector_interaction(list_planet planets, st_global *ad)
 {
     if (planets == NULL)
@@ -31,6 +55,7 @@ void selector_interaction(list_planet planets, st_global *ad)
     if (planets->planet.type >= 24)
         display_selector(ad->ui->selector[2], ad, planets,
         (sfVector2f){31.5, 32});
+    display_planet_text(planets, ad);
 }
 
 void display_interaction(st_global *ad)
