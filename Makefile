@@ -17,7 +17,8 @@ SRC				=	$(wildcard src/*.c && src/game/*.c && \
 					&& src/map/planets/interacting/*.c && \
 					src/map/planets/animation/*.c && src/ui/*.c && \
 					src/ui/game/*.c &&src/ui/trade/*.c && src/ui/planet/*.c \
-					&& src/game/ennemies/*.c && src/game/ennemies/list/*.c)
+					&& src/game/ennemies/*.c && src/game/ennemies/list/*.c \
+					&& src/path_finding/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 
