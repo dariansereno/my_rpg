@@ -8,10 +8,16 @@
 #ifndef MY_RPG_H_
 #define MY_RPG_H_
 
+#define WIDTH 1920
+#define HEIGHT 1080
+
+#include "strings.h"
+#include "structs.h"
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
-#include <SFML/Audio.h>
 #include <SFML/System.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -74,7 +80,15 @@
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
     // GAME.C
-        int game_loop(void);
+    int game_loop(void);
+
+// GAME.C
+int game_loop_2();
+void dialogue_text(st_global *global, const char *str, int delay);
+void display_dialogue_text(sfRenderWindow *window, st_global *global);
+void clock_dialogue_text_line1(st_global *global);
+void clock_dialogue_text_line2(st_global *global);
+void clock_dialogue_text_line3(st_global *global);
 
 // MAP
     //ANIMATION
