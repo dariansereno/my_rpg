@@ -6,11 +6,11 @@
 ##
 
 CC				=	gcc
-CFLAGS			=	-W -Wall -Wextra
+CFLAGS			=	-W -Wall -Wextra -Wno-deprecated
 CPPFLAGS		=	-I./include
-LDFLAGS			=	-L./ -lmy
+LDFLAGS			=	-L./ -lmy -lcsfml-graphics -lcsfml-window -lcsfml-system
 
-SRC				=	$(wildcard src/*.c)
+SRC				=	$(wildcard src/*.c && src/game/*.c && src/dialogues/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 
