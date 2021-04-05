@@ -73,7 +73,10 @@
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
     // GAME.C
-        int game_loop(void);
+    int game_loop(void);
+
+// GAME.C
+int game_loop_2();
 void dialogue_text(st_global *global, const char *str, int delay);
 void display_dialogue_text(sfRenderWindow *window, st_global *global);
 void clock_dialogue_text_line1(st_global *global);
