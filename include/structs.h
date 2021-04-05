@@ -10,10 +10,13 @@
 
 #define WIDTH 1920
 #define HEIGHT 1080
+
 #include "my_rpg.h"
+#include <stdbool.h>
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
 #include <SFML/System.h>
+#include <SFML/Audio.h>
 
 typedef struct st_talk_text_s {
     sfRectangleShape *black_outline;
@@ -152,6 +155,21 @@ typedef struct ship_s {
     sfView *view;
 }ship_t;
 
+typedef struct st_ennemies
+{
+    sfSprite *sprite;
+    sfVector2f pos;
+    sfIntRect rect;
+} st_ennemies;
+
+typedef struct list_elem_ennemies
+{
+    st_ennemies ennemies;
+    bool on_screen;
+    int index;
+    struct list_elem_ennemies *next;
+} list_elem_ennemies, *list_ennemies;
+
 typedef struct paralax_s {
     sfSprite *nebula;
     sfTexture *nebulat;
@@ -188,6 +206,7 @@ typedef struct st_planet_s {
     planet_climate climate;
     sfSprite *sprite;
     sfIntRect rect;
+    list_ennemies ennemies;
     bool habitable;
 } st_planet;
 
@@ -205,20 +224,6 @@ typedef struct list_elem_planet
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 
-typedef struct st_ennemies
-{
-    sfSprite *sprite;
-    sfVector2f pos;
-    sfIntRect rect;
-} st_ennemies;
-
-typedef struct list_elem_ennemies
-{
-    st_ennemies ennemies;
-    bool on_screen;
-    int index;
-    struct list_elem_ennemies *next;
-} list_elem_ennemies, *list_ennemies;
 
 typedef struct st_global_planet_s {
     list_planet planets;
@@ -230,6 +235,15 @@ typedef struct st_ui {
     st_object **selector;
 } st_ui;
 
+typedef struct st_variable_s {
+    int max_ennemies;
+} st_variable;
+
+typedef struct st_useful {
+    sfText *planet_text;
+    sfFont *font;
+} st_useful;
+
 typedef struct st_global_s {
     st_talk_text *talk_text;
     structs_t *window;
@@ -238,7 +252,9 @@ typedef struct st_global_s {
     ship_t *ship;
     st_planet_global *planets;
     st_ui *ui;
-    list_ennemies ennemies;
+    sfTexture *enn_texture;
+    st_variable *var;
+    st_useful *other;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

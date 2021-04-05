@@ -30,39 +30,39 @@ st_global *generate_global(void)
     return (global);
 }
 
-int game_loop_2()
-{
-    sfEvent event;
-    sfRenderWindow *window;
-    sfVideoMode mode = {1920, 1080, 32};
+// int game_loop_2()
+// {
+//     sfEvent event;
+//     sfRenderWindow *window;
+//     sfVideoMode mode = {1920, 1080, 32};
 
-    window = sfRenderWindow_create(mode, "my_defender", sfResize | sfClose, \
-    NULL);
-    sfRenderWindow_setFramerateLimit(window, 60);
-    sfRenderWindow_setMouseCursorVisible(window, sfTrue);
-    st_global *global = generate_global();
+//     window = sfRenderWindow_create(mode, "my_defender", sfResize | sfClose, \
+//     NULL);
+//     sfRenderWindow_setFramerateLimit(window, 60);
+//     sfRenderWindow_setMouseCursorVisible(window, sfTrue);
+//     st_global *global = generate_global();
 
-    if (window != NULL) {
-        while (sfRenderWindow_isOpen(window)) {
-            sfRenderWindow_clear(window, sfWhite);
-            while (sfRenderWindow_pollEvent(window, &event)) {
-                if (event.type == sfEvtClosed)
-                    sfRenderWindow_close(window);
-                else if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-                    sfRenderWindow_close(window);
-                if (event.type == sfEvtKeyPressed && event.key.code == sfKeyD)
-                    dialogue_text(global, "Bonjour à toi jeune entrepreneur, pour ta première quête... Tu vas devoir\ntrouver le joyau qui est disposé être au fond de la chaîne des \nAndesen Amérique Latine", 100);
-            }
-            clock_dialogue_text_line1(global);
-            clock_dialogue_text_line2(global);
-            clock_dialogue_text_line3(global);
-            display_dialogue_text(window, global);
-            sfRenderWindow_display(window);
-        }
-        sfRenderWindow_destroy(window);
-    }
-    return (0);
-}
+//     if (window != NULL) {
+//         while (sfRenderWindow_isOpen(window)) {
+//             sfRenderWindow_clear(window, sfWhite);
+//             while (sfRenderWindow_pollEvent(window, &event)) {
+//                 if (event.type == sfEvtClosed)
+//                     sfRenderWindow_close(window);
+//                 else if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
+//                     sfRenderWindow_close(window);
+//                 if (event.type == sfEvtKeyPressed && event.key.code == sfKeyD)
+//                     dialogue_text(global, "Bonjour à toi jeune entrepreneur, pour ta première quête... Tu vas devoir\ntrouver le joyau qui est disposé être au fond de la chaîne des \nAndesen Amérique Latine", 100);
+//             }
+//             clock_dialogue_text_line1(global);
+//             clock_dialogue_text_line2(global);
+//             clock_dialogue_text_line3(global);
+//             display_dialogue_text(window, global);
+//             sfRenderWindow_display(window);
+//         }
+//         sfRenderWindow_destroy(window);
+//     }
+//     return (0);
+// }
 
 void check_event(st_global *ad)
 {
@@ -91,7 +91,7 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
     spatial_object_move(ad);
-    // ennemies_spawning(ad);
+    ennemies_spawning(ad);
     print_planet_list(ad->planets->planets, ad->window->window);
     display_interaction(ad);
     sfRenderWindow_display(ad->window->window);

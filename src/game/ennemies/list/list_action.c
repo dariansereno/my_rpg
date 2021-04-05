@@ -49,6 +49,9 @@ int size_list_ennemies(list_ennemies li)
 {
     list_ennemies node = li;
     int i = 0;
+    
+    if (node == NULL)
+        return (0);
 
     for (; node != NULL; ++i){
         node = node->next;}
@@ -58,12 +61,10 @@ int size_list_ennemies(list_ennemies li)
 void print_ennemies_list(list_ennemies li, sfRenderWindow *window)
 {
     while (li != NULL){
-        if (li->on_screen == true) { 
-            sfSprite_setTextureRect(li->ennemies.sprite, li->ennemies.rect);
-            sfSprite_setPosition(li->ennemies.sprite,
-            (sfVector2f){(float)li->ennemies.pos.x, (float)li->ennemies.pos.y});
-            sfRenderWindow_drawSprite(window, li->ennemies.sprite, NULL);
-        }
+        sfSprite_setTextureRect(li->ennemies.sprite, li->ennemies.rect);
+        sfSprite_setPosition(li->ennemies.sprite,
+        (sfVector2f){(float)li->ennemies.pos.x, (float)li->ennemies.pos.y});
+        sfRenderWindow_drawSprite(window, li->ennemies.sprite, NULL);
         li = li->next;
     }
 }

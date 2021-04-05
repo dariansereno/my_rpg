@@ -44,3 +44,15 @@ list_ennemies ennemies_from_index(int index, list_ennemies li)
         return (NULL);
     return (temp);
 }
+
+void print_ennemies_list_pos(list_ennemies li)
+{
+    if (li == NULL) {
+        printf("EMPTY !\n");
+        return ;
+    }
+    while (li != NULL){
+        printf("Ennemies n*%d = [%f, %f]\n", li->index, li->ennemies.pos.x, li->ennemies.pos.y);
+        li = li->next;
+    }
+}
