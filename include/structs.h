@@ -153,6 +153,8 @@ typedef struct ship_s {
     bool firstcollisionQ;
     bool firstcollisionZ;
     sfView *view;
+    sfVector2f velocity;
+    sfVector2f acceleration;
 }ship_t;
 
 typedef struct st_ennemies
