@@ -7,10 +7,10 @@
 
 #include "my_rpg.h"
 
-list_planet pop_back_planet(list_planet list)
+list_ennemies pop_back_ennemies(list_ennemies list)
 {
-    list_elem_planet *temp = NULL;
-    list_elem_planet *buf = NULL;
+    list_elem_ennemies *temp = NULL;
+    list_elem_ennemies *buf = NULL;
 
     if (list == NULL)
         return (NULL);
@@ -26,15 +26,15 @@ list_planet pop_back_planet(list_planet list)
         temp = temp->next;
     }
     buf->next = NULL;
-    destroy_planet(temp);
+    // destroy_ennemies(temp); a faire
     free(temp);
     temp = NULL;
     return (list);
 }
 
-list_planet planet_from_index(int index, list_planet li)
+list_ennemies ennemies_from_index(int index, list_ennemies li)
 {
-    list_planet temp = li;
+    list_ennemies temp = li;
 
     if (temp == NULL)
         return (NULL);
