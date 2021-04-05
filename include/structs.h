@@ -172,6 +172,21 @@ typedef struct list_elem_ennemies
     struct list_elem_ennemies *next;
 } list_elem_ennemies, *list_ennemies;
 
+typedef struct keys_s {
+    int up;
+    int down;
+    int left;
+    int right;
+    int upleft;
+    int upright;
+    int downleft;
+    int downright;
+} keys_t;
+
+typedef struct load_s {
+    sfTexture **load;
+} load_t;
+
 typedef struct paralax_s {
     sfSprite *nebula;
     sfTexture *nebulat;
@@ -189,7 +204,7 @@ typedef struct paralax_s {
     int j;
     int k;
     int l;
-}paralax_t;
+} paralax_t;
 
 typedef struct scatter {
     int kmax;
@@ -226,7 +241,6 @@ typedef struct list_elem_planet
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 
-
 typedef struct st_global_planet_s {
     list_planet planets;
     sfTexture **textures;
@@ -257,6 +271,8 @@ typedef struct st_global_s {
     sfTexture *enn_texture;
     st_variable *var;
     st_useful *other;
+    keys_t *key;
+    load_t *texture;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
