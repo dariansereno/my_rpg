@@ -53,4 +53,14 @@ void paralax_move(st_global *ad)
         go_upleft(ad);
         go_downleft(ad);
         go_downright(ad);
+        ad->ship->velocity.y += ad->ship->acceleration.y;
+        ad->ship->velocity.x += ad->ship->acceleration.x;
+        ad->ship->bshippos.y += ad->ship->velocity.y;
+        ad->ship->bshippos.x += ad->ship->velocity.x;
+        ad->ship->viewrect.top += ad->ship->velocity.y;
+        ad->ship->viewrect.left += ad->ship->velocity.x;
+        ad->paralax->starpos.y += ad->ship->velocity.y;
+        ad->paralax->starpos.x += ad->ship->velocity.x;
+        ad->paralax->nebulapos.y += ad->ship->velocity.y;
+        ad->paralax->nebulapos.x += ad->ship->velocity.x;
 }

@@ -63,6 +63,8 @@ ship_t *ship_ini(void)
     ship->firstcollisionD = false;
     ship->firstcollisionS = false;
     ship->firstcollisionQ = false;
+    ship->acceleration = (sfVector2f){0, 0};
+    ship->velocity = (sfVector2f){0, 0};
     return (ship);
 }
 
