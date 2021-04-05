@@ -59,6 +59,18 @@
             void move_star_downleft(st_global *ad);
             void move_star_upleft(st_global *ad);
             void move_star_downright(st_global *ad);
+        // SET_KEY.C
+            void setkeyup(st_global *ad);
+            void setkeydown(st_global *ad);
+            void setkeyleft(st_global *ad);
+            void setkeyright(st_global *ad);
+        // SET_KEY_DIAG.C
+            void setkeyupleft(st_global *ad);
+            void setkeyupright(st_global *ad);
+            void setkeydownleft(st_global *ad);
+            void setkeydownright(st_global *ad);
+        // CHECK_ANGLE.C
+            void check_angle(st_global *ad);
     // INPUTS
         // CHANGE_KEY.C
             void more_key_change(st_global *ad);
@@ -142,6 +154,8 @@ void clock_dialogue_text_line3(st_global *global);
     st_global *ini(void);
     structs_t *all_dat(void);
     void destroy_global(st_global *global);
+    keys_t *key_ini(void);
+    load_t *texture_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);

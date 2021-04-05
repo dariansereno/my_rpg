@@ -63,4 +63,7 @@ void paralax_move(st_global *ad)
         ad->paralax->starpos.x += ad->ship->velocity.x;
         ad->paralax->nebulapos.y += ad->ship->velocity.y;
         ad->paralax->nebulapos.x += ad->ship->velocity.x;
+        if (ad->key_pressed.D == false && ad->key_pressed.Q == false &&
+        ad->key_pressed.S == false && ad->key_pressed.Z == false)
+            check_angle(ad);
 }
