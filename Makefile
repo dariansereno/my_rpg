@@ -6,7 +6,7 @@
 ##
 
 CC				=	gcc
-CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations
+CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations -g -fsanitize=address
 CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm
 
@@ -19,7 +19,7 @@ SRC				=	$(wildcard src/*.c && src/game/*.c && \
 					src/ui/game/*.c &&src/ui/trade/*.c && src/ui/planet/*.c \
 					&& src/game/ennemies/*.c && src/game/ennemies/list/*.c \
 					&& src/path_finding/*.c && src/messages/*.c && src/game/inventory/*.c \
-                    && src/ui/planet_card/*.c && src/ui/generate_ui/*.c)
+					&& src/ui/planet_card/*.c && src/ui/generate_ui/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 

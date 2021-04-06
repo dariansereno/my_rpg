@@ -20,6 +20,7 @@ st_ui *generate_ui(void)
     (sfIntRect){0, 0, 78, 78}, "contents/img/sp/selectorsun.png");
     ui->selector[2] = generate_object((sfVector2f){0, 0},
     (sfIntRect){0, 0, 63, 64}, "contents/img/sp/selectorbh.png");
+    ui->planet_card = generate_planet_card();
     return (ui);
 }
 

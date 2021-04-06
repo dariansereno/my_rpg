@@ -272,6 +272,8 @@ typedef struct st_planet_card_t {
     sfText *t_temp;
     sfText *t_pres;
     sfBool existing;
+    sfBool displaying;
+    sfBool closing;
 } planet_card_s;
 
 typedef struct st_ui {
