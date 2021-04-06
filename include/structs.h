@@ -259,7 +259,8 @@ typedef struct st_list_ui_t {
 
 typedef struct st_ui {
     st_object *interacting;
-    st_list_ui_s *planets_card; // en faire un tableau pour les differentes planètes
+    st_list_ui_s *planets_card;
+    st_object **selector;
 } st_ui;
 
 typedef struct st_variable_s {
