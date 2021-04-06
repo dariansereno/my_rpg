@@ -34,6 +34,7 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
     spatial_object_move(ad);
+    ennemies_spawning(ad);
     print_planet_list(ad->planets->planets, ad->window->window);
     display_interaction(ad);
     sfRenderWindow_display(ad->window->window);

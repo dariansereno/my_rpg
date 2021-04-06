@@ -53,4 +53,17 @@ void paralax_move(st_global *ad)
         go_upleft(ad);
         go_downleft(ad);
         go_downright(ad);
+        ad->ship->bshippos.y += ad->ship->velocity.y;
+        ad->ship->bshippos.x += ad->ship->velocity.x;
+        ad->ship->viewrect.top += ad->ship->velocity.y;
+        ad->ship->viewrect.left += ad->ship->velocity.x;
+        ad->paralax->starpos.y += ad->ship->velocity.y;
+        ad->paralax->starpos.x += ad->ship->velocity.x;
+        ad->paralax->nebulapos.y += ad->ship->velocity.y;
+        ad->paralax->nebulapos.x += ad->ship->velocity.x;
+        ad->ship->velocity.x = 0;
+        ad->ship->velocity.y = 0;
+        if (ad->key_pressed.D == false && ad->key_pressed.Q == false &&
+        ad->key_pressed.S == false && ad->key_pressed.Z == false)
+            check_angle(ad);
 }

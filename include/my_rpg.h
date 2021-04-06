@@ -22,12 +22,9 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <math.h>
-#include "structs.h"
-#include <stdio.h>
 
 // GAME
     // PARALAX
@@ -62,6 +59,18 @@
             void move_star_downleft(st_global *ad);
             void move_star_upleft(st_global *ad);
             void move_star_downright(st_global *ad);
+        // SET_KEY.C
+            void setkeyup(st_global *ad);
+            void setkeydown(st_global *ad);
+            void setkeyleft(st_global *ad);
+            void setkeyright(st_global *ad);
+        // SET_KEY_DIAG.C
+            void setkeyupleft(st_global *ad);
+            void setkeyupright(st_global *ad);
+            void setkeydownleft(st_global *ad);
+            void setkeydownright(st_global *ad);
+        // CHECK_ANGLE.C
+            void check_angle(st_global *ad);
     // INPUTS
         // CHANGE_KEY.C
             void more_key_change(st_global *ad);
@@ -69,6 +78,19 @@
             void change_key_press(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
+    // ENNEMIES
+        // ENNEMIES_GENERATION.C
+            sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
+            float radius);
+            void ennemies_spawning(st_global *ad);
+        // ENNEMIES_CONDITION.C
+            bool is_on_planet(st_global *ad, sfVector2f object);
+            bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object);
+        // LIST
+            void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
+            void print_ennemies_list_pos(list_ennemies li);
+            int size_list_ennemies(list_ennemies li);
+            void print_ennemies_list(list_ennemies li, sfRenderWindow *window);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
@@ -94,6 +116,7 @@
             void destroy_global_planet(st_planet_global *planets);
         // GENERATION_MAP.C
             st_planet_global *generate_all_map(void);
+            planet_kind generate_kind(int type);
         // MATH.C
             sfVector2i *scatter_plot(scatter math);
             int random_between(int start, int stop);
@@ -118,10 +141,13 @@
             void print_planet_list(list_planet li, sfRenderWindow *window);
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
+            list_planet planet_from_index(int index, list_planet li);
 // STRUCTS
     st_global *ini(void);
     structs_t *all_dat(void);
     void destroy_global(st_global *global);
+    keys_t *key_ini(st_global *ad);
+    load_t *texture_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);
@@ -133,5 +159,6 @@
     // GAME
         // INTERACTION.C
             void display_interaction(st_global *ad);
+            char *int_to_str(int nb);
 
 #endif /* !MY_RPG_H_ */

@@ -49,8 +49,7 @@ ship_t *ship_ini(void)
     ship_t *ship = malloc(sizeof(ship_t));
 
     ship->bship = sfSprite_create();
-    ship->bshipt = sfTexture_createFromFile("contents/ships/ships/blue01.png",
-    NULL);
+    ship->bshipt = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
     sfSprite_setOrigin(ship->bship, (sfVector2f){22.5, 22.5});
     ship->bshippos = (sfVector2f) {.x = 960, .y = 540};
     ship->viewrect = (sfFloatRect) {.height = 1080, .left = 0, .top = 0,
@@ -64,6 +63,8 @@ ship_t *ship_ini(void)
     ship->firstcollisionD = false;
     ship->firstcollisionS = false;
     ship->firstcollisionQ = false;
+    ship->acceleration = (sfVector2f){0, 0};
+    ship->velocity = (sfVector2f){0, 0};
     return (ship);
 }
 
@@ -75,6 +76,17 @@ st_global *ini(void)
     all->paralax = paralax_ini();
     all->ship = ship_ini();
     all->ui = generate_ui();
+    all->other = malloc(sizeof(*all->other));
+    all->other->planet_text = sfText_create();
+    all->other->font = sfFont_createFromFile
+    ("contents/fonts/dogica/TTF/dogica.ttf");
+    sfText_setFont(all->other->planet_text, all->other->font);
+    all->var = malloc(sizeof(*all->var));
+    all->var->max_ennemies = 3;
+    all->enn_texture = sfTexture_createFromFile("contents/ships/green_02.png",
+    NULL);
+    all->texture = texture_ini();
+    all->key = key_ini(all);
     return (all);
 }
 
