@@ -37,6 +37,7 @@ void check_status(st_global *ad)
     ennemies_spawning(ad);
     print_planet_list(ad->planets->planets, ad->window->window);
     display_interaction(ad);
+    // display_planet_card(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);

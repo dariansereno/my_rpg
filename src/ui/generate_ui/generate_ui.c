@@ -7,9 +7,9 @@
 
 #include "my_rpg.h"
 
-st_ui *generate_ui()
+st_ui *generate_ui(void)
 {
-    st_ui *ui = malloc(sizeof(st_ui *));
+    st_ui *ui = malloc(sizeof(*ui));
 
     ui->interacting = generate_object((sfVector2f){0, 0},
     (sfIntRect){0, 0, 14, 14}, "contents/UI/buttons/interact.png");
