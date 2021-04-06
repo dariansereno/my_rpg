@@ -257,15 +257,32 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
 } st_planet_global;
 
-typedef struct st_list_ui_t {
-    st_object *object;
-    struct st_list_ui_t *next;
-} st_list_ui_s;
+typedef struct st_planet_card_t {
+    sfSprite *planet_s;
+    sfSprite *mockup_s;
+    sfTexture *mockup_t;
+    sfRectangleShape *r_o_2;
+    sfRectangleShape *r_h;
+    sfRectangleShape *r_h_2_o;
+    sfRectangleShape *r_co_2;
+    sfRectangleShape *r_n;
+    sfRectangleShape *r_n_2;
+    sfFont *font;
+    sfText *t_o_2;
+    sfText *t_h;
+    sfText *t_h_2_o;
+    sfText *t_co_2;
+    sfText *t_n;
+    sfText *t_n_2;
+    sfText *t_temp;
+    sfText *t_pres;
+    sfBool existing;
+} planet_card_s;
 
 typedef struct st_ui {
     st_object *interacting;
-    st_list_ui_s *planets_card;
     st_object **selector;
+    planet_card_s *planet_card;
 } st_ui;
 
 typedef struct st_variable_s {

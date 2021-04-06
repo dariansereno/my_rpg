@@ -15,7 +15,7 @@ st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath)
     object->rect = rect;
     object->texture = sfTexture_createFromFile(texturepath, NULL);
     object->sprite = sfSprite_create();
-    sfSprite_setTexture(object->sprite, object->texture, NULL);
+    sfSprite_setTexture(object->sprite, object->texture, sfTrue);
     sfSprite_setTextureRect(object->sprite, object->rect);
     object->timer = malloc(sizeof(*object->timer));
     object->timer->clock = sfClock_create();

@@ -153,13 +153,19 @@
     char *texturepath);
 
 // UI
-    // GENERATE_UI.C
-        void destroy_ui(st_ui *ui);
-        st_ui *generate_ui();
+    // GENERATE_UI
+        // GENERATE_UI
+            void destroy_ui(st_ui *ui);
+            st_ui *generate_ui(void);
+        // GENERATE_PLANET_CARD
+            planet_card_s *generate_planet_card(void);
+            planet_card_s *create_planet_card(st_global *g, sfVector2f position_view);
     // GAME
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
+    // PLANET_CARD
+        void display_planet_card(st_global *g);
 
 // MESSAGES
     // ADDITIONNAL_MSG

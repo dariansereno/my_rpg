@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-st_ui *generate_ui()
+st_ui *generate_ui(void)
 {
     st_ui *ui = malloc(sizeof(*ui));
 
