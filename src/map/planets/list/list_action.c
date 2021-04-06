@@ -37,7 +37,7 @@ void set_texture_planets(list_planet *li, st_planet_global *g)
     while (node != NULL) {
         node->planet.sprite = sfSprite_create();
         sfSprite_setTexture(node->planet.sprite,
-        g->textures[node->planet.type], NULL);
+        g->textures[node->planet.type], sfTrue);
         sfSprite_setPosition(node->planet.sprite,
         (sfVector2f){(float)node->planet.pos.x, (float)node->planet.pos.y});
         sfSprite_setScale(node->planet.sprite, (sfVector2f){5, 5});
