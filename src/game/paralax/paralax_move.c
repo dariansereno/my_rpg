@@ -14,7 +14,7 @@ void move_up(st_global *ad)
 
     ad->ship->velocity.y = -5;
     setkeyup(ad);
-    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t1.png", NULL);
+    ad->ship->bshipt = ad->texture->th[0];
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.top <= 0)
@@ -31,7 +31,7 @@ void move_down(st_global *ad)
 
     setkeydown(ad);
     ad->ship->velocity.y = 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t7.png", NULL);
+    ad->ship->bshipt = ad->texture->th[6];
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += 2.5;
         if (ad->paralax->paralaxr.top >= 2160)
@@ -47,7 +47,7 @@ void move_left(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     ad->ship->velocity.x = -5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t8.png", NULL);
+    ad->ship->bshipt = ad->texture->th[7];
     setkeyleft(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left -= 2.5;
@@ -64,7 +64,7 @@ void move_right(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     ad->ship->velocity.x = 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t6.png", NULL);
+    ad->ship->bshipt = ad->texture->th[5];
     setkeyright(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left += 2.5;

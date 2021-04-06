@@ -85,8 +85,8 @@ st_global *ini(void)
     all->var->max_ennemies = 3;
     all->enn_texture = sfTexture_createFromFile("contents/ships/green_02.png",
     NULL);
-    all->key = key_ini();
     all->texture = texture_ini();
+    all->key = key_ini(all);
     return (all);
 }
 

@@ -7,10 +7,11 @@
 
 #include "my_rpg.h"
 
-keys_t *key_ini(void)
+keys_t *key_ini(st_global *ad)
 {
     keys_t *key = malloc(sizeof(keys_t));
 
+    ad->texture->th = malloc(sizeof(sfTexture *) * 8);
     key->up = 0;
     key->upleft = 0;
     key->upright = 0;
@@ -19,6 +20,14 @@ keys_t *key_ini(void)
     key->downright = 0;
     key->downleft = 0;
     key->down = 0;
+    ad->texture->th[0] = sfTexture_createFromFile("contents/img/t1.png", NULL);
+    ad->texture->th[1] = sfTexture_createFromFile("contents/img/t2.png", NULL);
+    ad->texture->th[2] = sfTexture_createFromFile("contents/img/t3.png", NULL);
+    ad->texture->th[3] = sfTexture_createFromFile("contents/img/t4.png", NULL);
+    ad->texture->th[4] = sfTexture_createFromFile("contents/img/t5.png", NULL);
+    ad->texture->th[5] = sfTexture_createFromFile("contents/img/t6.png", NULL);
+    ad->texture->th[6] = sfTexture_createFromFile("contents/img/t7.png", NULL);
+    ad->texture->th[7] = sfTexture_createFromFile("contents/img/t8.png", NULL);
     return (key);
 }
 
