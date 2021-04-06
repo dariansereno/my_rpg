@@ -32,7 +32,7 @@ st_ennemies generate_ennemies(st_global *ad, list_planet planet)
     random_between(170, 260));
     ennemies.rect = (sfIntRect){0, 0, 48, 48};
     ennemies.sprite = sfSprite_create();
-    sfSprite_setTexture(ennemies.sprite, ad->enn_texture, NULL);
+    sfSprite_setTexture(ennemies.sprite, ad->enn_texture, sfTrue);
     return (ennemies);
 }
 
