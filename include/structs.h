@@ -185,6 +185,7 @@ typedef struct keys_s {
 
 typedef struct load_s {
     sfTexture **load;
+    sfTexture **th;
 } load_t;
 
 typedef struct paralax_s {

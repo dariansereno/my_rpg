@@ -154,7 +154,7 @@ void clock_dialogue_text_line3(st_global *global);
     st_global *ini(void);
     structs_t *all_dat(void);
     void destroy_global(st_global *global);
-    keys_t *key_ini(void);
+    keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
