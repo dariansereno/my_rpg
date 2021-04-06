@@ -75,14 +75,6 @@
     // GAME.C
     int game_loop(void);
 
-// GAME.C
-int game_loop_2();
-void dialogue_text(st_global *global, const char *str, int delay);
-void display_dialogue_text(sfRenderWindow *window, st_global *global);
-void clock_dialogue_text_line1(st_global *global);
-void clock_dialogue_text_line2(st_global *global);
-void clock_dialogue_text_line3(st_global *global);
-
 // MAP
     //ANIMATION
         // ANIMATION.C
