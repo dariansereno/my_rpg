@@ -9,11 +9,11 @@
 
 st_ui *generate_ui()
 {
-    st_ui *ui = malloc(sizeof(st_ui *));
+    st_ui *ui = malloc(sizeof(*ui));
 
     ui->interacting = generate_object((sfVector2f){0, 0},
     (sfIntRect){0, 0, 14, 14}, "contents/UI/buttons/interact.png");
-    ui->selector = malloc(sizeof(st_object*) * 3);
+    ui->selector = malloc(sizeof(*ui->selector) * 3);
     ui->selector[0] = generate_object((sfVector2f){0, 0},
     (sfIntRect){0, 0, 54, 54}, "contents/img/sp/selectorpl.png");
     ui->selector[1] = generate_object((sfVector2f){0, 0},

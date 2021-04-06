@@ -74,6 +74,7 @@ planet_climate climate_from_type(planet_type planet)
                 return (FROSTEN);
             break;
     }
+    return (NORMAL);
 }
 
 planet_animation animation_from_type(planet_type planet)
