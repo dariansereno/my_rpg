@@ -27,7 +27,7 @@ planet_kind generate_kind(int type)
         return (ASTEROID);
     if (type >= 29)
         return (BLACKHOLE);
-
+    return (TERRAN);
 }
 
 st_planet_global *generate_all_map(void)
@@ -35,7 +35,7 @@ st_planet_global *generate_all_map(void)
     scatter math = {.germ = 469880, .interval = 50000, .kmax =
     random_between(400, 800), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
-    st_planet_global *planets = malloc(sizeof(st_planet_global *));
+    st_planet_global *planets = malloc(sizeof(*planets));
     planets->planets = NULL;
     st_planet *stats = general_all_planets(pos, math.kmax);
     planets->textures = malloc(sizeof(*planets->textures));
