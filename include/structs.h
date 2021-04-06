@@ -44,6 +44,12 @@ typedef struct st_text_s {
     int delay;
 } st_text;
 
+typedef enum items_id {
+    item1,
+    item2,
+    item3
+} items_id;
+
 typedef enum planet_type {
     SUN1,
     SUN2,
@@ -172,7 +178,6 @@ typedef struct st_ennemies
 typedef struct list_elem_ennemies
 {
     st_ennemies ennemies;
-    bool on_screen;
     int index;
     struct list_elem_ennemies *next;
 } list_elem_ennemies, *list_ennemies;
@@ -271,6 +276,25 @@ typedef struct st_useful {
     sfText *planet_text;
     sfFont *font;
 } st_useful;
+
+typedef struct st_item
+{
+    int id;
+    int nb;
+    int stack;
+} st_item;
+
+typedef struct list_elem_inventory
+{
+    st_item item;
+    struct list_elem_inventory *next;
+} list_elem_inventory, *list_inventory;
+
+typedef struct st_global_inventory
+{
+    list_inventory inventory;
+    int max;
+} st_global_inventory;
 
 typedef struct st_global_s {
     st_text *text;
