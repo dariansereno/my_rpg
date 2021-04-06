@@ -12,11 +12,9 @@ void move_up(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.y -= 5;
-    ad->ship->viewrect.top -= 5;
-    ad->paralax->starpos.y -= 5;
-    ad->paralax->nebulapos.y -= 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
+    ad->ship->velocity.y = -5;
+    setkeyup(ad);
+    ad->ship->bshipt = ad->texture->th[0];
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.top <= 0)
@@ -31,11 +29,9 @@ void move_down(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.y += 5;
-    ad->ship->viewrect.top += 5;
-    ad->paralax->starpos.y += 5;
-    ad->paralax->nebulapos.y += 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b180.png", NULL);
+    setkeydown(ad);
+    ad->ship->velocity.y = 5;
+    ad->ship->bshipt = ad->texture->th[6];
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += 2.5;
         if (ad->paralax->paralaxr.top >= 2160)
@@ -50,11 +46,9 @@ void move_left(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x -= 5;
-    ad->ship->viewrect.left -= 5;
-    ad->paralax->starpos.x -= 5;
-    ad->paralax->nebulapos.x -= 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b270.png", NULL);
+    ad->ship->velocity.x = -5;
+    ad->ship->bshipt = ad->texture->th[7];
+    setkeyleft(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left -= 2.5;
         if (ad->paralax->paralaxr.left <= 0)
@@ -69,11 +63,9 @@ void move_right(st_global *ad)
     sfTime timeo = sfClock_getElapsedTime(ad->paralax->paralo);
     float secondso = timeo.microseconds / 1000000.0;
 
-    ad->ship->bshippos.x += 5;
-    ad->ship->viewrect.left += 5;
-    ad->paralax->starpos.x += 5;
-    ad->paralax->nebulapos.x += 5;
-    ad->ship->bshipt = sfTexture_createFromFile("contents/sbr/b90.png", NULL);
+    ad->ship->velocity.x = 5;
+    ad->ship->bshipt = ad->texture->th[5];
+    setkeyright(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left += 2.5;
         if (ad->paralax->paralaxr.left >= 3840)

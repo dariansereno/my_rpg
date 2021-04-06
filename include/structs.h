@@ -10,7 +10,9 @@
 
 #define WIDTH 1920
 #define HEIGHT 1080
+
 #include "my_rpg.h"
+#include <stdbool.h>
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
 #include <SFML/System.h>
@@ -156,7 +158,40 @@ typedef struct ship_s {
     bool firstcollisionQ;
     bool firstcollisionZ;
     sfView *view;
+    sfVector2f velocity;
+    sfVector2f acceleration;
 }ship_t;
+
+typedef struct st_ennemies
+{
+    sfSprite *sprite;
+    sfVector2f pos;
+    sfIntRect rect;
+} st_ennemies;
+
+typedef struct list_elem_ennemies
+{
+    st_ennemies ennemies;
+    bool on_screen;
+    int index;
+    struct list_elem_ennemies *next;
+} list_elem_ennemies, *list_ennemies;
+
+typedef struct keys_s {
+    int up;
+    int down;
+    int left;
+    int right;
+    int upleft;
+    int upright;
+    int downleft;
+    int downright;
+} keys_t;
+
+typedef struct load_s {
+    sfTexture **load;
+    sfTexture **th;
+} load_t;
 
 typedef struct paralax_s {
     sfSprite *nebula;
@@ -175,7 +210,7 @@ typedef struct paralax_s {
     int j;
     int k;
     int l;
-}paralax_t;
+} paralax_t;
 
 typedef struct scatter {
     int kmax;
@@ -194,6 +229,7 @@ typedef struct st_planet_s {
     planet_climate climate;
     sfSprite *sprite;
     sfIntRect rect;
+    list_ennemies ennemies;
     bool habitable;
 } st_planet;
 
@@ -202,10 +238,12 @@ typedef struct list_elem_planet
     st_planet planet;
     st_timer timer;
     st_timer move;
+    st_timer spawning;
     bool interact;
     bool on_screen;
     int direction;
     int index;
+    int ennemies_spawn;
     struct list_elem_planet *next;
 } list_elem_planet, *list_planet;
 
@@ -224,6 +262,15 @@ typedef struct st_ui {
     st_list_ui_s *planets_card; // en faire un tableau pour les differentes planètes
 } st_ui;
 
+typedef struct st_variable_s {
+    int max_ennemies;
+} st_variable;
+
+typedef struct st_useful {
+    sfText *planet_text;
+    sfFont *font;
+} st_useful;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
@@ -232,6 +279,11 @@ typedef struct st_global_s {
     key_pressed key_pressed;
     ship_t *ship;
     st_ui *ui;
+    sfTexture *enn_texture;
+    st_variable *var;
+    st_useful *other;
+    keys_t *key;
+    load_t *texture;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
