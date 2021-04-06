@@ -14,27 +14,33 @@
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
 #include <SFML/System.h>
+#include <SFML/Audio.h>
+#include <stdbool.h>
 
-typedef struct st_talk_text_s {
-    sfRectangleShape *black_outline;
-    sfRectangleShape *purple_outline;
-    sfRectangleShape *white_rectangle;
-    sfText *talk_text;
-    sfFont *talk_font;
-    sfSprite *speed_text_sprite_line1;
-    sfTexture *speed_text_texture_line1;
-    sfSprite *speed_text_sprite_line2;
-    sfTexture *speed_text_texture_line2;
-    sfSprite *speed_text_sprite_line3;
-    sfTexture *speed_text_texture_line3;
-    sfIntRect speed_text_rect_line1;
-    sfIntRect speed_text_rect_line2;
-    sfIntRect speed_text_rect_line3;
+typedef struct cpy_backslash_t {
+    int end;
+    int begin;
+    float len;
+    bool space;
+} cpy_backslash_s;
+
+typedef struct st_text_s {
+    sfSprite *arrow_s;
+    sfTexture *arrow_t;
+    sfRectangleShape *whi_r;
+    sfRectangleShape *whi_r2;
+    sfRectangleShape *text_r1;
+    sfRectangleShape *text_r2;
+    sfRectangleShape *text_r3;
+    sfRectangleShape *text_r4;
+    sfText *text;
+    sfFont *font;
     sfBool existing;
     sfClock *clock;
-} st_talk_text;
-
-
+    cpy_backslash_s *c;
+    char *str;
+    int delay;
+} st_text;
 
 typedef enum planet_type {
     SUN1,
@@ -208,19 +214,23 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
 } st_planet_global;
 
+typedef struct st_list_ui_t {
+    st_object *object;
+    struct st_list_ui_t *next;
+} st_list_ui_s;
 
 typedef struct st_ui {
     st_object *interacting;
-    st_object **selector; // en faire un tableau pour les differentes planètes
+    st_list_ui_s *planets_card; // en faire un tableau pour les differentes planètes
 } st_ui;
 
 typedef struct st_global_s {
-    st_talk_text *talk_text;
+    st_text *text;
+    st_planet_global *planets;
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
     ship_t *ship;
-    st_planet_global *planets;
     st_ui *ui;
 } st_global;
 
