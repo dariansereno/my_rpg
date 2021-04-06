@@ -161,4 +161,28 @@
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
 
+// MESSAGES
+    // ADDITIONNAL_MSG
+        int backslash_n_counter(st_global *global);
+        char *cpy_to_up_text(st_global *g);
+    // BACKSLASH_ADD
+        cpy_backslash_s *generate_cpy(void);
+        char *automatically_set_text_max(st_global *g);
+        char *manage_copy_n(char *str, st_global *g);
+        char *add_backslash_n_to_space(char *str, st_global *g);
+        char *add_backslash_n(char *str, st_global *g);
+    // DESTROY_MSG
+        void destroy_message(st_global *global);
+    // DISPLAY_MSG
+        void display_msg(sfRenderWindow *window, st_global *global);
+        void clock_dialogue_text_line1(st_global *g);
+        void clock_dialogue_text_line2(st_global *g);
+        void clock_dialogue_text_line3(st_global *g);
+    // SET_MESSAGE
+        void dialogue_text_settings(st_global *global);
+        void dialogue_rectangle_settings(st_global *g);
+        void dialogue_rectangle_settings_bis(st_global *g);
+        void dialogue_text(st_global *global);
+        void add_message(st_global *global, char *str, int delay);
+
 #endif /* !MY_RPG_H_ */
