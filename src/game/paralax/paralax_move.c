@@ -14,6 +14,7 @@ void move_up(st_global *ad)
 
     ad->ship->velocity.y = -5;
     setkeyup(ad);
+    ad->ship->bshipt = sfTexture_createFromFile("contents/img/t1.png", NULL);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.top <= 0)
