@@ -159,7 +159,7 @@
             st_ui *generate_ui(void);
         // GENERATE_PLANET_CARD
             planet_card_s *generate_planet_card(void);
-            planet_card_s *create_planet_card(st_global *g, sfVector2f position_view);
+            void create_planet_card(st_global *g, sfVector2f position_view);
     // GAME
         // INTERACTION.C
             void display_interaction(st_global *ad);

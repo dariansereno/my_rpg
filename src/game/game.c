@@ -33,11 +33,13 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
-    spatial_object_move(ad);
-    ennemies_spawning(ad);
+    if (ad->ui->planet_card->existing == sfFalse) {
+        spatial_object_move(ad);
+        ennemies_spawning(ad);
+        display_interaction(ad);
+    }
     print_planet_list(ad->planets->planets, ad->window->window);
-    display_interaction(ad);
-    // display_planet_card(ad);
+    display_planet_card(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);
@@ -60,7 +62,8 @@ int game_loop(void)
         display_on_view(ad);
         interaction(ad);
         check_status(ad);
-        paralax_move(ad);
+        if (ad->ui->planet_card->existing == sfFalse)
+            paralax_move(ad);
     }
     destroy_global(ad);
     return (0);
