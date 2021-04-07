@@ -7,10 +7,10 @@
 
 #include "my_rpg.h"
 
-list_inventory pop_back_inventory(list_inventory list)
+list_ressources pop_back_ressources(list_ressources list)
 {
-    list_elem_inventory *temp = NULL;
-    list_elem_inventory *buf = NULL;
+    list_elem_ressources *temp = NULL;
+    list_elem_ressources *buf = NULL;
 
     if (list == NULL)
         return (NULL);
@@ -26,15 +26,15 @@ list_inventory pop_back_inventory(list_inventory list)
         temp = temp->next;
     }
     buf->next = NULL;
-    // destroy_inventory(temp); a faire
+    // destroy_ressources(temp); a faire
     free(temp);
     temp = NULL;
     return (list);
 }
 
-// list_inventory inventory_from_index(int index, list_inventory li)
+// list_ressources ressources_from_index(int index, list_ressources li)
 // {
-//     list_inventory temp = li;
+//     list_ressources temp = li;
 
 //     if (temp == NULL)
 //         return (NULL);

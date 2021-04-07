@@ -7,12 +7,12 @@
 
 #include "my_rpg.h"
 
-void push_back_inventory(list_inventory *li, st_item item)
+void push_back_ressources(list_ressources *li, st_ressources ressource)
 {
-    list_inventory node = malloc(sizeof(*node));
-    list_inventory lastnode = *li;
+    list_ressources node = malloc(sizeof(*node));
+    list_ressources lastnode = *li;
 
-    node->item = item;
+    node->ressource = ressource;
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -23,10 +23,10 @@ void push_back_inventory(list_inventory *li, st_item item)
     }
 }
 
-// void pop_position_inventory(list_inventory *list, int index)
+// void pop_position_ressources(list_ressources *list, int index)
 // {
-//     list_inventory temp = *list;
-//     list_inventory next = NULL;
+//     list_ressources temp = *list;
+//     list_ressources next = NULL;
 
 //     if (*list == NULL)
 //         return;
@@ -44,9 +44,9 @@ void push_back_inventory(list_inventory *li, st_item item)
 //     temp->next = next;
 // }
 
-int size_list_inventory(list_inventory li)
+int size_list_ressources(list_ressources li)
 {
-    list_inventory node = li;
+    list_ressources node = li;
     int i = 0;
     
     if (node == NULL)
@@ -57,10 +57,10 @@ int size_list_inventory(list_inventory li)
     return (i);
 }
 
-void print_inventory_list(list_inventory li)
+void print_ressources_list(list_ressources li)
 {
     while (li != NULL){
-        printf("item [%d]: nb = %d",li->item.id ,li->item.nb);
+        printf("ressource [%d]: nb = %d",li->ressource.id ,li->ressource.nb);
         li = li->next;
     }
 }

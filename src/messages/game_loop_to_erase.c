@@ -55,7 +55,7 @@
 // {
 //     sfEvent event;
 //     sfRenderWindow *window;
-//     sfVideoMode mode = {1920, 1080, 32};
+//     sfMode mode = {1920, 1080, 32};
 
 //     window = sfRenderWindow_create(mode, "my_defender", sfResize | sfClose, \
 //     NULL);
