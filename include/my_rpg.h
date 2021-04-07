@@ -78,6 +78,7 @@
             void change_key_press(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
+            void interaction_input_bis(st_global *ad, list_planet planets);
     // ENNEMIES
         // ENNEMIES_GENERATION.C
             sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
@@ -157,15 +158,32 @@
         // GENERATE_UI
             void destroy_ui(st_ui *ui);
             st_ui *generate_ui(void);
-        // GENERATE_PLANET_CARD
-            planet_card_s *generate_planet_card(void);
-            void create_planet_card(st_global *g, sfVector2f position_view);
     // GAME
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
+            char *create_planet_string(int index);
     // PLANET_CARD
-        void display_planet_card(st_global *g);
+        // PLANET_CARD
+            void display_planet_card(st_global *g);
+            void planet_card_display_sprite_text(st_global *g);
+            void text_draw_planet_card(st_global *g);
+        // GENERATE_PLANET_CARD
+            planet_card_s *generate_planet_card(void);
+            void create_planet_card(st_global *g, sfVector2f position_view, \
+            list_planet planets);
+            void rectangle_shape_text_planet_card_creation(st_global *g);
+            void destroy_planet_card(st_global *g);
+        // RECTANGLE_SHAPE
+            void rectangle_shape_planet_card_set(st_global *g, \
+            list_planet planets);
+            void rectangle_shape_planet_card_position(st_global *g);
+        // TEXT
+            void texts_planet_card_set(st_global *g);
+            void text_planet_card_set_string(st_global *g, list_planet planets);
+            void text_planet_card_temperature(st_global *g, \
+            list_planet planets);
+            void text_planet_card_position(st_global *g);
 
 // MESSAGES
     // ADDITIONNAL_MSG

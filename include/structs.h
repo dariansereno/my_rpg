@@ -258,7 +258,6 @@ typedef struct st_global_planet_s {
 } st_planet_global;
 
 typedef struct st_planet_card_t {
-    sfSprite *planet_s;
     sfSprite *mockup_s;
     sfTexture *mockup_t;
     sfRectangleShape *r_o_2;
@@ -276,9 +275,10 @@ typedef struct st_planet_card_t {
     sfText *t_n_2;
     sfText *t_temp;
     sfText *t_pres;
-    sfBool existing;
-    sfBool displaying;
-    sfBool closing;
+    sfText *title;
+    bool existing;
+    bool displaying;
+    bool closing;
 } planet_card_s;
 
 typedef struct st_ui {
