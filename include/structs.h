@@ -192,7 +192,7 @@ typedef struct list_elem_ennemies_s
 {
     st_ennemies ennemies;
     int index;
-    struct list_elem_ennemies *next;
+    struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
 
 typedef struct keys_s {
