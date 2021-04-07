@@ -20,7 +20,7 @@ sfVector2f origin)
 
 char *create_planet_string(int index)
 {
-    char *str = "Planet n.";
+    char *str = "Entity n.";
     char *nb = int_to_str(index);
     char *res = malloc(sizeof(char) * (my_strlen(str) + my_strlen(nb) + 1));
 

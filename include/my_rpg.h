@@ -142,6 +142,7 @@
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
             list_planet planet_from_index(int index, list_planet li);
+            void print_planet_list_stat(list_planet li);
 // STRUCTS
     st_global *ini(void);
     structs_t *all_dat(void);

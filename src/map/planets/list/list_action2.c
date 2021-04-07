@@ -44,3 +44,12 @@ list_planet planet_from_index(int index, list_planet li)
         return (NULL);
     return (temp);
 }
+
+void print_planet_list_stat(list_planet li)
+{
+    while (li != NULL){
+        printf("%d, %d, %d, %d, %d, %d, %d, %d\n", li->planet.stats.co2, li->planet.stats.h2o, li->planet.stats.h,
+        li->planet.stats.n2, li->planet.stats.N, li->planet.stats.o, li->planet.stats.pressure, li->planet.climate);
+        li = li->next;
+    }
+}
