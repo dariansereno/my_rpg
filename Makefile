@@ -6,7 +6,7 @@
 ##
 
 CC				=	gcc
-CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations -g -fsanitize=address
+CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations
 CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm
 
