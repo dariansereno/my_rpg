@@ -33,7 +33,7 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
-    if (ad->ui->planet_card->existing == sfFalse) {
+    if (ad->ui->planet_card->existing == false) {
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
@@ -62,7 +62,7 @@ int game_loop(void)
         display_on_view(ad);
         interaction(ad);
         check_status(ad);
-        if (ad->ui->planet_card->existing == sfFalse)
+        if (ad->ui->planet_card->existing == false)
             paralax_move(ad);
     }
     destroy_global(ad);

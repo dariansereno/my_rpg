@@ -11,7 +11,9 @@ int nb_len(int nb)
 {
     int i = 0;
 
-    while (nb != 0) {
+    if (nb == 0)
+        return (1);
+    while (nb > 0) {
         i++;
         nb /= 10;
     }
@@ -21,18 +23,16 @@ int nb_len(int nb)
 char *int_to_str(int nb)
 {
     char *result = malloc(sizeof(char) * (nb_len(nb) + 1));
-    int nb_res = 0;
     int i = 0;
 
-    while (nb != 0) {
-        nb_res = nb_res * 10 + (nb % 10);
+    if (nb == 0)
+        return ("0");
+    while (nb > 0) {
+        result[i] = (nb % 10) + '0';
         nb /= 10;
-    }
-    while (nb_res != 0) {
-        result[i] = (nb_res % 10) + '0';
-        nb_res /= 10;
         i++;
     }
-    result[i] = '\0';
+    result[i] = 0;
+    my_revstr(result);
     return (result);
 }
