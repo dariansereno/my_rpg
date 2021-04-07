@@ -44,13 +44,13 @@ typedef struct st_text_s {
     int delay;
 } st_text;
 
-typedef enum items_id {
+typedef enum ressources_id_s {
     item1,
     item2,
     item3
-} items_id;
+} ressources_id;
 
-typedef enum planet_type {
+typedef enum planet_type_s {
     SUN1,
     SUN2,
     SUN3,
@@ -85,7 +85,14 @@ typedef enum planet_type {
     BLACKHOLE3
 } planet_type;
 
-typedef enum planet_kind {
+typedef enum relation_s {
+    ALLY,
+    NEUTRAL,
+    HOSTILE,
+    ENEMY
+} st_relation;
+
+typedef enum planet_kind_s {
     SUN,
     LAVA,
     GAS,
@@ -97,8 +104,7 @@ typedef enum planet_kind {
     BLACKHOLE
 } planet_kind;
 
-typedef enum planet_climate
-{
+typedef enum planet_climate_s {
     ARDENT,
     WARM,
     NORMAL,
@@ -106,14 +112,21 @@ typedef enum planet_climate
     FROSTEN
 } planet_climate;
 
-typedef struct st_timer
-{
+typedef enum st_interaction_type_s {
+    MENU,
+    FIGHT,
+    TRADE,
+    INFO,
+    TALK
+} st_interaction_type;
+
+typedef struct st_timer_s {
     sfClock *clock;
     sfTime time;
     float seconds;
 } st_timer;
 
-typedef struct st_object {
+typedef struct st_object_s {
     sfTexture *texture;
     sfSprite *sprite;
     st_timer *timer;
@@ -121,14 +134,14 @@ typedef struct st_object {
     sfIntRect rect;
 } st_object;
 
-typedef struct key_pressed {
+typedef struct key_pressed_s {
     bool Z;
     bool D;
     bool S;
     bool Q;
 } key_pressed;
 
-typedef enum planet_animation {
+typedef enum planet_animation_s {
     NON_ANIMATED,
     ANIMATED
 } planet_animation;
@@ -168,14 +181,14 @@ typedef struct ship_s {
     sfVector2f acceleration;
 }ship_t;
 
-typedef struct st_ennemies
+typedef struct st_ennemies_s
 {
     sfSprite *sprite;
     sfVector2f pos;
     sfIntRect rect;
 } st_ennemies;
 
-typedef struct list_elem_ennemies
+typedef struct list_elem_ennemies_s
 {
     st_ennemies ennemies;
     int index;
@@ -217,7 +230,7 @@ typedef struct paralax_s {
     int l;
 } paralax_t;
 
-typedef struct scatter {
+typedef struct scatter_s {
     int kmax;
     int interval;
     int p;
@@ -231,6 +244,7 @@ typedef struct st_planet_s {
     sfVector2i pos;
     planet_type type;
     planet_animation animated;
+    st_relation relation;
     planet_climate climate;
     sfSprite *sprite;
     sfIntRect rect;
@@ -238,18 +252,19 @@ typedef struct st_planet_s {
     bool habitable;
 } st_planet;
 
-typedef struct list_elem_planet
+typedef struct list_elem_planet_s
 {
     st_planet planet;
     st_timer timer;
     st_timer move;
     st_timer spawning;
     bool interact;
+    st_interaction_type interact_type;
     bool on_screen;
     int direction;
     int index;
     int ennemies_spawn;
-    struct list_elem_planet *next;
+    struct list_elem_planet_s *next;
 } list_elem_planet, *list_planet;
 
 typedef struct st_global_planet_s {
@@ -291,29 +306,29 @@ typedef struct st_variable_s {
     int max_ennemies;
 } st_variable;
 
-typedef struct st_useful {
+typedef struct st_useful_s{
     sfText *planet_text;
     sfFont *font;
 } st_useful;
 
-typedef struct st_item
+typedef struct st_ressources
 {
     int id;
     int nb;
     int stack;
-} st_item;
+} st_ressources;
 
-typedef struct list_elem_inventory
+typedef struct list_elem_ressources_s
 {
-    st_item item;
-    struct list_elem_inventory *next;
-} list_elem_inventory, *list_inventory;
+    st_ressources ressource;
+    struct list_elem_ressources *next;
+} list_elem_ressources, *list_ressources;
 
-typedef struct st_global_inventory
+typedef struct st_global_ressources_s
 {
-    list_inventory inventory;
+    list_ressources ressources;
     int max;
-} st_global_inventory;
+} st_global_ressources;
 
 typedef struct st_global_s {
     st_text *text;
