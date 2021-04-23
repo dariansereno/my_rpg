@@ -9,7 +9,7 @@
 
 void push_back_ressources(list_ressources *li, st_ressources ressource)
 {
-    list_ressources node = malloc(sizeof(*node));
+    list_ressources node = my_malloc(sizeof(*node));
     list_ressources lastnode = *li;
 
     node->ressource = ressource;

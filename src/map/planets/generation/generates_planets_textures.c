@@ -34,7 +34,7 @@ sfTexture **generates_planets_textures2(sfTexture **texture)
 
 sfTexture **generates_planets_textures()
 {
-    sfTexture **texture = malloc(sizeof(sfTexture *) * 32);
+    sfTexture **texture = my_malloc(sizeof(sfTexture *) * 32);
 
     texture[0] = sfTexture_createFromFile("contents/img/sp/sun1.png", NULL);
     texture[1] = sfTexture_createFromFile("contents/img/sp/sun2.png", NULL);

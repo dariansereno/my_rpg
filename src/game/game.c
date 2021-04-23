@@ -10,10 +10,8 @@
 void check_event(st_global *ad)
 {
     if (ad->window->event.type == sfEvtClosed || (ad->window->event.type ==
-    sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape)) {
+    sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape))
         sfRenderWindow_close(ad->window->window);
-        sfMusic_destroy(ad->window->music);
-    }
     interaction_input(ad);
 }
 
@@ -33,13 +31,15 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
-    if (ad->ui->planet_card->existing == false) {
+    if (ad->ui->planet_card->existing == false && \
+    ad->ui->trade_card->existing == false) {
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
     }
     print_planet_list(ad->planets->planets, ad->window->window);
     display_planet_card(ad);
+    display_trade_card(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);
@@ -53,18 +53,12 @@ int game_loop(void)
 
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
-    sfMusic_setVolume(ad->window->music, 20);
+    sfMusic_setVolume(ad->window->music, 100);
     sfRenderWindow_setFramerateLimit(ad->window->window, 120);
+    sfRenderWindow_setMouseCursorVisible(ad->window->window, sfFalse);
     ad->planets = generate_all_map();
-    while (sfRenderWindow_isOpen(ad->window->window)) {
-        ad->ship->view = sfView_createFromRect(ad->ship->viewrect);
-        planet_collision(ad);
-        display_on_view(ad);
-        interaction(ad);
-        check_status(ad);
-        if (ad->ui->planet_card->existing == false)
-            paralax_move(ad);
-    }
+    while (sfRenderWindow_isOpen(ad->window->window))
+        screen(ad);
     destroy_global(ad);
     return (0);
 }

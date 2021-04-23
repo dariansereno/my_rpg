@@ -78,7 +78,6 @@
             void change_key_press(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
-            void interaction_input_bis(st_global *ad, list_planet planets);
     // ENNEMIES
         // ENNEMIES_GENERATION.C
             sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
@@ -96,7 +95,51 @@
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
     // GAME.C
+    void check_status(st_global *ad);
+    void check_event(st_global *ad);
     int game_loop(void);
+
+// SCREEN
+    // SCREENS.C
+        void screen(st_global *g);
+        void screen_game(st_global *ad);
+        void fade_update_size(st_global *g, int nb);
+    // FADE.C
+        st_fade *generate_fade(void);
+        void display_fade(st_global *g);
+        void clock_fade(st_global *g);
+        void destroy_fade(st_fade *fade);
+        void background_space_fade(st_global *g);
+    // LOADING
+        // LOADING
+            st_loading *generate_loading_board();
+            void screen_loading(st_global *g);
+            void clock_planet_loading(st_global *g);
+            void clock_loading_bar(st_global *g);
+            void destroy_loading(st_global *g);
+    // MENU
+        // MENU
+            st_menu *generate_menu(void);
+            void screen_menu(st_global *g);
+            void destroy_menu(st_menu *menu);
+        // EVENTS_MENU
+            void events_menu(st_global *g);
+            void get_global_bounds_menu(st_global *g);
+            int menu_choice(st_global *g);
+    // SETTINGS
+        // SETTINGS
+            st_settings *generate_settings(void);
+            void screen_settings(st_global *g);
+            void destroy_settings(st_settings *settings);
+            void set_position_settings(st_global *g);
+            void parallax_settings(st_global *g);
+        // EVENTS_SETTINGS
+            void events_settings(st_global *g);
+            void get_global_bounds_settings(st_global *g);
+            int settings_choice(st_global *g);
+            void control_volumes_settings(st_global *g);
+            void animate_buttons_settings(st_global *g);
+    // END
 
 // MAP
     //ANIMATION
@@ -185,6 +228,26 @@
             void text_planet_card_temperature(st_global *g, \
             list_planet planets);
             void text_planet_card_position(st_global *g);
+    // TRADE_CARD
+        // GENERATE_TRADE_CARD
+            trade_card_s *generate_trade_card(void);
+            trade_card_s *generate_trade_card_bools(trade_card_s *trade_card);
+            void destroy_trade_card(trade_card_s *trade_card);
+        // ARROWS
+            void count_items();
+            void arrow_events_trade(st_global *g);
+            void arrow_texture(st_global *g);
+        // TRADE_CARD
+            void rect_trade_position(st_global *g);
+            void set_init_position_trade(st_global *g);
+            void display_planet_trade_card(st_global *g);
+            void display_trade_card(st_global *g);
+            void display_texts_trade_card(st_global *g, list_planet planets);
+        // TEXT_TRADE_CARD
+            char *int_to_str_credits(int money);
+            char *int_to_str_price(int money);
+            void items_text_trade_card(st_global *g, int y);
+            void text_title_credits_trade_card(st_global *g, list_planet planets);
 
 // MESSAGES
     // ADDITIONNAL_MSG
@@ -209,5 +272,24 @@
         void dialogue_rectangle_settings_bis(st_global *g);
         void dialogue_text(st_global *global);
         void add_message(st_global *global, char *str, int delay);
+
+
+int game_loop_2();
+void dialogue_text(st_global *global);
+void display_msg(sfRenderWindow *window, st_global *global);
+void clock_dialogue_text_line1(st_global *global);
+void clock_dialogue_text_line2(st_global *global);
+void clock_dialogue_text_line3(st_global *global);
+char *automatically_set_text_max(st_global *g);
+cpy_backslash_s *generate_cpy();
+char *manage_copy_n(char *str, st_global *g);
+char *add_backslash_n_to_space(char *str, st_global *g);
+char *add_backslash_n(char *str, st_global *g);
+char *cpy_to_up_text(st_global *global);
+void dialogue_text_settings(st_global *global);
+int backslash_n_counter(st_global *global);
+void add_message(st_global *global, char *str, int delay);
+void destroy_message(st_global *global);
+void dialogue_rectangle_settings_bis(st_global *g);
 
 #endif /* !MY_RPG_H_ */

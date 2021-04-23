@@ -12,8 +12,6 @@ planet_card_s *generate_planet_card(void)
     planet_card_s *planet_card = my_malloc(sizeof(*planet_card));
 
     planet_card->existing = false;
-    planet_card->displaying = false;
-    planet_card->closing = false;
     return (planet_card);
 }
 
@@ -24,10 +22,10 @@ list_planet planets)
     g->ui->planet_card = my_malloc(sizeof(*g->ui->planet_card));
 
     g->ui->planet_card->existing = true;
-    g->ui->planet_card->displaying = true;
     g->ui->planet_card->mockup_s = sfSprite_create();
     g->ui->planet_card->mockup_t = \
-    sfTexture_createFromFile("contents/UI/mockups/mockup-planet-card.png", NULL);
+    sfTexture_createFromFile("contents/UI/mockups/mockup-planet-card.png", \
+    NULL);
     sfSprite_setTexture(g->ui->planet_card->mockup_s, \
     g->ui->planet_card->mockup_t, sfTrue);
     rectangle_shape_text_planet_card_creation(g);
@@ -47,7 +45,7 @@ void rectangle_shape_text_planet_card_creation(st_global *g)
     g->ui->planet_card->r_n = sfRectangleShape_create();
     g->ui->planet_card->r_n_2 = sfRectangleShape_create();
     g->ui->planet_card->font = \
-    sfFont_createFromFile("contents/fonts/type4.ttf");
+    sfFont_createFromFile("contents/fonts/myfont.otf");
     g->ui->planet_card->t_o_2 = sfText_create();
     g->ui->planet_card->t_h = sfText_create();
     g->ui->planet_card->t_h_2_o = sfText_create();
@@ -62,8 +60,6 @@ void rectangle_shape_text_planet_card_creation(st_global *g)
 void destroy_planet_card(st_global *g)
 {
     g->ui->planet_card->existing = false;
-    g->ui->planet_card->displaying = false;
-    g->ui->planet_card->closing = false;
     sfSprite_destroy(g->ui->planet_card->mockup_s);
     sfTexture_destroy(g->ui->planet_card->mockup_t);
     sfRectangleShape_destroy(g->ui->planet_card->r_o_2);
