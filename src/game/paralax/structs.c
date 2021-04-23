@@ -41,6 +41,9 @@ structs_t *all_dat(void)
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
+    window->screen = 1;
+    window->music_volume = 100.0;
+    window->sfx_volume = 100;
     return (window);
 }
 
@@ -92,8 +95,8 @@ st_global *ini(void)
 
 void destroy_global(st_global *global)
 {
+    sfMusic_destroy(global->window->music);
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
-    free(global);
     global = NULL;
 }

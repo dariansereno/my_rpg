@@ -161,6 +161,9 @@ typedef struct structs_s {
     sfEvent event;
     sfVideoMode mode;
     sfMusic *music;
+    float music_volume;
+    float sfx_volume;
+    int screen;
 }structs_t;
 
 typedef struct ship_s {
@@ -292,14 +295,59 @@ typedef struct st_planet_card_t {
     sfText *t_pres;
     sfText *title;
     bool existing;
-    bool displaying;
-    bool closing;
 } planet_card_s;
+
+typedef struct st_trade_card_t {
+    sfFont *font;
+    sfText *text;
+    st_object *ui[6];
+    bool existing;
+    bool pressed;
+    int first_cell;
+    int pos_rect;
+    int counter;
+} trade_card_s;
+
+typedef struct st_loading_t {
+    st_object *planet;
+    st_object *rect[2];
+    bool close;
+} st_loading;
+
+typedef struct st_menu_t {
+    sfView *view;
+    st_object *cursor;
+    st_object *items[4];
+    sfFloatRect bounds[3];
+    int menu;
+} st_menu;
+
+typedef struct st_fade_t {
+    sfRectangleShape *rect[2];
+    st_timer timer;
+    bool fade;
+} st_fade;
+
+typedef struct st_settings_t {
+    st_object *save;
+    st_object *cancel;
+    st_object *cross;
+    st_object *background;
+    st_object *music;
+    st_object *sfx;
+    sfFloatRect bounds[3];
+    int settings;
+} st_settings;
 
 typedef struct st_ui {
     st_object *interacting;
     st_object **selector;
     planet_card_s *planet_card;
+    trade_card_s *trade_card;
+    st_loading *loading_board;
+    st_menu *menu;
+    st_fade *fade;
+    st_settings *settings;
 } st_ui;
 
 typedef struct st_variable_s {
@@ -316,6 +364,7 @@ typedef struct st_ressources
     int id;
     int nb;
     int stack;
+    int price;
 } st_ressources;
 
 typedef struct list_elem_ressources_s

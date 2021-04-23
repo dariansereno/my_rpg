@@ -35,10 +35,10 @@ st_planet_global *generate_all_map(void)
     scatter math = {.germ = 469880, .interval = 50000, .kmax =
     random_between(400, 800), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
-    st_planet_global *planets = malloc(sizeof(*planets));
+    st_planet_global *planets = my_malloc(sizeof(*planets));
     planets->planets = NULL;
     st_planet *stats = general_all_planets(pos, math.kmax);
-    planets->textures = malloc(sizeof(*planets->textures));
+    planets->textures = my_malloc(sizeof(*planets->textures));
     planets->textures = generates_planets_textures();
 
     for (int i = 0; i < math.kmax; i++) {

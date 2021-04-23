@@ -86,9 +86,9 @@ void text_planet_card_position(st_global *g)
     sfText_setPosition(g->ui->planet_card->t_n_2, \
     (sfVector2f){g->ship->viewrect.left + 680, g->ship->viewrect.top + 739});
     sfText_setPosition(g->ui->planet_card->t_temp, \
-    (sfVector2f){g->ship->viewrect.left + 1035,g->ship->viewrect.top + 653});
+    (sfVector2f){g->ship->viewrect.left + 1035, g->ship->viewrect.top + 653});
     sfText_setPosition(g->ui->planet_card->t_pres, \
-    (sfVector2f){g->ship->viewrect.left + 1035,g->ship->viewrect.top + 735});
+    (sfVector2f){g->ship->viewrect.left + 1035, g->ship->viewrect.top + 735});
     sfText_setPosition(g->ui->planet_card->title, \
-    (sfVector2f){g->ship->viewrect.left + 810,g->ship->viewrect.top + 210});
+    (sfVector2f){g->ship->viewrect.left + 810, g->ship->viewrect.top + 210});
 }
