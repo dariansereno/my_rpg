@@ -9,8 +9,11 @@
 
 bool is_on_planet(st_global *ad, sfVector2f object)
 {
-    list_planet pl = ad->planets->planets;
+    list_planet pl = NULL;
+    if (ad->planets->planets == NULL)
+        return (false);
 
+    pl = ad->planets->planets;
     while (pl != NULL) {
         if (pl->on_screen == true)
             if (circle_contains(155, (sfVector2f){(float)pl->planet.pos.x,

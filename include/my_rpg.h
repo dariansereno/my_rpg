@@ -80,6 +80,22 @@
             void interaction_input(st_global *ad);
             void interaction_input_bis(st_global *ad, list_planet planets);
     // ENNEMIES
+        // PATH_FINDING
+            // CIRCLE_INTERSECTION
+                float *calculate_table_notation(sfVector2f start,
+                st_ennemies e, st_global *ad, int r);
+                int direction_ennemie(st_ennemies ennemies, sfVector2f target,
+                st_global *ad);
+            // MOVE_ENNEMIES
+                st_ennemies move_enn_up(st_ennemies e);
+                st_ennemies move_enn_down(st_ennemies e);
+                st_ennemies move_enn_left(st_ennemies e);
+                st_ennemies move_enn_right(st_ennemies e);
+                st_ennemies move_enn_upright(st_ennemies e);
+                st_ennemies move_enn_downright(st_ennemies e);
+                st_ennemies move_enn_downleft(st_ennemies e);
+                st_ennemies move_enn_upleft(st_ennemies e);
+                void clock_move_ennemies(list_ennemies e, st_global *ad);
         // ENNEMIES_GENERATION.C
             sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
             float radius);
@@ -91,7 +107,8 @@
             void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
             void print_ennemies_list_pos(list_ennemies li);
             int size_list_ennemies(list_ennemies li);
-            void print_ennemies_list(list_ennemies li, sfRenderWindow *window);
+            void print_ennemies_list(list_ennemies li, sfRenderWindow *window,
+            st_global *ad);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
         void destroy_object(st_object *object);
@@ -139,7 +156,8 @@
             void push_back_planet(list_planet *li, st_planet planet);
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
-            void print_planet_list(list_planet li, sfRenderWindow *window);
+            void print_planet_list(list_planet li, sfRenderWindow *window,
+            st_global *ad);
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
             list_planet planet_from_index(int index, list_planet li);

@@ -32,13 +32,13 @@ void check_status(st_global *ad)
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
-    animate_planets(ad);
     if (ad->ui->planet_card->existing == false) {
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
     }
-    print_planet_list(ad->planets->planets, ad->window->window);
+    animate_planets(ad);
+    print_planet_list(ad->planets->planets, ad->window->window, ad);
     display_planet_card(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
