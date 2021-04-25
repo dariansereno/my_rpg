@@ -19,6 +19,7 @@ void push_back_planet(list_planet *li, st_planet planet)
     node->direction = random_between(0, 7);
     node->index = size_list_planet(*li);
     node->ennemies_spawn = random_between(10, 25);
+    node->can_interact = false;
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -75,17 +76,18 @@ int size_list_planet(list_planet li)
     return (i);
 }
 
-void print_planet_list(list_planet li, sfRenderWindow *window)
+void print_planet_list(list_planet li, sfRenderWindow *window, st_global *ad)
 {
     while (li != NULL){
-        if (li->on_screen == true) {
+       if (li->on_screen == true) {
             sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
             sfSprite_setScale(li->planet.sprite, (sfVector2f){5, 5});
             sfSprite_setPosition(li->planet.sprite,
             (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
             sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
-            if (li->planet.kind == TECH)
-                print_ennemies_list(li->planet.ennemies, window);
+            if (li->planet.kind == TECH){
+                print_ennemies_list(li->planet.ennemies, window, ad);
+            }
         }
         li = li->next;
     }

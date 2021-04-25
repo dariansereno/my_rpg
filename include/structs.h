@@ -186,11 +186,13 @@ typedef struct st_ennemies_s
     sfSprite *sprite;
     sfVector2f pos;
     sfIntRect rect;
+    float *path_table;
 } st_ennemies;
 
 typedef struct list_elem_ennemies_s
 {
     st_ennemies ennemies;
+    st_timer *timer;
     int index;
     struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
@@ -259,6 +261,7 @@ typedef struct list_elem_planet_s
     st_timer move;
     st_timer spawning;
     bool interact;
+    bool can_interact;
     st_interaction_type interact_type;
     bool on_screen;
     int direction;

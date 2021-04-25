@@ -1,27 +1,27 @@
-/*
-** EPITECH PROJECT, 2021
-** GALAXY
-** File description:
-** linked list main actions
-*/
+// /*
+// ** EPITECH PROJECT, 2021
+// ** GALAXY
+// ** File description:
+// ** linked list main actions
+// */
 
-#include "my_rpg.h"
+// #include "my_rpg.h"
 
-void push_back_ressources(list_ressources *li, st_ressources ressource)
-{
-    list_ressources node = malloc(sizeof(*node));
-    list_ressources lastnode = *li;
+// void push_back_ressources(list_ressources *li, st_ressources ressource)
+// {
+//     list_ressources node = malloc(sizeof(*node));
+//     list_ressources lastnode = *li;
 
-    node->ressource = ressource;
-    node->next = NULL;
-    if (*li == NULL)
-        *li = node;
-    else {
-        while (lastnode->next != NULL)
-            lastnode = lastnode->next;
-        lastnode->next = node;
-    }
-}
+//     node->ressource = ressource;
+//     node->next = NULL;
+//     if (*li == NULL)
+//         *li = node;
+//     else {
+//         while (lastnode->next != NULL)
+//             lastnode = lastnode->next;
+//         lastnode->next = node;
+//     }
+// }
 
 // void pop_position_ressources(list_ressources *list, int index)
 // {
@@ -44,23 +44,23 @@ void push_back_ressources(list_ressources *li, st_ressources ressource)
 //     temp->next = next;
 // }
 
-int size_list_ressources(list_ressources li)
-{
-    list_ressources node = li;
-    int i = 0;
+// int size_list_ressources(list_ressources li)
+// {
+//     list_ressources node = li;
+//     int i = 0;
     
-    if (node == NULL)
-        return (0);
+//     if (node == NULL)
+//         return (0);
 
-    for (; node != NULL; ++i){
-        node = node->next;}
-    return (i);
-}
+//     for (; node != NULL; ++i){
+//         node = node->next;}
+//     return (i);
+// }
 
-void print_ressources_list(list_ressources li)
-{
-    while (li != NULL){
-        printf("ressource [%d]: nb = %d",li->ressource.id ,li->ressource.nb);
-        li = li->next;
-    }
-}
+// void print_ressources_list(list_ressources li)
+// {
+//     while (li != NULL){
+//         printf("ressource [%d]: nb = %d",li->ressource.id ,li->ressource.nb);
+//         li = li->next;
+//     }
+// }
