@@ -22,7 +22,7 @@ int nb_len(int nb)
 
 char *int_to_str(int nb)
 {
-    char *result = malloc(sizeof(char) * (nb_len(nb) + 1));
+    char *result = my_malloc(sizeof(char) * (nb_len(nb) + 1));
     int i = 0;
 
     if (nb == 0)

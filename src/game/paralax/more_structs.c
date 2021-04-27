@@ -9,9 +9,9 @@
 
 keys_t *key_ini(st_global *ad)
 {
-    keys_t *key = malloc(sizeof(keys_t));
+    keys_t *key = my_malloc(sizeof(keys_t));
 
-    ad->texture->th = malloc(sizeof(sfTexture *) * 8);
+    ad->texture->th = my_malloc(sizeof(sfTexture *) * 8);
     key->up = 0;
     key->upleft = 0;
     key->upright = 0;
@@ -33,9 +33,9 @@ keys_t *key_ini(st_global *ad)
 
 load_t *texture_ini(void)
 {
-    load_t *texture = malloc(sizeof(load_t));
+    load_t *texture = my_malloc(sizeof(load_t));
 
-    texture->load = malloc(sizeof(sfTexture *) * 8);
+    texture->load = my_malloc(sizeof(sfTexture *) * 8);
     texture->load[0] = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
     texture->load[1] = sfTexture_createFromFile("contents/sbr/b45.png", NULL);
     texture->load[2] = sfTexture_createFromFile("contents/sbr/b90.png", NULL);

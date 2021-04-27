@@ -1,45 +1,4 @@
-// typedef struct cpy_backslash_t {
-//     int end;
-//     int begin;
-//     float len;
-//     bool space;
-// } cpy_backslash_s;
-
-// typedef struct st_text_s {
-//     sfSprite *arrow_s;
-//     sfTexture *arrow_t;
-//     sfRectangleShape *whi_r;
-//     sfRectangleShape *whi_r2;
-//     sfRectangleShape *text_r1;
-//     sfRectangleShape *text_r2;
-//     sfRectangleShape *text_r3;
-//     sfRectangleShape *text_r4;
-//     sfText *text;
-//     sfFont *font;
-//     sfBool existing;
-//     sfClock *clock;
-//     cpy_backslash_s *c;
-//     char *str;
-//     int delay;
-// } st_text;
-
-// int game_loop_2();
-// void dialogue_text(st_global *global);
-// void display_msg(sfRenderWindow *window, st_global *global);
-// void clock_dialogue_text_line1(st_global *global);
-// void clock_dialogue_text_line2(st_global *global);
-// void clock_dialogue_text_line3(st_global *global);
-// char *automatically_set_text_max(st_global *g);
-// cpy_backslash_s *generate_cpy();
-// char *manage_copy_n(char *str, st_global *g);
-// char *add_backslash_n_to_space(char *str, st_global *g);
-// char *add_backslash_n(char *str, st_global *g);
-// char *cpy_to_up_text(st_global *global);
-// void dialogue_text_settings(st_global *global);
-// int backslash_n_counter(st_global *global);
-// void add_message(st_global *global, char *str, int delay);
-// void destroy_message(st_global *global);
-// void dialogue_rectangle_settings_bis(st_global *g);
+// #include "my_rpg.h"
 
 // st_global *generate_global(void)
 // {
@@ -55,7 +14,7 @@
 // {
 //     sfEvent event;
 //     sfRenderWindow *window;
-//     sfMode mode = {1920, 1080, 32};
+//     sfVideoMode mode = {1920, 1080, 32};
 
 //     window = sfRenderWindow_create(mode, "my_defender", sfResize | sfClose, \
 //     NULL);
@@ -89,7 +48,7 @@
 //                     }
 //                 }
 //             }
-//             display_dialogue_text(window, global);
+//             display_msg(window, global);
 //             sfRenderWindow_display(window);
 //         }
 //         sfRenderWindow_destroy(window);

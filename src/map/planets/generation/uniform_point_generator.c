@@ -40,11 +40,11 @@ int random_between(int start, int stop)
 
 sfVector2i *scatter_plot(scatter math)
 {
-    sfVector2i *position = malloc(sizeof(sfVector2i) * math.kmax);
+    sfVector2i *position = my_malloc(sizeof(sfVector2i) * math.kmax);
     int n2 = 1;
     int i = 0;
     int n = germ(math.germ, math.q);
-    int *y = malloc(sizeof(int) * math.interval);
+    int *y = my_malloc(sizeof(int) * math.interval);
 
     for (int k = 1; k < math.kmax; k++) {
         i = floor(alea(&n, math.p, math.q) * math.interval);

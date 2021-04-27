@@ -12,27 +12,22 @@ void interaction_input(st_global *ad)
     list_planet planets = ad->planets->planets;
 
     while (planets != NULL) {
-        interaction_input_bis(ad, planets);
         if (ad->window->event.type == sfEvtKeyReleased && \
-        ad->window->event.key.code == sfKeyE && planets->interact == true && \
-        ad->ui->planet_card->displaying == true)
+        ad->window->event.key.code == sfKeyE && planets->interact == true) {
+            if (ad->ui->planet_card->existing) {
+                destroy_planet_card(ad);
+                return;
+            }
             create_planet_card(ad, (sfVector2f){ad->ship->viewrect.left, ad->ship->viewrect.top}, planets);
-        if (ad->window->event.type == sfEvtKeyReleased && \
-        ad->window->event.key.code == sfKeyE \
-        && ad->ui->planet_card->closing == true)
-            destroy_planet_card(ad);
+        }
+        if (ad->window->event.type == sfEvtKeyPressed && \
+        ad->window->event.key.code == sfKeyI && planets->interact == true) {
+            if (ad->ui->trade_card->existing) {
+                ad->ui->trade_card->existing = false;
+                return;
+            }
+            ad->ui->trade_card->existing = true;
+        }
         planets = planets->next;
     }
-}
-
-void interaction_input_bis(st_global *ad, list_planet planets)
-{
-    if (ad->window->event.type == sfEvtKeyPressed && \
-    ad->window->event.key.code == sfKeyE && planets->interact == true && \
-    ad->ui->planet_card->existing == false)
-        ad->ui->planet_card->displaying = true;
-    if (ad->window->event.type == sfEvtKeyPressed && \
-    ad->window->event.key.code == sfKeyE && \
-    ad->ui->planet_card->existing == true && ad->ui->planet_card->displaying == true)
-        ad->ui->planet_card->closing = true;
 }

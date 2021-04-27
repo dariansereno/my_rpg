@@ -8,12 +8,11 @@
 #ifndef STRINGS_H_
 #define STRINGS_H_
 
-typedef struct garbage_s garbage_t;
-
-struct garbage_s
+typedef struct garbage_collector_s my_garbage_t;
+struct garbage_collector_s
 {
-    void *ptr;
-    garbage_t *next;
+    void *mal;
+    my_garbage_t *next;
 };
 
 void my_putchar(char c);
@@ -53,10 +52,11 @@ int word_size(const char *str, const char *separator);
 char *my_strncpy(char *dest, const char *src, int n);
 int get_nb_words(const char *str, const char *separator);
 char **my_str_to_word_array(const char *str, const char *separator);
+my_garbage_t **current_garbage(void);
 void call_after_main(void) __attribute__((destructor));
-void *my_malloc(int size);
-garbage_t **my_garbage(void);
-garbage_t *add_to_garbage(garbage_t *garbage, void *ptr);
-void destroy_collector(garbage_t *collector);
+my_garbage_t *add_ptr_to_garbage \
+(my_garbage_t *garbage, void *mal);
+void destroy_ptr_to_garbage(my_garbage_t *garbage);
+void *my_malloc(int size_of);
 
 #endif /* !STRINGS_H_ */
