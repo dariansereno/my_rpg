@@ -10,6 +10,7 @@
 void go_downleft(st_global *ad)
 {
     int x = ad->paralax->i + ad->paralax->j + ad->paralax->k + ad->paralax->l;
+
     if (x <= 2 && ad->key_pressed.S == true && ad->key_pressed.Q == true
     && ad->ship->collisionS == false && ad->ship->collisionQ == false)
         move_downleft(ad);
