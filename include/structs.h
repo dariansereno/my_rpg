@@ -296,7 +296,7 @@ typedef struct st_planet_card_t {
     bool closing;
 } planet_card_s;
 
-typedef struct st_ui {
+typedef struct st_ui_s {
     st_object *interacting;
     st_object **selector;
     planet_card_s *planet_card;
@@ -306,29 +306,33 @@ typedef struct st_variable_s {
     int max_ennemies;
 } st_variable;
 
-typedef struct st_useful_s{
+typedef struct st_useful_s {
     sfText *planet_text;
     sfFont *font;
 } st_useful;
 
-typedef struct st_ressources
-{
+typedef struct st_ressources_s {
     int id;
     int nb;
     int stack;
 } st_ressources;
 
-typedef struct list_elem_ressources_s
-{
+typedef struct list_elem_ressources_s {
     st_ressources ressource;
     struct list_elem_ressources *next;
 } list_elem_ressources, *list_ressources;
 
-typedef struct st_global_ressources_s
-{
+typedef struct st_global_ressources_s {
     list_ressources ressources;
     int max;
 } st_global_ressources;
+
+typedef struct moula_s {
+    int money;
+    sfSprite *moneys;
+    sfTexture *moneyt;
+    sfVector2f coinpos;
+} moula_t;
 
 typedef struct st_global_s {
     st_text *text;
@@ -343,6 +347,7 @@ typedef struct st_global_s {
     st_useful *other;
     keys_t *key;
     load_t *texture;
+    moula_t *money;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

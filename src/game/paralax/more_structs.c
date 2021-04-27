@@ -46,3 +46,12 @@ load_t *texture_ini(void)
     texture->load[7] = sfTexture_createFromFile("contents/sbr/b315.png", NULL);
     return (texture);
 }
+
+moula_t *money_ini(void)
+{
+    moula_t *money = malloc(sizeof(moula_t));
+
+    money->money = 500;
+    money->coinpos = (sfVector2f){1700, 100};
+    return (money);
+}

@@ -87,6 +87,7 @@ st_global *ini(void)
     NULL);
     all->texture = texture_ini();
     all->key = key_ini(all);
+    all->money = money_ini();
     return (all);
 }
 
