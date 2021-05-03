@@ -12,7 +12,7 @@ void screen(st_global *g)
     // g->window->screen = 4;
     switch (g->window->screen) {
         case 1:
-            sfRenderWindow_setSize(g->window->window, (sfVector2u){800, 1080});
+            sfRenderWindow_setSize(g->window->window, (sfVector2u){700, 1000});
             screen_loading(g);
             break;
         case 2:
@@ -22,7 +22,7 @@ void screen(st_global *g)
             screen_settings(g);
             break;
         case 4:
-            sfRenderWindow_setSize(g->window->window, (sfVector2u){1920, 1080});
+            sfRenderWindow_setSize(g->window->window, (sfVector2u){1920, 1000});
             screen_game(g);
             break;
         default:
