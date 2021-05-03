@@ -14,12 +14,42 @@ void set_position_ui_game(st_global *g)
     sfRectangleShape_setPosition(g->ui->ui->xp, (sfVector2f){217, 91});
     sfSprite_setPosition(g->ui->ui->map->sprite, \
     (sfVector2f){75, 41});
+    sfSprite_setPosition(g->ui->ui->craft[0]->sprite, \
+    (sfVector2f){1685, 0});
+    sfSprite_setPosition(g->ui->ui->craft[1]->sprite, \
+    (sfVector2f){1758, 123});
+    sfSprite_setPosition(g->ui->ui->item->sprite, \
+    (sfVector2f){751, 944});
+}
+
+void item_craft_ui_game(st_global *g)
+{
+    sfSprite_setPosition(g->ui->ui->item->sprite, (sfVector2f)
+    {sfSprite_getPosition(g->ui->ui->item->sprite).x +\
+    g->ship->viewrect.left, \
+    sfSprite_getPosition(g->ui->ui->item->sprite).y + \
+    g->ship->viewrect.top});
+    sfRenderWindow_drawSprite(g->window->window, \
+    g->ui->ui->item->sprite, \
+    NULL);
+    // if (craft)
+        // for (int i = 0; i < 2; i++) {
+        //     sfSprite_setPosition(g->ui->ui->craft[i]->sprite, (sfVector2f)
+        //     {sfSprite_getPosition(g->ui->ui->craft[i]->sprite).x +\
+        //     g->ship->viewrect.left, \
+        //     sfSprite_getPosition(g->ui->ui->craft[i]->sprite).y + \
+        //     g->ship->viewrect.top});
+        //     sfRenderWindow_drawSprite(g->window->window, \
+        //     g->ui->ui->craft[i]->sprite, \
+        //     NULL);
+        // }
 }
 
 void display_ui_game(st_global *g)
 {
     set_position_ui_game(g);
     rectangle_display_ui_game(g);
+    item_craft_ui_game(g);
     sfRectangleShape_setSize(g->ui->ui->life, \
     (sfVector2f){g->ship->life * 263 / 200, 10});
     sfSprite_setPosition(g->ui->ui->map->sprite, (sfVector2f)
