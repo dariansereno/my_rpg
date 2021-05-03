@@ -7,6 +7,24 @@
 
 #include "my_rpg.h"
 
+void more_interact(st_global *ad, list_planet planets)
+{
+    if (ad->window->event.type == sfEvtKeyPressed && \
+    ad->window->event.key.code == sfKeyI && planets->interact == true
+    && planets->planet.tradable == true) {
+        if (ad->ui->trade_card->existing) {
+            ad->ui->trade_card->existing = false;
+            return;
+        }
+        for (int i = 0; planets->trade[i]->price != -1; i++) {
+            printf("id = %d\n", planets->trade[i]->id);
+            printf("price = %d\n", planets->trade[i]->price);
+            printf("nb = %d\n", planets->trade[i]->nb);
+        }
+        ad->ui->trade_card->existing = true;
+    }
+}
+
 void interaction_input(st_global *ad)
 {
     list_planet planets = ad->planets->planets;
@@ -18,7 +36,8 @@ void interaction_input(st_global *ad)
                 destroy_planet_card(ad->ui->planet_card);
                 return;
             }
-            create_planet_card(ad, (sfVector2f){ad->ship->viewrect.left, ad->ship->viewrect.top}, planets);
+            create_planet_card(ad, (sfVector2f){ad->ship->viewrect.left,
+            ad->ship->viewrect.top}, planets);
         }
         if (ad->window->event.type == sfEvtKeyPressed && \
         ad->window->event.key.code == sfKeyI && planets->interact == true) {
@@ -36,6 +55,7 @@ void interaction_input(st_global *ad)
             }
             ad->ui->module_card->existing = true;
         }
+        more_interact(ad, planets);
         planets = planets->next;
     }
     if (ad->window->event.type == sfEvtKeyPressed && \

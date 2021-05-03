@@ -74,7 +74,8 @@ void items_text_trade_card(st_global *g, int y)
 void text_title_credits_trade_card(st_global *g, list_planet planets)
 {
     sfText_setCharacterSize(g->ui->trade_card->text, 64);
-    sfText_setString(g->ui->trade_card->text, create_planet_string(planets->index));
+    sfText_setString(g->ui->trade_card->text,
+    create_planet_string(planets->index));
     sfText_setPosition(g->ui->trade_card->text, \
     (sfVector2f){g->ship->viewrect.left + 1189, g->ship->viewrect.top + 227});
     sfRenderWindow_drawText(g->window->window, g->ui->trade_card->text, NULL);

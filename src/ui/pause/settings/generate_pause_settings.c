@@ -14,13 +14,13 @@ pause_set_s *generate_pause_settings(void)
     settings->font = sfFont_createFromFile("contents/fonts/myfont.otf");
     settings->text = sfText_create();
     settings->ui[0] = generate_object((sfVector2f){691, 166}, \
-    (sfIntRect){0, 0, 538, 747}, "contents/UI/pause/settings/bg.png");
+    (sfIntRect){0, 0, 538, 747}, "contents/ui/pause/settings/bg.png");
     settings->ui[1] = generate_object((sfVector2f){987, 749}, \
-    (sfIntRect){0, 0, 149, 82}, "contents/UI/pause/settings/rect.png");
+    (sfIntRect){0, 0, 149, 82}, "contents/ui/pause/settings/rect.png");
     settings->ui[2] = generate_object((sfVector2f){844, 368}, \
-    (sfIntRect){0, 0, 253, 32}, "contents/UI/pause/settings/music.png");
+    (sfIntRect){0, 0, 253, 32}, "contents/ui/pause/settings/music.png");
     settings->ui[3] = generate_object((sfVector2f){844, 542}, \
-    (sfIntRect){0, 0, 253, 32}, "contents/UI/pause/settings/sfx.png");
+    (sfIntRect){0, 0, 253, 32}, "contents/ui/pause/settings/sfx.png");
     settings->pos_rect = 2;
     settings->existing = false;
     settings->pressed = false;
