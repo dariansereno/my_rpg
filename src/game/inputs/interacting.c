@@ -9,20 +9,20 @@
 
 void more_interact(st_global *ad, list_planet planets)
 {
-    if (ad->window->event.type == sfEvtKeyPressed && \
-    ad->window->event.key.code == sfKeyI && planets->interact == true
-    && planets->planet.tradable == true) {
-        if (ad->ui->trade_card->existing) {
-            ad->ui->trade_card->existing = false;
-            return;
-        }
-        for (int i = 0; planets->trade[i]->price != -1; i++) {
-            printf("id = %d\n", planets->trade[i]->id);
-            printf("price = %d\n", planets->trade[i]->price);
-            printf("nb = %d\n", planets->trade[i]->nb);
-        }
-        ad->ui->trade_card->existing = true;
-    }
+    // if (ad->window->event.type == sfEvtKeyPressed && \
+    // ad->window->event.key.code == sfKeyI && planets->interact == true
+    // && planets->planet.tradable == true) {
+    //     if (ad->ui->trade_card->existing) {
+    //         ad->ui->trade_card->existing = false;
+    //         return;
+    //     }
+        // for (int i = 0; planets->trade[i]->price != -1; i++) {
+        //     printf("id = %d\n", planets->trade[i]->id);
+        //     printf("price = %d\n", planets->trade[i]->price);
+        //     printf("nb = %d\n", planets->trade[i]->nb);
+        // }
+    //     ad->ui->trade_card->existing = true;
+    // }
 }
 
 void interaction_input(st_global *ad)
@@ -40,10 +40,16 @@ void interaction_input(st_global *ad)
             ad->ship->viewrect.top}, planets);
         }
         if (ad->window->event.type == sfEvtKeyPressed && \
-        ad->window->event.key.code == sfKeyI && planets->interact == true) {
+        ad->window->event.key.code == sfKeyI && planets->interact == true
+        && planets->planet.tradable == true) {
             if (ad->ui->trade_card->existing) {
                 ad->ui->trade_card->existing = false;
                 return;
+            }
+            for (int i = 0; planets->trade[i]->price != -1; i++) {
+                printf("id = %d\n", planets->trade[i]->id);
+                printf("price = %d\n", planets->trade[i]->price);
+                printf("nb = %d\n", planets->trade[i]->nb);
             }
             ad->ui->trade_card->existing = true;
         }
