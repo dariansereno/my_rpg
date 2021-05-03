@@ -45,7 +45,6 @@ void destroy_ui(st_ui *ui)
     destroy_menu(ui->menu);
     destroy_fade(ui->fade);
     destroy_settings(ui->settings);
-    destroy_loading(ui->loading_board);
     destroy_pause(ui->pause);
     destroy_pause_settings(ui->pause_settings);
     ui = NULL;

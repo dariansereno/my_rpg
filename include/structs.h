@@ -338,7 +338,10 @@ typedef struct st_module_card_t {
 } module_card_s;
 
 typedef struct st_ui_game {
-    st_object *ui[4];
+    st_object *map;
+    sfRectangleShape *life;
+    sfRectangleShape *credits;
+    sfRectangleShape *xp;
 } ui_game_s;
 
 typedef struct st_pause_t {
