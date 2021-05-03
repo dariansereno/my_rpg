@@ -62,6 +62,7 @@ void check_status(st_global *ad)
     {ad->ship->viewrect.left + 250, ad->ship->viewrect.top + 75});
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
+    print_lil_planet(ad->planets->planets, ad->window->window, ad);
     print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     sfRenderWindow_drawText(ad->window->window, ad->money->moneytext, NULL);
