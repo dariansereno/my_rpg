@@ -127,6 +127,16 @@ typedef struct st_timer_s {
     float seconds;
 } st_timer;
 
+typedef struct list_elem_timer_s {
+    st_timer timer;
+    int index;
+    sfVector2f pos;
+    int dir;
+    int it;
+    bool destroy;
+    struct list_elem_timer_s *next;
+} *list_timer, list_elem_timer;
+
 typedef struct st_object_s {
     sfTexture *texture;
     sfSprite *sprite;
@@ -183,18 +193,27 @@ typedef struct ship_s {
     sfView *view;
     sfVector2f velocity;
     sfVector2f acceleration;
+    float life;
+    float attack;
 }ship_t;
 
 typedef struct st_ennemies_s
 {
     sfSprite *sprite;
     sfVector2f pos;
+    sfVector2f spawn_pos;
     sfIntRect rect;
+    float *path_table;
+    float life;
+    int dir;
 } st_ennemies;
 
 typedef struct list_elem_ennemies_s
 {
     st_ennemies ennemies;
+    st_timer *timer;
+    list_timer li_shoot;
+    st_timer *shootcl;
     int index;
     struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
@@ -276,6 +295,7 @@ typedef struct list_elem_planet_s {
     st_timer spawning;
     st_ressources **trade;
     bool interact;
+    bool can_interact;
     st_interaction_type interact_type;
     bool on_screen;
     int direction;
@@ -322,6 +342,37 @@ typedef struct st_trade_card_t {
     int counter;
 } trade_card_s;
 
+typedef struct st_module_card_t {
+    sfFont *font;
+    sfText *text;
+    st_object *ui[4];
+    bool existing;
+    bool pressed;
+    int pos_rect;
+} module_card_s;
+
+typedef struct st_ui_game {
+    st_object *ui[4];
+} ui_game_s;
+
+typedef struct st_pause_t {
+    st_object *ui[2];
+    sfText *text;
+    sfFont *font;
+    bool existing;
+    bool pressed;
+    int pos_rect;
+} pause_s;
+
+typedef struct st_pause_settings_t {
+    st_object *ui[4];
+    sfText *text;
+    sfFont *font;
+    int pos_rect;
+    bool existing;
+    bool pressed;
+} pause_set_s;
+
 typedef struct st_loading_t {
     st_object *planet;
     st_object *rect[2];
@@ -358,6 +409,10 @@ typedef struct st_ui {
     st_object **selector;
     planet_card_s *planet_card;
     trade_card_s *trade_card;
+    module_card_s *module_card;
+    ui_game_s *ui;
+    pause_s *pause;
+    pause_set_s *pause_settings;
     st_loading *loading_board;
     st_menu *menu;
     st_fade *fade;
@@ -387,15 +442,25 @@ typedef struct moula_s {
     sfVector2f coinpos;
 } moula_t;
 
+typedef struct st_global_shoot_s
+{
+    list_timer li_shoot;
+    sfTexture *tex_ship;
+    sfTexture *tex_enn;
+    sfSprite **sprite_ship;
+    sfSprite **sprite_enn;
+} st_global_shoot;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
+    key_pressed last_key_pressed;
     ship_t *ship;
     st_ui *ui;
-    sfTexture *enn_texture;
+    sfTexture **enn_texture;
     st_variable *var;
     st_useful *other;
     keys_t *key;
@@ -403,6 +468,8 @@ typedef struct st_global_s {
     moula_t *money;
     int mul_price;
     st_ressources *ressources;
+    st_global_shoot *shoot;
+    float enn_damage;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

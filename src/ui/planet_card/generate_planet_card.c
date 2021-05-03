@@ -57,24 +57,24 @@ void rectangle_shape_text_planet_card_creation(st_global *g)
     g->ui->planet_card->title = sfText_create();
 }
 
-void destroy_planet_card(st_global *g)
+void destroy_planet_card(planet_card_s *planet_card)
 {
-    g->ui->planet_card->existing = false;
-    sfSprite_destroy(g->ui->planet_card->mockup_s);
-    sfTexture_destroy(g->ui->planet_card->mockup_t);
-    sfRectangleShape_destroy(g->ui->planet_card->r_o_2);
-    sfRectangleShape_destroy(g->ui->planet_card->r_h);
-    sfRectangleShape_destroy(g->ui->planet_card->r_h_2_o);
-    sfRectangleShape_destroy(g->ui->planet_card->r_co_2);
-    sfRectangleShape_destroy(g->ui->planet_card->r_n);
-    sfRectangleShape_destroy(g->ui->planet_card->r_n_2);
-    sfFont_destroy(g->ui->planet_card->font);
-    sfText_destroy(g->ui->planet_card->t_o_2);
-    sfText_destroy(g->ui->planet_card->t_h);
-    sfText_destroy(g->ui->planet_card->t_h_2_o);
-    sfText_destroy(g->ui->planet_card->t_co_2);
-    sfText_destroy(g->ui->planet_card->t_n);
-    sfText_destroy(g->ui->planet_card->t_n_2);
-    sfText_destroy(g->ui->planet_card->t_temp);
-    sfText_destroy(g->ui->planet_card->t_pres);
+    planet_card->existing = false;
+    sfSprite_destroy(planet_card->mockup_s);
+    sfTexture_destroy(planet_card->mockup_t);
+    sfRectangleShape_destroy(planet_card->r_o_2);
+    sfRectangleShape_destroy(planet_card->r_h);
+    sfRectangleShape_destroy(planet_card->r_h_2_o);
+    sfRectangleShape_destroy(planet_card->r_co_2);
+    sfRectangleShape_destroy(planet_card->r_n);
+    sfRectangleShape_destroy(planet_card->r_n_2);
+    sfFont_destroy(planet_card->font);
+    sfText_destroy(planet_card->t_o_2);
+    sfText_destroy(planet_card->t_h);
+    sfText_destroy(planet_card->t_h_2_o);
+    sfText_destroy(planet_card->t_co_2);
+    sfText_destroy(planet_card->t_n);
+    sfText_destroy(planet_card->t_n_2);
+    sfText_destroy(planet_card->t_temp);
+    sfText_destroy(planet_card->t_pres);
 }

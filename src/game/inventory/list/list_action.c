@@ -44,23 +44,23 @@ void push_back_ressources(list_ressources *li, st_ressources ressource)
 //     temp->next = next;
 // }
 
-int size_list_ressources(list_ressources li)
-{
-    list_ressources node = li;
-    int i = 0;
+// int size_list_ressources(list_ressources li)
+// {
+//     list_ressources node = li;
+//     int i = 0;
     
-    if (node == NULL)
-        return (0);
+//     if (node == NULL)
+//         return (0);
 
-    for (; node != NULL; ++i){
-        node = node->next;}
-    return (i);
-}
+//     for (; node != NULL; ++i){
+//         node = node->next;}
+//     return (i);
+// }
 
-void print_ressources_list(list_ressources li)
-{
-    while (li != NULL){
-        printf("ressource [%d]: nb = %d",li->ressource.id ,li->ressource.nb);
-        li = li->next;
-    }
-}
+// void print_ressources_list(list_ressources li)
+// {
+//     while (li != NULL){
+//         printf("ressource [%d]: nb = %d",li->ressource.id ,li->ressource.nb);
+//         li = li->next;
+//     }
+// }

@@ -45,7 +45,7 @@ void screen_loading(st_global *g)
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->loading_board->rect[1]->sprite, NULL);
     if (g->ui->loading_board->close) {
-        g->window->screen = 2;
+        g->window->screen = 4;
         destroy_loading(g);
         return;
     }
@@ -94,9 +94,9 @@ void clock_planet_loading(st_global *g)
     g->ui->loading_board->planet->rect);
 }
 
-void destroy_loading(st_global *g)
+void destroy_loading(st_loading *loading_board)
 {
-    destroy_object(g->ui->loading_board->planet);
-    destroy_object(g->ui->loading_board->rect[0]);
-    destroy_object(g->ui->loading_board->rect[1]);
+    destroy_object(loading_board->planet);
+    destroy_object(loading_board->rect[0]);
+    destroy_object(loading_board->rect[1]);
 }
