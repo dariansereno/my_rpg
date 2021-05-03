@@ -61,7 +61,6 @@ void clock_ennemies_generation(list_planet li, st_global *ad)
         push_back_ennemies(&li->planet.ennemies, generate_ennemies(ad, li));
         sfClock_restart(li->spawning.clock);
     }
-    // print_ennemies_list_pos(li->planet.ennemies);
 }
 
 void ennemies_spawning(st_global *ad)
@@ -70,9 +69,11 @@ void ennemies_spawning(st_global *ad)
 
     while (li != NULL) {
         if (li->on_screen == true && li->planet.kind == TECH &&
-        size_list_ennemies(li->planet.ennemies) < ad->var->max_ennemies)
+        size_list_ennemies(li->planet.ennemies) < ad->var->max_ennemies
+        && li->size == 2)
             clock_ennemies_generation(li, ad);
-        if (li->on_screen == false && li->planet.kind == TECH)
+        if (li->on_screen == false && li->planet.kind == TECH
+        && li->size == 2)
             sfClock_restart(li->spawning.clock);
         li = li->next;
     }
