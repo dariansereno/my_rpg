@@ -45,10 +45,10 @@ typedef struct st_text_s {
 } st_text;
 
 typedef enum ressources_id_s {
-    item1,
-    item2,
-    item3,
-    item4
+    black_matter,
+    crystal,
+    plastic,
+    settler_module
 } ressources_id;
 
 typedef enum planet_type_s {
