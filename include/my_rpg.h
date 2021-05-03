@@ -215,6 +215,8 @@
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);
+            void print_lil_planet(list_planet li, sfRenderWindow *window,
+            st_global *ad);
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
             void print_planet_list(list_planet li, sfRenderWindow *window,
