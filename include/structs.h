@@ -304,6 +304,7 @@ typedef struct list_elem_planet_s {
     int index;
     int ennemies_spawn;
     int size;
+    int sc;
     struct list_elem_planet_s *next;
 } list_elem_planet, *list_planet;
 
