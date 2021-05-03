@@ -66,7 +66,7 @@ void add_message(st_global *global, char *str, int delay)
     global->text = my_malloc(sizeof(*global->text));
     global->text->arrow_s = sfSprite_create();
     global->text->arrow_t = \
-    sfTexture_createFromFile("contents/UI/textures/arrow.png", NULL);
+    sfTexture_createFromFile("contents/ui/textures/arrow.png", NULL);
     sfSprite_setTexture(global->text->arrow_s, global->text->arrow_t, sfTrue);
     sfSprite_setPosition(global->text->arrow_s, (sfVector2f){1528, 1045});
     global->text->whi_r = sfRectangleShape_create();

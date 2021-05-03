@@ -96,6 +96,10 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         planets[i].stats = generate_planet_stat(planets[i]);
         planets[i].kind = generate_kind(planets[i].type);
         planets[i].relation = random_between(0, 2);
+        if (planets[i].type >= 7 && planets[i].type <= 20)
+            planets[i].tradable = random_between(0, 1);
+        else
+            planets[i].tradable = false;
         if (planets[i].kind == TECH)
             planets[i].relation = 3;
     }
@@ -107,8 +111,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         planets[i].stats = generate_planet_stat(planets[i]);
         planets[i].kind = generate_kind(planets[i].type);
         planets[i].relation = random_between(0, 2);
-        if (planets[i].kind == TECH)
-            planets[i].relation = 3;
+        planets[i].tradable = random_between(0, 1);
     }
     return (planets);
 }

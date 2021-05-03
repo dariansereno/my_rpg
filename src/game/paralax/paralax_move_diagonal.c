@@ -16,6 +16,8 @@ void move_upright(st_global *ad)
     ad->ship->velocity.x = 5;
     ad->ship->bshipt = ad->texture->th[2];
     if (secondso > 0.01) {
+        ad->money->coinpos.y -= 10;
+        ad->money->coinpos.x += 10;
         ad->paralax->paralaxr.top -= 2.5;
         ad->paralax->paralaxr.left += 2.5;
         if (ad->paralax->paralaxr.top <= 0)
@@ -36,6 +38,8 @@ void move_downleft(st_global *ad)
     ad->ship->velocity.y = 5;
     ad->ship->velocity.x = -5;
     if (secondso > 0.01) {
+        ad->money->coinpos.y += 10;
+        ad->money->coinpos.x -= 10;
         ad->paralax->paralaxr.top += 2.5;
         ad->paralax->paralaxr.left -= 2.5;
         if (ad->paralax->paralaxr.top >= 2160)
@@ -56,6 +60,8 @@ void move_upleft(st_global *ad)
     ad->ship->velocity.x = -5;
     ad->ship->bshipt = ad->texture->th[1];
     if (secondso > 0.01) {
+        ad->money->coinpos.y -= 10;
+        ad->money->coinpos.x -= 10;
         ad->paralax->paralaxr.left -= 2.5;
         ad->paralax->paralaxr.top -= 2.5;
         if (ad->paralax->paralaxr.left <= 0)
@@ -76,6 +82,8 @@ void move_downright(st_global *ad)
     ad->ship->velocity.x = 5;
     ad->ship->bshipt = ad->texture->th[3];
     if (secondso > 0.01) {
+        ad->money->coinpos.y += 10;
+        ad->money->coinpos.x += 10;
         ad->paralax->paralaxr.left += 2.5;
         ad->paralax->paralaxr.top += 2.5;
         if (ad->paralax->paralaxr.left >= 3840)

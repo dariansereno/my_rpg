@@ -47,7 +47,8 @@ typedef struct st_text_s {
 typedef enum ressources_id_s {
     item1,
     item2,
-    item3
+    item3,
+    item4
 } ressources_id;
 
 typedef enum planet_type_s {
@@ -260,6 +261,18 @@ typedef struct scatter_s {
     int q;
 } scatter;
 
+typedef struct st_ressources_s {
+    int id;
+    int nb;
+    int stack;
+    int price;
+} st_ressources;
+
+typedef struct list_elem_ressources_s {
+    st_ressources ressource;
+    struct list_elem_ressources *next;
+} list_elem_ressources, *list_ressources;
+
 typedef struct st_planet_s {
     st_planet_stat stats;
     planet_kind kind;
@@ -270,16 +283,17 @@ typedef struct st_planet_s {
     planet_climate climate;
     sfSprite *sprite;
     sfIntRect rect;
+    bool tradable;
     list_ennemies ennemies;
     bool habitable;
 } st_planet;
 
-typedef struct list_elem_planet_s
-{
+typedef struct list_elem_planet_s {
     st_planet planet;
     st_timer timer;
     st_timer move;
     st_timer spawning;
+    st_ressources **trade;
     bool interact;
     bool can_interact;
     st_interaction_type interact_type;
@@ -412,30 +426,24 @@ typedef struct st_variable_s {
     int max_ennemies;
 } st_variable;
 
-typedef struct st_useful_s{
+typedef struct st_useful_s {
     sfText *planet_text;
     sfFont *font;
 } st_useful;
 
-typedef struct st_ressources
-{
-    int id;
-    int nb;
-    int stack;
-    int price;
-} st_ressources;
 
-typedef struct list_elem_ressources_s
-{
-    st_ressources ressource;
-    struct list_elem_ressources *next;
-} list_elem_ressources, *list_ressources;
-
-typedef struct st_global_ressources_s
-{
+typedef struct st_global_ressources_s {
     list_ressources ressources;
     int max;
 } st_global_ressources;
+
+typedef struct moula_s {
+    int money;
+    sfText *moneytext;
+    sfFont *moneyfont;
+    sfText *moneyval;
+    sfVector2f coinpos;
+} moula_t;
 
 typedef struct st_global_shoot_s
 {
@@ -460,6 +468,9 @@ typedef struct st_global_s {
     st_useful *other;
     keys_t *key;
     load_t *texture;
+    moula_t *money;
+    int mul_price;
+    st_ressources *ressources;
     st_global_shoot *shoot;
     float enn_damage;
 } st_global;

@@ -12,17 +12,17 @@ st_settings *generate_settings(void)
     st_settings *settings = my_malloc(sizeof(*settings));
 
     settings->background = generate_object((sfVector2f){651, 141}, \
-    (sfIntRect){0, 0, 615, 569}, "contents/UI/settings/texts.png");
+    (sfIntRect){0, 0, 615, 569}, "contents/ui/settings/texts.png");
     settings->cancel = generate_object((sfVector2f){815, 921}, \
-    (sfIntRect){0, 0, 141, 102}, "contents/UI/settings/cancel.png");
+    (sfIntRect){0, 0, 141, 102}, "contents/ui/settings/cancel.png");
     settings->save = generate_object((sfVector2f){989, 920}, \
-    (sfIntRect){0, 0, 141, 103}, "contents/UI/settings/save.png");
+    (sfIntRect){0, 0, 141, 103}, "contents/ui/settings/save.png");
     settings->cross = generate_object((sfVector2f){1263, 43}, \
-    (sfIntRect){0, 0, 47, 61}, "contents/UI/settings/cross.png");
+    (sfIntRect){0, 0, 47, 61}, "contents/ui/settings/cross.png");
     settings->music = generate_object((sfVector2f){707, 517}, \
-    (sfIntRect){0, 0, 506, 44}, "contents/UI/settings/top_bar.png");
+    (sfIntRect){0, 0, 506, 44}, "contents/ui/settings/top_bar.png");
     settings->sfx = generate_object((sfVector2f){707, 676}, \
-    (sfIntRect){0, 0, 506, 44}, "contents/UI/settings/bottom_bar.png");
+    (sfIntRect){0, 0, 506, 44}, "contents/ui/settings/bottom_bar.png");
     settings->bounds[0] = (sfFloatRect){0, 0, 0, 0};
     settings->bounds[1] = (sfFloatRect){0, 0, 0, 0};
     settings->bounds[2] = (sfFloatRect){0, 0, 0, 0};

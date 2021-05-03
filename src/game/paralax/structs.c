@@ -35,8 +35,8 @@ structs_t *all_dat(void)
 {
     structs_t *window = malloc(sizeof(structs_t));
 
-    window->mode.width = WIDTH;
-    window->mode.height = HEIGHT;
+    window->mode.width = 200;
+    window->mode.height = 400;
     window->mode.bitsPerPixel = 32;
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
@@ -78,6 +78,7 @@ st_global *ini(void)
     st_global *all = malloc(sizeof(st_global));
 
     all->window = all_dat();
+    all->mul_price = 1;
     all->paralax = paralax_ini();
     all->ship = ship_ini();
     all->shoot = generate_shoot();
@@ -93,6 +94,7 @@ st_global *ini(void)
     all->texture = texture_ini();
     all->key = key_ini(all);
     all->enn_damage = 5;
+    all->money = money_ini();
     return (all);
 }
 
