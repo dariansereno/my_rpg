@@ -337,6 +337,10 @@ typedef struct st_module_card_t {
     int pos_rect;
 } module_card_s;
 
+typedef struct st_ui_game {
+    st_object *ui[4];
+} ui_game_s;
+
 typedef struct st_pause_t {
     st_object *ui[2];
     sfText *text;
@@ -392,6 +396,7 @@ typedef struct st_ui {
     planet_card_s *planet_card;
     trade_card_s *trade_card;
     module_card_s *module_card;
+    ui_game_s *ui;
     pause_s *pause;
     pause_set_s *pause_settings;
     st_loading *loading_board;

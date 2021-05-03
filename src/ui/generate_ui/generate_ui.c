@@ -23,6 +23,7 @@ st_ui *generate_ui(void)
     ui->planet_card = generate_planet_card();
     ui->trade_card = generate_trade_card();
     ui->module_card = generate_module_card();
+    ui->ui = generate_ui_game();
     ui->pause = generate_pause();
     ui->loading_board = generate_loading_board();
     ui->menu = generate_menu();
@@ -40,6 +41,7 @@ void destroy_ui(st_ui *ui)
     destroy_object(ui->interacting);
     destroy_module_card(ui->module_card);
     destroy_trade_card(ui->trade_card);
+    destroy_ui_game(ui->ui);
     destroy_menu(ui->menu);
     destroy_fade(ui->fade);
     destroy_settings(ui->settings);
