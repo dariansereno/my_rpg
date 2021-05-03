@@ -43,12 +43,13 @@ void check_status(st_global *ad)
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
+        display_ui_game(ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);
     display_pause(ad);
-    display_pause_settings(ad);
+    // display_pause_settings(ad);
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);

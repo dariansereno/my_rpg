@@ -55,19 +55,15 @@ void items_text_trade_card(st_global *g, int y)
 {
     // switch (g->ressources) {
     //     case 0:
-    //         sfText_setString(g->ui->trade_card->text, "ARDENT");
+    //         sfText_setString(g->ui->trade_card->text, "item1");
     //         break;
     //     case 1:
-    //         sfText_setString(g->ui->trade_card->text, "WARM");
+    //         sfText_setString(g->ui->trade_card->text, "item2");
     //         break;
     //     case 2:
-    //         sfText_setString(g->ui->trade_card->text, "NORMAL");
+    //         sfText_setString(g->ui->trade_card->text, "item3");
     //         break;
-    //     case 3:
-    //         sfText_setString(g->ui->trade_card->text, "COLD");
-    //         break;
-    //     case 4:
-    //         sfText_setString(g->ui->trade_card->text, "FROSTEN");
+    //     default:
     //         break;
     // }
     // sfText_setPosition(g->ui->trade_card->text, \

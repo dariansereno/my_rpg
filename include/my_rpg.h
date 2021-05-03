@@ -310,6 +310,13 @@
             void text_price_module_card(st_global *g);
         // ARROWS
             void arrow_events_module(st_global *g);
+    // UI_GAME
+        // GENERATE_UI_GAME
+            ui_game_s *generate_ui_game(void);
+            void destroy_ui_game(ui_game_s *ui);
+        // UI_GAME
+            void set_position_ui_game(st_global *g);
+            void display_ui_game(st_global *g);
     // PAUSE
         // GENERATE_PAUSE
             pause_s *generate_pause(void);
