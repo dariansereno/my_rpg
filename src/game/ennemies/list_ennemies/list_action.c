@@ -40,7 +40,6 @@ void pop_position_ennemies(list_ennemies *list, int index)
 {
     list_ennemies temp = *list;
     list_ennemies next = NULL;
-    list_ennemies test = NULL;
     int i = 0;
 
     if (*list == NULL)
@@ -50,18 +49,24 @@ void pop_position_ennemies(list_ennemies *list, int index)
         free(temp);
         return ;
     }
-    for (int i = 0; temp != NULL && i < index - 1; i++)
+    for (int i = 0; temp != NULL && temp->next->index != index; i++)
         temp = temp->next;
     if (temp == NULL || temp->next == NULL)
         return;
-    test = temp;
-    while (test != NULL) {
-        test->index -= 1;
-        test = test->next;
-    }
     next = temp->next->next;
     free(temp->next);
     temp->next = next;
+}
+
+void reindex_ennemies(list_ennemies *list)
+{
+    list_ennemies temp = *list;
+
+    for (int i = 0; temp != NULL; i++) {
+        temp->index = i;
+        temp = temp->next;
+    }
+    return ;
 }
 
 int size_list_ennemies(list_ennemies li)
@@ -89,6 +94,7 @@ st_planet pl)
             clock_move_ennemies(li, ad);
             if (li->shootcl->seconds > 1) {
                 push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
+                reindex_timer(li);
                 sfClock_restart(li->shootcl->clock);
             }
         print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);

@@ -59,3 +59,15 @@ void print_ennemies_list_pos(list_ennemies li)
         li = li->next;
     }
 }
+
+void print_ennemies_list_index(list_ennemies li)
+{
+    if (li == NULL) {
+        printf("EMPTY !\n");
+        return ;
+    }
+    while (li != NULL){
+        printf("=> %d\n", li->index);
+        li = li->next;
+    }
+}

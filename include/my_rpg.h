@@ -27,6 +27,9 @@
 #include <math.h>
 
 // GAME
+    // ANIMATIONS
+        // EXPLODE_ANIM.C
+            void print_list_explo(list_timer *li, st_global *ad);
     // PARALAX
         // MOVE.C
             void go_right(st_global *ad);
@@ -119,6 +122,8 @@
             void print_ennemies_list(list_ennemies li, sfRenderWindow *window,
             st_global *ad, st_planet pl);
             void pop_position_ennemies(list_ennemies *list, int index);
+            void print_ennemies_list_index(list_ennemies li);
+            void reindex_ennemies(list_ennemies *list);
     // OBJECT
         st_object *generate_object(sfVector2f pos, sfIntRect rect, char
         *texturepath);
@@ -193,6 +198,7 @@
         // MATH.C
             sfVector2i *scatter_plot(scatter math);
             int random_between(int start, int stop);
+            int random_piped();
         // GENERATE_PLANET_TYPE.C
             st_planet *general_all_planets(sfVector2i *pos, int size);
             sfTexture **generates_planets_textures();
@@ -249,6 +255,7 @@
                 sfVector2f change_pos_by_dir(int dir, sfVector2f pos);
             // LIST
                 void push_back_timer(list_timer *li, sfVector2f pos, int dir);
+                void reindex_timer(list_timer *li);
                 void pop_position_timer(list_timer *list, int index);
                 int size_list_timer(list_timer li);
                 list_timer timer_from_index(int index, list_timer li);

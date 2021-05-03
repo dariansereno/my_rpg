@@ -13,6 +13,7 @@ void push_back_planet(list_planet *li, st_planet planet)
     list_planet lastnode = *li;
 
     node->planet = planet;
+    node->size = random_piped();
     node->timer.clock = sfClock_create();
     node->move.clock = sfClock_create();
     node->spawning.clock = sfClock_create();
