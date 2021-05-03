@@ -7,7 +7,7 @@
 
 CC				=	gcc
 CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations
-CPPFLAGS		=	-I./include -g3
+CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm
 
 SRC				=	$(wildcard src/*.c && src/*/*.c && src/*/*/*.c && src/*/*/*/*.c && src/*/*/*/*/*.c)
@@ -20,7 +20,7 @@ all				: $(NAME)
 
 $(NAME)			: lib/my/libmy.a $(OBJ)
 				@echo "\033[1;37mBinary Compilation...\033[0m"
-				$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJ) $(LDFLAGS)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
 				@echo "\033[1;34m[OK] \033[1;32mCompilated binary\033[0m\033[1;31m [$(NAME)]\033[0m"
 
 lib/my/libmy.a	:

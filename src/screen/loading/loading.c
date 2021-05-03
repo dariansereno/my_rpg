@@ -14,9 +14,9 @@ st_loading *generate_loading_board(void)
     loading->planet = generate_object((sfVector2f){828, 329}, \
     (sfIntRect){0, 0, 48, 48}, "contents/img/sp/terran_c1.png");
     loading->rect[0] = generate_object((sfVector2f){800, 654}, \
-    (sfIntRect){0, 0, 320, 10}, "contents/UI/textures/rect_w.png");
+    (sfIntRect){0, 0, 320, 10}, "contents/ui/textures/rect_w.png");
     loading->rect[1] = generate_object((sfVector2f){800, 654}, \
-    (sfIntRect){0, 0, 0, 10}, "contents/UI/textures/rect_b.png");
+    (sfIntRect){0, 0, 0, 10}, "contents/ui/textures/rect_b.png");
     sfSprite_setScale(loading->planet->sprite, (sfVector2f){5.5, 5.5});
     sfSprite_setPosition(loading->planet->sprite, \
     (sfVector2f){loading->planet->pos.x, loading->planet->pos.y});
@@ -45,8 +45,7 @@ void screen_loading(st_global *g)
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->loading_board->rect[1]->sprite, NULL);
     if (g->ui->loading_board->close) {
-        g->window->screen = 4;
-        destroy_loading(g);
+        g->window->screen = 2;
         return;
     }
     sfRenderWindow_display(g->window->window);

@@ -14,13 +14,13 @@ module_card_s *generate_module_card(void)
     module_card->font = sfFont_createFromFile("contents/fonts/myfont.otf");
     module_card->text = sfText_create();
     module_card->ui[0] = generate_object((sfVector2f){1192, 497}, \
-    (sfIntRect){0, 0, 54, 40}, "contents/UI/module/tick.png");
+    (sfIntRect){0, 0, 54, 40}, "contents/ui/module/tick.png");
     module_card->ui[1] = generate_object((sfVector2f){395, 469}, \
-    (sfIntRect){0, 0, 700, 97}, "contents/UI/module/rect.png");
+    (sfIntRect){0, 0, 700, 97}, "contents/ui/module/rect.png");
     module_card->ui[2] = generate_object((sfVector2f){312, 167}, \
-    (sfIntRect){0, 0, 1296, 747}, "contents/UI/module/bg.png");
+    (sfIntRect){0, 0, 1296, 747}, "contents/ui/module/bg.png");
     module_card->ui[3] = generate_object((sfVector2f){1339, 724}, \
-    (sfIntRect){0, 0, 193, 103}, "contents/UI/module/buy_not.png");
+    (sfIntRect){0, 0, 193, 103}, "contents/ui/module/buy_not.png");
     module_card->existing = false;
     module_card->pressed = false;
     module_card->pos_rect = 1;
