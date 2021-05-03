@@ -46,6 +46,7 @@ void screen_loading(st_global *g)
     g->ui->loading_board->rect[1]->sprite, NULL);
     if (g->ui->loading_board->close) {
         g->window->screen = 2;
+        destroy_loading(g->ui->loading_board);
         return;
     }
     sfRenderWindow_display(g->window->window);

@@ -81,8 +81,9 @@ void check_status(st_global *ad)
     display_trade_card(ad);
     display_module_card(ad);
     display_pause(ad);
-    // display_pause_settings(ad);
+    display_pause_settings(ad);
     sfRenderWindow_display(ad->window->window);
+    sfSprite_setPosition(ad->ship->bship, ad->ship->bshippos);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);
         last_key_pressed(ad);
