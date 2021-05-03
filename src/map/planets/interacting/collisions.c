@@ -73,12 +73,13 @@ void planet_collision(st_global *ad)
         if (circle_contains(155, sfSprite_getPosition(planet->planet.sprite),
         sfSprite_getPosition(ad->ship->bship)) && ad->ship->firstcollisionS
         == false && ad->ship->firstcollisionD == false && ad->ship->
-        firstcollisionZ == false && ad->ship->firstcollisionQ == false) {
+        firstcollisionZ == false && ad->ship->firstcollisionQ == false
+        && planet->size == 2) {
             SD_collisions(ad);
             ZQ_collisions(ad);
         }
         if (circle_contains(155, sfSprite_getPosition(planet->planet.sprite),
-        sfSprite_getPosition(ad->ship->bship))) {
+        sfSprite_getPosition(ad->ship->bship)) && planet->size == 2) {
             c = true;
             check_good_collision(ad, planet);
         }

@@ -193,6 +193,8 @@ typedef struct ship_s {
     sfView *view;
     sfVector2f velocity;
     sfVector2f acceleration;
+    st_timer *reload;
+    float reload_time;
     float life;
     float attack;
 }ship_t;
@@ -285,7 +287,7 @@ typedef struct st_planet_s {
     sfIntRect rect;
     bool tradable;
     list_ennemies ennemies;
-    bool habitable;
+    bool colonized;
 } st_planet;
 
 typedef struct list_elem_planet_s {
@@ -301,6 +303,8 @@ typedef struct list_elem_planet_s {
     int direction;
     int index;
     int ennemies_spawn;
+    int size;
+    int sc;
     struct list_elem_planet_s *next;
 } list_elem_planet, *list_planet;
 
@@ -466,7 +470,16 @@ typedef struct st_global_shoot_s
     sfTexture *tex_enn;
     sfSprite **sprite_ship;
     sfSprite **sprite_enn;
+    sfSprite *explo_sp;
+    st_timer *explo_tmr;
+    sfIntRect explo_rect;
+    list_timer li_explo;
 } st_global_shoot;
+
+typedef struct st_global_sfx_s
+{
+    sfSound *explosion;
+} st_global_sfx;
 
 typedef struct st_global_s {
     st_text *text;

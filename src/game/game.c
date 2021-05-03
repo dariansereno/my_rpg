@@ -62,6 +62,7 @@ void check_status(st_global *ad)
     {ad->ship->viewrect.left + 250, ad->ship->viewrect.top + 75});
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
+    print_lil_planet(ad->planets->planets, ad->window->window, ad);
     print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     sfRenderWindow_drawText(ad->window->window, ad->money->moneytext, NULL);
@@ -76,6 +77,7 @@ void check_status(st_global *ad)
         ennemies_spawning(ad);
         display_interaction(ad);
         display_ui_game(ad);
+        print_list_explo(&ad->shoot->li_explo, ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);
@@ -96,7 +98,7 @@ int game_loop(void)
 {
     st_global *ad = ini();
     ad->planets = generate_all_map();
-    generate_trade(ad);
+    // generate_trade(ad);
 
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
