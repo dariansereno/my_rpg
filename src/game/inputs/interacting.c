@@ -49,7 +49,7 @@ void interaction_input(st_global *ad)
             for (int i = 0; planets->trade[i]->price != -1; i++) {
                 printf("id = %d\n", planets->trade[i]->id);
                 printf("price = %d\n", planets->trade[i]->price);
-                printf("nb = %d\n", planets->trade[i]->nb);
+                printf("nb == %d\n", planets->trade[i]->nb);
             }
             ad->ui->trade_card->existing = true;
         }
