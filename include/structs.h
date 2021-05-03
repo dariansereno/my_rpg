@@ -308,6 +308,33 @@ typedef struct st_trade_card_t {
     int counter;
 } trade_card_s;
 
+typedef struct st_module_card_t {
+    sfFont *font;
+    sfText *text;
+    st_object *ui[4];
+    bool existing;
+    bool pressed;
+    int pos_rect;
+} module_card_s;
+
+typedef struct st_pause_t {
+    st_object *ui[2];
+    sfText *text;
+    sfFont *font;
+    bool existing;
+    bool pressed;
+    int pos_rect;
+} pause_s;
+
+typedef struct st_pause_settings_t {
+    st_object *ui[4];
+    sfText *text;
+    sfFont *font;
+    int pos_rect;
+    bool existing;
+    bool pressed;
+} pause_set_s;
+
 typedef struct st_loading_t {
     st_object *planet;
     st_object *rect[2];
@@ -344,6 +371,9 @@ typedef struct st_ui {
     st_object **selector;
     planet_card_s *planet_card;
     trade_card_s *trade_card;
+    module_card_s *module_card;
+    pause_s *pause;
+    pause_set_s *pause_settings;
     st_loading *loading_board;
     st_menu *menu;
     st_fade *fade;

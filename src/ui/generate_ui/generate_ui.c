@@ -22,10 +22,13 @@ st_ui *generate_ui(void)
     (sfIntRect){0, 0, 63, 64}, "contents/img/sp/selectorbh.png");
     ui->planet_card = generate_planet_card();
     ui->trade_card = generate_trade_card();
+    ui->module_card = generate_module_card();
+    ui->pause = generate_pause();
     ui->loading_board = generate_loading_board();
     ui->menu = generate_menu();
     ui->fade = generate_fade();
     ui->settings = generate_settings();
+    ui->pause_settings = generate_pause_settings();
     return (ui);
 }
 
@@ -35,9 +38,13 @@ void destroy_ui(st_ui *ui)
     destroy_object(ui->selector[1]);
     destroy_object(ui->selector[2]);
     destroy_object(ui->interacting);
+    destroy_module_card(ui->module_card);
     destroy_trade_card(ui->trade_card);
     destroy_menu(ui->menu);
     destroy_fade(ui->fade);
     destroy_settings(ui->settings);
+    destroy_loading(ui->loading_board);
+    destroy_pause(ui->pause);
+    destroy_pause_settings(ui->pause_settings);
     ui = NULL;
 }

@@ -59,10 +59,10 @@ void display_trade_card(st_global *g)
         sfRenderWindow_drawSprite(g->window->window, \
         g->ui->trade_card->ui[5]->sprite, \
         NULL);
-        display_planet_trade_card(g);
         sfRenderWindow_drawSprite(g->window->window, \
         g->ui->trade_card->ui[4]->sprite, \
         NULL);
+        display_planet_trade_card(g);
         arrow_texture(g);
     }
 }

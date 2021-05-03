@@ -116,7 +116,7 @@
             void screen_loading(st_global *g);
             void clock_planet_loading(st_global *g);
             void clock_loading_bar(st_global *g);
-            void destroy_loading(st_global *g);
+            void destroy_loading(st_loading *loading_board);
     // MENU
         // MENU
             st_menu *generate_menu(void);
@@ -217,7 +217,7 @@
             void create_planet_card(st_global *g, sfVector2f position_view, \
             list_planet planets);
             void rectangle_shape_text_planet_card_creation(st_global *g);
-            void destroy_planet_card(st_global *g);
+            void destroy_planet_card(planet_card_s *planet_card);
         // RECTANGLE_SHAPE
             void rectangle_shape_planet_card_set(st_global *g, \
             list_planet planets);
@@ -248,6 +248,49 @@
             char *int_to_str_price(int money);
             void items_text_trade_card(st_global *g, int y);
             void text_title_credits_trade_card(st_global *g, list_planet planets);
+    // MODULE_CARD
+        // GENERATE_MODULE_CARD
+            module_card_s *generate_module_card(void);
+            void destroy_module_card(module_card_s *module_card);
+        // MODULE_CARD
+            void display_module_card(st_global *g);
+            void set_init_position_module(st_global *g);
+            void display_texts_module_card(st_global *g, list_planet planets);
+            void display_planet_module_card(st_global *g);
+            void rect_module_position(st_global *g);
+        // TEXT_MODULE_CARD
+            void text_title_credits_module_card(st_global *g, list_planet planets);
+            void text_price_module_card(st_global *g);
+        // ARROWS
+            void arrow_events_module(st_global *g);
+    // PAUSE
+        // GENERATE_PAUSE
+            pause_s *generate_pause(void);
+            void destroy_pause(pause_s *pause);
+        // PAUSE
+            void display_pause(st_global *g);
+            void rect_position_pause(st_global *g);
+        // EVENTS
+            void events_pause_down(st_global *g);
+            void events_pause_up(st_global *g);
+            void events_redirect_pause(st_global *g);
+            void text_pause(st_global *g);
+        // HOVER
+            void hover(st_global *g);
+        // SETTINGS
+            // GENERATE_PAUSE_SETTINGS
+                pause_set_s *generate_pause_settings(void);
+                void destroy_pause_settings(pause_set_s *settings);
+            // PAUSE_SETTINGS
+                void rect_set_position_pause_settings(st_global *g);
+                void display_pause_settings(st_global *g);
+                void set_rect_texture_pause_settings(st_global *g);
+            // EVENTS_PAUSE_SETTINGS
+                void text_rect_pause_settings(st_global *g);
+                void events_pause_settings(st_global *g);
+                void events_pause_settings_left(st_global *g);
+                void events_pause_settings_right(st_global *g);
+                void set_width_volume_pause_settings(st_global *g);
 
 // MESSAGES
     // ADDITIONNAL_MSG
