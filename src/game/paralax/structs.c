@@ -35,11 +35,15 @@ structs_t *all_dat(void)
 {
     structs_t *window = malloc(sizeof(structs_t));
 
-    window->mode.width = 200;
-    window->mode.height = 400;
+    window->mode.width = 1920;
+    window->mode.height = 1000;
     window->mode.bitsPerPixel = 32;
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
+    sfRenderWindow_setPosition(window->window, \
+    (sfVector2i){(sfVideoMode_getDesktopMode().width / 2) - \
+    (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
+    (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
     window->screen = 4;
     window->music_volume = 100.0;
