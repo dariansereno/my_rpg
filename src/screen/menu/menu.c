@@ -12,15 +12,15 @@ st_menu *generate_menu(void)
     st_menu *menu = my_malloc(sizeof(*menu));
 
     menu->cursor = generate_object((sfVector2f){0, 0}, \
-    (sfIntRect){0, 0, 37, 51}, "contents/UI/textures/cursor.png");
+    (sfIntRect){0, 0, 37, 51}, "contents/ui/textures/cursor.png");
     menu->items[0] = generate_object((sfVector2f){1257, 37}, \
-    (sfIntRect){0, 0, 59, 67}, "contents/UI/menu/cross.png");
+    (sfIntRect){0, 0, 59, 67}, "contents/ui/menu/cross.png");
     menu->items[1] = generate_object((sfVector2f){888, 943}, \
-    (sfIntRect){0, 0, 135, 103}, "contents/UI/menu/settings.png");
+    (sfIntRect){0, 0, 135, 103}, "contents/ui/menu/settings.png");
     menu->items[2] = generate_object((sfVector2f){761, 775}, \
-    (sfIntRect){0, 0, 398, 150}, "contents/UI/menu/start_btn.png");
+    (sfIntRect){0, 0, 398, 150}, "contents/ui/menu/start_btn.png");
     menu->items[3] = generate_object((sfVector2f){721, 171}, \
-    (sfIntRect){0, 0, 467, 177}, "contents/UI/menu/spaceciv.png");
+    (sfIntRect){0, 0, 467, 177}, "contents/ui/menu/spaceciv.png");
     menu->view = sfView_createFromRect((sfFloatRect){560, 0, 800, 1080});
     menu->bounds[0] = (sfFloatRect){0, 0, 0, 0};
     menu->bounds[1] = (sfFloatRect){0, 0, 0, 0};

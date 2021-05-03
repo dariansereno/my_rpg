@@ -24,7 +24,7 @@ list_planet planets)
     g->ui->planet_card->existing = true;
     g->ui->planet_card->mockup_s = sfSprite_create();
     g->ui->planet_card->mockup_t = \
-    sfTexture_createFromFile("contents/UI/mockups/mockup-planet-card.png", \
+    sfTexture_createFromFile("contents/ui/mockups/mockup-planet-card.png", \
     NULL);
     sfSprite_setTexture(g->ui->planet_card->mockup_s, \
     g->ui->planet_card->mockup_t, sfTrue);

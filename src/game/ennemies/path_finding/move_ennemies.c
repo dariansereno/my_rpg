@@ -9,7 +9,7 @@
 
 int direction_ennemie(st_ennemies ennemies, sfVector2f target, st_global *ad)
 {
-    float max = INT32_MAX - 1;
+    float max = 2147483647 - 1;
     int index = 0;
 
     calculate_table_notation(ennemies.pos, &ennemies, ad,
@@ -26,7 +26,7 @@ int direction_ennemie(st_ennemies ennemies, sfVector2f target, st_global *ad)
 int direction_ennemie_base(st_ennemies ennemies, sfVector2f target,
 st_global *ad)
 {
-    float max = INT32_MAX - 1;
+    float max = 2147483647 - 1;
     int index = 0;
 
     calculate_table_notation_base(&ennemies, ad, 50,

@@ -41,7 +41,7 @@ structs_t *all_dat(void)
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 4;
+    window->screen = 1;
     window->music_volume = 100.0;
     window->sfx_volume = 100;
     return (window);
