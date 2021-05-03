@@ -31,9 +31,10 @@ void display_ui_game(st_global *g)
     g->ui->ui->map->sprite, \
     NULL);
     sfSprite_setPosition(g->ship->bship, \
-    (sfVector2f){132 + g->ship->viewrect.left, 90 + g->ship->viewrect.top});
-    // sfSprite_setScale(g->ship->bship, (sfVector2f))
+    (sfVector2f){163 + g->ship->viewrect.left, 125 + g->ship->viewrect.top});
+    sfSprite_setScale(g->ship->bship, (sfVector2f){2, 2});
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
+    sfSprite_setScale(g->ship->bship, (sfVector2f){1, 1});
 }
 
 void rectangle_display_ui_game(st_global *g)
