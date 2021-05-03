@@ -357,9 +357,13 @@ typedef struct st_module_card_t {
 
 typedef struct st_ui_game {
     st_object *map;
+    st_object *craft[2];
+    st_object *item;
     sfRectangleShape *life;
     sfRectangleShape *credits;
     sfRectangleShape *xp;
+    sfText *text;
+    sfFont *font;
 } ui_game_s;
 
 typedef struct st_pause_t {
@@ -394,6 +398,15 @@ typedef struct st_menu_t {
     int menu;
 } st_menu;
 
+typedef struct st_end_t {
+    st_object *ui[4];
+    sfText *text;
+    sfFont *font;
+    bool existing;
+    bool pressed;
+    int pos_rect;
+} st_end;
+
 typedef struct st_fade_t {
     sfRectangleShape *rect[2];
     st_timer timer;
@@ -422,6 +435,7 @@ typedef struct st_ui {
     pause_set_s *pause_settings;
     st_loading *loading_board;
     st_menu *menu;
+    st_end *end;
     st_fade *fade;
     st_settings *settings;
 } st_ui;
@@ -486,6 +500,7 @@ typedef struct st_global_s {
     st_ressources *ressources;
     st_global_shoot *shoot;
     float enn_damage;
+    bool win;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
