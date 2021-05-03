@@ -13,12 +13,14 @@ void push_back_planet(list_planet *li, st_planet planet)
     list_planet lastnode = *li;
 
     node->planet = planet;
+    node->size = random_piped();
     node->timer.clock = sfClock_create();
     node->move.clock = sfClock_create();
     node->spawning.clock = sfClock_create();
     node->direction = random_between(0, 7);
     node->index = size_list_planet(*li);
     node->ennemies_spawn = random_between(10, 25);
+    node->sc = random_between(9, 13);
     node->can_interact = false;
     node->next = NULL;
     if (*li == NULL)
@@ -76,20 +78,54 @@ int size_list_planet(list_planet li)
     return (i);
 }
 
+void print_planet_normal(list_planet li, sfRenderWindow *window, st_global *ad)
+{
+    if (li->size == 2) {
+        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
+        sfSprite_setScale(li->planet.sprite, (sfVector2f){5, 5});
+        sfSprite_setPosition(li->planet.sprite,
+        (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
+        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+        if (li->planet.kind == TECH){
+            print_ennemies_list(li->planet.ennemies, window, ad,
+            li->planet);
+        }
+    }
+    else if (li->size == 3) {
+        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
+        sfSprite_setScale(li->planet.sprite, (sfVector2f){li->sc, li->sc});
+        sfSprite_setPosition(li->planet.sprite,
+        (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
+        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+    }
+}
+
 void print_planet_list(list_planet li, sfRenderWindow *window, st_global *ad)
 {
     while (li != NULL){
-       if (li->on_screen == true) {
-            sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
-            sfSprite_setScale(li->planet.sprite, (sfVector2f){5, 5});
-            sfSprite_setPosition(li->planet.sprite,
-            (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
-            sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
-            if (li->planet.kind == TECH){
-                print_ennemies_list(li->planet.ennemies, window, ad,
-                li->planet);
-            }
-        }
+       if (li->on_screen == true)
+           print_planet_normal(li, window, ad);
+        li = li->next;
+    }
+}
+
+void print_planet_lil(list_planet li, sfRenderWindow *window, st_global *ad)
+{
+    if (li->size == 1) {
+        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
+        sfSprite_setScale(li->planet.sprite, (sfVector2f){(float)li->sc / 10.0,
+        (float)li->sc / 10.0});
+        sfSprite_setPosition(li->planet.sprite,
+        (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
+        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
+    }
+}
+
+void print_lil_planet(list_planet li, sfRenderWindow *window, st_global *ad)
+{
+    while (li != NULL){
+        if (li->on_screen == true)
+            print_planet_lil(li, window, ad);
         li = li->next;
     }
 }

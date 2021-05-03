@@ -9,13 +9,24 @@
 
 void ship_shoot(st_global *ad)
 {
-    push_back_timer(&ad->shoot->li_shoot, ad->ship->bshippos, deduct_dir(ad));
+    sfTime time = sfClock_getElapsedTime(ad->ship->reload->clock);
+    float seconds = time.microseconds / 1000000.0;
+
+    if (seconds > ad->ship->reload_time) {
+        push_back_timer(&ad->shoot->li_shoot, ad->ship->bshippos,
+        deduct_dir(ad));
+        reindex_timer(&ad->shoot->li_shoot);
+        sfClock_restart(ad->ship->reload->clock);
+    }
 }
 
 void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
 {
-    if (en->ennemies.life <= 0)
+    if (en->ennemies.life <= 0){
+        push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
+        reindex_ennemies(&(*pl)->planet.ennemies);
+    }
 }
 
 void check_all_ennemies_from_planet(st_global *ad, list_timer *shoot,
@@ -27,7 +38,7 @@ list_planet *pl)
         if (circle_contains(30, (*shoot)->pos, en->ennemies.pos)) {
             en->ennemies.life -= ad->ship->attack;
             ciao_ennemy(en, ad, pl);
-                (*shoot)->destroy = true;
+            (*shoot)->destroy = true;
         }
         en = en->next;
     }

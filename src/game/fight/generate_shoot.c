@@ -52,8 +52,17 @@ sfSprite **generate_ship_shoot()
 st_global_shoot *generate_shoot()
 {
     st_global_shoot *shoot = malloc(sizeof(*shoot));
+    sfTexture *texture = sfTexture_createFromFile(
+    "contents/ships/explo/sps.png", NULL);
 
     shoot->li_shoot = NULL;
+    shoot->li_explo = NULL;
+    shoot->explo_sp = sfSprite_create();
+    shoot->explo_rect = (sfIntRect){.height = 46, .width = 46, .left = 0,
+    .top = 0};
+    sfSprite_setTexture(shoot->explo_sp, texture, sfTrue);
+    shoot->explo_tmr = malloc(sizeof(*shoot->explo_tmr));
+    shoot->explo_tmr->clock = sfClock_create();
     shoot->sprite_ship = generate_ship_shoot();
     shoot->sprite_enn = generate_enn_shoot();
     return (shoot);
