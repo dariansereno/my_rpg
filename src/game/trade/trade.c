@@ -68,9 +68,9 @@ st_ressources **trade(st_global *ad)
     return (tab);
 }
 
-void generate_trade(st_global *ad)
+void generate_trade(st_global *ad, list_planet *planets)
 {
-    list_planet pl = ad->planets->planets;
+    list_planet pl = *planets;
 
     while (pl != NULL) {
         if (pl->planet.tradable == true)
