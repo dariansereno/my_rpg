@@ -61,7 +61,7 @@ char **my_str_to_word_array(const char *str, const char *separator)
 {
     int j = 0;
     int i = 0;
-    char **final_array = malloc((sizeof(char *)) \
+    char **final_array = ((sizeof(char *)) \
     * (get_nb_words(str, separator) + 1));
     final_array[get_nb_words(str, separator)] = NULL;
 
@@ -69,7 +69,7 @@ char **my_str_to_word_array(const char *str, const char *separator)
         if ((is_separator(*(str - 1), separator) == 1 \
         && is_separator(*str, separator) == 0) || (i == 0 \
         && is_separator(*str, separator) == 0)) {
-            final_array[j] = malloc(sizeof(char) \
+            final_array[j] = (sizeof(char) \
             * (word_size(str, separator) + 1));
             my_strncpy(final_array[j], str, word_size(str, separator));
             final_array[j][word_size(str, separator)] = '\0';

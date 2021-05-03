@@ -13,8 +13,15 @@ void push_back_ennemies(list_ennemies *li, st_ennemies ennemies)
     list_ennemies lastnode = *li;
 
     node->ennemies.pos = ennemies.pos;
+    node->ennemies.spawn_pos = ennemies.pos;
     node->ennemies.rect = ennemies.rect;
     node->ennemies.sprite = ennemies.sprite;
+    node->ennemies.life = 50;
+    node->ennemies.dir = 0;
+    node->shootcl = malloc(sizeof(*node->shootcl));
+    node->shootcl->clock = sfClock_create();
+    node->li_shoot = NULL;
+    node->index = 0;
     node->index = size_list_ennemies(*li);
     node->timer = malloc(sizeof(*node->timer));
     node->timer->clock = sfClock_create();
@@ -33,6 +40,8 @@ void pop_position_ennemies(list_ennemies *list, int index)
 {
     list_ennemies temp = *list;
     list_ennemies next = NULL;
+    list_ennemies test = NULL;
+    int i = 0;
 
     if (*list == NULL)
         return;
@@ -41,10 +50,15 @@ void pop_position_ennemies(list_ennemies *list, int index)
         free(temp);
         return ;
     }
-    for (; temp != NULL && temp->next->index!= index ;)
+    for (int i = 0; temp != NULL && i < index - 1; i++)
         temp = temp->next;
     if (temp == NULL || temp->next == NULL)
         return;
+    test = temp;
+    while (test != NULL) {
+        test->index -= 1;
+        test = test->next;
+    }
     next = temp->next->next;
     free(temp->next);
     temp->next = next;
@@ -63,13 +77,28 @@ int size_list_ennemies(list_ennemies li)
     return (i);
 }
 
-void print_ennemies_list(list_ennemies li, sfRenderWindow *window, st_global *ad)
+void print_ennemies_list(list_ennemies li, sfRenderWindow *window, st_global *ad,
+st_planet pl)
 {
     while (li != NULL){
-        clock_move_ennemies(li, ad);
+        li->shootcl->time = sfClock_getElapsedTime(li->shootcl->clock);
+        li->shootcl->seconds = li->shootcl->time.microseconds / 1000000.0;
+        if (circle_contains(1200, (sfVector2f){(float)pl.pos.x, (float)pl.pos.y},
+        li->ennemies.pos) && circle_contains(1200, (sfVector2f){(float)pl.pos.x,
+        (float)pl.pos.y}, ad->ship->bshippos)) {
+            clock_move_ennemies(li, ad);
+            if (li->shootcl->seconds > 1) {
+                push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
+                sfClock_restart(li->shootcl->clock);
+            }
+        print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
+        }
+        else
+            clock_move_ennemies_to_base(li, ad);
         sfSprite_setTextureRect(li->ennemies.sprite, li->ennemies.rect);
         sfSprite_setPosition(li->ennemies.sprite,
         (sfVector2f){(float)li->ennemies.pos.x, (float)li->ennemies.pos.y});
+        sfSprite_setOrigin(li->ennemies.sprite, (sfVector2f){24, 24});
         sfRenderWindow_drawSprite(window, li->ennemies.sprite, NULL);
         li = li->next;
     }

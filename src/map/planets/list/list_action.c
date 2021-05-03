@@ -86,7 +86,8 @@ void print_planet_list(list_planet li, sfRenderWindow *window, st_global *ad)
             (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
             sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
             if (li->planet.kind == TECH){
-                print_ennemies_list(li->planet.ennemies, window, ad);
+                print_ennemies_list(li->planet.ennemies, window, ad,
+                li->planet);
             }
         }
         li = li->next;

@@ -86,7 +86,7 @@ planet_animation animation_from_type(planet_type planet)
 
 st_planet *general_all_planets(sfVector2i *pos, int size)
 {
-    st_planet *planets = malloc(sizeof(st_planet) * size);
+    st_planet *planets = my_malloc(sizeof(st_planet) * size);
 
     for (int i = 0; i  < size - (size / 4); i++) {
         // planets[i].type = random_between(0, 31);

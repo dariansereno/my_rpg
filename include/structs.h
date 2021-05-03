@@ -126,6 +126,16 @@ typedef struct st_timer_s {
     float seconds;
 } st_timer;
 
+typedef struct list_elem_timer_s {
+    st_timer timer;
+    int index;
+    sfVector2f pos;
+    int dir;
+    int it;
+    bool destroy;
+    struct list_elem_timer_s *next;
+} *list_timer, list_elem_timer;
+
 typedef struct st_object_s {
     sfTexture *texture;
     sfSprite *sprite;
@@ -161,6 +171,9 @@ typedef struct structs_s {
     sfEvent event;
     sfVideoMode mode;
     sfMusic *music;
+    float music_volume;
+    float sfx_volume;
+    int screen;
 }structs_t;
 
 typedef struct ship_s {
@@ -179,20 +192,27 @@ typedef struct ship_s {
     sfView *view;
     sfVector2f velocity;
     sfVector2f acceleration;
+    float life;
+    float attack;
 }ship_t;
 
 typedef struct st_ennemies_s
 {
     sfSprite *sprite;
     sfVector2f pos;
+    sfVector2f spawn_pos;
     sfIntRect rect;
     float *path_table;
+    float life;
+    int dir;
 } st_ennemies;
 
 typedef struct list_elem_ennemies_s
 {
     st_ennemies ennemies;
     st_timer *timer;
+    list_timer li_shoot;
+    st_timer *shootcl;
     int index;
     struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
@@ -295,14 +315,59 @@ typedef struct st_planet_card_t {
     sfText *t_pres;
     sfText *title;
     bool existing;
-    bool displaying;
-    bool closing;
 } planet_card_s;
+
+typedef struct st_trade_card_t {
+    sfFont *font;
+    sfText *text;
+    st_object *ui[6];
+    bool existing;
+    bool pressed;
+    int first_cell;
+    int pos_rect;
+    int counter;
+} trade_card_s;
+
+typedef struct st_loading_t {
+    st_object *planet;
+    st_object *rect[2];
+    bool close;
+} st_loading;
+
+typedef struct st_menu_t {
+    sfView *view;
+    st_object *cursor;
+    st_object *items[4];
+    sfFloatRect bounds[3];
+    int menu;
+} st_menu;
+
+typedef struct st_fade_t {
+    sfRectangleShape *rect[2];
+    st_timer timer;
+    bool fade;
+} st_fade;
+
+typedef struct st_settings_t {
+    st_object *save;
+    st_object *cancel;
+    st_object *cross;
+    st_object *background;
+    st_object *music;
+    st_object *sfx;
+    sfFloatRect bounds[3];
+    int settings;
+} st_settings;
 
 typedef struct st_ui {
     st_object *interacting;
     st_object **selector;
     planet_card_s *planet_card;
+    trade_card_s *trade_card;
+    st_loading *loading_board;
+    st_menu *menu;
+    st_fade *fade;
+    st_settings *settings;
 } st_ui;
 
 typedef struct st_variable_s {
@@ -319,6 +384,7 @@ typedef struct st_ressources
     int id;
     int nb;
     int stack;
+    int price;
 } st_ressources;
 
 typedef struct list_elem_ressources_s
@@ -333,19 +399,31 @@ typedef struct st_global_ressources_s
     int max;
 } st_global_ressources;
 
+typedef struct st_global_shoot_s
+{
+    list_timer li_shoot;
+    sfTexture *tex_ship;
+    sfTexture *tex_enn;
+    sfSprite **sprite_ship;
+    sfSprite **sprite_enn;
+} st_global_shoot;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
+    key_pressed last_key_pressed;
     ship_t *ship;
     st_ui *ui;
-    sfTexture *enn_texture;
+    sfTexture **enn_texture;
     st_variable *var;
     st_useful *other;
     keys_t *key;
     load_t *texture;
+    st_global_shoot *shoot;
+    float enn_damage;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
