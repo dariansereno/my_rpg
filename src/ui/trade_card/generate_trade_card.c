@@ -33,7 +33,7 @@ trade_card_s *generate_trade_card(void)
 
 trade_card_s *generate_trade_card_bools(trade_card_s *trade_card)
 {
-    trade_card->pos_rect = 1;
+    trade_card->pos_rect = 0;
     trade_card->first_cell = 1;
     trade_card->counter = 0;
     trade_card->existing = false;

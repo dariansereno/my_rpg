@@ -41,7 +41,7 @@ structs_t *all_dat(void)
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfDefaultStyle, NULL);
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 1;
+    window->screen = 4;
     window->music_volume = 100.0;
     window->sfx_volume = 100;
     return (window);
@@ -68,6 +68,8 @@ ship_t *ship_ini(void)
     ship->firstcollisionQ = false;
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
+    ship->attack = 10;
+    ship->life = 200;
     return (ship);
 }
 
@@ -79,6 +81,7 @@ st_global *ini(void)
     all->mul_price = 1;
     all->paralax = paralax_ini();
     all->ship = ship_ini();
+    all->shoot = generate_shoot();
     all->ui = generate_ui();
     all->other = malloc(sizeof(*all->other));
     all->other->planet_text = sfText_create();
@@ -87,10 +90,10 @@ st_global *ini(void)
     sfText_setFont(all->other->planet_text, all->other->font);
     all->var = malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
-    all->enn_texture = sfTexture_createFromFile("contents/ships/green_02.png",
-    NULL);
+    all->enn_texture = enn_textures();
     all->texture = texture_ini();
     all->key = key_ini(all);
+    all->enn_damage = 5;
     all->money = money_ini();
     return (all);
 }

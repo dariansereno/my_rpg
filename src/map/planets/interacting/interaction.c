@@ -17,9 +17,9 @@ void interaction(st_global *ad)
     while (planet != NULL) {
         p = sfSprite_getPosition(planet->planet.sprite);
         if (((s.x - p.x) * (s.x - p.x)) + ((s.y - p.y) * (s.y - p.y)) < (r * r))
-            planet->interact = true;
+            planet->can_interact = true;
         else
-            planet->interact = false;
+            planet->can_interact = false;
         planet = planet->next;
     }
 }

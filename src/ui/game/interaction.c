@@ -61,6 +61,22 @@ void selector_interaction(list_planet planets, st_global *ad)
     display_planet_text(planets, ad);
 }
 
+void change_interact(st_global *ad, list_planet in)
+{
+    list_planet pl = ad->planets->planets;
+
+    if (in == NULL)
+        return ;
+    while (pl != NULL) {
+        if (pl->planet.pos.x == in->planet.pos.x &&
+        pl->planet.pos.y == in->planet.pos.y)
+            pl->interact = true;
+        else
+            pl->interact = false;
+        pl = pl->next;
+    }
+}
+
 void display_interaction(st_global *ad)
 {
     list_planet planets = ad->planets->planets;
@@ -69,7 +85,7 @@ void display_interaction(st_global *ad)
     list_planet selected = NULL;
 
     while (planets != NULL) {
-        if (planets->interact == true) {
+        if (planets->can_interact == true) {
             disp.x = ad->ship->viewrect.left + 1750;
             disp.y = ad->ship->viewrect.top + 50;
             sfSprite_setPosition(ad->ui->interacting->sprite, disp);
@@ -83,7 +99,12 @@ void display_interaction(st_global *ad)
                 selected = planets;
             }
         }
+        else {
+            planets->can_interact = false;
+            planets->interact = false;
+        }
         planets = planets->next;
     }
+    change_interact(ad, selected);
     selector_interaction(selected, ad);
 }
