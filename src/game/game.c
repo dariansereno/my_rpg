@@ -13,6 +13,9 @@ void check_event(st_global *ad)
     sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape))
         sfRenderWindow_close(ad->window->window);
     interaction_input(ad);
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
+    == sfKeySpace)
+        ship_shoot(ad);
 }
 
 void check_status(st_global *ad)
@@ -29,8 +32,10 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
+    print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
+    print_planet_list(ad->planets->planets, ad->window->window, ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -39,7 +44,6 @@ void check_status(st_global *ad)
         ennemies_spawning(ad);
         display_interaction(ad);
     }
-    print_planet_list(ad->planets->planets, ad->window->window);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);
@@ -48,6 +52,7 @@ void check_status(st_global *ad)
     sfRenderWindow_display(ad->window->window);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {
         change_key_press(ad);
+        last_key_pressed(ad);
         check_event(ad);
     }
 }

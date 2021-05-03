@@ -76,23 +76,52 @@
             void more_key_change(st_global *ad);
             void extra_change(st_global *ad);
             void change_key_press(st_global *ad);
+            void last_key_pressed(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
     // ENNEMIES
+        // PATH_FINDING
+            // CIRCLE_INTERSECTION
+                void calculate_table_notation(sfVector2f start,
+                st_ennemies *e, st_global *ad, int r);
+                int direction_ennemie(st_ennemies ennemies, sfVector2f target,
+                st_global *ad);
+            // MOVE_ENNEMIES
+                st_ennemies move_enn_up(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_down(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_left(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_right(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_upright(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_downright(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_downleft(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_upleft(st_ennemies e, st_global *ad);
+                st_ennemies move_enn_stand(st_ennemies e, st_global *ad);
+                void clock_move_ennemies(list_ennemies e, st_global *ad);
+                void clock_move_ennemies_to_base(list_ennemies e, st_global
+                *ad);
+                void calculate_table_notation_base(st_ennemies *e,
+                st_global *ad, int r, sfVector2f target);
+                float note_case(sfVector2f start, sfVector2f end,
+                st_global *ad);
         // ENNEMIES_GENERATION.C
-            sfVector2f position_generate_near_planet(list_planet planet, st_global *ad,
-            float radius);
+            sfVector2f position_generate_near_planet(list_planet planet,
+            st_global *ad, float radius);
             void ennemies_spawning(st_global *ad);
+            sfTexture **enn_textures();
         // ENNEMIES_CONDITION.C
             bool is_on_planet(st_global *ad, sfVector2f object);
-            bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object);
+            bool is_on_ennemies(st_global *ad, list_ennemies ennemies,
+            sfVector2f object);
         // LIST
             void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
             void print_ennemies_list_pos(list_ennemies li);
             int size_list_ennemies(list_ennemies li);
-            void print_ennemies_list(list_ennemies li, sfRenderWindow *window);
+            void print_ennemies_list(list_ennemies li, sfRenderWindow *window,
+            st_global *ad, st_planet pl);
+            void pop_position_ennemies(list_ennemies *list, int index);
     // OBJECT
-        st_object *generate_object(sfVector2f pos, sfIntRect rect, char *texturepath);
+        st_object *generate_object(sfVector2f pos, sfIntRect rect, char
+        *texturepath);
         void destroy_object(st_object *object);
     // GAME.C
     void check_status(st_global *ad);
@@ -182,7 +211,8 @@
             void push_back_planet(list_planet *li, st_planet planet);
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
-            void print_planet_list(list_planet li, sfRenderWindow *window);
+            void print_planet_list(list_planet li, sfRenderWindow *window,
+            st_global *ad);
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
             list_planet planet_from_index(int index, list_planet li);
@@ -203,6 +233,23 @@
             void destroy_ui(st_ui *ui);
             st_ui *generate_ui(void);
     // GAME
+        // FIGHT
+            // GENERATE
+                st_global_shoot *generate_shoot();
+                int deduct_dir(st_global *ad);
+                void ship_shoot(st_global *ad);
+                sfVector2f change_pos_by_dir(int dir, sfVector2f pos);
+            // LIST
+                void push_back_timer(list_timer *li, sfVector2f pos, int dir);
+                void pop_position_timer(list_timer *list, int index);
+                int size_list_timer(list_timer li);
+                list_timer timer_from_index(int index, list_timer li);
+                void print_list_shoot(list_timer *li, sfSprite **sprite,
+                st_global *ad);
+                void print_list_shoot_enn(list_timer *li, sfSprite **sprite,
+                st_global *ad);
+            // COLLISION SHOOT
+                void collision_shoot(st_global *ad, list_timer *shoot);
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);

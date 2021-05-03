@@ -10,20 +10,7 @@ CFLAGS			=	-W -Wall -Wextra -Wno-deprecated-declarations
 CPPFLAGS		=	-I./include
 LDFLAGS			=	-L./ -lmy -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm
 
-SRC				=	$(wildcard src/*.c && src/game/*.c && \
-					src/game/inputs/*.c && src/game/paralax/*.c \
-					src/map/*.c && src/map/planets/*.c && \
-					src/map/planets/list/*.c && src/map/planets/generation/*.c \
-					&& src/map/planets/interacting/*.c && \
-					src/map/planets/animation/*.c && src/ui/*.c && \
-					src/ui/game/*.c &&src/ui/trade/*.c && src/ui/planet/*.c \
-					&& src/game/ennemies/*.c && src/game/ennemies/list/*.c \
-					&& src/path_finding/*.c && src/messages/*.c && src/game/inventory/*.c \
-					&& src/ui/planet_card/*.c && src/ui/generate_ui/*.c && \
-					&& src/ui/trade_card/*.c && src/screen/end/*.c && src/screen/menu/*.c \
-					&& src/screen/loading/*.c && src/screen/*.c && src/sounds/*.c \
-					&& src/screen/settings/*.c && src/ui/module_card/*.c \
-					&& src/ui/pause/*.c && src/ui/pause/settings/*.c)
+SRC				=	$(wildcard src/*.c && src/*/*.c && src/*/*/*.c && src/*/*/*/*.c && src/*/*/*/*/*.c)
 
 OBJ				=	$(SRC:.c=.o)
 
@@ -33,7 +20,7 @@ all				: $(NAME)
 
 $(NAME)			: lib/my/libmy.a $(OBJ)
 				@echo "\033[1;37mBinary Compilation...\033[0m"
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+				$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJ) $(LDFLAGS)
 				@echo "\033[1;34m[OK] \033[1;32mCompilated binary\033[0m\033[1;31m [$(NAME)]\033[0m"
 
 lib/my/libmy.a	:

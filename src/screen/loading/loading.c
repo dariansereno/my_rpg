@@ -45,7 +45,7 @@ void screen_loading(st_global *g)
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->loading_board->rect[1]->sprite, NULL);
     if (g->ui->loading_board->close) {
-        g->window->screen = 2;
+        g->window->screen = 4;
         destroy_loading(g);
         return;
     }
