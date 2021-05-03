@@ -22,10 +22,8 @@ void arrow_events_trade(st_global *g)
         if (g->ui->trade_card->pressed) {
             if (g->ui->trade_card->pos_rect <= 2)
                 g->ui->trade_card->pos_rect += 1;
-            if (g->ui->trade_card->pos_rect == 3) {
-                g->ui->trade_card->first_cell += 1;
+            if (g->ui->trade_card->pos_rect == 3)
                 g->ui->trade_card->pos_rect = 2;
-            }
             g->ui->trade_card->pressed = false;
         }
     }
@@ -35,12 +33,10 @@ void arrow_events_trade(st_global *g)
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyUp) {
         if (g->ui->trade_card->pressed) {
-            if (g->ui->trade_card->pos_rect >= 1)
+            if (g->ui->trade_card->pos_rect >= 0)
                 g->ui->trade_card->pos_rect -= 1;
-            if (g->ui->trade_card->pos_rect == 0) {
-                g->ui->trade_card->first_cell -= 1;
-                g->ui->trade_card->pos_rect = 1;
-            }
+            if (g->ui->trade_card->pos_rect < 0)
+                g->ui->trade_card->pos_rect = 0;
             g->ui->trade_card->pressed = false;
         }
     }

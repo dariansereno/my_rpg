@@ -103,6 +103,11 @@ st_global *ini(void)
     all->enn_damage = 5;
     all->money = money_ini();
     all->win = false;
+    all->ship->bshippos = (sfVector2f){25000 + (1920 / 2), 25000 + (1080 / 2)};
+    all->paralax->nebulapos = (sfVector2f){25000, 25000};
+    all->paralax->starpos = (sfVector2f){25000, 25000};
+    all->ship->viewrect.left = 25000;
+    all->ship->viewrect.top = 25000;
     return (all);
 }
 
