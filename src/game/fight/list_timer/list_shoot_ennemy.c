@@ -32,9 +32,8 @@ void collision_shoot_enn(st_global *ad, list_timer *shoot)
     list_planet pl = ad->planets->planets;
 
     while (pl != NULL) {
-        if (pl->on_screen == true && pl->planet.kind == TECH) {
+        if (pl->on_screen == true && pl->planet.kind == TECH)
             check_collision_ship(ad, shoot, &pl);
-        }
         pl = pl->next;
     }
 }
@@ -60,7 +59,8 @@ void print_list_shoot_enn(list_timer *li, sfSprite **sprite, st_global *ad)
             temp->destroy = true;
         collision_shoot_enn(ad, &temp);
         if (temp->destroy == true)
-            pop_position_timer(li, 0);
+            pop_position_timer(li, temp->index);
+        reindex_timer(li);
         temp = temp->next;
     }
 }
