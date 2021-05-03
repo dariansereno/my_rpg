@@ -16,7 +16,7 @@ ui_game_s *generate_ui_game(void)
     ui->xp = sfRectangleShape_create();
     set_rectangle_ui_game(ui);
     ui->map = generate_object((sfVector2f){75, 41}, \
-    (sfIntRect){0, 0, 183, 183}, "contents/UI/ui/map.png");
+    (sfIntRect){0, 0, 183, 183}, "contents/ui/ui/map.png");
     return (ui);
 }
 
