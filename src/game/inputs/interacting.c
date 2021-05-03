@@ -66,4 +66,12 @@ void interaction_input(st_global *ad)
         }
         ad->ui->pause->existing = true;
     }
+    if (ad->window->event.type == sfEvtKeyPressed && \
+        ad->window->event.key.code == sfKeyK) {
+        if (ad->ui->end->existing) {
+            ad->ui->end->existing = false;
+            return;
+        }
+        ad->ui->end->existing = true;
+    }
 }
