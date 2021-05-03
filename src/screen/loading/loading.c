@@ -94,9 +94,9 @@ void clock_planet_loading(st_global *g)
     g->ui->loading_board->planet->rect);
 }
 
-void destroy_loading(st_global *g)
+void destroy_loading(st_loading *loading_board)
 {
-    destroy_object(g->ui->loading_board->planet);
-    destroy_object(g->ui->loading_board->rect[0]);
-    destroy_object(g->ui->loading_board->rect[1]);
+    destroy_object(loading_board->planet);
+    destroy_object(loading_board->rect[0]);
+    destroy_object(loading_board->rect[1]);
 }

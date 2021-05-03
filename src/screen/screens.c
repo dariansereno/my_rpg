@@ -38,7 +38,9 @@ void screen_game(st_global *ad)
         interaction(ad);
         check_status(ad);
         if (ad->ui->planet_card->existing == false && \
-        ad->ui->trade_card->existing == false)
+        ad->ui->trade_card->existing == false && \
+        ad->ui->module_card->existing == false && \
+        ad->ui->pause->existing == false)
             paralax_move(ad);
     } else
         display_fade(ad);
