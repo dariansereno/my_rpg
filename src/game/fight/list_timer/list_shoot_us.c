@@ -15,6 +15,7 @@ void push_back_timer(list_timer *li, sfVector2f pos, int dir)
     node->it = 0;
     node->index = size_list_timer(*li);
     node->timer.clock = sfClock_create();
+    node->timer.seconds = 0;
     node->destroy = false;
     node->pos = pos;
     node->dir = dir;
@@ -49,6 +50,22 @@ void pop_position_timer(list_timer *list, int index)
     next = temp->next->next;
     free(temp->next);
     temp->next = next;
+}
+
+void reindex_timer(list_timer *li)
+{
+    list_timer temp = *li;
+
+    printf("=> 0\n");
+    printf("%d && index => %d\n", size_list_timer(*li));
+    if (temp == NULL)
+        return ;
+    printf("=> 1\n");
+    for (int i = 0; temp != NULL; i++) {
+        temp->index = i;
+        temp = temp->next;
+    }
+    return ;
 }
 
 int size_list_timer(list_timer li)
@@ -98,7 +115,8 @@ void print_list_shoot(list_timer *li, sfSprite **sprite, st_global *ad)
             temp->destroy = true;
         collision_shoot(ad, &temp);
         if (temp->destroy == true)
-            pop_position_timer(li, 0);
+            pop_position_timer(li, temp->index);
+        reindex_timer(li);
         temp = temp->next;
     }
 }

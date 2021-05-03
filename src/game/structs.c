@@ -58,6 +58,9 @@ ship_t *ship_ini(void)
     ship->viewrect = (sfFloatRect) {.height = 1080, .left = 0, .top = 0,
     .width = 1920};
     ship->view = sfView_createFromRect(ship->viewrect);
+    ship->reload = malloc(sizeof(*ship->reload));
+    ship->reload->clock = sfClock_create();
+    ship->reload_time = 0.18;
     ship->collisionZ = false;
     ship->collisionD = false;
     ship->collisionS = false;

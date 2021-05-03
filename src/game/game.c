@@ -76,6 +76,7 @@ void check_status(st_global *ad)
         ennemies_spawning(ad);
         display_interaction(ad);
         display_ui_game(ad);
+        print_list_explo(&ad->shoot->li_explo, ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);
@@ -95,7 +96,7 @@ int game_loop(void)
 {
     st_global *ad = ini();
     ad->planets = generate_all_map();
-    generate_trade(ad);
+    // generate_trade(ad);
 
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);

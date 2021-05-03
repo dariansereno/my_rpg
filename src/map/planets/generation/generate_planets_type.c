@@ -104,8 +104,8 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
             planets[i].relation = 3;
     }
     for (int i = size - (size / 4) ; i < size; i++) {
-        // planets[i].type = random_between(16, 19);
         planets[i].type = random_between(21, 23);
+        // planets[i].type = random_between(16, 19);
         planets[i].climate = climate_from_type(planets[i].type);
         planets[i].animated = animation_from_type(planets[i].type);
         planets[i].stats = generate_planet_stat(planets[i]);
