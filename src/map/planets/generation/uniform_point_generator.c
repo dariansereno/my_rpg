@@ -23,9 +23,9 @@ int random_piped()
 {
     int x = random_between(0, 10);
     
-    if (x <= 3)
+    if (x < 3)
         return (1);
-    else if (x > 3 && x < 7)
+    else if (x >= 3 && x <= 7)
         return (2);
     else
         return (3);
