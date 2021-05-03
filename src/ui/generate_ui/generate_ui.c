@@ -27,6 +27,7 @@ st_ui *generate_ui(void)
     ui->pause = generate_pause();
     ui->loading_board = generate_loading_board();
     ui->menu = generate_menu();
+    ui->end = generate_end();
     ui->fade = generate_fade();
     ui->settings = generate_settings();
     ui->pause_settings = generate_pause_settings();
@@ -43,6 +44,7 @@ void destroy_ui(st_ui *ui)
     destroy_trade_card(ui->trade_card);
     destroy_ui_game(ui->ui);
     destroy_menu(ui->menu);
+    destroy_end(ui->end);
     destroy_fade(ui->fade);
     destroy_settings(ui->settings);
     destroy_pause(ui->pause);
