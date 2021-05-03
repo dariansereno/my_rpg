@@ -187,6 +187,13 @@
             list_planet pop_back_planet(list_planet list);
             list_planet planet_from_index(int index, list_planet li);
             void print_planet_list_stat(list_planet li);
+    // TRADE
+        // TRADE.C
+            st_ressources **trade(st_global *ad);
+            void generate_trade(st_global *ad);
+            st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j);
+            int prices(st_global *ad, int id);
+            int stock(st_global *ad, int id);
 // STRUCTS
     st_global *ini(void);
     structs_t *all_dat(void);
@@ -273,7 +280,6 @@
         void dialogue_rectangle_settings_bis(st_global *g);
         void dialogue_text(st_global *global);
         void add_message(st_global *global, char *str, int delay);
-
 
 int game_loop_2();
 void dialogue_text(st_global *global);

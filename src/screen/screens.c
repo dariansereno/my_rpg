@@ -9,6 +9,7 @@
 
 void screen(st_global *g)
 {
+    // g->window->screen = 4;
     switch (g->window->screen) {
         case 1:
             sfRenderWindow_setSize(g->window->window, (sfVector2u){800, 1080});

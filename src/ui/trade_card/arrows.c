@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void count_items()
+void count_items(void)
 {
 
 }
