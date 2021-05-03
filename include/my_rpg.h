@@ -220,7 +220,7 @@
     // TRADE
         // TRADE.C
             st_ressources **trade(st_global *ad);
-            void generate_trade(st_global *ad);
+            void generate_trade(st_global *ad, list_planet *planets);
             st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j);
             int prices(st_global *ad, int id);
             int stock(st_global *ad, int id);
