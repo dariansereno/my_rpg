@@ -71,7 +71,7 @@ void check_status(st_global *ad)
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
-    ad->ui->pause->existing == false) {
+    ad->ui->pause->existing == false && ad->ui->end->existing == false) {
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
@@ -82,6 +82,7 @@ void check_status(st_global *ad)
     display_module_card(ad);
     display_pause(ad);
     display_pause_settings(ad);
+    display_end(ad);
     sfRenderWindow_display(ad->window->window);
     sfSprite_setPosition(ad->ship->bship, ad->ship->bshippos);
     while (sfRenderWindow_pollEvent(ad->window->window, &ad->window->event)) {

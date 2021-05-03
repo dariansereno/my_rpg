@@ -169,6 +169,18 @@
             void control_volumes_settings(st_global *g);
             void animate_buttons_settings(st_global *g);
     // END
+        // END
+            st_end *generate_end(void);
+            void position_end(st_global *g);
+            void display_end(st_global *g);
+            void position_win(st_global *g);
+            void destroy_end(st_end *end);
+        // EVENTS_END
+            void end_rect_left(st_global *g);
+            void end_rect_right(st_global *g);
+            void position_bg_end(st_global *g);
+            void rect_position_end(st_global *g);
+            void text_position_end(st_global *g);
 
 // MAP
     //ANIMATION

@@ -99,6 +99,7 @@ st_global *ini(void)
     all->key = key_ini(all);
     all->enn_damage = 5;
     all->money = money_ini();
+    all->win = false;
     return (all);
 }
 
