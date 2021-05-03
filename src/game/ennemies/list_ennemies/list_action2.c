@@ -53,8 +53,8 @@ void print_ennemies_list_pos(list_ennemies li)
     }
     while (li != NULL){
         printf("oui\n");
-        printf("%d\n",li->index);
         printf("%f\n", li->ennemies.pos.x);
+        printf("%d\n", li->index);
         printf("Ennemies n*%d = [%f, %f]\n", li->index, li->ennemies.pos.x, li->ennemies.pos.y);
         li = li->next;
     }
