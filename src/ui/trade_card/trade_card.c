@@ -89,18 +89,24 @@ void display_texts_trade_card(st_global *g, list_planet planets)
     int y = 555;
 
     text_title_credits_trade_card(g, planets);
-        printf("%d\n", planets->planet.tradable);
     for (int i = 0; i < g->ui->trade_card->counter; i++) {
-        sfText_setString(g->ui->trade_card->text, int_to_str_price(3)); // -> quantité
+        if (planets->trade[i] != NULL)
+        printf("%d\n", planets->trade[i]->nb);
+        if (planets->trade[i] != NULL && planets->trade[i]->nb > 0 && planets->trade[i]->nb <= 5) {
+            sfText_setString(g->ui->trade_card->text, int_to_str_price(planets->trade[i]->nb)); // -> quantité
         sfText_setPosition(g->ui->trade_card->text, \
         (sfVector2f){g->ship->viewrect.left + 683, g->ship->viewrect.top + y});
         sfRenderWindow_drawText(g->window->window, \
         g->ui->trade_card->text, NULL);
-        sfText_setString(g->ui->trade_card->text, int_to_str_price(99999999)); // -> prix
-        sfText_setPosition(g->ui->trade_card->text, \
+        }
+        printf("ok\n");
+        if (planets->trade[i] != NULL && planets->trade[i]->nb != 0 && (planets->trade[i]->price >= 20 && planets->trade[i]->price <= 100)) {
+            sfText_setString(g->ui->trade_card->text, int_to_str_price(planets->trade[i]->price)); // -> prix
+            sfText_setPosition(g->ui->trade_card->text, \
         (sfVector2f){g->ship->viewrect.left + 945, g->ship->viewrect.top + y});
         sfRenderWindow_drawText(g->window->window, \
         g->ui->trade_card->text, NULL);
+        }
         // récupérer les prix de l'index + les items (si ils existent)
         // items_text_trade_card(g, y);
         y += 87;
