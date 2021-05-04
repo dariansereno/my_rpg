@@ -70,7 +70,6 @@ void change_interact(st_global *ad, list_planet in)
     while (pl != NULL) {
         if (pl->planet.pos.x == in->planet.pos.x &&
         pl->planet.pos.y == in->planet.pos.y) {
-            printf("sexe intra  uretrale\n");
             pl->interact = true;
         }
         else

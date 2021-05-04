@@ -30,6 +30,15 @@
     // ANIMATIONS
         // EXPLODE_ANIM.C
             void print_list_explo(list_timer *li, st_global *ad);
+    // INVENTORY
+        // GENERATE_INVENTORY.C
+            st_object **generate_items();
+            st_ressources *generate_inventory(st_global *ad);
+        // DISPLAY_INVENTORY
+            void display_items_inventory(st_global *ad);
+        // INV_HANDLING.C
+            void is_craftable(st_global *ad);
+            void craft_settler(st_global *ad);
     // PARALAX
         // MOVE.C
             void go_right(st_global *ad);

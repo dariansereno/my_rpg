@@ -42,10 +42,6 @@ void check_status(st_global *ad)
 {
     sfRenderWindow_setView(ad->window->window, ad->ship->view);
     sfRenderWindow_clear(ad->window->window, sfBlack);
-    // sfText_setFont(ad->money->moneytext, ad->money->moneyfont);
-    // sfText_setFont(ad->money->moneyval, ad->money->moneyfont);
-    // sfText_setString(ad->money->moneytext, "credits: ");
-    // sfText_setString(ad->money->moneyval, life_to_str(ad->money->money));
     sfSprite_setTexture(ad->ship->bship, ad->ship->bshipt, sfTrue);
     sfSprite_setTexture(ad->paralax->nebula, ad->paralax->nebulat, sfTrue);
     sfSprite_setTexture(ad->paralax->star, ad->paralax->start, sfTrue);
@@ -54,20 +50,13 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->ship->bship, ad->ship->bshippos);
     sfSprite_setPosition(ad->paralax->nebula, ad->paralax->nebulapos);
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
-    sfText_setCharacterSize(ad->money->moneytext, 50);
-    sfText_setCharacterSize(ad->money->moneyval, 50);
-    sfText_setPosition(ad->money->moneytext, (sfVector2f)
-    {ad->ship->viewrect.left + 50, ad->ship->viewrect.top + 75});
-    sfText_setPosition(ad->money->moneyval, (sfVector2f)
-    {ad->ship->viewrect.left + 250, ad->ship->viewrect.top + 75});
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     print_lil_planet(ad->planets->planets, ad->window->window, ad);
     print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
-    sfRenderWindow_drawText(ad->window->window, ad->money->moneytext, NULL);
-    sfRenderWindow_drawText(ad->window->window, ad->money->moneyval, NULL);
     animate_planets(ad);
+    is_craftable(ad);
     print_planet_list(ad->planets->planets, ad->window->window, ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
@@ -76,8 +65,10 @@ void check_status(st_global *ad)
         spatial_object_move(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
-        display_ui_game(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
+        display_ui_game(ad);
+        display_items_inventory(ad);
+        craft_settler(ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);

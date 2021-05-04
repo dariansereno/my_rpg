@@ -58,5 +58,13 @@ void more_key_change(st_global *ad)
     == sfKeyQ) {
         ad->key_pressed.Q = false;
         ad->paralax->l = 0;
+    }
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
+    == sfKeyJ) {
+        ad->key_pressed.J = true;
+    }
+    if (ad->window->event.type == sfEvtKeyReleased && ad->window->event.key.code
+    == sfKeyJ) {
+        ad->key_pressed.J = false;
     }    
 }

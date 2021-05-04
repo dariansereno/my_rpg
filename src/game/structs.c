@@ -77,6 +77,7 @@ ship_t *ship_ini(void)
     ship->velocity = (sfVector2f){0, 0};
     ship->attack = 10;
     ship->life = 200;
+    ship->craft = false; // METTRE A FALSE
     return (ship);
 }
 
@@ -108,6 +109,9 @@ st_global *ini(void)
     all->paralax->starpos = (sfVector2f){25000, 25000};
     all->ship->viewrect.left = 25000;
     all->ship->viewrect.top = 25000;
+    all->items = generate_items();
+    all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
+    all->ressources = generate_inventory(all);
     return (all);
 }
 
