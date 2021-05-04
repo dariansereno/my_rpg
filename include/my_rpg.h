@@ -30,6 +30,15 @@
     // ANIMATIONS
         // EXPLODE_ANIM.C
             void print_list_explo(list_timer *li, st_global *ad);
+    // INVENTORY
+        // GENERATE_INVENTORY.C
+            st_object **generate_items();
+            st_ressources *generate_inventory(st_global *ad);
+        // DISPLAY_INVENTORY
+            void display_items_inventory(st_global *ad);
+        // INV_HANDLING.C
+            void is_craftable(st_global *ad);
+            void craft_settler(st_global *ad);
     // PARALAX
         // MOVE.C
             void go_right(st_global *ad);
@@ -188,6 +197,14 @@
             void text_position_end(st_global *g);
 
 // MAP
+    // COLONISATION
+        // GENERATE_COLONISATION.C
+            void generate_random_colonised(list_planet *planet, st_global *ad);
+        // PRINT_COLONISATION.C
+            void print_colonised_selec(st_global *ad);
+        // COLONISE_PLANET.C
+            void print_can_colonise(st_global *ad);
+            void colonise_planet(st_global *ad);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
@@ -345,7 +362,9 @@
             void destroy_ui_game(ui_game_s *ui);
             void set_rectangle_ui_game(ui_game_s *ui);
         // UI_GAME
-            void set_position_ui_game(st_global *g);
+            void set_rectangle_ui_game_life(ui_game_s *ui);
+            void set_rectangle_ui_game_credits(ui_game_s *ui);
+            void set_rectangle_ui_game_xp(ui_game_s *ui);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
     // PAUSE

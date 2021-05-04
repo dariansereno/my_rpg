@@ -49,7 +49,8 @@ void interaction_input(st_global *ad)
             ad->ui->trade_card->existing = true;
         }
         if (ad->window->event.type == sfEvtKeyPressed && \
-        ad->window->event.key.code == sfKeyF && planets->interact == true) {
+        ad->window->event.key.code == sfKeyF && planets->interact == true
+        && planets->planet.colonized) {
             if (ad->ui->module_card->existing) {
                 ad->ui->module_card->existing = false;
                 return;
