@@ -49,9 +49,8 @@ void collision_shoot(st_global *ad, list_timer *shoot)
     list_planet pl = ad->planets->planets;
 
     while (pl != NULL) {
-        if (pl->on_screen == true && pl->planet.kind == TECH) {
+        if (pl->on_screen == true && pl->planet.kind == TECH)
             check_all_ennemies_from_planet(ad, shoot, &pl);
-        }
         pl = pl->next;
     }
 }
