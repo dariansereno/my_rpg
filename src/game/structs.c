@@ -85,7 +85,7 @@ st_global *ini(void)
     st_global *all = malloc(sizeof(st_global));
 
     all->window = all_dat();
-    all->mul_price = 1;
+    all->mul_price = 1.0;
     all->paralax = paralax_ini();
     all->ship = ship_ini();
     all->shoot = generate_shoot();

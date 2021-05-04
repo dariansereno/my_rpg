@@ -18,7 +18,6 @@ void interaction(st_global *ad)
         p = sfSprite_getPosition(planet->planet.sprite);
         if (((s.x - p.x) * (s.x - p.x)) + ((s.y - p.y) * (s.y - p.y)) < (r * r)
         && planet->size == 2) {
-            printf("orgie d'homme bien dur\n");
             planet->can_interact = true;
         }
         else
