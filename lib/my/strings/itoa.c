@@ -20,7 +20,7 @@ void reverse_str(char str[], int len)
 char* itoa(int nb, char* str, int base)
 {
     int i = 0;
-    bool is_neg = nb < 0 && base == 10 ? true : false;
+    int is_neg = nb < 0 && base == 10 ? 1 : 0;
 
     if (nb == 0) {
         str[i] = '0';
