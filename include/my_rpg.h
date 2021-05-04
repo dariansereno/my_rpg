@@ -249,7 +249,7 @@
     // TRADE
         // TRADE.C
             st_ressources **trade(st_global *ad);
-            void generate_trade(st_global *ad);
+            void generate_trade(st_global *ad, list_planet *planets);
             st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j);
             int prices(st_global *ad, int id);
             int stock(st_global *ad, int id);
@@ -354,7 +354,9 @@
             void destroy_ui_game(ui_game_s *ui);
             void set_rectangle_ui_game(ui_game_s *ui);
         // UI_GAME
-            void set_position_ui_game(st_global *g);
+            void set_rectangle_ui_game_life(ui_game_s *ui);
+            void set_rectangle_ui_game_credits(ui_game_s *ui);
+            void set_rectangle_ui_game_xp(ui_game_s *ui);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
     // PAUSE
