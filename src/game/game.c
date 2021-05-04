@@ -42,10 +42,10 @@ void check_status(st_global *ad)
 {
     sfRenderWindow_setView(ad->window->window, ad->ship->view);
     sfRenderWindow_clear(ad->window->window, sfBlack);
-    sfText_setFont(ad->money->moneytext, ad->money->moneyfont);
-    sfText_setFont(ad->money->moneyval, ad->money->moneyfont);
-    sfText_setString(ad->money->moneytext, "credits: ");
-    sfText_setString(ad->money->moneyval, life_to_str(ad->money->money));
+    // sfText_setFont(ad->money->moneytext, ad->money->moneyfont);
+    // sfText_setFont(ad->money->moneyval, ad->money->moneyfont);
+    // sfText_setString(ad->money->moneytext, "credits: ");
+    // sfText_setString(ad->money->moneyval, life_to_str(ad->money->money));
     sfSprite_setTexture(ad->ship->bship, ad->ship->bshipt, sfTrue);
     sfSprite_setTexture(ad->paralax->nebula, ad->paralax->nebulat, sfTrue);
     sfSprite_setTexture(ad->paralax->star, ad->paralax->start, sfTrue);
@@ -98,7 +98,7 @@ int game_loop(void)
 {
     st_global *ad = ini();
     ad->planets = generate_all_map();
-    // generate_trade(ad);
+    generate_trade(ad, &ad->planets->planets);
 
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);

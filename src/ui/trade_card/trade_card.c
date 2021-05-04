@@ -89,6 +89,7 @@ void display_texts_trade_card(st_global *g, list_planet planets)
     int y = 555;
 
     text_title_credits_trade_card(g, planets);
+        printf("%d\n", planets->planet.tradable);
     for (int i = 0; i < g->ui->trade_card->counter; i++) {
         sfText_setString(g->ui->trade_card->text, int_to_str_price(3)); // -> quantité
         sfText_setPosition(g->ui->trade_card->text, \
