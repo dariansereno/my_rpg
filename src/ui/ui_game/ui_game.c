@@ -22,7 +22,7 @@ void set_position_ui_game(st_global *g)
     sfSprite_setPosition(g->ui->ui->craft[1]->sprite, \
     (sfVector2f){1758, 123});
     sfSprite_setPosition(g->ui->ui->item->sprite, \
-    (sfVector2f){751, 944});
+    (sfVector2f){751 + ((417 / 2) / 2), 944 + 53});
 }
 
 void item_craft_ui_game(st_global *g)
@@ -35,6 +35,7 @@ void item_craft_ui_game(st_global *g)
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->ui->item->sprite, \
     NULL);
+    sfSprite_setScale(g->ui->ui->item->sprite, (sfVector2f){0.5, 0.5});
     // if (craft)
         // for (int i = 0; i < 2; i++) {
         //     sfSprite_setPosition(g->ui->ui->craft[i]->sprite, (sfVector2f)
