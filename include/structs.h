@@ -364,8 +364,11 @@ typedef struct st_ui_game {
     st_object *craft[2];
     st_object *item;
     sfRectangleShape *life;
+    sfRectangleShape *life_outline;
     sfRectangleShape *credits;
+    sfRectangleShape *credits_outline;
     sfRectangleShape *xp;
+    sfRectangleShape *xp_outline;
     sfText *text;
     sfFont *font;
 } ui_game_s;

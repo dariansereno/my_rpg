@@ -89,7 +89,7 @@ int game_loop(void)
 {
     st_global *ad = ini();
     ad->planets = generate_all_map();
-    // generate_trade(ad);
+    generate_trade(ad, &ad->planets->planets);
 
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);

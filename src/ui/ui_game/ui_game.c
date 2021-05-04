@@ -12,6 +12,9 @@ void set_position_ui_game(st_global *g)
     sfRectangleShape_setPosition(g->ui->ui->life, (sfVector2f){217, 63});
     sfRectangleShape_setPosition(g->ui->ui->credits, (sfVector2f){217, 77});
     sfRectangleShape_setPosition(g->ui->ui->xp, (sfVector2f){217, 91});
+    sfRectangleShape_setPosition(g->ui->ui->life_outline, (sfVector2f){217, 63});
+    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f){217, 77});
+    sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f){217, 91});
     sfSprite_setPosition(g->ui->ui->map->sprite, \
     (sfVector2f){75, 41});
     sfSprite_setPosition(g->ui->ui->craft[0]->sprite, \
@@ -96,6 +99,23 @@ void rectangle_display_ui_game(st_global *g)
     sfRectangleShape_setPosition(g->ui->ui->xp, (sfVector2f)\
     {sfRectangleShape_getPosition(g->ui->ui->xp).x + g->ship->viewrect.left, \
     sfRectangleShape_getPosition(g->ui->ui->xp).y + g->ship->viewrect.top});
+    sfRectangleShape_setPosition(g->ui->ui->life_outline, (sfVector2f)\
+    {sfRectangleShape_getPosition(g->ui->ui->life_outline).x + g->ship->viewrect.left,
+    sfRectangleShape_getPosition(g->ui->ui->life_outline).y + g->ship->viewrect.top});
+    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f)\
+    {sfRectangleShape_getPosition(g->ui->ui->credits_outline).x + \
+    g->ship->viewrect.left, \
+    sfRectangleShape_getPosition(g->ui->ui->credits_outline).y + \
+    g->ship->viewrect.top});
+    sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f)\
+    {sfRectangleShape_getPosition(g->ui->ui->xp_outline).x + g->ship->viewrect.left, \
+    sfRectangleShape_getPosition(g->ui->ui->xp_outline).y + g->ship->viewrect.top});
+    sfRenderWindow_drawRectangleShape(g->window->window, \
+    g->ui->ui->life_outline, NULL);
+    sfRenderWindow_drawRectangleShape(g->window->window, \
+    g->ui->ui->credits_outline, NULL);
+    sfRenderWindow_drawRectangleShape(g->window->window, \
+    g->ui->ui->xp_outline, NULL);
     sfRenderWindow_drawRectangleShape(g->window->window, g->ui->ui->life, NULL);
     sfRenderWindow_drawRectangleShape(g->window->window, \
     g->ui->ui->credits, NULL);
