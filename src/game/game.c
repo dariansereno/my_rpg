@@ -70,6 +70,7 @@ void check_status(st_global *ad)
         ennemies_spawning(ad);
         display_interaction(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
+        print_target_indicator(ad);
         display_ui_game(ad);
         display_items_inventory(ad);
         craft_settler(ad);

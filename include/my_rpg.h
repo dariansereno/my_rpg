@@ -299,6 +299,7 @@
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
+            char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
     // PLANET_CARD
         // PLANET_CARD
@@ -395,6 +396,9 @@
                 void events_pause_settings_left(st_global *g);
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
+        // TARGET_INDICATOR
+                sfVector2f target_indicator(st_global *ad, sfVector2f obj);
+                void print_target_indicator(st_global *ad);
 
 // MESSAGES
     // ADDITIONNAL_MSG
