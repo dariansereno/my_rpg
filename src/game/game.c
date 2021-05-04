@@ -29,6 +29,7 @@ char *life_to_str(int life)
 
 void check_event(st_global *ad)
 {
+    colonise_planet(ad);
     if (ad->window->event.type == sfEvtClosed || (ad->window->event.type ==
     sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape))
         sfRenderWindow_close(ad->window->window);
@@ -63,6 +64,9 @@ void check_status(st_global *ad)
     ad->ui->module_card->existing == false && \
     ad->ui->pause->existing == false && ad->ui->end->existing == false) {
         spatial_object_move(ad);
+        print_colonised_selec(ad);
+        print_can_colonise(ad);
+        colonise_planet(ad);
         ennemies_spawning(ad);
         display_interaction(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
@@ -91,6 +95,7 @@ int game_loop(void)
     ad->planets = generate_all_map();
     generate_trade(ad, &ad->planets->planets);
 
+    generate_random_colonised(&ad->planets->planets, ad);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, 0);

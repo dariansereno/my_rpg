@@ -197,6 +197,14 @@
             void text_position_end(st_global *g);
 
 // MAP
+    // COLONISATION
+        // GENERATE_COLONISATION.C
+            void generate_random_colonised(list_planet *planet, st_global *ad);
+        // PRINT_COLONISATION.C
+            void print_colonised_selec(st_global *ad);
+        // COLONISE_PLANET.C
+            void print_can_colonise(st_global *ad);
+            void colonise_planet(st_global *ad);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
