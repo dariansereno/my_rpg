@@ -46,8 +46,11 @@ st_ressources *generate_inventory(st_global *ad)
     ad->nb_inv = malloc(sizeof(char) * 10);
 
     inv[0] = generate_ressource(0, ad);
+    inv[0].nb = 3;
     inv[1] = generate_ressource(1, ad);
+    inv[1].nb = 3;
     inv[2] = generate_ressource(2, ad);
+    inv[2].nb = 3;
     inv[3] = generate_ressource(3, ad);
     return (inv);
 }

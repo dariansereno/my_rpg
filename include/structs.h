@@ -46,8 +46,8 @@ typedef struct st_text_s {
 
 typedef enum ressources_id_s {
     black_matter,
+    ingot,
     crystal,
-    plastic,
     settler_module
 } ressources_id;
 
@@ -315,6 +315,8 @@ typedef struct list_elem_planet_s {
 typedef struct st_global_planet_s {
     list_planet planets;
     sfTexture **textures;
+    sfSprite *colonized_pl;
+    sfTexture *texture_colonized;
 } st_planet_global;
 
 typedef struct st_planet_card_t {
