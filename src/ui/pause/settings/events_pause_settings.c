@@ -23,33 +23,34 @@ void text_rect_pause_settings(st_global *g)
 
 void events_pause_settings(st_global *g)
 {
-    if (g->window->event.type == sfEvtKeyPressed && \
-    g->window->event.key.code == sfKeyEnter)
+    if (g->window->event.type == sfEvtKeyPressed && g->window->event.key.code
+    == sfKeyReturn)
         g->ui->pause_settings->pressed = true;
-    if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyEnter)
-        if (g->ui->pause_settings->pressed) {
-            switch (g->ui->pause_settings->pos_rect) {
-                case 1:
-                // cancel
-                    g->ui->pause_settings->existing = false;
-                    break;
-                case 2:
-                // save
-                    g->ui->pause_settings->existing = false;
-                    break;
-                default:
-                    break;
-            }
-            g->ui->pause_settings->pressed = false;
+    if (g->window->event.type == sfEvtKeyReleased && g->window->event.key.code
+    == sfKeyReturn && g->ui->pause_settings->pressed) {
+        switch (g->ui->pause_settings->pos_rect) {
+            case 1:
+                sfMusic_setVolume(g->window->music, g->window->music_volume);
+                g->ui->pause_settings->ui[2]->rect.width = \
+                g->window->width_volume;
+                g->ui->pause_settings->existing = false;
+                break;
+            case 2:
+            // save
+                g->ui->pause_settings->existing = false;
+                break;
+            default:
+                break;
         }
+        g->ui->pause_settings->pressed = false;
+    }
 }
 
 void events_pause_settings_left(st_global *g)
 {
     if (g->window->event.type == sfEvtKeyPressed && \
     g->window->event.key.code == sfKeyLeft)
-            g->ui->pause_settings->pressed = true;
+        g->ui->pause_settings->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyLeft) {
         if (g->ui->pause_settings->pressed) {
@@ -90,28 +91,37 @@ void set_width_volume_pause_settings(st_global *g)
     if (g->window->event.type == sfEvtMouseButtonReleased && \
     g->window->event.mouseButton.button == sfMouseLeft) {
         if (g->ui->pause_settings->pressed) {
-            if (x >= 782 && y >= 340 && x <= 821 && y <= 374 && \
+            if (x >= 772 && y >= 374 && x <= 826 && y <= 402 && \
             g->ui->pause_settings->ui[2]->rect.width <= 253) {
                 g->ui->pause_settings->ui[2]->rect.width -= 26;
-                if (g->ui->pause_settings->ui[2]->rect.width < 14)
-                    g->ui->pause_settings->ui[2]->rect.width = 0;
-            }
-            if (x >= 1116 && y >= 342 && x <= 1155 && y <= 376 && \
-            g->ui->pause_settings->ui[2]->rect.width <= 253) {
+                sfMusic_setVolume(g->window->music, \
+                sfMusic_getVolume(g->window->music) - 10);
                 if (g->ui->pause_settings->ui[2]->rect.width < 14) {
-                    g->ui->pause_settings->ui[2]->rect.width = 14;
+                    g->ui->pause_settings->ui[2]->rect.width = 0;
+                    sfMusic_setVolume(g->window->music, 0);
+                }
+            }
+            if (x >= 1116 && y >= 366 && x <= 1155 && y <= 400 && \
+            g->ui->pause_settings->ui[2]->rect.width <= 253) {
+                if (g->ui->pause_settings->ui[2]->rect.width < 13) {
+                    g->ui->pause_settings->ui[2]->rect.width = 13;
+                    sfMusic_setVolume(g->window->music, 10);
                     g->ui->pause_settings->pressed = false;
                     return;
                 }
                 g->ui->pause_settings->ui[2]->rect.width += 27;
+                if (g->ui->pause_settings->ui[2]->rect.width > 253)
+                    g->ui->pause_settings->ui[2]->rect.width = 253;
+                sfMusic_setVolume(g->window->music, \
+                sfMusic_getVolume(g->window->music) + 10);
             }
-            if (x >= 782 && y >= 506 && x <= 821 && y <= 534 && \
+            if (x >= 782 && y >= 548 && x <= 821 && y <= 574 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
                 g->ui->pause_settings->ui[3]->rect.width -= 26;
                 if (g->ui->pause_settings->ui[3]->rect.width < 14)
                     g->ui->pause_settings->ui[3]->rect.width = 0;
             }
-            if (x >= 1116 && y >= 508 && x <= 1155 && y <= 536 && \
+            if (x >= 1116 && y >= 546 && x <= 1155 && y <= 578 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
                 if (g->ui->pause_settings->ui[3]->rect.width < 14) {
                     g->ui->pause_settings->ui[3]->rect.width = 14;
@@ -119,6 +129,8 @@ void set_width_volume_pause_settings(st_global *g)
                     return;
                 }
                 g->ui->pause_settings->ui[3]->rect.width += 27;
+                if (g->ui->pause_settings->ui[3]->rect.width > 253)
+                    g->ui->pause_settings->ui[3]->rect.width = 253;
             }
             g->ui->pause_settings->pressed = false;
         }

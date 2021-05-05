@@ -48,13 +48,17 @@ void parallax_menu(st_global *g)
 void items_menu(st_global *g)
 {
     sfSprite_setPosition(g->ui->menu->items[0]->sprite, \
-    (sfVector2f){g->ui->menu->items[0]->pos.x, g->ui->menu->items[0]->pos.y});
+    (sfVector2f){g->ui->menu->items[0]->pos.x + g->ship->viewrect.left, \
+    g->ui->menu->items[0]->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->menu->items[1]->sprite, \
-    (sfVector2f){g->ui->menu->items[1]->pos.x, g->ui->menu->items[1]->pos.y});
+    (sfVector2f){g->ui->menu->items[1]->pos.x + g->ship->viewrect.left, \
+    g->ui->menu->items[1]->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->menu->items[2]->sprite, \
-    (sfVector2f){g->ui->menu->items[2]->pos.x, g->ui->menu->items[2]->pos.y});
+    (sfVector2f){g->ui->menu->items[2]->pos.x + g->ship->viewrect.left, \
+    g->ui->menu->items[2]->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->menu->items[3]->sprite, \
-    (sfVector2f){g->ui->menu->items[3]->pos.x, g->ui->menu->items[3]->pos.y});
+    (sfVector2f){g->ui->menu->items[3]->pos.x + g->ship->viewrect.left, \
+    g->ui->menu->items[3]->pos.y + g->ship->viewrect.top});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->menu->items[0]->sprite, NULL);
     sfRenderWindow_drawSprite(g->window->window, \
@@ -73,8 +77,9 @@ void screen_menu(st_global *g)
     items_menu(g);
     events_menu(g);
     sfSprite_setPosition(g->ui->menu->cursor->sprite, \
-    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560, \
-    sfMouse_getPositionRenderWindow(g->window->window).y});
+    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560 + \
+    g->ship->viewrect.left, sfMouse_getPositionRenderWindow(g->window->window).y
+    + g->ship->viewrect.top});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->menu->cursor->sprite, NULL);
     sfRenderWindow_display(g->window->window);

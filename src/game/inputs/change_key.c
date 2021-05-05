@@ -55,6 +55,8 @@ void key_change_again(st_global *ad)
     if (ad->window->event.type == sfEvtKeyReleased && ad->window->event.key.code
     == sfKeyReturn)
         ad->key_pressed.Enter = false;
+    if (ad->ui->pause_settings->existing)
+        events_pause_settings(ad);
 }
 
 void more_key_change(st_global *ad)
