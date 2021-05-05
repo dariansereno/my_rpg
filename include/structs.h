@@ -346,6 +346,7 @@ typedef struct st_planet_s {
     bool colonized;
     int *mod_price;
     int *modules;
+    int mul_housing;
 } st_planet;
 
 typedef struct list_elem_planet_s {

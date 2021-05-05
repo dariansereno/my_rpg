@@ -86,7 +86,7 @@ ship_t *ship_ini(void)
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
     ship->attack = 10;
-    ship->life = 200;
+    ship->life = 100;
     ship->craft = false;
     return (ship);
 }
@@ -122,7 +122,10 @@ st_global *ini(void)
     all->ressources = generate_inventory(all);
     all->drop = NULL;
     all->circle = sfCircleShape_create();
-    sfCircleShape_setRadius(all->circle, 300);
+    sfCircleShape_setRadius(all->circle, 500);
+    sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
+    sfCircleShape_setFillColor(all->circle, sfTransparent);
+    sfCircleShape_setOutlineThickness(all->circle, 10);
     return (all);
 }
 

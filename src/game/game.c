@@ -83,7 +83,7 @@ void check_status(st_global *ad)
     }
     effect_extract_module(ad);
     effect_com_module(ad);
-    // effect_health_module(ad);
+    effect_health_module(ad);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);
