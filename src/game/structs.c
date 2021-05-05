@@ -47,9 +47,12 @@ structs_t *all_dat(void)
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
     window->screen = 1;
     window->music_volume = 100.0;
+    window->width_volume = 253;
     window->sfx_volume = 100;
+    window->width_sfx = 253;
     window->bool_load = true;
     window->bool_game = true;
+    window->bool_menu = true;
     return (window);
 }
 

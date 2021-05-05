@@ -46,6 +46,10 @@ void display_fade(st_global *g)
 void background_space_fade(st_global *g)
 {
     sfRenderWindow_setView(g->window->window, g->ship->view);
+    sfRectangleShape_setPosition(g->ui->fade->rect[0], (sfVector2f)\
+    {g->ship->viewrect.left, g->ship->viewrect.top});
+    sfRectangleShape_setPosition(g->ui->fade->rect[1], (sfVector2f)\
+    {g->ship->viewrect.left, g->ship->viewrect.top + 1080});
     sfSprite_setTexture(g->ship->bship, g->ship->bshipt, sfTrue);
     sfSprite_setTexture(g->paralax->nebula, g->paralax->nebulat, sfTrue);
     sfSprite_setTexture(g->paralax->star, g->paralax->start, sfTrue);

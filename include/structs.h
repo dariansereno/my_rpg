@@ -199,10 +199,13 @@ typedef struct structs_s {
     sfVideoMode mode;
     sfMusic *music;
     float music_volume;
+    int width_volume;
     float sfx_volume;
+    int width_sfx;
     int screen;
     bool bool_load;
     bool bool_game;
+    bool bool_menu;
 }structs_t;
 
 typedef struct ship_s {
