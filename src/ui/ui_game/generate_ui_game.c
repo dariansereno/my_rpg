@@ -16,9 +16,6 @@ ui_game_s *generate_ui_game(void)
     ui->life = sfRectangleShape_create();
     ui->credits = sfRectangleShape_create();
     ui->xp = sfRectangleShape_create();
-    ui->life_outline = sfRectangleShape_create();
-    ui->credits_outline = sfRectangleShape_create();
-    ui->xp_outline = sfRectangleShape_create();
     set_rectangle_ui_game_life(ui);
     ui->map = generate_object((sfVector2f){75, 41}, \
     (sfIntRect){0, 0, 183, 183}, "contents/ui/ui/map.png");
@@ -34,6 +31,9 @@ ui_game_s *generate_ui_game(void)
 
 void set_rectangle_ui_game_life(ui_game_s *ui)
 {
+    ui->life_outline = sfRectangleShape_create();
+    ui->credits_outline = sfRectangleShape_create();
+    ui->xp_outline = sfRectangleShape_create();
     sfRectangleShape_setSize(ui->life, (sfVector2f){263, 10});
     sfRectangleShape_setFillColor(ui->life, sfColor_fromRGB(237, 28, 36));
     sfRectangleShape_setOutlineColor(ui->life, sfColor_fromRGB(179, 130, 188));

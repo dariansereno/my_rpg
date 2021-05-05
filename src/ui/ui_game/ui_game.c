@@ -107,6 +107,11 @@ void rectangle_display_ui_game(st_global *g)
     g->ship->viewrect.left, \
     sfRectangleShape_getPosition(g->ui->ui->credits_outline).y + \
     g->ship->viewrect.top});
+    rectangle_display_ui_game_bis(g);
+}
+
+void rectangle_display_ui_game_bis(st_global *g)
+{
     sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f)\
     {sfRectangleShape_getPosition(g->ui->ui->xp_outline).x + g->ship->viewrect.left, \
     sfRectangleShape_getPosition(g->ui->ui->xp_outline).y + g->ship->viewrect.top});
