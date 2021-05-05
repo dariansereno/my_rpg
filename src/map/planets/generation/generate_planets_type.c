@@ -101,6 +101,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
             planets[i].tradable = false;
         if (planets[i].kind == TECH)
             planets[i].relation = 3;
+        planets[i].colonized = false;
     }
     for (int i = size - (size / 4) ; i < size; i++) {
         planets[i].type = random_between(16, 19);
@@ -110,6 +111,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         planets[i].kind = generate_kind(planets[i].type);
         planets[i].relation = random_between(0, 2);
         planets[i].tradable = random_between(0, 1);
+        planets[i].colonized = false;
     }
     return (planets);
 }

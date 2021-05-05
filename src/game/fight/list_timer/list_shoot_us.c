@@ -56,11 +56,8 @@ void reindex_timer(list_timer *li)
 {
     list_timer temp = *li;
 
-    printf("=> 0\n");
-    printf("%d && index => %d\n", size_list_timer(*li));
     if (temp == NULL)
         return ;
-    printf("=> 1\n");
     for (int i = 0; temp != NULL; i++) {
         temp->index = i;
         temp = temp->next;

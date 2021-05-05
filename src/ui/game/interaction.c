@@ -26,7 +26,7 @@ char *create_planet_string(int index)
 
     res[0] = '\0';
     if (index == 0)
-        return ("Planet n.0");
+        return ("Entity n.0");
     res = my_strcat(res, str);
     res = my_strcat(res, nb);
     return (res);
