@@ -36,10 +36,10 @@ structs_t *all_dat(void)
     structs_t *window = malloc(sizeof(structs_t));
 
     window->mode.width = 1920;
-    window->mode.height = 1000;
+    window->mode.height = 1080;
     window->mode.bitsPerPixel = 32;
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
-    sfDefaultStyle, NULL);
+    sfTitlebar | sfClose, NULL);
     sfRenderWindow_setPosition(window->window, \
     (sfVector2i){(sfVideoMode_getDesktopMode().width / 2) - \
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
@@ -86,7 +86,7 @@ st_global *ini(void)
     st_global *all = malloc(sizeof(st_global));
 
     all->window = all_dat();
-    all->mul_price = 1;
+    all->mul_price = 1.0;
     all->paralax = paralax_ini();
     all->ship = ship_ini();
     all->shoot = generate_shoot();

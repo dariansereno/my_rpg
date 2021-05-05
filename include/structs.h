@@ -505,9 +505,9 @@ typedef struct st_global_s {
     keys_t *key;
     load_t *texture;
     moula_t *money;
-    int mul_price;
     st_ressources *ressources;
     st_global_shoot *shoot;
+    float mul_price;
     st_object **items;
     float enn_damage;
     bool win;
