@@ -91,13 +91,13 @@ void set_width_volume_pause_settings(st_global *g)
     g->window->event.mouseButton.button == sfMouseLeft) {
         if (g->ui->pause_settings->pressed) {
             if (x >= 782 && y >= 340 && x <= 821 && y <= 374 && \
-            g->ui->pause_settings->ui[2]->rect.width < 253) {
+            g->ui->pause_settings->ui[2]->rect.width <= 253) {
                 g->ui->pause_settings->ui[2]->rect.width -= 26;
                 if (g->ui->pause_settings->ui[2]->rect.width < 14)
                     g->ui->pause_settings->ui[2]->rect.width = 0;
             }
             if (x >= 1116 && y >= 342 && x <= 1155 && y <= 376 && \
-            g->ui->pause_settings->ui[2]->rect.width < 253) {
+            g->ui->pause_settings->ui[2]->rect.width <= 253) {
                 if (g->ui->pause_settings->ui[2]->rect.width < 14) {
                     g->ui->pause_settings->ui[2]->rect.width = 14;
                     g->ui->pause_settings->pressed = false;
@@ -106,13 +106,13 @@ void set_width_volume_pause_settings(st_global *g)
                 g->ui->pause_settings->ui[2]->rect.width += 27;
             }
             if (x >= 782 && y >= 506 && x <= 821 && y <= 534 && \
-            g->ui->pause_settings->ui[3]->rect.width < 253) {
+            g->ui->pause_settings->ui[3]->rect.width <= 253) {
                 g->ui->pause_settings->ui[3]->rect.width -= 26;
                 if (g->ui->pause_settings->ui[3]->rect.width < 14)
                     g->ui->pause_settings->ui[3]->rect.width = 0;
             }
             if (x >= 1116 && y >= 508 && x <= 1155 && y <= 536 && \
-            g->ui->pause_settings->ui[3]->rect.width < 253) {
+            g->ui->pause_settings->ui[3]->rect.width <= 253) {
                 if (g->ui->pause_settings->ui[3]->rect.width < 14) {
                     g->ui->pause_settings->ui[3]->rect.width = 14;
                     g->ui->pause_settings->pressed = false;

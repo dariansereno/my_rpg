@@ -45,9 +45,11 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 4;
+    window->screen = 1;
     window->music_volume = 100.0;
     window->sfx_volume = 100;
+    window->bool_load = true;
+    window->bool_game = true;
     window->created = false;
     window->second_created = false;
     return (window);
@@ -75,6 +77,14 @@ ship_t *ship_ini(void)
     ship->firstcollisionD = false;
     ship->firstcollisionS = false;
     ship->firstcollisionQ = false;
+    ship->collisionZlim = false;
+    ship->collisionDlim = false;
+    ship->collisionSlim = false;
+    ship->collisionQlim = false;
+    ship->firstcollisionZlim = false;
+    ship->firstcollisionDlim = false;
+    ship->firstcollisionSlim = false;
+    ship->firstcollisionQlim = false;
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
     ship->attack = 10;
@@ -88,6 +98,7 @@ st_global *ini(void)
     st_global *all = malloc(sizeof(st_global));
 
     all->window = all_dat();
+    all->space_obj = generate_space_obj();
     all->mul_price = 1.0;
     all->paralax = paralax_ini();
     all->ship = ship_ini();
@@ -100,6 +111,8 @@ st_global *ini(void)
     sfText_setFont(all->other->planet_text, all->other->font);
     all->var = malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
+    all->var->drop_cl = my_malloc(sizeof(*all->var->drop_cl));
+    all->var->drop_cl->clock = sfClock_create();
     all->enn_texture = enn_textures();
     all->texture = texture_ini();
     all->key = key_ini(all);

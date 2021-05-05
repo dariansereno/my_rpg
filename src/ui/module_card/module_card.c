@@ -48,7 +48,6 @@ void display_module_card(st_global *g)
         set_init_position_module(g);
         rect_module_position(g);
         // buy_apparence();
-        // tick_apparence();
         for (int i = 2; i >= 1; i--) {
             sfSprite_setPosition(g->ui->module_card->ui[i]->sprite, (sfVector2f)
             {sfSprite_getPosition(g->ui->module_card->ui[i]->sprite).x +\
@@ -69,6 +68,7 @@ void display_planet_module_card(st_global *g)
 
     while (planets != NULL) {
         if (planets->interact == true) {
+            buy_module(g, planets);
             sfSprite_setPosition(planets->planet.sprite, \
             (sfVector2f){g->ship->viewrect.left + 965, \
             g->ship->viewrect.top + 330});
@@ -83,8 +83,9 @@ void display_planet_module_card(st_global *g)
 
 void display_texts_module_card(st_global *g, list_planet planets)
 {
+    print_nb(g, planets);
     text_title_credits_module_card(g, planets);
-    text_price_module_card(g);
+    text_price_module_card(g, planets);
     sfText_setCharacterSize(g->ui->module_card->text, 40);
     sfText_setString(g->ui->module_card->text, "Module Habitation");
     sfText_setPosition(g->ui->module_card->text, \

@@ -44,6 +44,13 @@ typedef struct st_text_s {
     int delay;
 } st_text;
 
+typedef enum modules_id_s {
+    module_housing,
+    module_commercial,
+    module_health,
+    module_extraction
+} modules_id;
+
 typedef enum ressources_id_s {
     black_matter,
     ingot,
@@ -151,6 +158,7 @@ typedef struct key_pressed_s {
     bool S;
     bool Q;
     bool J;
+    bool Enter;
 } key_pressed;
 
 typedef enum planet_animation_s {
@@ -178,6 +186,8 @@ typedef struct structs_s {
     int screen;
     bool created;
     bool second_created;
+    bool bool_load;
+    bool bool_game;
 }structs_t;
 
 typedef struct ship_s {
@@ -193,6 +203,14 @@ typedef struct ship_s {
     bool firstcollisionD;
     bool firstcollisionQ;
     bool firstcollisionZ;
+    bool collisionSlim;
+    bool collisionDlim;
+    bool collisionQlim;
+    bool collisionZlim;
+    bool firstcollisionSlim;
+    bool firstcollisionDlim;
+    bool firstcollisionQlim;
+    bool firstcollisionZlim;
     sfView *view;
     sfVector2f velocity;
     sfVector2f acceleration;
@@ -202,6 +220,8 @@ typedef struct ship_s {
     float attack;
     bool craft;
     bool clicked;
+    float xp;
+    int lvl;
 }ship_t;
 
 typedef struct st_ennemies_s
@@ -281,6 +301,21 @@ typedef struct list_elem_ressources_s {
     struct list_elem_ressources *next;
 } list_elem_ressources, *list_ressources;
 
+typedef struct list_elem_spaceobj_s {
+    sfSprite *sprite;
+    sfVector2f pos;
+    sfIntRect *rect;
+    st_timer *timer;
+    int id;
+    bool on_screen;
+    struct list_elem_spaceobj_s *next;
+} list_elem_spaceobj, *list_spaceobj;
+
+typedef struct st_global_spaceobj_s {
+    list_spaceobj li;
+    sfTexture **textures;
+} st_global_spaceobj;
+
 typedef struct st_planet_s {
     st_planet_stat stats;
     planet_kind kind;
@@ -294,6 +329,8 @@ typedef struct st_planet_s {
     bool tradable;
     list_ennemies ennemies;
     bool colonized;
+    int *mod_price;
+    int *modules;
 } st_planet;
 
 typedef struct list_elem_planet_s {
@@ -319,6 +356,8 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
     sfSprite *colonized_pl;
     sfTexture *texture_colonized;
+    sfVertexArray **limit;
+    bool col_lim;
 } st_planet_global;
 
 typedef struct st_planet_card_t {
@@ -361,6 +400,8 @@ typedef struct st_module_card_t {
     bool existing;
     bool pressed;
     int pos_rect;
+    bool buy;
+    int mod_mul;
 } module_card_s;
 
 typedef struct st_ui_game {
@@ -453,6 +494,8 @@ typedef struct st_ui {
 
 typedef struct st_variable_s {
     int max_ennemies;
+    int mod_price_add;
+    st_timer *drop_cl;
 } st_variable;
 
 typedef struct st_useful_s {
@@ -523,6 +566,7 @@ typedef struct st_global_s {
     bool win;
     sfFont *font_inv;
     char *nb_inv;
+    st_global_spaceobj *space_obj;
     items_t *itemsss;
 } st_global;
 
