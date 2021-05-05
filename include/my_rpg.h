@@ -299,6 +299,7 @@
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
+            char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
     // PLANET_CARD
         // PLANET_CARD
@@ -360,11 +361,12 @@
         // GENERATE_UI_GAME
             ui_game_s *generate_ui_game(void);
             void destroy_ui_game(ui_game_s *ui);
-            void set_rectangle_ui_game(ui_game_s *ui);
-        // UI_GAME
             void set_rectangle_ui_game_life(ui_game_s *ui);
             void set_rectangle_ui_game_credits(ui_game_s *ui);
             void set_rectangle_ui_game_xp(ui_game_s *ui);
+        // UI_GAME
+            void set_position_ui_game(st_global *g);
+            void rectangle_display_ui_game_bis(st_global *g);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
     // PAUSE
@@ -395,6 +397,9 @@
                 void events_pause_settings_left(st_global *g);
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
+        // TARGET_INDICATOR
+                sfVector2f target_indicator(st_global *ad, sfVector2f obj);
+                void print_target_indicator(st_global *ad);
 
 // MESSAGES
     // ADDITIONNAL_MSG
