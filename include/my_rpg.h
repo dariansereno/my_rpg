@@ -368,6 +368,7 @@
             char *int_to_str_price(int money);
             void items_text_trade_card(st_global *g, int y);
             void text_title_credits_trade_card(st_global *g, list_planet planets);
+            void check_buy(st_global *g, list_planet planets);
     // MODULE_CARD
         // GENERATE_MODULE_CARD
             module_card_s *generate_module_card(void);

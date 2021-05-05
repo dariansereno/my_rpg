@@ -172,11 +172,27 @@ void display_texts_trade_card(st_global *g, list_planet planets)
 
 void check_buy(st_global *g, list_planet planets)
 {
-    if (g->window->event.type == sfEvtKeyPressed && g->window->event.key.code ==
-    sfKeyEnter) {
-        if (g->ui->trade_card->pos_rect == 0) {
+    if (g->key_pressed.Enter == true) {
+        if (g->ui->trade_card->pos_rect == 0 && g->money->money >= 
+        planets->trade[0]->price && planets->trade[0]->nb > 0) {
             g->money->money = g->money->money - planets->trade[0]->price;
+            g->ressources[planets->trade[0]->id].nb++;
+            planets->trade[0]->nb--;
+            g->key_pressed.Enter = false;
         }
-        printf("%i\n", g->money->money);
+        if (g->ui->trade_card->pos_rect == 1 && g->money->money >= 
+        planets->trade[1]->price && planets->trade[1]->nb > 0) {
+            g->money->money = g->money->money - planets->trade[1]->price;
+            g->ressources[planets->trade[1]->id].nb++;
+            planets->trade[1]->nb--;
+            g->key_pressed.Enter = false;
+        }
+        if (g->ui->trade_card->pos_rect == 2 && g->money->money >= 
+        planets->trade[2]->price && planets->trade[2]->nb > 0) {
+            g->money->money = g->money->money - planets->trade[2]->price;
+            g->ressources[planets->trade[2]->id].nb++;
+            planets->trade[2]->nb--;
+            g->key_pressed.Enter = false;
+        }
     }
 }
