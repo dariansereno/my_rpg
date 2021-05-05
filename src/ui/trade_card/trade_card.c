@@ -71,7 +71,7 @@ void display_planet_trade_card(st_global *g)
 {
     list_planet planets = g->planets->planets;
     while (planets != NULL) {
-        if (planets->interact == true) {
+        if (planets->interact == true && planets->planet.tradable == true) {
             sfSprite_setPosition(planets->planet.sprite, \
             (sfVector2f){g->ship->viewrect.left + 965, \
             g->ship->viewrect.top + 360});
@@ -79,6 +79,7 @@ void display_planet_trade_card(st_global *g)
             sfRenderWindow_drawSprite(g->window->window, \
             planets->planet.sprite, NULL);
             display_texts_trade_card(g, planets);
+            check_buy(g, planets);
         }
         planets = planets->next;
     }
@@ -87,28 +88,95 @@ void display_planet_trade_card(st_global *g)
 void display_texts_trade_card(st_global *g, list_planet planets)
 {
     int y = 555;
+    int x = 490;
 
     text_title_credits_trade_card(g, planets);
     for (int i = 0; planets->trade[i]->price != -1; i++) {
-        if (planets->trade[i] != NULL)
-        printf("%d\n", planets->trade[i]->nb);
-        if (planets->trade[i] != NULL && planets->trade[i]->nb > 0 && planets->trade[i]->nb <= 5) {
+        if (planets->trade[i]->nb > 0 && planets->trade[i]->nb <= 5) {
             sfText_setString(g->ui->trade_card->text, int_to_str_price(planets->trade[i]->nb)); // -> quantité
-        sfText_setPosition(g->ui->trade_card->text, \
-        (sfVector2f){g->ship->viewrect.left + 683, g->ship->viewrect.top + y});
-        sfRenderWindow_drawText(g->window->window, \
-        g->ui->trade_card->text, NULL);
+            sfText_setPosition(g->ui->trade_card->text, \
+            (sfVector2f){g->ship->viewrect.left + 683, g->ship->viewrect.top + y});
+            if (planets->trade[i]->id == 1 && i == 0) {
+                sfSprite_setPosition(g->items[1]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x, g->ship->viewrect.top + 565});
+                sfSprite_setScale(g->items[1]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[1]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 1 && i == 1) {
+                sfSprite_setPosition(g->items[1]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x, g->ship->viewrect.top + 650});
+                sfSprite_setScale(g->items[1]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[1]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 1 && i == 2) {
+                sfSprite_setPosition(g->items[1]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x, g->ship->viewrect.top + 735});
+                sfSprite_setScale(g->items[1]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[1]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 2 && i == 0) {
+                sfSprite_setPosition(g->items[2]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x + 5, g->ship->viewrect.top + 565});
+                sfSprite_setScale(g->items[2]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[2]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 2 && i == 1) {
+                sfSprite_setPosition(g->items[2]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x + 5, g->ship->viewrect.top + 650});
+                sfSprite_setScale(g->items[2]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[2]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 2 && i == 2) {
+                sfSprite_setPosition(g->items[2]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x + 5, g->ship->viewrect.top + 735});
+                sfSprite_setScale(g->items[2]->sprite, (sfVector2f){2, 2});
+                sfRenderWindow_drawSprite(g->window->window, g->items[2]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 0 && i == 0) {
+                sfSprite_setPosition(g->items[0]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x - 5, g->ship->viewrect.top + 565});
+                sfSprite_setScale(g->items[0]->sprite, (sfVector2f){0.4, 0.4});
+                sfRenderWindow_drawSprite(g->window->window, g->items[0]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 0 && i == 1) {
+                sfSprite_setPosition(g->items[0]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x - 5, g->ship->viewrect.top + 650});
+                sfSprite_setScale(g->items[0]->sprite, (sfVector2f){0.4, 0.4});
+                sfRenderWindow_drawSprite(g->window->window, g->items[0]->sprite, NULL);
+            }
+            if (planets->trade[i]->id == 0 && i == 2) {
+                sfSprite_setPosition(g->items[0]->sprite, (sfVector2f)
+                {g->ship->viewrect.left + x - 5, g->ship->viewrect.top + 745});
+                sfSprite_setScale(g->items[0]->sprite, (sfVector2f){0.4, 0.4});
+                sfRenderWindow_drawSprite(g->window->window, g->items[0]->sprite, NULL);
+            }
+            sfRenderWindow_drawText(g->window->window, g->ui->trade_card->text, NULL);
         }
-        printf("ok\n");
-        if (planets->trade[i] != NULL && planets->trade[i]->nb != 0 && (planets->trade[i]->price >= 20 && planets->trade[i]->price <= 100)) {
+        sfSprite_setScale(g->items[1]->sprite, (sfVector2f){1, 1});
+        sfSprite_setScale(g->items[0]->sprite, (sfVector2f){0.22, 0.22});
+        sfSprite_setScale(g->items[2]->sprite, (sfVector2f){1.1, 1.1});
+        if (planets->trade[i]->nb != 0 && (planets->trade[i]->price >= 20 && planets->trade[i]->price <= 100)) {
             sfText_setString(g->ui->trade_card->text, int_to_str_price(planets->trade[i]->price)); // -> prix
             sfText_setPosition(g->ui->trade_card->text, \
         (sfVector2f){g->ship->viewrect.left + 945, g->ship->viewrect.top + y});
         sfRenderWindow_drawText(g->window->window, \
         g->ui->trade_card->text, NULL);
+        //sfRenderWindow_drawSprite(g->window->window, g->items[planets->trade[i]->id + 1], NULL);
         }
+        //ad->ressources[id + 1];
         // récupérer les prix de l'index + les items (si ils existent)
         // items_text_trade_card(g, y);
         y += 87;
+    }
+}
+
+void check_buy(st_global *g, list_planet planets)
+{
+    if (g->window->event.type == sfEvtKeyPressed && g->window->event.key.code ==
+    sfKeyEnter) {
+        if (g->ui->trade_card->pos_rect == 0) {
+            g->money->money = g->money->money - planets->trade[0]->price;
+        }
+        printf("%i\n", g->money->money);
     }
 }

@@ -58,3 +58,22 @@ moula_t *money_ini(void)
     money->moneyval = sfText_create();
     return (money);
 }
+
+items_t *item_ini(void)
+{
+    items_t *items = malloc(sizeof(items_t));
+
+    items->ingot = sfSprite_create();
+    items->bm = sfSprite_create();
+    items->crystal = sfSprite_create();
+    items->ingott = sfTexture_createFromFile("contents/ui/items/space_ingot.png"
+    , NULL);
+    items->crystalt = sfTexture_createFromFile
+    ("contents/ui/items/crystal_01j.png", NULL);
+    items->bmt = sfTexture_createFromFile("contents/ui/items/black_matter.png",
+    NULL);
+    sfSprite_setScale(items->bm, (sfVector2f){0.22, 0.22});
+    sfSprite_setScale(items->crystal, (sfVector2f){1.1, 1.1});
+    sfSprite_setScale(items->ingot, (sfVector2f){0.25, 0.25});
+    return (items);
+}
