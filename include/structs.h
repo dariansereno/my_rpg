@@ -176,6 +176,8 @@ typedef struct structs_s {
     float music_volume;
     float sfx_volume;
     int screen;
+    bool bool_load;
+    bool bool_game;
 }structs_t;
 
 typedef struct ship_s {
@@ -191,6 +193,14 @@ typedef struct ship_s {
     bool firstcollisionD;
     bool firstcollisionQ;
     bool firstcollisionZ;
+    bool collisionSlim;
+    bool collisionDlim;
+    bool collisionQlim;
+    bool collisionZlim;
+    bool firstcollisionSlim;
+    bool firstcollisionDlim;
+    bool firstcollisionQlim;
+    bool firstcollisionZlim;
     sfView *view;
     sfVector2f velocity;
     sfVector2f acceleration;
@@ -317,6 +327,8 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
     sfSprite *colonized_pl;
     sfTexture *texture_colonized;
+    sfVertexArray **limit;
+    bool col_lim;
 } st_planet_global;
 
 typedef struct st_planet_card_t {

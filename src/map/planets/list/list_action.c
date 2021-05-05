@@ -91,7 +91,11 @@ void print_planet_normal(list_planet li, sfRenderWindow *window, st_global *ad)
             li->planet);
         }
     }
-    else if (li->size == 3) {
+}
+
+void print_planet_big(list_planet li, sfRenderWindow *window, st_global *ad)
+{
+    if (li->size == 3) {
         sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
         sfSprite_setScale(li->planet.sprite, (sfVector2f){li->sc, li->sc});
         sfSprite_setPosition(li->planet.sprite,
@@ -100,7 +104,18 @@ void print_planet_normal(list_planet li, sfRenderWindow *window, st_global *ad)
     }
 }
 
-void print_planet_list(list_planet li, sfRenderWindow *window, st_global *ad)
+void print_planet_list_normal(list_planet li, sfRenderWindow *window,
+st_global *ad)
+{
+    while (li != NULL){
+       if (li->on_screen == true)
+           print_planet_normal(li, window, ad);
+        li = li->next;
+    }
+}
+
+void print_planet_list_big(list_planet li, sfRenderWindow *window,
+st_global *ad)
 {
     while (li != NULL){
        if (li->on_screen == true)
@@ -111,7 +126,9 @@ void print_planet_list(list_planet li, sfRenderWindow *window, st_global *ad)
 
 void print_planet_lil(list_planet li, sfRenderWindow *window, st_global *ad)
 {
-    if (li->size == 1) {
+    int rand = random_between(0, 1);
+
+    if (li->size == 1 && rand) {
         sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
         sfSprite_setScale(li->planet.sprite, (sfVector2f){(float)li->sc / 10.0,
         (float)li->sc / 10.0});
@@ -121,7 +138,8 @@ void print_planet_lil(list_planet li, sfRenderWindow *window, st_global *ad)
     }
 }
 
-void print_lil_planet(list_planet li, sfRenderWindow *window, st_global *ad)
+void print_planet_list_little(list_planet li, sfRenderWindow *window,
+st_global *ad)
 {
     while (li != NULL){
         if (li->on_screen == true)

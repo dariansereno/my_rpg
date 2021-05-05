@@ -10,9 +10,17 @@
 void screen(st_global *g)
 {
     // g->window->screen = 4;
+    sfVideoMode mode = {700, 1000, 32};
     switch (g->window->screen) {
         case 1:
-            //sfRenderWindow_setSize(g->window->window, (sfVector2u){700, 1000});
+            if (g->window->bool_load == true) {
+                sfRenderWindow_destroy(g->window->window);
+                g->window->window = sfRenderWindow_create(mode, "loading",
+                sfTitlebar | sfClose, NULL);
+                sfRenderWindow_setFramerateLimit(g->window->window, 120);
+                sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
+                g->window->bool_load = false;
+            }
             screen_loading(g);
             break;
         case 2:
@@ -22,7 +30,14 @@ void screen(st_global *g)
             screen_settings(g);
             break;
         case 4:
-            //sfRenderWindow_setSize(g->window->window, (sfVector2u){1920, 1000});
+        if (g->window->bool_game == true) {
+                sfRenderWindow_destroy(g->window->window);
+                g->window->window = sfRenderWindow_create(g->window->mode, "my_rpg",
+                sfTitlebar | sfClose, NULL);
+                sfRenderWindow_setFramerateLimit(g->window->window, 120);
+                sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
+                g->window->bool_game = false;
+            }
             screen_game(g);
             break;
         default:

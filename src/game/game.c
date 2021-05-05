@@ -52,13 +52,17 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->nebula, ad->paralax->nebulapos);
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
+    print_planet_list_little(ad->planets->planets, ad->window->window, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
-    print_lil_planet(ad->planets->planets, ad->window->window, ad);
+    print_planet_list_little(ad->planets->planets, ad->window->window, ad);
     print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->ship->bship, NULL);
     animate_planets(ad);
+    draw_map_limit(ad);
+    collision_limit(ad);
+    printf("coord: [%f, %f]\n", ad->ship->bshippos.x, ad->ship->bshippos.y);
     is_craftable(ad);
-    print_planet_list(ad->planets->planets, ad->window->window, ad);
+    print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -70,6 +74,7 @@ void check_status(st_global *ad)
         ennemies_spawning(ad);
         display_interaction(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
+        print_planet_list_big(ad->planets->planets, ad->window->window, ad);
         print_target_indicator(ad);
         display_ui_game(ad);
         display_items_inventory(ad);
@@ -100,8 +105,6 @@ int game_loop(void)
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, 0);
-    sfRenderWindow_setFramerateLimit(ad->window->window, 120);
-    sfRenderWindow_setMouseCursorVisible(ad->window->window, sfFalse);
     while (sfRenderWindow_isOpen(ad->window->window))
         screen(ad);
     destroy_global(ad);
