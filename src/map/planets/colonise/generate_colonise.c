@@ -25,6 +25,7 @@ bool rand_pl_colonise(list_planet pl)
         rand = random_piped_two();
         if (rand) {
             pl->planet.colonized = true;
+            pl->planet.tradable = true;
             return (true);
         }
     }

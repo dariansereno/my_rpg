@@ -11,6 +11,10 @@
 #define WIDTH 1920
 #define HEIGHT 1080
 
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
+
 #include "strings.h"
 #include "structs.h"
 #include <SFML/Graphics.h>
