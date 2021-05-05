@@ -29,7 +29,8 @@ void get_global_bounds_menu(st_global *g)
     sfSprite_getGlobalBounds(g->ui->menu->items[2]->sprite);
     for (int i = 0; i < 3; i++)
         if (sfFloatRect_contains(&g->ui->menu->bounds[i], \
-        g->window->event.mouseButton.x + 560, g->window->event.mouseButton.y))
+        g->window->event.mouseButton.x + 560 + g->ship->viewrect.left, \
+        g->window->event.mouseButton.y + g->ship->viewrect.top))
             g->ui->menu->menu = i + 1;
     g->ui->menu->menu = menu_choice(g);
 }
