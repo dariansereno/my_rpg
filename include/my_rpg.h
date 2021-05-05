@@ -99,6 +99,9 @@
         // PATH_FINDING
             // DROP
                 void drop(st_global *ad, list_ennemies en);
+            // LIST DROP
+                void push_back_drop(list_drop *li, st_drop drop);
+                void print_list_drop(list_drop *li, st_global *ad);
             // CIRCLE_INTERSECTION
                 void calculate_table_notation(sfVector2f start,
                 st_ennemies *e, st_global *ad, int r);
@@ -240,6 +243,11 @@
             sfVertexArray **init_limit_map();
             void draw_map_limit(st_global *ad);
             void collision_limit(st_global *ad);
+    // INFRASTRUCTURE 
+        // MODULE
+            void effect_com_module(st_global *ad);
+            void effect_extract_module(st_global *ad);
+            void effect_health_module(st_global *ad);
     // GENERATION
         // DESTROY
             void destroy_planet(list_elem_planet *planet);

@@ -134,6 +134,14 @@ typedef struct st_timer_s {
     float seconds;
 } st_timer;
 
+typedef struct st_drop_s {
+    int mode;
+    int id;
+    int nb;
+    int amount;
+    sfVector2f pos;
+} st_drop;
+
 typedef struct list_elem_timer_s {
     st_timer timer;
     int index;
@@ -143,6 +151,15 @@ typedef struct list_elem_timer_s {
     bool destroy;
     struct list_elem_timer_s *next;
 } *list_timer, list_elem_timer;
+
+typedef struct list_elem_drop_s {
+    st_drop drop;
+    st_timer timer;
+    int index;
+    int it;
+    bool destroy;
+    struct list_elem_drop_s *next;
+} *list_drop, list_elem_drop;
 
 typedef struct st_object_s {
     sfTexture *texture;
@@ -359,6 +376,9 @@ typedef struct st_global_planet_s {
     sfTexture *texture_colonized;
     sfVertexArray **limit;
     bool col_lim;
+    st_timer *gen_mod;
+    st_timer *health_mod;
+    st_timer *ext_mod;
 } st_planet_global;
 
 typedef struct st_planet_card_t {
@@ -504,7 +524,6 @@ typedef struct st_useful_s {
     sfFont *font;
 } st_useful;
 
-
 typedef struct st_global_ressources_s {
     list_ressources ressources;
     int max;
@@ -560,6 +579,8 @@ typedef struct st_global_s {
     sfFont *font_inv;
     char *nb_inv;
     st_global_spaceobj *space_obj;
+    list_drop drop;
+    sfCircleShape *circle;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
