@@ -89,7 +89,7 @@ void display_texts_trade_card(st_global *g, list_planet planets)
     int y = 555;
 
     text_title_credits_trade_card(g, planets);
-    for (int i = 0; i < g->ui->trade_card->counter; i++) {
+    for (int i = 0; planets->trade[i]->price != -1; i++) {
         if (planets->trade[i] != NULL)
         printf("%d\n", planets->trade[i]->nb);
         if (planets->trade[i] != NULL && planets->trade[i]->nb > 0 && planets->trade[i]->nb <= 5) {

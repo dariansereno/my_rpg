@@ -11,7 +11,7 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
 {
     sfVector2f tar_scr = (sfVector2f){obj.x - ad->ship->viewrect.left,
     obj.y - ad->ship->viewrect.top};
-    sfVector2f tar_ctr = (sfVector2f){tar_scr.x - (1900 / 2), tar_scr.y -
+    sfVector2f tar_ctr = (sfVector2f){tar_scr.x - (1920 / 2), tar_scr.y -
     (1080 / 2)};
     float rotation = atan2((double)tar_ctr.y, (double)tar_ctr.x);
     float slope;
@@ -20,7 +20,7 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
 
     rotation = rotation * 180 / M_PI;
     slope = tar_ctr.y / tar_ctr.x;
-    pad_size = (sfVector2f){1900 - 100, 1080 - 100};
+    pad_size = (sfVector2f){1920 - 100, 1080 - 100};
     if (tar_ctr.y < 0)
         indicator = (sfVector2f){(-pad_size.y / 2) / slope,
         (-pad_size.y / 2)};
@@ -33,7 +33,7 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
     else if (indicator.x > pad_size.x / 2)
         indicator = (sfVector2f){pad_size.x / 2, slope * pad_size.x / 2};
 
-    indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left + (1900 / 2),
+    indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left + (1920 / 2),
     indicator.y + ad->ship->viewrect.top + (1080 / 2)};
     return (indicator);
 }
