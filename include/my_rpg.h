@@ -272,6 +272,7 @@
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
     moula_t *money_ini(void);
+    items_t *item_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);

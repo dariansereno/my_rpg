@@ -44,7 +44,7 @@ void selector_colonized_pl(st_planet_global *planets)
 st_planet_global *generate_all_map(void)
 {
     scatter math = {.germ = 469880, .interval = 50000, .kmax =
-    random_between(200, 600), .p = 1288, .q = 1664713};
+    random_between(2000, 2100), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
     st_planet_global *planets = my_malloc(sizeof(*planets));
     planets->planets = NULL;

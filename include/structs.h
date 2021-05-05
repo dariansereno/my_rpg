@@ -176,6 +176,8 @@ typedef struct structs_s {
     float music_volume;
     float sfx_volume;
     int screen;
+    bool created;
+    bool second_created;
 }structs_t;
 
 typedef struct ship_s {
@@ -458,7 +460,6 @@ typedef struct st_useful_s {
     sfFont *font;
 } st_useful;
 
-
 typedef struct st_global_ressources_s {
     list_ressources ressources;
     int max;
@@ -490,6 +491,15 @@ typedef struct st_global_sfx_s
     sfSound *explosion;
 } st_global_sfx;
 
+typedef struct items_s {
+    sfSprite *ingot;
+    sfSprite *bm;
+    sfSprite *crystal;
+    sfTexture *ingott;
+    sfTexture *bmt;
+    sfTexture *crystalt;
+} items_t;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
@@ -513,6 +523,7 @@ typedef struct st_global_s {
     bool win;
     sfFont *font_inv;
     char *nb_inv;
+    items_t *itemsss;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

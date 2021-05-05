@@ -48,6 +48,8 @@ structs_t *all_dat(void)
     window->screen = 4;
     window->music_volume = 100.0;
     window->sfx_volume = 100;
+    window->created = false;
+    window->second_created = false;
     return (window);
 }
 
@@ -107,6 +109,7 @@ st_global *ini(void)
     all->items = generate_items();
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
+    all->itemsss = item_ini();
     return (all);
 }
 
