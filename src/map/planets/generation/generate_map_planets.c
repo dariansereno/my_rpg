@@ -41,22 +41,39 @@ void selector_colonized_pl(st_planet_global *planets)
     sfSprite_setOrigin(planets->colonized_pl, (sfVector2f){26, 26});
 }
 
+int *generate_mod_price()
+{
+    int *mod_price = my_malloc(sizeof(int) * 4);
+
+    mod_price[0] = 600;
+    mod_price[1] = 400;
+    mod_price[2] = 600;
+    mod_price[3] = 800;
+    return (mod_price);
+}
+
 st_planet_global *generate_all_map(void)
 {
     scatter math = {.germ = 469880, .interval = 50000, .kmax =
-    random_between(200, 600), .p = 1288, .q = 1664713};
+    random_between(600, 1000), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
     st_planet_global *planets = my_malloc(sizeof(*planets));
     planets->planets = NULL;
     st_planet *stats = general_all_planets(pos, math.kmax);
     planets->textures = my_malloc(sizeof(*planets->textures));
     planets->textures = generates_planets_textures();
+    planets->limit = init_limit_map();
+    planets->col_lim = false;
     selector_colonized_pl(planets);
 
     for (int i = 0; i < math.kmax; i++) {
         stats[i].pos = pos[i];
         stats[i].rect = (sfIntRect){0, 0, 48, 48};
         stats[i].ennemies = NULL;
+        stats[i].mod_price = generate_mod_price();
+        stats[i].modules = my_malloc(sizeof(int) * 4);
+        for (int j = 0; j < 4; j++)
+            stats[i].modules[j] = 0;
         if (stats[i].type < 7)
             stats[i].rect = (sfIntRect){0, 0, 64, 64};
         push_back_planet(&planets->planets, stats[i]);

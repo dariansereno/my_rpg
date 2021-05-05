@@ -23,6 +23,7 @@ void ship_shoot(st_global *ad)
 void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
 {
     if (en->ennemies.life <= 0){
+        drop(ad, en);
         push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
         reindex_ennemies(&(*pl)->planet.ennemies);

@@ -47,6 +47,16 @@ void extra_change(st_global *ad)
     more_key_change(ad);
 }
 
+void key_change_again(st_global *ad)
+{
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
+    == sfKeyReturn)
+        ad->key_pressed.Enter = true;
+    if (ad->window->event.type == sfEvtKeyReleased && ad->window->event.key.code
+    == sfKeyReturn)
+        ad->key_pressed.Enter = false;
+}
+
 void more_key_change(st_global *ad)
 {
     if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
@@ -60,11 +70,10 @@ void more_key_change(st_global *ad)
         ad->paralax->l = 0;
     }
     if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeyJ) {
+    == sfKeyJ)
         ad->key_pressed.J = true;
-    }
     if (ad->window->event.type == sfEvtKeyReleased && ad->window->event.key.code
-    == sfKeyJ) {
+    == sfKeyJ)
         ad->key_pressed.J = false;
-    }    
+    key_change_again(ad);
 }
