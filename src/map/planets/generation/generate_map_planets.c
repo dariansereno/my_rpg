@@ -64,6 +64,12 @@ st_planet_global *generate_all_map(void)
     planets->textures = generates_planets_textures();
     planets->limit = init_limit_map();
     planets->col_lim = false;
+    planets->gen_mod = my_malloc(sizeof(st_timer *));
+    planets->health_mod = my_malloc(sizeof(st_timer *));
+    planets->ext_mod = my_malloc(sizeof(st_timer *));
+    planets->gen_mod->clock = sfClock_create();
+    planets->health_mod->clock = sfClock_create();
+    planets->ext_mod->clock = sfClock_create();
     selector_colonized_pl(planets);
 
     for (int i = 0; i < math.kmax; i++) {
