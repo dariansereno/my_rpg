@@ -45,7 +45,7 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 4;
+    window->screen = 1;
     window->music_volume = 100.0;
     window->sfx_volume = 100;
     return (window);
