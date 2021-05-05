@@ -63,6 +63,7 @@ void check_status(st_global *ad)
     collision_limit(ad);
     is_craftable(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
+    print_list_drop(&ad->drop, ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -80,6 +81,9 @@ void check_status(st_global *ad)
         display_items_inventory(ad);
         craft_settler(ad);
     }
+    effect_extract_module(ad);
+    effect_com_module(ad);
+    // effect_health_module(ad);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);
