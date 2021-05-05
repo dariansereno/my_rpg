@@ -31,8 +31,12 @@ void interaction_input(st_global *ad)
 
     while (planets != NULL) {
         if (ad->window->event.type == sfEvtKeyReleased && \
-        ad->window->event.key.code == sfKeyE && planets->interact == true) {
+        ad->window->event.key.code == sfKeyE && planets->interact == true && 
+        ad->ui->trade_card->existing == false && \
+        ad->ui->module_card->existing == false && \
+        ad->ui->pause->existing == false) {
             if (ad->ui->planet_card->existing) {
+                ad->ui->planet_card->existing = false;
                 destroy_planet_card(ad->ui->planet_card);
                 return;
             }
@@ -41,7 +45,10 @@ void interaction_input(st_global *ad)
         }
         if (ad->window->event.type == sfEvtKeyPressed && \
         ad->window->event.key.code == sfKeyI && planets->interact == true
-        && planets->planet.tradable == true) {
+        && planets->planet.tradable == true && \
+        ad->ui->module_card->existing == false && \
+        ad->ui->pause->existing == false && \
+        ad->ui->planet_card->existing == false) {
             if (ad->ui->trade_card->existing) {
                 ad->ui->trade_card->existing = false;
                 return;
@@ -50,7 +57,9 @@ void interaction_input(st_global *ad)
         }
         if (ad->window->event.type == sfEvtKeyPressed && \
         ad->window->event.key.code == sfKeyF && planets->interact == true
-        && planets->planet.colonized) {
+        && planets->planet.colonized && ad->ui->trade_card->existing == false \
+        && ad->ui->planet_card->existing == false && \
+        ad->ui->pause->existing == false) {
             if (ad->ui->module_card->existing) {
                 ad->ui->module_card->existing = false;
                 return;
@@ -62,18 +71,13 @@ void interaction_input(st_global *ad)
     }
     if (ad->window->event.type == sfEvtKeyPressed && \
         ad->window->event.key.code == sfKeyP) {
-        if (ad->ui->pause->existing) {
+        if (ad->ui->pause->existing && ad->ui->trade_card->existing == false &&
+        ad->ui->module_card->existing == false && \
+        ad->ui->planet_card->existing == false && \
+        ad->ui->pause_settings->existing == false) {
             ad->ui->pause->existing = false;
             return;
         }
         ad->ui->pause->existing = true;
-    }
-    if (ad->window->event.type == sfEvtKeyPressed && \
-        ad->window->event.key.code == sfKeyK) {
-        if (ad->ui->end->existing) {
-            ad->ui->end->existing = false;
-            return;
-        }
-        ad->ui->end->existing = true;
     }
 }

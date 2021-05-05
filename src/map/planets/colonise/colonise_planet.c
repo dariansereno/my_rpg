@@ -36,7 +36,6 @@ void colonise_planet(st_global *ad)
         && ad->window->event.key.code == sfKeyC) {
             pl->planet.colonized = true;
             ad->ressources[3].nb -= 1;
-            printf("sexe\n");
             break;
         }
         pl = pl->next;
