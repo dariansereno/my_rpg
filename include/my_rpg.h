@@ -343,11 +343,12 @@
         // GENERATE_UI_GAME
             ui_game_s *generate_ui_game(void);
             void destroy_ui_game(ui_game_s *ui);
-            void set_rectangle_ui_game(ui_game_s *ui);
-        // UI_GAME
             void set_rectangle_ui_game_life(ui_game_s *ui);
             void set_rectangle_ui_game_credits(ui_game_s *ui);
             void set_rectangle_ui_game_xp(ui_game_s *ui);
+        // UI_GAME
+            void set_position_ui_game(st_global *g);
+            void rectangle_display_ui_game_bis(st_global *g);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
     // PAUSE

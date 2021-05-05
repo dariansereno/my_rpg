@@ -89,37 +89,36 @@ void set_width_volume_pause_settings(st_global *g)
         g->ui->pause_settings->pressed = true;
     if (g->window->event.type == sfEvtMouseButtonReleased && \
     g->window->event.mouseButton.button == sfMouseLeft) {
-        if (g->ui->pause_settings->existing) {
-            if (x >= 782 && y >= 368 && x <= 821 && y <= 400) {
-                // - haut
-                // enlever 27
-                g->ui->pause_settings->ui[2]->rect.width -= 27;
+        if (g->ui->pause_settings->pressed) {
+            if (x >= 782 && y >= 340 && x <= 821 && y <= 374 && \
+            g->ui->pause_settings->ui[2]->rect.width < 253) {
+                g->ui->pause_settings->ui[2]->rect.width -= 26;
                 if (g->ui->pause_settings->ui[2]->rect.width < 14)
                     g->ui->pause_settings->ui[2]->rect.width = 0;
             }
-            if (x >= 1116 && y >= 368 && x <= 1155 && y <= 400) {
+            if (x >= 1116 && y >= 342 && x <= 1155 && y <= 376 && \
+            g->ui->pause_settings->ui[2]->rect.width < 253) {
                 if (g->ui->pause_settings->ui[2]->rect.width < 14) {
                     g->ui->pause_settings->ui[2]->rect.width = 14;
+                    g->ui->pause_settings->pressed = false;
                     return;
                 }
                 g->ui->pause_settings->ui[2]->rect.width += 27;
-                //  + haut
-                // ajouter 27
             }
-            if (x >= 782 && y >= 543 && x <= 821 && y <= 574) {
-                //  - bas
-                // enlever 27
+            if (x >= 782 && y >= 506 && x <= 821 && y <= 534 && \
+            g->ui->pause_settings->ui[3]->rect.width < 253) {
+                g->ui->pause_settings->ui[3]->rect.width -= 26;
                 if (g->ui->pause_settings->ui[3]->rect.width < 14)
                     g->ui->pause_settings->ui[3]->rect.width = 0;
             }
-            if (x >= 1116 && y >= 543 && x <= 1155 && y <= 574) {
+            if (x >= 1116 && y >= 508 && x <= 1155 && y <= 536 && \
+            g->ui->pause_settings->ui[3]->rect.width < 253) {
                 if (g->ui->pause_settings->ui[3]->rect.width < 14) {
                     g->ui->pause_settings->ui[3]->rect.width = 14;
+                    g->ui->pause_settings->pressed = false;
                     return;
                 }
-                g->ui->pause_settings->ui[2]->rect.width += 27;
-                //  + bas
-                // ajouter 27
+                g->ui->pause_settings->ui[3]->rect.width += 27;
             }
             g->ui->pause_settings->pressed = false;
         }
