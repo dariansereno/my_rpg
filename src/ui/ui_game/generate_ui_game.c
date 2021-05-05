@@ -24,7 +24,7 @@ ui_game_s *generate_ui_game(void)
     ui->craft[1] = generate_object((sfVector2f){1758, 123}, \
     (sfIntRect){0, 0, 89, 29}, "contents/ui/ui/rect.png");
     ui->item = generate_object((sfVector2f){751, 944}, \
-    (sfIntRect){0, 0, 417, 136}, "contents/ui/ui/item.png");
+    (sfIntRect){0, 0, 552, 136}, "contents/ui/ui/inventory.png");
     sfText_setFont(ui->text, ui->font);
     return (ui);
 }

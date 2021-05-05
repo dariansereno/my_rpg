@@ -30,6 +30,15 @@
     // ANIMATIONS
         // EXPLODE_ANIM.C
             void print_list_explo(list_timer *li, st_global *ad);
+    // INVENTORY
+        // GENERATE_INVENTORY.C
+            st_object **generate_items();
+            st_ressources *generate_inventory(st_global *ad);
+        // DISPLAY_INVENTORY
+            void display_items_inventory(st_global *ad);
+        // INV_HANDLING.C
+            void is_craftable(st_global *ad);
+            void craft_settler(st_global *ad);
     // PARALAX
         // MOVE.C
             void go_right(st_global *ad);
@@ -188,6 +197,14 @@
             void text_position_end(st_global *g);
 
 // MAP
+    // COLONISATION
+        // GENERATE_COLONISATION.C
+            void generate_random_colonised(list_planet *planet, st_global *ad);
+        // PRINT_COLONISATION.C
+            void print_colonised_selec(st_global *ad);
+        // COLONISE_PLANET.C
+            void print_can_colonise(st_global *ad);
+            void colonise_planet(st_global *ad);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
@@ -282,6 +299,7 @@
         // INTERACTION.C
             void display_interaction(st_global *ad);
             char *int_to_str(int nb);
+            char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
     // PLANET_CARD
         // PLANET_CARD
@@ -379,6 +397,9 @@
                 void events_pause_settings_left(st_global *g);
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
+        // TARGET_INDICATOR
+                sfVector2f target_indicator(st_global *ad, sfVector2f obj);
+                void print_target_indicator(st_global *ad);
 
 // MESSAGES
     // ADDITIONNAL_MSG

@@ -46,8 +46,8 @@ typedef struct st_text_s {
 
 typedef enum ressources_id_s {
     black_matter,
+    ingot,
     crystal,
-    plastic,
     settler_module
 } ressources_id;
 
@@ -150,6 +150,7 @@ typedef struct key_pressed_s {
     bool D;
     bool S;
     bool Q;
+    bool J;
 } key_pressed;
 
 typedef enum planet_animation_s {
@@ -197,6 +198,8 @@ typedef struct ship_s {
     float reload_time;
     float life;
     float attack;
+    bool craft;
+    bool clicked;
 }ship_t;
 
 typedef struct st_ennemies_s
@@ -268,6 +271,7 @@ typedef struct st_ressources_s {
     int nb;
     int stack;
     int price;
+    sfText *text;
 } st_ressources;
 
 typedef struct list_elem_ressources_s {
@@ -311,6 +315,8 @@ typedef struct list_elem_planet_s {
 typedef struct st_global_planet_s {
     list_planet planets;
     sfTexture **textures;
+    sfSprite *colonized_pl;
+    sfTexture *texture_colonized;
 } st_planet_global;
 
 typedef struct st_planet_card_t {
@@ -502,8 +508,11 @@ typedef struct st_global_s {
     int mul_price;
     st_ressources *ressources;
     st_global_shoot *shoot;
+    st_object **items;
     float enn_damage;
     bool win;
+    sfFont *font_inv;
+    char *nb_inv;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

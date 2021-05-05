@@ -58,5 +58,6 @@ my_garbage_t *add_ptr_to_garbage \
 (my_garbage_t *garbage, void *mal);
 void destroy_ptr_to_garbage(my_garbage_t *garbage);
 void *my_malloc(int size_of);
+char *itoa(int nb, char* str, int base);
 
 #endif /* !STRINGS_H_ */
