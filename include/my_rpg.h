@@ -219,8 +219,15 @@
             void planet_collision(st_global *ad);
             void collision_by_first(bool c, st_global *ad);
             int circle_contains(int r, sfVector2f p, sfVector2f s);
+            void ZQ_collisions(st_global *ad);
+            void SD_collisions(st_global *ad);
+            void renitialise_collisions(st_global *ad);
         // INTERACTION.C
             void interaction(st_global *ad);
+        // MAP_LIMIT.C
+            sfVertexArray **init_limit_map();
+            void draw_map_limit(st_global *ad);
+            void collision_limit(st_global *ad);
     // GENERATION
         // DESTROY
             void destroy_planet(list_elem_planet *planet);
@@ -248,16 +255,18 @@
     // LIST
         // LIST_ACTION.C
             void push_back_planet(list_planet *li, st_planet planet);
-            void print_lil_planet(list_planet li, sfRenderWindow *window,
-            st_global *ad);
             void pop_position_planet(list_planet *list, sfVector2f pos);
             int size_list_planet(list_planet li);
-            void print_planet_list(list_planet li, sfRenderWindow *window,
-            st_global *ad);
             void set_texture_planets(list_planet *li, st_planet_global *g);
             list_planet pop_back_planet(list_planet list);
             list_planet planet_from_index(int index, list_planet li);
             void print_planet_list_stat(list_planet li);
+            void print_planet_list_normal(list_planet li,
+            sfRenderWindow *window, st_global *ad);
+            void print_planet_list_big(list_planet li, sfRenderWindow *window,
+            st_global *ad);
+            void print_planet_list_little(list_planet li,
+            sfRenderWindow *window, st_global *ad);
     // TRADE
         // TRADE.C
             st_ressources **trade(st_global *ad);
