@@ -19,23 +19,6 @@ void print_nb(st_global *g, list_planet pl)
     }
 }
 
-// void buy_apparence(st_global *g)
-// {
-//     switch (g->ui->module_card->pos_rect) {
-//         // if buy de pos_rect == true alors buy en gris
-//         case 1:
-//             break;
-//         case 2:
-//             break;
-//         case 3:
-//             break;
-//         case 4:
-//             break;
-//         default:
-//             break;
-//     }
-// }
-
 void text_title_credits_module_card(st_global *g, list_planet planets)
 {
     sfText_setCharacterSize(g->ui->module_card->text, 64);
