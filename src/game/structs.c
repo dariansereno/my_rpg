@@ -122,6 +122,9 @@ st_global *ini(void)
     all->items = generate_items();
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
+    all->drop = NULL;
+    all->circle = sfCircleShape_create();
+    sfCircleShape_setRadius(all->circle, 300);
     all->itemsss = item_ini();
     return (all);
 }
