@@ -78,6 +78,7 @@ st_planet_global *generate_all_map(void)
         stats[i].ennemies = NULL;
         stats[i].mod_price = generate_mod_price();
         stats[i].modules = my_malloc(sizeof(int) * 4);
+        stats[i].mul_housing = 1;
         for (int j = 0; j < 4; j++)
             stats[i].modules[j] = 0;
         if (stats[i].type < 7)

@@ -17,7 +17,7 @@ void effect_com_module(st_global *ad)
         while (pl != NULL) {
             if (pl->planet.colonized) {
                 for (int i = 0; i < pl->planet.modules[1]; i++) {
-                    ad->money->money += 30; // ajouter multiplicateur du module habitation
+                    ad->money->money += (int)30 * pl->planet.mul_housing; // ajouter multiplicateur du module habitation
                 }
             }
             pl = pl->next;
@@ -41,9 +41,9 @@ void effect_extract_module(st_global *ad)
                     if (rand <= 5)
                         ad->ressources[0].nb += 1;
                     else if (rand > 5 && rand <= 8)
-                        ad->ressources[1].nb += 1;
+                        ad->ressources[1].nb += (int)1 * pl->planet.mul_housing;
                     else
-                        ad->ressources[2].nb += 1;
+                        ad->ressources[2].nb += (int)1 * pl->planet.mul_housing;
                 }
             }
             pl = pl->next;
@@ -61,9 +61,8 @@ void effect_health_module(st_global *ad)
 
     while (pl != NULL) {
         if (pl->planet.colonized) {
-            if (circle_contains(300, (sfVector2f){pl->planet.pos.x,
-            pl->planet.pos.y}, ad->ship->bshippos)) {
-                sfCircleShape_setOrigin(ad->circle, (sfVector2f){150, 150});
+            if (circle_contains(500, (sfVector2f){pl->planet.pos.x,
+            pl->planet.pos.y}, ad->ship->bshippos) && pl->planet.modules[2] > 0) {
                 sfCircleShape_setPosition(ad->circle, (sfVector2f){(float)pl->planet.pos.x, (float)pl->planet.pos.y});
                 sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
             }
@@ -71,7 +70,8 @@ void effect_health_module(st_global *ad)
                 if (seconds > 1) {
                     if (pl->planet.modules[2] > 0)
                         if (ad->ship->life < 200)
-                            ad->ship->life += 5;
+                            ad->ship->life += (int)5 * pl->planet.mul_housing;
+                    sfClock_restart(ad->planets->gen_mod->clock);
                 }
             }
         }
