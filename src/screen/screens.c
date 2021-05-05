@@ -9,8 +9,8 @@
 
 void screen(st_global *g)
 {
-    // g->window->screen = 4;
     sfVideoMode mode = {700, 1000, 32};
+
     switch (g->window->screen) {
         case 1:
             if (g->window->bool_load == true) {
@@ -51,6 +51,7 @@ void screen_game(st_global *ad)
     if (ad->ui->fade->fade == false) {
         planet_collision(ad);
         display_on_view(ad);
+        display_on_view_spaceobj(ad);
         interaction(ad);
         check_status(ad);
         if (ad->ui->planet_card->existing == false && \

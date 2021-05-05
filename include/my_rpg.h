@@ -97,6 +97,8 @@
             void interaction_input(st_global *ad);
     // ENNEMIES
         // PATH_FINDING
+            // DROP
+                void drop(st_global *ad, list_ennemies en);
             // CIRCLE_INTERSECTION
                 void calculate_table_notation(sfVector2f start,
                 st_ennemies *e, st_global *ad, int r);
@@ -145,7 +147,6 @@
     void check_status(st_global *ad);
     void check_event(st_global *ad);
     int game_loop(void);
-
 // SCREEN
     // SCREENS.C
         void screen(st_global *g);
@@ -201,6 +202,14 @@
             void text_position_end(st_global *g);
 
 // MAP
+    // SPACE_OBJ
+        st_global_spaceobj *generate_space_obj();
+        void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id);
+        void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
+        void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
+        void print_spaceobj_list(list_spaceobj li, sfRenderWindow *window,
+        st_global *ad);
+        void display_on_view_spaceobj(st_global *ad);
     // COLONISATION
         // GENERATE_COLONISATION.C
             void generate_random_colonised(list_planet *planet, st_global *ad);
@@ -224,6 +233,9 @@
             void renitialise_collisions(st_global *ad);
         // INTERACTION.C
             void interaction(st_global *ad);
+            void display_planet_text(list_planet planets, st_global *ad);
+            void display_selector(st_object *selector, st_global *ad,
+            list_planet planets, sfVector2f origin);
         // MAP_LIMIT.C
             sfVertexArray **init_limit_map();
             void draw_map_limit(st_global *ad);
@@ -360,14 +372,16 @@
             module_card_s *generate_module_card(void);
             void destroy_module_card(module_card_s *module_card);
         // MODULE_CARD
+            void buy_module(st_global *g, list_planet pl);
             void display_module_card(st_global *g);
             void set_init_position_module(st_global *g);
             void display_texts_module_card(st_global *g, list_planet planets);
             void display_planet_module_card(st_global *g);
             void rect_module_position(st_global *g);
+            void print_nb(st_global *g, list_planet pl);
         // TEXT_MODULE_CARD
             void text_title_credits_module_card(st_global *g, list_planet planets);
-            void text_price_module_card(st_global *g);
+            void text_price_module_card(st_global *g, list_planet pl);
         // ARROWS
             void arrow_events_module(st_global *g);
     // UI_GAME
