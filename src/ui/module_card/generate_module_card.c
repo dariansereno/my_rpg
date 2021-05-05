@@ -23,6 +23,8 @@ module_card_s *generate_module_card(void)
     (sfIntRect){0, 0, 193, 103}, "contents/ui/module/buy_not.png");
     module_card->existing = false;
     module_card->pressed = false;
+    module_card->buy = false;
+    module_card->mod_mul = 1.5;
     module_card->pos_rect = 1;
     sfText_setFont(module_card->text, module_card->font);
     sfText_setPosition(module_card->text, (sfVector2f){0, 0});

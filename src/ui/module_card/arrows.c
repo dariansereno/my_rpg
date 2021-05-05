@@ -7,6 +7,23 @@
 
 #include "my_rpg.h"
 
+void buy_module(st_global *g, list_planet pl)
+{
+    if (g->key_pressed.Enter)
+        g->ui->module_card->buy = true;
+    if (!g->key_pressed.Enter && g->ui->module_card->buy) {
+        if (g->money->money > pl->planet.mod_price[g->ui->module_card->pos_rect
+        - 1]) {
+            pl->planet.modules[g->ui->module_card->pos_rect - 1] += 1;
+            pl->planet.mod_price[g->ui->module_card->pos_rect - 1] =
+            (int)pl->planet.mod_price[g->ui->module_card->pos_rect - 1] * 1.5;
+            g->money->money -= pl->planet.mod_price[g->ui->module_card->pos_rect
+            - 1];
+        }
+        g->ui->module_card->buy = false;
+    }
+}
+
 void arrow_events_module(st_global *g)
 {
     if (g->window->event.type == sfEvtKeyPressed && \
