@@ -13,7 +13,7 @@ void move_star_up(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->starr.top -= 4;
+        ad->paralax->starr.top -= ad->var_game->speed - 1;
         if (ad->paralax->starr.top <= 0)
             ad->paralax->starr.top = 2160;
         sfClock_restart(ad->paralax->staro);
@@ -26,7 +26,7 @@ void move_star_down(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->starr.top += 4;
+        ad->paralax->starr.top += ad->var_game->speed - 1;
         if (ad->paralax->starr.top >= 2160)
             ad->paralax->starr.top = 0;
         sfClock_restart(ad->paralax->staro);
@@ -39,7 +39,7 @@ void move_star_left(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->starr.left -= 4;
+        ad->paralax->starr.left -= ad->var_game->speed - 1;
         if (ad->paralax->starr.left <= 0)
             ad->paralax->starr.left = 3840;
         sfClock_restart(ad->paralax->staro);
@@ -52,7 +52,7 @@ void move_star_right(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     if (secondso > 0.01) {
-        ad->paralax->starr.left += 4;
+        ad->paralax->starr.left += ad->var_game->speed - 1;
         if (ad->paralax->starr.left >= 3840)
             ad->paralax->starr.left = 0;
         sfClock_restart(ad->paralax->staro);

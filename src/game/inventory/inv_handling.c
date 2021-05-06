@@ -20,19 +20,19 @@ void is_craftable(st_global *ad)
         }
     }
     if (is_good == false)
-        ad->ship->craft = false;
+        ad->var_game->craft = false;
     else
-        ad->ship->craft = true;
+        ad->var_game->craft = true;
 }
 
 void craft_settler(st_global *ad)
 {
-    if (ad->key_pressed.J && ad->ship->craft && ad->ship->clicked) {
-        ad->ship->clicked = false;
+    if (ad->key_pressed.J && ad->var_game->craft && ad->var_game->clicked) {
+        ad->var_game->clicked = false;
         for (int i = 0; i < 3; i++)
             ad->ressources[i].nb -= 3;
         ad->ressources[3].nb += 1;
     }
     if (ad->key_pressed.J == false)
-        ad->ship->clicked = true;
+        ad->var_game->clicked = true;
 }

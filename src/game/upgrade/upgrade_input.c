@@ -1,0 +1,70 @@
+/*
+** EPITECH PROJECT, 2021
+** GALAXY
+** File description:
+** upgrade_input
+*/
+
+#include "my_rpg.h"
+
+void upgrade_damage(st_global *ad)
+{
+    if (ad->key_pressed.R && ad->upgrade->can_upgrade && \
+    ad->upgrade->upgrade_tab[0] < 3) {
+        ad->var_game->lvl += 1;
+        ad->var_game->xp = 0.0;
+        ad->var_game->max_xp *= 1.3;
+        ad->var_game->attack *= 1.5;
+        ad->upgrade->upgrade_tab[0] += 1;
+        if (ad->upgrade->upgrade_tab[0] == 3)
+            ad->var_game->special_atk = true;
+        ad->upgrade->can_upgrade = false;
+    }
+}
+
+void upgrade_range(st_global *ad)
+{
+    if (ad->key_pressed.T && ad->upgrade->can_upgrade && \
+    ad->upgrade->upgrade_tab[1] < 3) {
+        ad->var_game->lvl += 1;
+        ad->var_game->xp = 0.0;
+        ad->var_game->max_xp *= 1.3;
+        ad->var_game->range *= 1.5;
+        ad->upgrade->upgrade_tab[1] += 1;
+        ad->upgrade->can_upgrade = false;
+    }
+}
+
+void upgrade_speed(st_global *ad)
+{
+    if (ad->key_pressed.Y && ad->upgrade->can_upgrade && \
+    ad->upgrade->upgrade_tab[2] < 3) {
+        ad->var_game->lvl += 1;
+        ad->var_game->xp = 0.0;
+        ad->var_game->max_xp *= 1.3;
+        ad->var_game->speed *= 1.1;
+        ad->upgrade->upgrade_tab[2] += 1;
+        ad->upgrade->can_upgrade = false;
+    }
+}
+
+void upgrade_health(st_global *ad)
+{
+    if (ad->key_pressed.U && ad->upgrade->can_upgrade && \
+    ad->upgrade->upgrade_tab[3] < 3) {
+        ad->var_game->lvl += 1;
+        ad->var_game->xp = 0.0;
+        ad->var_game->max_xp *= 1.3;
+        ad->var_game->max_health *= 1.3;
+        ad->upgrade->upgrade_tab[3] += 1;
+        ad->upgrade->can_upgrade = false;
+    }
+}
+
+void choose_upgrade(st_global *ad)
+{
+    upgrade_damage(ad);
+    upgrade_range(ad);
+    upgrade_speed(ad);
+    upgrade_health(ad);
+}

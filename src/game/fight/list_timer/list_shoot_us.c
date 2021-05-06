@@ -108,7 +108,7 @@ void print_list_shoot(list_timer *li, sfSprite **sprite, st_global *ad)
         sfRenderWindow_drawSprite(ad->window->window, sprite[temp->dir], NULL);
         if (is_on_planet(ad, temp->pos))
             temp->destroy = true;
-        if (temp->it >= 50)
+        if (temp->it >= ad->var_game->range)
             temp->destroy = true;
         collision_shoot(ad, &temp);
         if (temp->destroy == true)

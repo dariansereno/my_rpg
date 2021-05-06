@@ -28,7 +28,6 @@ void generate_random_quest(list_planet *planet, st_global *ad)
     while (!is_good) {
         while (pl != NULL) {
             is_good = rand_pl_quest(pl);
-            printf("%d\n", is_good);
             if (is_good)
                 break;
             pl = pl->next;
