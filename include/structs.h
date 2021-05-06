@@ -391,6 +391,8 @@ typedef struct st_global_planet_s {
     sfTexture **textures;
     sfSprite *colonized_pl;
     sfTexture *texture_colonized;
+    sfSprite *quest_pl;
+    sfTexture *texture_quest;
     sfVertexArray **limit;
     bool col_lim;
     st_timer *gen_mod;
