@@ -73,6 +73,7 @@ st_game_var *ini_var()
     var->craft = false;
     var->reload_time = 0.18;
     var->quests = 1;
+    var->mul_xp = 1;
     return (var);
 }
 

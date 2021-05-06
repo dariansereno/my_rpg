@@ -72,6 +72,8 @@ void check_status(st_global *ad)
         display_interaction(ad);
         print_colonised_selec(ad);
         print_can_colonise(ad);
+        print_can_trade(ad);
+        print_can_quest(ad);
         colonise_planet(ad);
         ennemies_spawning(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
