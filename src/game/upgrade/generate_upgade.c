@@ -33,7 +33,7 @@ st_object **generate_icon()
 
 st_upgrade *generate_upgrade()
 {
-    st_upgrade *upgrade = malloc(sizeof(st_upgrade *));
+    st_upgrade *upgrade = my_malloc(sizeof(*upgrade));
 
     upgrade->upgrade_tab = generate_tab_upgrade();
     upgrade->can_upgrade = false;

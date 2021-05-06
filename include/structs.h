@@ -225,7 +225,7 @@ typedef struct st_game_var_s {
     int lvl;
     int max_xp;
     int range;
-    float speed;
+    int speed;
     int max_health;
     bool special_atk;
     int price_sett;

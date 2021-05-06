@@ -58,11 +58,11 @@ structs_t *all_dat(void)
 
 st_game_var *ini_var()
 {
-    st_game_var *var = my_malloc(sizeof(st_game_var *));
+    st_game_var *var = malloc(sizeof(*var));
 
     var->special_atk = false;
     var->range = 15;
-    var->speed = 5.0;
+    var->speed = 5;
     var->max_health = 200;
     var->attack = 10;
     var->life = 100;
