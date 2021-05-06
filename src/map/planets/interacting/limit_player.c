@@ -11,25 +11,21 @@ void check_good_collision_lim(st_global *ad)
 {
     if ((int)ad->ship->bshippos.x < 0 &&
     (int)ad->ship->bshippos.y > 50000) {
-        printf("1\n");
         ad->ship->collisionZlim = true;
         ad->ship->collisionDlim = true;
     }
     if ((int)ad->ship->bshippos.x < 0 &&
     (int)ad->ship->bshippos.y < 0) {
-        printf("2\n");
         ad->ship->collisionSlim = true;
         ad->ship->collisionDlim = true;
     }
     if ((int)ad->ship->bshippos.x > 50000 &&
     (int)ad->ship->bshippos.y > 50000) {
-        printf("3\n");
         ad->ship->collisionZlim = true;
         ad->ship->collisionQlim = true;
     }
     if ((int)ad->ship->bshippos.x > 50000 &&
     (int)ad->ship->bshippos.y < 0) {
-        printf("4\n");
         ad->ship->collisionSlim = true;
         ad->ship->collisionQlim = true;
     }
@@ -93,8 +89,8 @@ void collision_limit(st_global *ad)
     renitialise_collisions_lim(ad);
     bool c = false;
 
-    if (((ad->ship->bshippos.y >= 50000 || ad->ship->bshippos.y <= 0) ||
-    (ad->ship->bshippos.x >= 50000 || ad->ship->bshippos.x <= 0))
+    if (((ad->ship->bshippos.y >= 80000 || ad->ship->bshippos.y <= 0) ||
+    (ad->ship->bshippos.x >= 80000 || ad->ship->bshippos.x <= 0))
     && ad->ship->firstcollisionSlim == false && ad->ship->firstcollisionDlim ==
     false && ad->ship->firstcollisionZlim == false && ad->ship->firstcollisionQlim
     == false) {

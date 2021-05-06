@@ -31,6 +31,7 @@ void push_back_drop(list_drop *li, st_drop drop)
     node->drop.id = drop.id;
     node->drop.nb = drop.nb;
     node->drop.mode = drop.mode;
+    node->drop.xp = drop.xp;
     node->drop.pos = drop.pos;
     node->next = NULL;
     if (*li == NULL)
@@ -99,11 +100,17 @@ void print_list_drop(list_drop *li, st_global *ad)
             sfSprite_setPosition(ad->items[temp->drop.id]->sprite, (sfVector2f){temp->drop.pos.x
             + 13, temp->drop.pos.y});
             sfRenderWindow_drawSprite(ad->window->window, ad->items[temp->drop.id]->sprite, NULL);
+            sfText_setString(ad->ressources[0].text, number_and_string(temp->drop.xp, "xp +"));
+            sfText_setPosition(ad->ressources[0].text, (sfVector2f){temp->drop.pos.x + 8, temp->drop.pos.y + 25});
+            sfRenderWindow_drawText(ad->window->window, ad->ressources[0].text, NULL);
         }
         else {
             sfText_setString(ad->ressources[0].text, number_and_string(temp->drop.amount, "credits +"));
             sfText_setPosition(ad->ressources[0].text, (sfVector2f){temp->drop.pos.x
             + 10, temp->drop.pos.y});
+            sfRenderWindow_drawText(ad->window->window, ad->ressources[0].text, NULL);
+            sfText_setString(ad->ressources[0].text, number_and_string(temp->drop.xp, "xp +"));
+            sfText_setPosition(ad->ressources[0].text, (sfVector2f){temp->drop.pos.x + 8, temp->drop.pos.y + 25});
             sfRenderWindow_drawText(ad->window->window, ad->ressources[0].text, NULL);
         }
         if (temp->it >= 80)

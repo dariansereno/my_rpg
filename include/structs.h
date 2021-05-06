@@ -139,6 +139,7 @@ typedef struct st_drop_s {
     int id;
     int nb;
     int amount;
+    int xp;
     sfVector2f pos;
 } st_drop;
 
@@ -242,6 +243,7 @@ typedef struct ship_s {
     bool clicked;
     float xp;
     int lvl;
+    int max_xp;
 }ship_t;
 
 typedef struct st_ennemies_s
@@ -440,6 +442,7 @@ typedef struct st_ui_game {
     sfRectangleShape *xp_outline;
     sfText *text;
     sfFont *font;
+    st_object *upgrade;
 } ui_game_s;
 
 typedef struct st_pause_t {
@@ -567,6 +570,11 @@ typedef struct items_s {
     sfTexture *crystalt;
 } items_t;
 
+typedef struct st_upgrade_s {
+    int *upgrade_tab;
+    bool can_upgrade;
+} st_upgrade;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
@@ -594,6 +602,7 @@ typedef struct st_global_s {
     list_drop drop;
     sfCircleShape *circle;
     items_t *itemsss;
+    st_upgrade *upgrade;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

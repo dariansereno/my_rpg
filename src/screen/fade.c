@@ -55,12 +55,19 @@ void background_space_fade(st_global *g)
     sfSprite_setTexture(g->paralax->star, g->paralax->start, sfTrue);
     sfSprite_setTextureRect(g->paralax->star, g->paralax->starr);
     sfSprite_setTextureRect(g->paralax->nebula, g->paralax->paralaxr);
+    animate_planets(g);
+    display_on_view(g);
+    display_on_view_spaceobj(g);
     sfSprite_setPosition(g->ship->bship, g->ship->bshippos);
     sfSprite_setPosition(g->paralax->nebula, g->paralax->nebulapos);
+    print_spaceobj_list(g->space_obj->li, g->window->window, g);
     sfSprite_setPosition(g->paralax->star, g->paralax->starpos);
     sfRenderWindow_drawSprite(g->window->window, g->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->paralax->star, NULL);
+    print_planet_list_little(g->planets->planets, g->window->window, g);
+    print_planet_list_normal(g->planets->planets, g->window->window, g);
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
+    print_planet_list_big(g->planets->planets, g->window->window, g);
 }
 
 void clock_fade(st_global *g)

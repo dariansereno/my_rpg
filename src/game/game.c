@@ -77,6 +77,7 @@ void check_status(st_global *ad)
         print_list_explo(&ad->shoot->li_explo, ad);
         print_planet_list_big(ad->planets->planets, ad->window->window, ad);
         print_target_indicator(ad);
+        display_upgrade(ad);
         display_ui_game(ad);
         display_items_inventory(ad);
         craft_settler(ad);
@@ -105,6 +106,7 @@ int game_loop(void)
 
     ad->planets = generate_all_map();
     generate_random_colonised(&ad->planets->planets, ad);
+    generate_random_quest(&ad->planets->planets, ad);
     generate_trade(ad, &ad->planets->planets);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);

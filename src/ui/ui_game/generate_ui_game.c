@@ -16,6 +16,8 @@ ui_game_s *generate_ui_game(void)
     ui->life = sfRectangleShape_create();
     ui->credits = sfRectangleShape_create();
     ui->xp = sfRectangleShape_create();
+    ui->upgrade = generate_object((sfVector2f){0, 0}, (sfIntRect){0, 0, 235,
+    167}, "contents/ui/ui/upgrade.png");
     set_rectangle_ui_game_life(ui);
     ui->map = generate_object((sfVector2f){75, 41}, \
     (sfIntRect){0, 0, 183, 183}, "contents/ui/ui/map.png");

@@ -62,6 +62,7 @@ void item_craft_ui_game(st_global *g)
         for (int i = 0; i < 2; i++)
             print_craftable(g, i);
     }
+    display_lvl(g);
 }
 
 void display_ui_game(st_global *g)
@@ -73,6 +74,8 @@ void display_ui_game(st_global *g)
     (sfVector2f){g->ship->life * 263 / 200, 10});
     sfRectangleShape_setSize(g->ui->ui->credits, \
     (sfVector2f){g->money->money * 263 / 10000, 10});
+    sfRectangleShape_setSize(g->ui->ui->xp, \
+    (sfVector2f){g->ship->xp * 263 / g->ship->max_xp, 10});
     sfSprite_setPosition(g->ui->ui->map->sprite, (sfVector2f)
     {sfSprite_getPosition(g->ui->ui->map->sprite).x +\
     g->ship->viewrect.left, \
