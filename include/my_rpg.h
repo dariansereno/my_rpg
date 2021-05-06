@@ -36,6 +36,8 @@
             void generate_random_quest(list_planet *planet, st_global *ad);
         // FIND_ID.C
             void target_quest(st_global *ad);
+        // QUEST1.C
+            void quest_1_initialise(st_global *ad);
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
