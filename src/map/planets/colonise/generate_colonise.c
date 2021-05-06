@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-int random_piped_two()
+int random_piped_two(void)
 {
     int x = random_between(0, 10);
 

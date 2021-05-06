@@ -216,6 +216,7 @@
     // COLONISATION
         // GENERATE_COLONISATION.C
             void generate_random_colonised(list_planet *planet, st_global *ad);
+            int random_piped_two(void);
         // PRINT_COLONISATION.C
             void print_colonised_selec(st_global *ad);
         // COLONISE_PLANET.C
