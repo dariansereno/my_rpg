@@ -231,7 +231,13 @@ typedef struct st_game_var_s {
     bool special_atk;
     int price_sett;
     int quests;
+    float mul_xp;
+    bool is_boss;
 } st_game_var;
+
+typedef struct st_boss_s {
+    float life;
+} st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;

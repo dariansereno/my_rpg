@@ -20,6 +20,7 @@ void upgrade_damage(st_global *ad)
             ad->var_game->special_atk = true;
         ad->upgrade->can_upgrade = false;
         ad->enn_damage *= 1.2;
+        ad->var_game->mul_xp += 0.2;
     }
 }
 
@@ -34,6 +35,7 @@ void upgrade_range(st_global *ad)
         ad->upgrade->upgrade_tab[1] += 1;
         ad->upgrade->can_upgrade = false;
         ad->enn_damage *= 1.2;
+        ad->var_game->mul_xp += 0.2;
     }
 }
 
@@ -48,6 +50,7 @@ void upgrade_speed(st_global *ad)
         ad->upgrade->upgrade_tab[2] += 1;
         ad->upgrade->can_upgrade = false;
         ad->enn_damage *= 1.2;
+        ad->var_game->mul_xp += 0.2;
     }
 }
 
@@ -62,6 +65,7 @@ void upgrade_health(st_global *ad)
         ad->upgrade->upgrade_tab[3] += 1;
         ad->upgrade->can_upgrade = false;
         ad->enn_damage *= 1.2;
+        ad->var_game->mul_xp += 0.2;
     }
 }
 
