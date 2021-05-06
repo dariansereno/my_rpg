@@ -401,7 +401,7 @@ typedef struct st_global_planet_s {
     st_timer *health_mod;
     st_timer *ext_mod;
     sfText *mark;
-    sfFont *mark_fontt;
+    sfFont *mark_font;
 } st_planet_global;
 
 typedef struct st_planet_card_t {

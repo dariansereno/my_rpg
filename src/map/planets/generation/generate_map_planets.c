@@ -82,7 +82,7 @@ st_planet_global *generate_all_map(void)
     planets->health_mod->clock = sfClock_create();
     planets->ext_mod->clock = sfClock_create();
     planets->mark_font = sfFont_createFromFile("contents/fonts/ex.ttf");
-    planets->mark = sfText_create()
+    planets->mark = sfText_create();
     sfText_setFont(planets->mark, planets->mark_font);
     selector_colonized_pl(planets);
     selector_quest_pl(planets);
