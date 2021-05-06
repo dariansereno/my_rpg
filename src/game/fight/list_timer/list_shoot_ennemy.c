@@ -10,7 +10,7 @@
 
 void ciao_nous(st_global *ad, list_planet *pl)
 {
-    if (ad->ship->life <= 0) {
+    if (ad->var_game->life <= 0) {
         printf("YOU DIED\n");
     }    
 }
@@ -19,7 +19,7 @@ void check_collision_ship(st_global *ad, list_timer *shoot,
 list_planet *pl)
 {
     if (circle_contains(15, ad->ship->bshippos, (*shoot)->pos)) {
-        ad->ship->life -= ad->enn_damage;
+        ad->var_game->life -= ad->enn_damage;
         ciao_nous(ad, pl);
         (*shoot)->destroy = true;
     }

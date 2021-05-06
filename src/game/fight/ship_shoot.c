@@ -12,7 +12,7 @@ void ship_shoot(st_global *ad)
     sfTime time = sfClock_getElapsedTime(ad->ship->reload->clock);
     float seconds = time.microseconds / 1000000.0;
 
-    if (seconds > ad->ship->reload_time) {
+    if (seconds > ad->var_game->reload_time) {
         push_back_timer(&ad->shoot->li_shoot, ad->ship->bshippos,
         deduct_dir(ad));
         reindex_timer(&ad->shoot->li_shoot);
@@ -37,7 +37,7 @@ list_planet *pl)
 
     while (en != NULL) {
         if (circle_contains(30, (*shoot)->pos, en->ennemies.pos)) {
-            en->ennemies.life -= ad->ship->attack;
+            en->ennemies.life -= ad->var_game->attack;
             ciao_ennemy(en, ad, pl);
             (*shoot)->destroy = true;
         }

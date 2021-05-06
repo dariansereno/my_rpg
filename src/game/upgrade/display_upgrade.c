@@ -2,29 +2,10 @@
 ** EPITECH PROJECT, 2021
 ** GALAXY
 ** File description:
-** upgade
+** display_upgrade
 */
 
 #include "my_rpg.h"
-
-int *generate_tab_upgrade()
-{
-    int *tab = my_malloc(sizeof(int) * 4);
-
-    for (int i = 0; i < 4; i++) {
-        tab[i] = 0;
-    }
-    return (tab);
-}
-
-st_upgrade *generate_upgrade()
-{
-    st_upgrade *upgrade = my_malloc(sizeof(st_upgrade *));
-
-    upgrade->upgrade_tab = generate_tab_upgrade();
-    upgrade->can_upgrade = true;
-    return (upgrade);
-}
 
 void print_upgrade_fire_damage(st_global *g)
 {
@@ -36,8 +17,12 @@ void print_upgrade_fire_damage(st_global *g)
     sfText_setPosition(g->ressources[0].text, (sfVector2f)
     {g->ship->viewrect.left + 90, g->ship->viewrect.top + 1025});
     sfText_setCharacterSize(g->ressources[0].text, 23);
-    sfRenderWindow_drawText(g->window->window, g->ressources[0].text,
-    NULL);
+    sfRenderWindow_drawText(g->window->window, g->ressources[0].text, NULL);
+    sfSprite_setScale(g->upgrade->upgrade_icon[0]->sprite, (sfVector2f){1.5, 1.5});
+    sfSprite_setPosition(g->upgrade->upgrade_icon[0]->sprite, (sfVector2f)
+    {g->ship->viewrect.left + 100, g->ship->viewrect.top + 965});
+    sfRenderWindow_drawSprite(g->window->window, g->upgrade->upgrade_icon[0]->
+    sprite, NULL);
 }
 
 void print_upgrade_fire_speed(st_global *g)
@@ -50,8 +35,12 @@ void print_upgrade_fire_speed(st_global *g)
     sfText_setPosition(g->ressources[0].text, (sfVector2f)
     {g->ship->viewrect.left + 90, g->ship->viewrect.top + 1025 - (177)});
     sfText_setCharacterSize(g->ressources[0].text, 23);
-    sfRenderWindow_drawText(g->window->window, g->ressources[0].text,
-    NULL);
+    sfRenderWindow_drawText(g->window->window, g->ressources[0].text, NULL);
+    sfSprite_setScale(g->upgrade->upgrade_icon[1]->sprite, (sfVector2f){1.5, 1.5});
+    sfSprite_setPosition(g->upgrade->upgrade_icon[1]->sprite, (sfVector2f)
+    {g->ship->viewrect.left + 100, g->ship->viewrect.top + 965 - 177});
+    sfRenderWindow_drawSprite(g->window->window, g->upgrade->upgrade_icon[1]->
+    sprite, NULL);
 }
 
 void print_upgrade_speed(st_global *g)
@@ -64,8 +53,12 @@ void print_upgrade_speed(st_global *g)
     sfText_setPosition(g->ressources[0].text, (sfVector2f)
     {g->ship->viewrect.left + 90, g->ship->viewrect.top + 1025 - (177 * 2)});
     sfText_setCharacterSize(g->ressources[0].text, 23);
-    sfRenderWindow_drawText(g->window->window, g->ressources[0].text,
-    NULL);
+    sfRenderWindow_drawText(g->window->window, g->ressources[0].text, NULL);
+    sfSprite_setScale(g->upgrade->upgrade_icon[2]->sprite, (sfVector2f){0.8, 0.8});
+    sfSprite_setPosition(g->upgrade->upgrade_icon[2]->sprite, (sfVector2f)
+    {g->ship->viewrect.left + 100, g->ship->viewrect.top + 965 - (177 * 2)});
+    sfRenderWindow_drawSprite(g->window->window, g->upgrade->upgrade_icon[2]->
+    sprite, NULL);
 }
 
 void print_upgrade_health(st_global *g)
@@ -78,8 +71,12 @@ void print_upgrade_health(st_global *g)
     sfText_setPosition(g->ressources[0].text, (sfVector2f)
     {g->ship->viewrect.left + 90, g->ship->viewrect.top + 1025 - (177 * 3)});
     sfText_setCharacterSize(g->ressources[0].text, 23);
-    sfRenderWindow_drawText(g->window->window, g->ressources[0].text,
-    NULL);
+    sfRenderWindow_drawText(g->window->window, g->ressources[0].text, NULL);
+    sfSprite_setScale(g->upgrade->upgrade_icon[3]->sprite, (sfVector2f){0.8, 0.8});
+    sfSprite_setPosition(g->upgrade->upgrade_icon[3]->sprite, (sfVector2f)
+    {g->ship->viewrect.left + 100, g->ship->viewrect.top + 965 - (177 * 3)});
+    sfRenderWindow_drawSprite(g->window->window, g->upgrade->upgrade_icon[3]->
+    sprite, NULL);
 }
 
 void display_upgrade(st_global *ad)

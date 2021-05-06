@@ -9,14 +9,14 @@
 
 void set_position_ui_game(st_global *g)
 {
-    sfRectangleShape_setPosition(g->ui->ui->life, (sfVector2f){217, 63});
-    sfRectangleShape_setPosition(g->ui->ui->credits, (sfVector2f){217, 77});
-    sfRectangleShape_setPosition(g->ui->ui->xp, (sfVector2f){217, 91});
-    sfRectangleShape_setPosition(g->ui->ui->life_outline, (sfVector2f){217, 63});
-    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f){217, 77});
-    sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f){217, 91});
+    sfRectangleShape_setPosition(g->ui->ui->life, (sfVector2f){217 + 100, 63});
+    sfRectangleShape_setPosition(g->ui->ui->credits, (sfVector2f){217 + 100, 77});
+    sfRectangleShape_setPosition(g->ui->ui->xp, (sfVector2f){217 + 100, 91});
+    sfRectangleShape_setPosition(g->ui->ui->life_outline, (sfVector2f){217 + 100, 63});
+    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f){217 + 100, 77});
+    sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f){217 + 100, 91});
     sfSprite_setPosition(g->ui->ui->map->sprite, \
-    (sfVector2f){75, 41});
+    (sfVector2f){75 + 100, 41});
     sfSprite_setPosition(g->ui->ui->craft[0]->sprite, \
     (sfVector2f){1685, 0});
     sfSprite_setPosition(g->ui->ui->craft[1]->sprite, \
@@ -58,7 +58,7 @@ void item_craft_ui_game(st_global *g)
     g->ui->ui->item->sprite, \
     NULL);
     sfSprite_setScale(g->ui->ui->item->sprite, (sfVector2f){0.5, 0.5});
-    if (g->ship->craft) {
+    if (g->var_game->craft) {
         for (int i = 0; i < 2; i++)
             print_craftable(g, i);
     }
@@ -71,11 +71,11 @@ void display_ui_game(st_global *g)
     rectangle_display_ui_game(g);
     item_craft_ui_game(g);
     sfRectangleShape_setSize(g->ui->ui->life, \
-    (sfVector2f){g->ship->life * 263 / 200, 10});
+    (sfVector2f){g->var_game->life * 263 / g->var_game->max_health, 10});
     sfRectangleShape_setSize(g->ui->ui->credits, \
     (sfVector2f){g->money->money * 263 / 10000, 10});
     sfRectangleShape_setSize(g->ui->ui->xp, \
-    (sfVector2f){g->ship->xp * 263 / g->ship->max_xp, 10});
+    (sfVector2f){g->var_game->xp * 263 / g->var_game->max_xp, 10});
     sfSprite_setPosition(g->ui->ui->map->sprite, (sfVector2f)
     {sfSprite_getPosition(g->ui->ui->map->sprite).x +\
     g->ship->viewrect.left, \
@@ -85,7 +85,7 @@ void display_ui_game(st_global *g)
     g->ui->ui->map->sprite, \
     NULL);
     sfSprite_setPosition(g->ship->bship, \
-    (sfVector2f){163 + g->ship->viewrect.left, 125 + g->ship->viewrect.top});
+    (sfVector2f){163 + g->ship->viewrect.left + 100, 125 + g->ship->viewrect.top});
     sfSprite_setScale(g->ship->bship, (sfVector2f){2, 2});
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
     sfSprite_setScale(g->ship->bship, (sfVector2f){1, 1});
