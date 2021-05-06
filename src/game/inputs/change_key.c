@@ -57,6 +57,7 @@ void key_change_again(st_global *ad)
         ad->key_pressed.Enter = false;
     if (ad->ui->pause_settings->existing)
         events_pause_settings(ad);
+    plus_key_change(ad);
 }
 
 void more_key_change(st_global *ad)

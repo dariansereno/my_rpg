@@ -14,8 +14,8 @@ void move_star_upright(st_global *ad)
 
     setkeyupright(ad);
     if (secondso > 0.01) {
-        ad->paralax->starr.top -= 4;
-        ad->paralax->starr.left += 4;
+        ad->paralax->starr.top -= ad->var_game->speed - 1;
+        ad->paralax->starr.left += ad->var_game->speed - 1;
         if (ad->paralax->starr.top <= 0)
             ad->paralax->starr.top = 2160;
         if (ad->paralax->starr.left >= 3840)
@@ -31,8 +31,8 @@ void move_star_downleft(st_global *ad)
 
     setkeydownleft(ad);
     if (secondso > 0.01) {
-        ad->paralax->starr.top += 4;
-        ad->paralax->starr.left -= 4;
+        ad->paralax->starr.top += ad->var_game->speed - 1;
+        ad->paralax->starr.left -= ad->var_game->speed - 1;
         if (ad->paralax->starr.top >= 2160)
             ad->paralax->starr.top = 0;
         if (ad->paralax->starr.left <= 0)
@@ -48,8 +48,8 @@ void move_star_upleft(st_global *ad)
 
     setkeyupleft(ad);
     if (secondso > 0.01) {
-        ad->paralax->starr.top -= 4;
-        ad->paralax->starr.left -= 4;
+        ad->paralax->starr.top -= ad->var_game->speed - 1;
+        ad->paralax->starr.left -= ad->var_game->speed - 1;
         if (ad->paralax->starr.top <= 0)
             ad->paralax->starr.top = 2160;
         if (ad->paralax->starr.left <= 0)
@@ -65,8 +65,8 @@ void move_star_downright(st_global *ad)
 
     setkeydownright(ad);
     if (secondso > 0.01) {
-        ad->paralax->starr.top += 4;
-        ad->paralax->starr.left += 4;
+        ad->paralax->starr.top += ad->var_game->speed - 1;
+        ad->paralax->starr.left += ad->var_game->speed - 1;
         if (ad->paralax->starr.top >= 2160)
             ad->paralax->starr.top = 0;
         if (ad->paralax->starr.left >= 3840)

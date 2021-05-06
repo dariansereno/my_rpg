@@ -33,7 +33,7 @@ void effect_extract_module(st_global *ad)
     float seconds = time.microseconds / 1000000.0;
     int rand;
 
-    if (seconds > 60) {
+    if (seconds > 40) {
         while (pl != NULL) {
             if (pl->planet.colonized) {
                 for (int i = 0; i < pl->planet.modules[3]; i++) {
@@ -49,32 +49,5 @@ void effect_extract_module(st_global *ad)
             pl = pl->next;
         }
         sfClock_restart(ad->planets->gen_mod->clock);
-    }
-}
-
-void effect_health_module(st_global *ad)
-{
-    list_planet pl = ad->planets->planets;
-    int rand;
-    sfTime time = sfClock_getElapsedTime(ad->planets->gen_mod->clock);
-    float seconds = time.microseconds / 1000000.0;
-
-    while (pl != NULL) {
-        if (pl->planet.colonized) {
-            if (circle_contains(500, (sfVector2f){pl->planet.pos.x,
-            pl->planet.pos.y}, ad->ship->bshippos) && pl->planet.modules[2] > 0) {
-                sfCircleShape_setPosition(ad->circle, (sfVector2f){(float)pl->planet.pos.x, (float)pl->planet.pos.y});
-                sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
-            }
-            for (int i = 0; i < pl->planet.modules[2]; i++) {
-                if (seconds > 1) {
-                    if (pl->planet.modules[2] > 0)
-                        if (ad->ship->life < 200)
-                            ad->ship->life += (int)5 * pl->planet.mul_housing;
-                    sfClock_restart(ad->planets->gen_mod->clock);
-                }
-            }
-        }
-        pl = pl->next;
     }
 }

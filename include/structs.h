@@ -176,6 +176,10 @@ typedef struct key_pressed_s {
     bool S;
     bool Q;
     bool J;
+    bool R;
+    bool T;
+    bool Y;
+    bool U;
     bool Enter;
 } key_pressed;
 
@@ -211,6 +215,21 @@ typedef struct structs_s {
     bool bool_menu;
 }structs_t;
 
+typedef struct st_game_var_s {
+    float reload_time;
+    float life;
+    float attack;
+    bool craft;
+    bool clicked;
+    float xp;
+    int lvl;
+    int max_xp;
+    int range;
+    float speed;
+    int max_health;
+    bool special_atk;
+} st_game_var;
+
 typedef struct ship_s {
     sfSprite *bship;
     sfTexture *bshipt;
@@ -236,14 +255,6 @@ typedef struct ship_s {
     sfVector2f velocity;
     sfVector2f acceleration;
     st_timer *reload;
-    float reload_time;
-    float life;
-    float attack;
-    bool craft;
-    bool clicked;
-    float xp;
-    int lvl;
-    int max_xp;
 }ship_t;
 
 typedef struct st_ennemies_s
@@ -573,6 +584,7 @@ typedef struct items_s {
 typedef struct st_upgrade_s {
     int *upgrade_tab;
     bool can_upgrade;
+    st_object **upgrade_icon;
 } st_upgrade;
 
 typedef struct st_global_s {
@@ -603,6 +615,7 @@ typedef struct st_global_s {
     sfCircleShape *circle;
     items_t *itemsss;
     st_upgrade *upgrade;
+    st_game_var *var_game;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

@@ -56,6 +56,24 @@ structs_t *all_dat(void)
     return (window);
 }
 
+st_game_var *ini_var()
+{
+    st_game_var *var = my_malloc(sizeof(st_game_var *));
+
+    var->special_atk = false;
+    var->range = 15;
+    var->speed = 5.0;
+    var->max_health = 200;
+    var->attack = 10;
+    var->life = 100;
+    var->lvl = 0;
+    var->max_xp = 100;
+    var->xp = 90;
+    var->craft = false;
+    var->reload_time = 0.18;
+    return (var);
+}
+
 ship_t *ship_ini(void)
 {
     ship_t *ship = malloc(sizeof(ship_t));
@@ -69,7 +87,6 @@ ship_t *ship_ini(void)
     ship->view = sfView_createFromRect(ship->viewrect);
     ship->reload = malloc(sizeof(*ship->reload));
     ship->reload->clock = sfClock_create();
-    ship->reload_time = 0.18;
     ship->collisionZ = false;
     ship->collisionD = false;
     ship->collisionS = false;
@@ -88,12 +105,6 @@ ship_t *ship_ini(void)
     ship->firstcollisionQlim = false;
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
-    ship->attack = 10;
-    ship->life = 100;
-    ship->lvl = 0;
-    ship->max_xp = 100;
-    ship->xp = 0;
-    ship->craft = false;
     return (ship);
 }
 
@@ -128,6 +139,7 @@ st_global *ini(void)
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
     all->drop = NULL;
+    all->var_game = ini_var();
     all->circle = sfCircleShape_create();
     sfCircleShape_setRadius(all->circle, 500);
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
