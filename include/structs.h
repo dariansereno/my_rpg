@@ -204,6 +204,7 @@ typedef struct structs_s {
     sfVideoMode mode;
     sfMusic *music;
     float music_volume;
+    int width_volume_pause;
     int width_volume;
     float sfx_volume;
     int width_sfx;
@@ -225,13 +226,20 @@ typedef struct st_game_var_s {
     int lvl;
     int max_xp;
     int range;
-    float speed;
+    int speed;
     int max_health;
     bool special_atk;
     int price_sett;
     int quests;
-    int mul_xp;
+    float mul_xp;
+    bool is_boss;
 } st_game_var;
+
+typedef struct st_boss_s {
+    sfRectangleShape *life;
+    sfRectangleShape *outline;
+    float life_f;
+} st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;
@@ -536,6 +544,7 @@ typedef struct st_ui {
     st_end *end;
     st_fade *fade;
     st_settings *settings;
+    st_boss *boss;
 } st_ui;
 
 typedef struct st_variable_s {

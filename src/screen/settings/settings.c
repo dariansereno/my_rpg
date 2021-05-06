@@ -32,23 +32,23 @@ st_settings *generate_settings(void)
 void set_position_settings(st_global *g)
 {
     sfSprite_setPosition(g->ui->settings->background->sprite, \
-    (sfVector2f){g->ui->settings->background->pos.x, \
-    g->ui->settings->background->pos.y});
+    (sfVector2f){g->ui->settings->background->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->background->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->settings->cancel->sprite, \
-    (sfVector2f){g->ui->settings->cancel->pos.x, \
-    g->ui->settings->cancel->pos.y});
+    (sfVector2f){g->ui->settings->cancel->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->cancel->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->settings->save->sprite, \
-    (sfVector2f){g->ui->settings->save->pos.x, \
-    g->ui->settings->save->pos.y});
+    (sfVector2f){g->ui->settings->save->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->save->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->settings->cross->sprite, \
-    (sfVector2f){g->ui->settings->cross->pos.x, \
-    g->ui->settings->cross->pos.y});
+    (sfVector2f){g->ui->settings->cross->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->cross->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->settings->music->sprite, \
-    (sfVector2f){g->ui->settings->music->pos.x, \
-    g->ui->settings->music->pos.y});
+    (sfVector2f){g->ui->settings->music->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->music->pos.y + g->ship->viewrect.top});
     sfSprite_setPosition(g->ui->settings->sfx->sprite, \
-    (sfVector2f){g->ui->settings->sfx->pos.x, \
-    g->ui->settings->sfx->pos.y});
+    (sfVector2f){g->ui->settings->sfx->pos.x + g->ship->viewrect.left, \
+    g->ui->settings->sfx->pos.y + g->ship->viewrect.top});
 }
 
 void parallax_settings(st_global *g)
@@ -82,8 +82,9 @@ void screen_settings(st_global *g)
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->settings->sfx->sprite, NULL);
     sfSprite_setPosition(g->ui->menu->cursor->sprite, \
-    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560, \
-    sfMouse_getPositionRenderWindow(g->window->window).y});
+    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560 + \
+    g->ship->viewrect.left, sfMouse_getPositionRenderWindow(g->window->window).y
+    + g->ship->viewrect.top});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->menu->cursor->sprite, NULL);
     sfRenderWindow_display(g->window->window);
