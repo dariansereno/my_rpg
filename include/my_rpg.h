@@ -32,8 +32,10 @@
 
 // GAME
     // QUEST
-        //GENERATE_QUEST.C
+        // GENERATE_QUEST.C
             void generate_random_quest(list_planet *planet, st_global *ad);
+        // FIND_ID.C
+            void target_quest(st_global *ad);
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
@@ -456,6 +458,7 @@
         // TARGET_INDICATOR
                 sfVector2f target_indicator(st_global *ad, sfVector2f obj);
                 void print_target_indicator(st_global *ad);
+                bool is_on_screen(st_global *ad, sfVector2i pl);
 
 // MESSAGES
     // ADDITIONNAL_MSG
