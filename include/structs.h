@@ -365,6 +365,7 @@ typedef struct st_planet_s {
     int *mod_price;
     int *modules;
     int mul_housing;
+    bool quest;
 } st_planet;
 
 typedef struct list_elem_planet_s {
