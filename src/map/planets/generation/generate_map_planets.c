@@ -81,6 +81,9 @@ st_planet_global *generate_all_map(void)
     planets->gen_mod->clock = sfClock_create();
     planets->health_mod->clock = sfClock_create();
     planets->ext_mod->clock = sfClock_create();
+    planets->mark_font = sfFont_createFromFile("contents/fonts/ex.ttf");
+    planets->mark = sfText_create();
+    sfText_setFont(planets->mark, planets->mark_font);
     selector_colonized_pl(planets);
     selector_quest_pl(planets);
 
@@ -98,6 +101,5 @@ st_planet_global *generate_all_map(void)
         push_back_planet(&planets->planets, stats[i]);
     }
     set_texture_planets(&planets->planets, planets);
-    printf("%d\n", size_list_planet(planets->planets));
     return (planets);
 }

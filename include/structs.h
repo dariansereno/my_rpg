@@ -228,6 +228,8 @@ typedef struct st_game_var_s {
     float speed;
     int max_health;
     bool special_atk;
+    int price_sett;
+    int quests;
 } st_game_var;
 
 typedef struct ship_s {
@@ -398,6 +400,8 @@ typedef struct st_global_planet_s {
     st_timer *gen_mod;
     st_timer *health_mod;
     st_timer *ext_mod;
+    sfText *mark;
+    sfFont *mark_font;
 } st_planet_global;
 
 typedef struct st_planet_card_t {

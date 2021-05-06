@@ -68,9 +68,11 @@ st_game_var *ini_var()
     var->life = 100;
     var->lvl = 0;
     var->max_xp = 100;
+    var->price_sett = 3;
     var->xp = 90;
     var->craft = false;
     var->reload_time = 0.18;
+    var->quests = 1;
     return (var);
 }
 
