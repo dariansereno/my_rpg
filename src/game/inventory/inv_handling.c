@@ -12,7 +12,7 @@ void is_craftable(st_global *ad)
     bool is_good = false;
 
     for (int i = 0; i < 3; i++) {
-        if (ad->ressources[i].nb >= 3)
+        if (ad->ressources[i].nb >= ad->var_game->price_sett)
             is_good = true;
         else {
             is_good = false;
@@ -29,8 +29,8 @@ void craft_settler(st_global *ad)
 {
     if (ad->key_pressed.J && ad->var_game->craft && ad->var_game->clicked) {
         ad->var_game->clicked = false;
-        for (int i = 0; i < 3; i++)
-            ad->ressources[i].nb -= 3;
+        for (int i = 0; i < ad->var_game->price_sett; i++)
+            ad->ressources[i].nb -= ad->var_game->price_sett;
         ad->ressources[3].nb += 1;
     }
     if (ad->key_pressed.J == false)
