@@ -199,12 +199,15 @@ typedef struct structs_s {
     sfVideoMode mode;
     sfMusic *music;
     float music_volume;
+    int width_volume;
     float sfx_volume;
+    int width_sfx;
     int screen;
     bool created;
     bool second_created;
     bool bool_load;
     bool bool_game;
+    bool bool_menu;
 }structs_t;
 
 typedef struct ship_s {
@@ -348,6 +351,7 @@ typedef struct st_planet_s {
     bool colonized;
     int *mod_price;
     int *modules;
+    int mul_housing;
 } st_planet;
 
 typedef struct list_elem_planet_s {

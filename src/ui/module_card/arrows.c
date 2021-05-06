@@ -20,6 +20,8 @@ void buy_module(st_global *g, list_planet pl)
             g->money->money -= pl->planet.mod_price[g->ui->module_card->pos_rect
             - 1];
         }
+        if (g->ui->module_card->pos_rect == 4)
+            pl->planet.mul_housing += 0.8;
         g->ui->module_card->buy = false;
     }
 }

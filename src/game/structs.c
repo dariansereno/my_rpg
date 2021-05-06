@@ -47,11 +47,12 @@ structs_t *all_dat(void)
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
     window->screen = 1;
     window->music_volume = 100.0;
+    window->width_volume = 253;
     window->sfx_volume = 100;
+    window->width_sfx = 253;
     window->bool_load = true;
     window->bool_game = true;
-    window->created = false;
-    window->second_created = false;
+    window->bool_menu = true;
     return (window);
 }
 
@@ -88,7 +89,7 @@ ship_t *ship_ini(void)
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
     ship->attack = 10;
-    ship->life = 200;
+    ship->life = 100;
     ship->craft = false;
     return (ship);
 }
@@ -124,8 +125,10 @@ st_global *ini(void)
     all->ressources = generate_inventory(all);
     all->drop = NULL;
     all->circle = sfCircleShape_create();
-    sfCircleShape_setRadius(all->circle, 300);
-    all->itemsss = item_ini();
+    sfCircleShape_setRadius(all->circle, 500);
+    sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
+    sfCircleShape_setFillColor(all->circle, sfTransparent);
+    sfCircleShape_setOutlineThickness(all->circle, 10);
     return (all);
 }
 

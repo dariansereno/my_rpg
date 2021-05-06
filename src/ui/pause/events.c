@@ -43,14 +43,17 @@ void events_pause_down(st_global *g)
 
 void events_redirect_pause(st_global *g)
 {
-    if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyEnter)
+    if (g->key_pressed.Enter) {
+        g->ui->pause->pressed = true;
         switch (g->ui->pause->pos_rect) {
             case 1:
                 g->ui->pause->existing = false;
                 break;
             case 2:
                 g->ui->pause_settings->existing = true;
+                g->window->music_volume = sfMusic_getVolume(g->window->music);
+                g->window->width_volume = \
+                g->ui->pause_settings->ui[2]->rect.width;
                 break;
             case 3:
                 screen_game(g);
@@ -59,6 +62,8 @@ void events_redirect_pause(st_global *g)
             default:
                 break;
         }
+        g->ui->pause->pressed = false;
+    }
 }
 
 void text_pause(st_global *g)

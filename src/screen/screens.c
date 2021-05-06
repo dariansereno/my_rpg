@@ -15,8 +15,8 @@ void screen(st_global *g)
         case 1:
             if (g->window->bool_load == true) {
                 sfRenderWindow_destroy(g->window->window);
-                g->window->window = sfRenderWindow_create(mode, "loading",
-                sfTitlebar | sfClose | sfResize, NULL);
+                g->window->window = sfRenderWindow_create(mode, "Space Civ",
+                sfTitlebar | sfClose, NULL);
                 sfRenderWindow_setFramerateLimit(g->window->window, 120);
                 sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
                 g->window->bool_load = false;
@@ -24,6 +24,13 @@ void screen(st_global *g)
             screen_loading(g);
             break;
         case 2:
+            if (g->window->bool_menu) {
+                sfView_destroy(g->ui->menu->view);
+                g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
+                {g->ship->viewrect.left + 560, \
+                g->ship->viewrect.top, 800, 1080});
+                g->window->bool_menu = false;
+            }
             screen_menu(g);
             break;
         case 3:
@@ -32,8 +39,8 @@ void screen(st_global *g)
         case 4:
         if (g->window->bool_game == true) {
                 sfRenderWindow_destroy(g->window->window);
-                g->window->window = sfRenderWindow_create(g->window->mode, "my_rpg",
-                sfTitlebar | sfClose | sfResize, NULL);
+                g->window->window = sfRenderWindow_create(g->window->mode, "Space Civ",
+                sfTitlebar | sfClose, NULL);
                 sfRenderWindow_setFramerateLimit(g->window->window, 120);
                 sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
                 g->window->bool_game = false;
