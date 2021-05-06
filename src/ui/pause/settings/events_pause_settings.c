@@ -32,7 +32,7 @@ void events_pause_settings(st_global *g)
             case 1:
                 sfMusic_setVolume(g->window->music, g->window->music_volume);
                 g->ui->pause_settings->ui[2]->rect.width = \
-                g->window->width_volume;
+                g->window->width_volume_pause;
                 g->ui->pause_settings->existing = false;
                 break;
             case 2:

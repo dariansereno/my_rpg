@@ -204,6 +204,7 @@ typedef struct structs_s {
     sfVideoMode mode;
     sfMusic *music;
     float music_volume;
+    int width_volume_pause;
     int width_volume;
     float sfx_volume;
     int width_sfx;
@@ -240,6 +241,9 @@ typedef struct st_boss_s {
     int atk_mode;
     st_object *boss;
     st_object *bg;
+    sfRectangleShape *life;
+    sfRectangleShape *outline;
+    float life_f;
 } st_boss;
 
 typedef struct ship_s {
@@ -545,6 +549,7 @@ typedef struct st_ui {
     st_end *end;
     st_fade *fade;
     st_settings *settings;
+    st_boss *boss;
 } st_ui;
 
 typedef struct st_variable_s {

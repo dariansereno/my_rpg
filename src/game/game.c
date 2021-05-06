@@ -91,6 +91,7 @@ void check_status(st_global *ad)
         display_items_inventory(ad);
         craft_settler(ad);
         display_stats_ship(ad);
+        boss_life(ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);
