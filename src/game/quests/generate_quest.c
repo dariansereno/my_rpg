@@ -11,9 +11,10 @@ bool rand_pl_quest(list_planet pl)
 {
     int rand = 0;
 
-    if (pl->planet.tradable == true && pl->size == 2) {
+    if ((pl->planet.type > LAVA1 && pl->planet.type < ICE) && pl->size == 2) {
         rand = random_piped_two();
         if (rand) {
+            pl->planet.quest = true;
             return (true);
         }
     }

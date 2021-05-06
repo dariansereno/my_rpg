@@ -99,6 +99,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         else
             planets[i].tradable = false;
         planets[i].colonized = false;
+        planets[i].quest = false;
     }
     for (int i = (size / 8) * 4 ; i < (size / 8) * 6; i++) {
         planets[i].type = random_between(16, 19);
@@ -108,6 +109,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         planets[i].kind = generate_kind(planets[i].type);
         planets[i].tradable = random_between(0, 1);
         planets[i].colonized = false;
+        planets[i].quest = false;
     }
     for (int i = (size / 8) * 6; i < size; i++) {
         planets[i].type = random_between(21, 23);
@@ -117,6 +119,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
         planets[i].kind = generate_kind(planets[i].type);
         planets[i].tradable = false;
         planets[i].colonized = false;
+        planets[i].quest = false;
     }
     return (planets);
 }
