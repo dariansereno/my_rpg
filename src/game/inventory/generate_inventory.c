@@ -9,7 +9,7 @@
 
 st_object **generate_items()
 {
-    st_object **items = malloc(sizeof(**items) * 4);
+    st_object **items = my_malloc(sizeof(**items) * 4);
 
     items[0] = generate_object((sfVector2f){0, 0}, (sfIntRect){0, 0, 199, 208}, 
     "contents/ui/items/black_matter.png");

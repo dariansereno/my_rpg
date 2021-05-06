@@ -26,7 +26,7 @@ void drop_money(st_global *ad, list_ennemies en)
     drop.mode = 1;
     drop.pos = (sfVector2f){en->ennemies.pos.x + 10, en->ennemies.pos.y};
     ad->money->money += drop.amount;
-    ad->ship->xp += drop.xp;
+    ad->var_game->xp += drop.xp;
     push_back_drop(&ad->drop, drop);
 }
 
@@ -39,7 +39,7 @@ void drop_ressources(st_global *ad, list_ennemies en)
 
     ad->ressources[drop.id].nb += drop.nb;
     drop.mode = 0;
-    ad->ship->xp += drop.xp;
+    ad->var_game->xp += drop.xp;
     drop.pos = (sfVector2f){en->ennemies.pos.x + 10, en->ennemies.pos.y};
     push_back_drop(&ad->drop, drop);
 }

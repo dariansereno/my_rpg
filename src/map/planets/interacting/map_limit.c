@@ -27,10 +27,10 @@ sfVertexArray **init_limit_map()
 {
     sfVertexArray **lines = my_malloc(sizeof(sfVertexArray *) * 4);
 
-    lines[0] = generate_line((sfVector2f){0, 0}, (sfVector2f){50000, 0}, sfRed);
-    lines[1] = generate_line((sfVector2f){0, 0}, (sfVector2f){0, 50000}, sfRed);
-    lines[2] = generate_line((sfVector2f){50000, 50000}, (sfVector2f){50000, 0}, sfRed);
-    lines[3] = generate_line((sfVector2f){50000, 50000}, (sfVector2f){0, 50000}, sfRed);
+    lines[0] = generate_line((sfVector2f){0, 0}, (sfVector2f){80000, 0}, sfRed);
+    lines[1] = generate_line((sfVector2f){0, 0}, (sfVector2f){0, 80000}, sfRed);
+    lines[2] = generate_line((sfVector2f){80000, 80000}, (sfVector2f){80000, 0}, sfRed);
+    lines[3] = generate_line((sfVector2f){80000, 80000}, (sfVector2f){0, 80000}, sfRed);
     return (lines);
 }
 

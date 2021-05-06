@@ -53,7 +53,6 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
     print_spaceobj_list(ad->space_obj->li, ad->window->window, ad);
-    // print_planet_list_little(ad->planets->planets, ad->window->window, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     print_planet_list_little(ad->planets->planets, ad->window->window, ad);
     print_list_shoot(&ad->shoot->li_shoot, ad->shoot->sprite_ship, ad);
@@ -62,6 +61,7 @@ void check_status(st_global *ad)
     draw_map_limit(ad);
     collision_limit(ad);
     is_craftable(ad);
+    can_upgrade(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     print_list_drop(&ad->drop, ad);
     if (ad->ui->planet_card->existing == false && \
@@ -75,16 +75,18 @@ void check_status(st_global *ad)
         colonise_planet(ad);
         ennemies_spawning(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
+        effect_extract_module(ad);
+        effect_com_module(ad);
+        effect_health_module(ad);
         print_planet_list_big(ad->planets->planets, ad->window->window, ad);
         print_target_indicator(ad);
         display_upgrade(ad);
+        choose_upgrade(ad);
         display_ui_game(ad);
         display_items_inventory(ad);
         craft_settler(ad);
+        display_stats_ship(ad);
     }
-    effect_extract_module(ad);
-    effect_com_module(ad);
-    effect_health_module(ad);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);

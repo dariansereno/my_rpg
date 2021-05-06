@@ -28,5 +28,5 @@ void destroy_object(st_object *object)
     sfTexture_destroy(object->texture);
     sfClock_destroy(object->timer->clock);
     object->timer = NULL;
-    object = NULL;
+    // object = NULL;
 }
