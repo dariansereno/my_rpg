@@ -41,6 +41,17 @@ void selector_colonized_pl(st_planet_global *planets)
     sfSprite_setOrigin(planets->colonized_pl, (sfVector2f){26, 26});
 }
 
+void selector_quest_pl(st_planet_global *planets)
+{
+    planets->texture_quest = sfTexture_createFromFile( \
+    "contents/img/sp/quest.png", NULL);
+    planets->quest_pl = sfSprite_create();
+
+    sfSprite_setTexture(planets->quest_pl, \
+    planets->texture_quest , sfTrue);
+    sfSprite_setOrigin(planets->quest_pl, (sfVector2f){26, 26});
+}
+
 int *generate_mod_price()
 {
     int *mod_price = my_malloc(sizeof(int) * 4);
@@ -71,6 +82,7 @@ st_planet_global *generate_all_map(void)
     planets->health_mod->clock = sfClock_create();
     planets->ext_mod->clock = sfClock_create();
     selector_colonized_pl(planets);
+    selector_quest_pl(planets);
 
     for (int i = 0; i < math.kmax; i++) {
         stats[i].pos = pos[i];
