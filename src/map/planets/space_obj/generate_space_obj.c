@@ -33,7 +33,7 @@ sfTexture **generate_space_obj_texture()
 void generate_space_obj_li(list_spaceobj *li, st_global_spaceobj *objs)
 {
     scatter math = {.germ = 469880, .interval = 50000, .kmax =
-    random_between(200, 300), .p = 1288, .q = 1664713};
+    random_between(50, 100), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
 
     for (int i = 0; i < math.kmax; i++) {

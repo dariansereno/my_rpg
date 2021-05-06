@@ -87,22 +87,22 @@ void display_texts_module_card(st_global *g, list_planet planets)
     text_title_credits_module_card(g, planets);
     text_price_module_card(g, planets);
     sfText_setCharacterSize(g->ui->module_card->text, 40);
-    sfText_setString(g->ui->module_card->text, "Module Habitation");
+    sfText_setString(g->ui->module_card->text, "Housing Module");
     sfText_setPosition(g->ui->module_card->text, \
     (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 489});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
-    sfText_setString(g->ui->module_card->text, "Module Commercial");
+    sfText_setString(g->ui->module_card->text, "Trading Module");
     sfText_setPosition(g->ui->module_card->text, \
     (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 574});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
-    sfText_setString(g->ui->module_card->text, "Module Sante");
+    sfText_setString(g->ui->module_card->text, "Health Module");
     sfText_setPosition(g->ui->module_card->text, \
     (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 659});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
-    sfText_setString(g->ui->module_card->text, "Module Extraction");
+    sfText_setString(g->ui->module_card->text, "Extraction Module");
     sfText_setPosition(g->ui->module_card->text, \
     (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 745});
     sfRenderWindow_drawText(g->window->window, \

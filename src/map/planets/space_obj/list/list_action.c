@@ -74,7 +74,7 @@ st_global *ad)
 {
     while (li != NULL){
        if (li->on_screen == true) {
-            sfSprite_setScale(li->sprite, (sfVector2f){4, 4});
+            sfSprite_setScale(li->sprite, (sfVector2f){10, 10});
             if (li->id >= 4 && li->id <= 7)
                 sfSprite_setScale(li->sprite, (sfVector2f){1, 1});
 

@@ -88,7 +88,7 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
 {
     st_planet *planets = my_malloc(sizeof(st_planet) * size);
 
-    for (int i = 0; i  < size - (size / 4); i++) {
+    for (int i = 0; i  < size - ((size / 8) * 4); i++) {
         planets[i].type = random_between(0, 31);
         planets[i].climate = climate_from_type(planets[i].type);
         planets[i].animated = animation_from_type(planets[i].type);
@@ -103,8 +103,18 @@ st_planet *general_all_planets(sfVector2i *pos, int size)
             planets[i].relation = 3;
         planets[i].colonized = false;
     }
-    for (int i = size - (size / 4) ; i < size; i++) {
+    for (int i = size - ((size / 8) * 4) ; i < size - ((size / 8) * 7); i++) {
         planets[i].type = random_between(16, 19);
+        planets[i].climate = climate_from_type(planets[i].type);
+        planets[i].animated = animation_from_type(planets[i].type);
+        planets[i].stats = generate_planet_stat(planets[i]);
+        planets[i].kind = generate_kind(planets[i].type);
+        planets[i].relation = random_between(0, 2);
+        planets[i].tradable = random_between(0, 1);
+        planets[i].colonized = false;
+    }
+    for (int i = size - ((size / 8) * 7); i < size; i++) {
+        planets[i].type = random_between(21, 23);
         planets[i].climate = climate_from_type(planets[i].type);
         planets[i].animated = animation_from_type(planets[i].type);
         planets[i].stats = generate_planet_stat(planets[i]);
