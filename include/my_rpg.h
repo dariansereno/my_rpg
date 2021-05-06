@@ -301,6 +301,7 @@
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
     moula_t *money_ini(void);
+    items_t *item_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);
@@ -375,6 +376,7 @@
             char *int_to_str_price(int money);
             void items_text_trade_card(st_global *g, int y);
             void text_title_credits_trade_card(st_global *g, list_planet planets);
+            void check_buy(st_global *g, list_planet planets);
     // MODULE_CARD
         // GENERATE_MODULE_CARD
             module_card_s *generate_module_card(void);

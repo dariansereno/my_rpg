@@ -203,6 +203,8 @@ typedef struct structs_s {
     float sfx_volume;
     int width_sfx;
     int screen;
+    bool created;
+    bool second_created;
     bool bool_load;
     bool bool_game;
     bool bool_menu;
@@ -556,6 +558,15 @@ typedef struct st_global_sfx_s
     sfSound *explosion;
 } st_global_sfx;
 
+typedef struct items_s {
+    sfSprite *ingot;
+    sfSprite *bm;
+    sfSprite *crystal;
+    sfTexture *ingott;
+    sfTexture *bmt;
+    sfTexture *crystalt;
+} items_t;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
@@ -582,6 +593,7 @@ typedef struct st_global_s {
     st_global_spaceobj *space_obj;
     list_drop drop;
     sfCircleShape *circle;
+    items_t *itemsss;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

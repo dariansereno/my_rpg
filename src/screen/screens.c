@@ -16,7 +16,7 @@ void screen(st_global *g)
             if (g->window->bool_load == true) {
                 sfRenderWindow_destroy(g->window->window);
                 g->window->window = sfRenderWindow_create(mode, "Space Civ",
-                sfTitlebar | sfClose, NULL);
+                sfTitlebar | sfClose | sfResize, NULL);
                 sfRenderWindow_setFramerateLimit(g->window->window, 120);
                 sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
                 g->window->bool_load = false;
@@ -40,7 +40,7 @@ void screen(st_global *g)
         if (g->window->bool_game == true) {
                 sfRenderWindow_destroy(g->window->window);
                 g->window->window = sfRenderWindow_create(g->window->mode, "Space Civ",
-                sfTitlebar | sfClose, NULL);
+                sfTitlebar | sfClose | sfResize, NULL);
                 sfRenderWindow_setFramerateLimit(g->window->window, 120);
                 sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
                 g->window->bool_game = false;
