@@ -238,6 +238,8 @@
             void print_colonised_selec(st_global *ad);
         // COLONISE_PLANET.C
             void print_can_colonise(st_global *ad);
+            void print_can_trade(st_global *ad);
+            void print_can_quest(st_global *ad);
             void colonise_planet(st_global *ad);
     //ANIMATION
         // ANIMATION.C

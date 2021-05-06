@@ -230,6 +230,7 @@ typedef struct st_game_var_s {
     bool special_atk;
     int price_sett;
     int quests;
+    int mul_xp;
 } st_game_var;
 
 typedef struct ship_s {
