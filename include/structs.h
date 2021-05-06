@@ -236,7 +236,9 @@ typedef struct st_game_var_s {
 } st_game_var;
 
 typedef struct st_boss_s {
-    float life;
+    sfRectangleShape *life;
+    sfRectangleShape *outline;
+    float life_f;
 } st_boss;
 
 typedef struct ship_s {
@@ -542,6 +544,7 @@ typedef struct st_ui {
     st_end *end;
     st_fade *fade;
     st_settings *settings;
+    st_boss *boss;
 } st_ui;
 
 typedef struct st_variable_s {
