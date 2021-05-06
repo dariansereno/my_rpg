@@ -13,7 +13,7 @@ void quest_caller(st_global *ad)
     // dans les fonctions direct.
 
     // QUEST 1
-
+    quest_1_initialise(ad);
     // QUEST 2
 
     // QUEST 3
