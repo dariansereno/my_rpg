@@ -46,10 +46,10 @@ void upgrade_speed(st_global *ad)
         ad->var_game->lvl += 1;
         ad->var_game->xp = 0.0;
         ad->var_game->max_xp *= 1.3;
-        ad->var_game->speed *= 1.1;
+        ad->var_game->speed = (int)ad->var_game->speed * 1.1;
         ad->upgrade->upgrade_tab[2] += 1;
         ad->upgrade->can_upgrade = false;
-        ad->enn_damage *= 1.2;
+        ad->enn_damage *= 1.4;
         ad->var_game->mul_xp += 0.2;
     }
 }
