@@ -232,10 +232,14 @@ typedef struct st_game_var_s {
     int quests;
     float mul_xp;
     bool is_boss;
+    bool boss_generated;
 } st_game_var;
 
 typedef struct st_boss_s {
     float life;
+    int atk_mode;
+    st_object *boss;
+    st_object *bg;
 } st_boss;
 
 typedef struct ship_s {
@@ -629,6 +633,7 @@ typedef struct st_global_s {
     items_t *itemsss;
     st_upgrade *upgrade;
     st_game_var *var_game;
+    st_boss *boss;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
