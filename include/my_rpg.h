@@ -31,6 +31,14 @@
 #include <math.h>
 
 // GAME
+    // QUEST
+        //GENERATE_QUEST.C
+            void generate_random_quest(list_planet *planet, st_global *ad);
+    // UPGRADE
+        // UPGRADE.C
+            int *generate_tab_upgrade();
+            st_upgrade *generate_upgrade();
+            void display_upgrade(st_global *ad);
     // ANIMATIONS
         // EXPLODE_ANIM.C
             void print_list_explo(list_timer *li, st_global *ad);
@@ -99,6 +107,10 @@
         // PATH_FINDING
             // DROP
                 void drop(st_global *ad, list_ennemies en);
+                int random_money();
+                int random_ressources();
+                int random_nb_ressources();
+                int random_xp();
             // LIST DROP
                 void push_back_drop(list_drop *li, st_drop drop);
                 void print_list_drop(list_drop *li, st_global *ad);
@@ -403,6 +415,7 @@
             void set_rectangle_ui_game_credits(ui_game_s *ui);
             void set_rectangle_ui_game_xp(ui_game_s *ui);
         // UI_GAME
+            void display_lvl(st_global *ad);
             void set_position_ui_game(st_global *g);
             void rectangle_display_ui_game_bis(st_global *g);
             void display_ui_game(st_global *g);
