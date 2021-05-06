@@ -31,6 +31,7 @@ st_ui *generate_ui(void)
     ui->fade = generate_fade();
     ui->settings = generate_settings();
     ui->pause_settings = generate_pause_settings();
+    ui->boss = generate_boss();
     return (ui);
 }
 
@@ -49,5 +50,6 @@ void destroy_ui(st_ui *ui)
     destroy_settings(ui->settings);
     destroy_pause(ui->pause);
     destroy_pause_settings(ui->pause_settings);
+    destroy_boss(ui->boss);
     ui = NULL;
 }
