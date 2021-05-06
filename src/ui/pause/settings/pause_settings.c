@@ -33,7 +33,6 @@ void display_pause_settings(st_global *g)
 {
     if (g->ui->pause_settings->existing) {
         rect_set_position_pause_settings(g);
-        events_pause_settings(g);
         events_pause_settings_left(g);
         events_pause_settings_right(g);
         set_width_volume_pause_settings(g);
