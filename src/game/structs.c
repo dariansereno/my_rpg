@@ -45,7 +45,7 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 1;
+    window->screen = 4;
     window->music_volume = 100.0;
     window->width_volume = 253;
     window->sfx_volume = 100;
@@ -90,6 +90,9 @@ ship_t *ship_ini(void)
     ship->velocity = (sfVector2f){0, 0};
     ship->attack = 10;
     ship->life = 100;
+    ship->lvl = 0;
+    ship->max_xp = 100;
+    ship->xp = 0;
     ship->craft = false;
     return (ship);
 }
@@ -98,6 +101,7 @@ st_global *ini(void)
 {
     st_global *all = malloc(sizeof(st_global));
 
+    all->upgrade = generate_upgrade();
     all->window = all_dat();
     all->space_obj = generate_space_obj();
     all->mul_price = 1.0;

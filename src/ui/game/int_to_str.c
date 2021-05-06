@@ -45,7 +45,8 @@ char *number_and_string(int index, char *str)
     res[0] = '\0';
     if (index == 0) {
         res = my_strcat(res, str);
-        res = my_strcat(res, '0\0');
+        res = my_strcat(res, "0\0");
+        return (res);
     }
     res = my_strcat(res, str);
     res = my_strcat(res, nb);
