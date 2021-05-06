@@ -102,11 +102,10 @@ void check_status(st_global *ad)
 int game_loop(void)
 {
     st_global *ad = ini();
-    ad->planets = generate_all_map();
-    generate_trade(ad, &ad->planets->planets);
-    ad->space_obj = generate_space_obj();
-    generate_random_colonised(&ad->planets->planets, ad);
 
+    ad->planets = generate_all_map();
+    generate_random_colonised(&ad->planets->planets, ad);
+    generate_trade(ad, &ad->planets->planets);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, 0);

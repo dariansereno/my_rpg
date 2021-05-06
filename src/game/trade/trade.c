@@ -35,7 +35,7 @@ int stock(st_global *ad, int id)
 
 st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j)
 {
-    while(is_good == false) {
+    while (is_good == false) {
         if (tab[i]->id == tab[j]->id)
             tab[i]->id = random_between(0, 2);
         if (tab[i]->id != tab[j]->id)
@@ -50,7 +50,8 @@ st_ressources **trade(st_global *ad)
 {
     bool is_good = false;
     int nb_ressources = random_between(1, 3);
-    st_ressources **tab = malloc(sizeof(st_ressources *) * (nb_ressources + 1));
+    st_ressources **tab = malloc(sizeof(st_ressources **) * (nb_ressources + 1
+    ));
     int j = 0;
 
     for (int i = 0; i < nb_ressources; i++)
