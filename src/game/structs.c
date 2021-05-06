@@ -45,9 +45,10 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 4;
+    window->screen = 1;
     window->music_volume = 100.0;
-    window->width_volume = 253;
+    window->width_volume_pause = 253;
+    window->width_volume = 506;
     window->sfx_volume = 100;
     window->width_sfx = 253;
     window->bool_load = true;
@@ -58,11 +59,11 @@ structs_t *all_dat(void)
 
 st_game_var *ini_var()
 {
-    st_game_var *var = my_malloc(sizeof(st_game_var *));
+    st_game_var *var = malloc(sizeof(*var));
 
     var->special_atk = false;
     var->range = 15;
-    var->speed = 5.0;
+    var->speed = 5;
     var->max_health = 200;
     var->attack = 10;
     var->life = 100;
@@ -73,7 +74,7 @@ st_game_var *ini_var()
     var->craft = false;
     var->reload_time = 0.18;
     var->quests = 1;
-    var->mul_xp = 1;
+    var->mul_xp = 1.0;
     return (var);
 }
 

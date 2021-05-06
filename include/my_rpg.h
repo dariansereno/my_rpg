@@ -359,6 +359,11 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
+        // BOSS
+            st_boss *generate_boss(void);
+            void boss_life(st_global *g);
+            void destroy_boss(st_boss *boss);
+            void rect_set_boss(st_global *g);
     // PLANET_CARD
         // PLANET_CARD
             void display_planet_card(st_global *g);

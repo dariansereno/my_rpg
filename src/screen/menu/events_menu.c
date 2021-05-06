@@ -42,6 +42,7 @@ int menu_choice(st_global *g)
             sfRenderWindow_close(g->window->window);
             return (0);
         case 2:
+            g->window->width_volume = g->ui->settings->music->rect.width;
             g->window->screen = 3;
             return (0);
         case 3:

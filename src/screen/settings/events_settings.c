@@ -35,7 +35,8 @@ void get_global_bounds_settings(st_global *g)
     sfSprite_getGlobalBounds(g->ui->settings->cross->sprite);
     for (int i = 0; i < 3; i++)
         if (sfFloatRect_contains(&g->ui->settings->bounds[i], \
-        g->window->event.mouseButton.x + 560, g->window->event.mouseButton.y)) {
+        g->window->event.mouseButton.x + 560 + g->ship->viewrect.left,
+        g->window->event.mouseButton.y + g->ship->viewrect.top)) {
             if (i == 0)
                 g->ui->settings->cancel->rect.left = 0;
             else if (i == 1)
@@ -56,12 +57,11 @@ int settings_choice(st_global *g)
             sfMusic_setVolume(g->window->music, g->window->music_volume);
             g->ui->settings->music->rect.width = \
             (sfMusic_getVolume(g->window->music) * 15 / 100) * 32;
-            sfSprite_setTextureRect(g->ui->settings->music->sprite, \
-            g->ui->settings->music->rect);
             g->window->screen = 2;
             return (0);
         case 2:
             g->window->music_volume = sfMusic_getVolume(g->window->music);
+            g->ui->settings->music->rect.width = g->window->width_volume;
             g->window->screen = 2;
             return (0);
         case 3:
@@ -109,7 +109,8 @@ void animate_buttons_settings(st_global *g)
     sfSprite_getGlobalBounds(g->ui->settings->save->sprite);
     for (int i = 0; i < 2; i++)
         if (sfFloatRect_contains(&g->ui->settings->bounds[i], \
-        g->window->event.mouseButton.x + 560, g->window->event.mouseButton.y)) {
+        g->window->event.mouseButton.x + 560 + g->ship->viewrect.left, 
+        g->window->event.mouseButton.y + g->ship->viewrect.top)) {
             if (i == 0)
                 g->ui->settings->cancel->rect.left = 141;
             else if (i == 1)
