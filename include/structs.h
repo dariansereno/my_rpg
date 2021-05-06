@@ -204,6 +204,7 @@ typedef struct structs_s {
     sfVideoMode mode;
     sfMusic *music;
     float music_volume;
+    int width_volume_pause;
     int width_volume;
     float sfx_volume;
     int width_sfx;

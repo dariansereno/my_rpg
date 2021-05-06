@@ -52,7 +52,7 @@ void events_redirect_pause(st_global *g)
             case 2:
                 g->ui->pause_settings->existing = true;
                 g->window->music_volume = sfMusic_getVolume(g->window->music);
-                g->window->width_volume = \
+                g->window->width_volume_pause = \
                 g->ui->pause_settings->ui[2]->rect.width;
                 break;
             case 3:
