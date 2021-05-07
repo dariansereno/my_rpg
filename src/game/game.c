@@ -91,6 +91,7 @@ void check_status(st_global *ad)
         display_items_inventory(ad);
         craft_settler(ad);
         display_stats_ship(ad);
+        display_msg(ad);
         // boss_life(ad);
     }
     if (ad->var_game->xp >= ad->var_game->max_xp)

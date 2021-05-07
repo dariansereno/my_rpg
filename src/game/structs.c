@@ -152,6 +152,7 @@ st_global *ini(void)
     all->var_game = ini_var();
     all->circle = sfCircleShape_create();
     all->big_msg_generated = false;
+    all->text = generate_message();
     sfCircleShape_setRadius(all->circle, 500);
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle, sfTransparent);
