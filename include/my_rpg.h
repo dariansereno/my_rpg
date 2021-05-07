@@ -365,10 +365,10 @@
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
         // BOSS
-            st_boss *generate_boss(void);
-            void boss_life(st_global *g);
-            void destroy_boss(st_boss *boss);
-            void rect_set_boss(st_global *g);
+            // st_boss *generate_boss(void);
+            // void boss_life(st_global *g);
+            // void destroy_boss(st_boss *boss);
+            // void rect_set_boss(st_global *g);
     // PLANET_CARD
         // PLANET_CARD
             void display_planet_card(st_global *g);
@@ -480,14 +480,15 @@
         char *cpy_to_up_text(st_global *g);
     // BACKSLASH_ADD
         cpy_backslash_s *generate_cpy(void);
-        char *automatically_set_text_max(st_global *g);
+        void automatically_set_text_max(st_global *g);
         char *manage_copy_n(char *str, st_global *g);
         char *add_backslash_n_to_space(char *str, st_global *g);
         char *add_backslash_n(char *str, st_global *g);
     // DESTROY_MSG
         void destroy_message(st_global *global);
     // DISPLAY_MSG
-        void display_msg(sfRenderWindow *window, st_global *global);
+        st_text *generate_message(void);
+        void display_msg(st_global *g);
         void clock_dialogue_text_line1(st_global *g);
         void clock_dialogue_text_line2(st_global *g);
         void clock_dialogue_text_line3(st_global *g);
@@ -497,23 +498,5 @@
         void dialogue_rectangle_settings_bis(st_global *g);
         void dialogue_text(st_global *global);
         void add_message(st_global *global, char *str, int delay);
-
-int game_loop_2();
-void dialogue_text(st_global *global);
-void display_msg(sfRenderWindow *window, st_global *global);
-void clock_dialogue_text_line1(st_global *global);
-void clock_dialogue_text_line2(st_global *global);
-void clock_dialogue_text_line3(st_global *global);
-char *automatically_set_text_max(st_global *g);
-cpy_backslash_s *generate_cpy();
-char *manage_copy_n(char *str, st_global *g);
-char *add_backslash_n_to_space(char *str, st_global *g);
-char *add_backslash_n(char *str, st_global *g);
-char *cpy_to_up_text(st_global *global);
-void dialogue_text_settings(st_global *global);
-int backslash_n_counter(st_global *global);
-void add_message(st_global *global, char *str, int delay);
-void destroy_message(st_global *global);
-void dialogue_rectangle_settings_bis(st_global *g);
 
 #endif /* !MY_RPG_H_ */
