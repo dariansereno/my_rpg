@@ -419,6 +419,7 @@ typedef struct st_planet_s {
     int *modules;
     int mul_housing;
     bool quest;
+    bool start;
 } st_planet;
 
 typedef struct list_elem_planet_s {
@@ -634,6 +635,7 @@ typedef struct st_global_sfx_s
 typedef struct quest_s {
     sfText *quest_advancement;
     sfVector2f quest_text_pos;
+    bool is_on_quest;
 } quest_t;
 
 typedef struct st_upgrade_s {

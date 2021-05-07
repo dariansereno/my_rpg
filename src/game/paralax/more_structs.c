@@ -64,5 +64,6 @@ quest_t *item_ini(void)
     quest_t *quest = malloc(sizeof(quest_t));
 
     quest->quest_advancement = sfText_create();
+    quest->is_on_quest = false;
     return (quest);
 }
