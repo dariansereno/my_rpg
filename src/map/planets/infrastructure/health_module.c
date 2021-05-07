@@ -24,6 +24,8 @@ void health_contains(st_global *ad, int seconds, list_planet pl)
     if (circle_contains(500, (sfVector2f){pl->planet.pos.x,
     pl->planet.pos.y}, ad->ship->bshippos) && pl->planet.modules[2] > 0) {
         sfCircleShape_setPosition(ad->circle, (sfVector2f){(float)pl->planet.pos.x, (float)pl->planet.pos.y});
+        sfCircleShape_setFillColor(ad->circle, sfTransparent);
+        sfCircleShape_setOutlineThickness(ad->circle, 10);
         sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
     }
     health_contains_2(ad, seconds, pl);

@@ -47,9 +47,9 @@ int random_xp(st_global *ad)
     int rand = random_between(0, 10);
 
     if (rand < 7)
-        return (random_between(5, 10) * ad->var_game->mul_xp);
+        return ((int)(random_between(5, 10) * ad->var_game->mul_xp));
     else if(rand >= 7 && rand <= 9)
-        return (random_between(10, 15) * ad->var_game->mul_xp);
+        return ((int)(random_between(10, 15) * ad->var_game->mul_xp));
     else
-        return (random_between(15, 25) * ad->var_game->mul_xp);
+        return ((int)(random_between(15, 25) * ad->var_game->mul_xp));
 }

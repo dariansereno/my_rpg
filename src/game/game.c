@@ -65,7 +65,7 @@ void check_status(st_global *ad)
     can_upgrade(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     print_list_drop(&ad->drop, ad);
-    boss_appear(ad);
+    boss_handling(ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -91,7 +91,7 @@ void check_status(st_global *ad)
         display_items_inventory(ad);
         craft_settler(ad);
         display_stats_ship(ad);
-        boss_life(ad);
+        // boss_life(ad);
     }
     display_planet_card(ad);
     display_trade_card(ad);
