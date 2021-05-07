@@ -17,8 +17,9 @@ void destroy_message(st_global *global)
     sfRectangleShape_destroy(global->text->text_r4);
     sfRectangleShape_destroy(global->text->whi_r);
     sfRectangleShape_destroy(global->text->whi_r2);
+    sfRectangleShape_destroy(global->text->white_btm);
     sfClock_destroy(global->text->clock);
     sfText_destroy(global->text->text);
     sfFont_destroy(global->text->font);
-    global->text->existing = sfFalse;
+    global->text->existing = false;
 }
