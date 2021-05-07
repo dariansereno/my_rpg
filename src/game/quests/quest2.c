@@ -25,10 +25,11 @@ void display_second_message(st_global *ad)
     }
 }
 
-void  start_quest1(st_global *ad)
-{
-    list_planet pl = ad->planets->planets;
+// void  start_quest1(st_global *ad)
+// {
+    // list_planet pl = ad->planets->planets;
 
+<<<<<<< Updated upstream
     while (pl != NULL) {
         if (pl->planet.start && pl->planet.modules[0] == 1 &&
         pl->planet.modules[1] == 1 && pl->planet.modules[2]
@@ -43,6 +44,20 @@ void  start_quest1(st_global *ad)
     }
     ad->quest->is_on_quest = false;
 }
+=======
+    // while (pl != NULL) {
+    //     if (pl->planet.start && pl->planet.)
+    //     ad->var_game->xp += 50;
+    //     display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfGreen);
+    //     if (ad->big_msg == NULL) {
+    //         ad->var_game->kills = 0;
+    //         ad->var_game->quests = 2;
+    //     }
+    //     ad->quest->is_on_quest = false;
+    //     pl = pl->next;
+    // }
+// }
+>>>>>>> Stashed changes
 
 void quest_2_initialise(st_global *ad)
 {
