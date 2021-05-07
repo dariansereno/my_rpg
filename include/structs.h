@@ -29,6 +29,7 @@ typedef struct cpy_backslash_t {
 typedef struct st_text_s {
     sfSprite *arrow_s;
     sfTexture *arrow_t;
+    sfRectangleShape *white_btm;
     sfRectangleShape *whi_r;
     sfRectangleShape *whi_r2;
     sfRectangleShape *text_r1;
@@ -37,7 +38,7 @@ typedef struct st_text_s {
     sfRectangleShape *text_r4;
     sfText *text;
     sfFont *font;
-    sfBool existing;
+    bool existing;
     sfClock *clock;
     cpy_backslash_s *c;
     char *str;
@@ -237,7 +238,6 @@ typedef struct st_game_var_s {
 } st_game_var;
 
 typedef struct st_boss_s {
-    float life;
     int atk_mode;
     st_object *boss;
     st_object *bg;

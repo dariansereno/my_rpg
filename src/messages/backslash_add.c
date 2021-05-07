@@ -18,7 +18,7 @@ cpy_backslash_s *generate_cpy(void)
     return (cpy_backslash);
 }
 
-char *automatically_set_text_max(st_global *g)
+void automatically_set_text_max(st_global *g)
 {
     char *s1 = my_malloc(sizeof(char) * (my_strlen(g->text->str) + 1));
 
@@ -29,7 +29,7 @@ char *automatically_set_text_max(st_global *g)
             s1 = manage_copy_n(s1, g);
         g->text->c->len = 0;
     }
-    return (s1);
+    g->text->str = s1;
 }
 
 char *manage_copy_n(char *str, st_global *g)
