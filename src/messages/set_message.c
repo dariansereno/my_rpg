@@ -76,7 +76,7 @@ void add_message(st_global *global, char *str, int delay)
     sfTexture_createFromFile("contents/ui/textures/arrow.png", NULL);
     sfSprite_setTexture(global->text->arrow_s, global->text->arrow_t, sfTrue);
     sfSprite_setPosition(global->text->arrow_s, (sfVector2f)\
-    {1528 + g->ship->viewrect.left, 1045 + g->ship->viewrect.top});
+    {1528 + global->ship->viewrect.left, 1045 + global->ship->viewrect.top});
     global->text->whi_r = sfRectangleShape_create();
     global->text->whi_r2 = sfRectangleShape_create();
     global->text->text_r1 = sfRectangleShape_create();
@@ -85,7 +85,7 @@ void add_message(st_global *global, char *str, int delay)
     global->text->text_r4 = sfRectangleShape_create();
     global->text->text = sfText_create();
     global->text->font = \
-    sfFont_createFromFile("contents/fonts/dogica/TTF/myfont.otf");
+    sfFont_createFromFile("contents/fonts/myfont.otf");
     global->text->clock = sfClock_create();
     global->text->c = generate_cpy();
     global->text->str = str;

@@ -19,3 +19,15 @@ void quest_caller(st_global *ad)
     // QUEST 3
     return;
 }
+
+void check_quest(st_global *ad)
+{
+    list_planet pl = ad->planets->planets;
+
+    while (pl != NULL) {
+        if (pl->can_interact == true && ad->key_pressed.X) {
+            quest_caller(ad);
+        }
+        pl = pl->next;
+    }
+}
