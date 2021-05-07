@@ -75,8 +75,11 @@ st_game_var *ini_var()
     var->reload_time = 0.18;
     var->quests = 1;
     var->mul_xp = 1.0;
-    var->is_boss = true;
+    var->is_boss = false;
     var->boss_generated = false;
+    var->created = false;
+    var->msg = false;
+    var->kills = 0;
     return (var);
 }
 
@@ -141,12 +144,14 @@ st_global *ini(void)
     all->enn_damage = 5;
     all->money = money_ini();
     all->win = false;
+    all->quest = item_ini();
     all->items = generate_items();
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
     all->drop = NULL;
     all->var_game = ini_var();
     all->circle = sfCircleShape_create();
+    all->big_msg_generated = false;
     all->text = generate_message();
     sfCircleShape_setRadius(all->circle, 500);
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
@@ -160,5 +165,6 @@ void destroy_global(st_global *global)
     sfMusic_destroy(global->window->music);
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
+    destroy_boss_fight(global);
     global = NULL;
 }

@@ -9,8 +9,27 @@
 
 void display_message(st_global *ad)
 {
-    add_message(ad, "Hello dear Space traveller, we have been under attack for the past two weeks. Most of our forces have been killed trying to defend our planet and we desperatly need help...", 20);
-    add_message(ad, "Could you please kill 10 enemy ships, it would help us a lot and give us some time to gather our strength back...", 20);
+    if (ad->var_game->created == true) {
+        add_message(ad, "Hello dear Space traveller, we have been under attack \
+        for the past two weeks. Most of our forces have been killed trying to \
+        defend our planet and we desperatly need help...\
+        Could you please kill 10 enemy ships, it would help us a lot\
+        and give us some time to prepare our troops...", 20);
+        ad->var_game->created = false;
+    }
+}
+
+void  start_quest1(st_global *ad)
+{
+    if (ad->var_game->kills >= 10) {
+        ad->var_game->xp += 50;
+        display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfGreen);
+        if (ad->big_msg == NULL) {
+            ad->var_game->kills = 0;
+            ad->var_game->quests = 2;
+        }
+        ad->quest->is_on_quest = false;
+    }
 }
 
 void quest_1_initialise(st_global *ad)
@@ -21,10 +40,13 @@ void quest_1_initialise(st_global *ad)
     if (ad->var_game->quests != 1)
         return;
     while (pl != NULL) {
-        if (pl->can_interact == true && ad->window->event.type ==
-        sfEvtKeyPressed && ad->window->event.key.code == sfKeyX)
+        if (pl->can_interact && pl->planet.quest && ad->key_pressed.X &&
+        !ad->quest->is_on_quest) {
+            ad->quest->is_on_quest = true;
+            ad->var_game->created = true;
             display_message(ad);
+            ad->var_game->msg = true;
+        }
         pl = pl->next;
     }
-    pl = ad->planets->planets;
 }
