@@ -77,6 +77,8 @@ st_game_var *ini_var()
     var->mul_xp = 1.0;
     var->is_boss = false;
     var->boss_generated = false;
+    var->created = false;
+    var->msg = false;
     return (var);
 }
 

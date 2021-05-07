@@ -85,7 +85,7 @@ void add_message(st_global *global, char *str, int delay)
     global->text->text_r4 = sfRectangleShape_create();
     global->text->text = sfText_create();
     global->text->font = \
-    sfFont_createFromFile("contents/fonts/dogica/TTF/myfont.otf");
+    sfFont_createFromFile("contents/fonts/myfont.otf");
     global->text->clock = sfClock_create();
     global->text->c = generate_cpy();
     global->text->str = str;

@@ -190,6 +190,7 @@ typedef struct key_pressed_s {
     bool T;
     bool Y;
     bool U;
+    bool X;
     bool Enter;
 } key_pressed;
 
@@ -244,6 +245,8 @@ typedef struct st_game_var_s {
     float mul_xp;
     bool is_boss;
     bool boss_generated;
+    bool msg;
+    bool created;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
