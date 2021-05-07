@@ -7,19 +7,19 @@
 
 #include "my_rpg.h"
 
-// sfVector2f boss_spawning(st_global *ad)
-// {
-//     sfVector2f pos = {0, 0};
-//     bool is_good = false;
+sfVector2f boss_spawning(st_global *ad)
+{
+    sfVector2f pos = {0, 0};
+    bool is_good = false;
 
-//     while (!is_good) {
-//         pos.x = (float)random_between(0, 80000);
-//         pos.y = (float)random_between(0, 80000);
-//         if (!(is_on_planet(ad, pos)))
-//             is_good = true;
-//     }
-//     return (pos);
-// }
+    while (!is_good) {
+        pos.x = (float)random_between(0, 80000);
+        pos.y = (float)random_between(0, 80000);
+        if (!(is_on_planet(ad, pos)))
+            is_good = true;
+    }
+    return (pos);
+}
 
 st_boss *generate_boss_fight(st_global *ad)
 {
@@ -52,5 +52,6 @@ st_boss *generate_boss_fight(st_global *ad)
     boss->circle = true;
     boss->red_sp = sfSprite_create();
     boss->red_tex = sfTexture_createFromFile("ressources/bossred.png", NULL);
+    boss->red = false;
     return (boss);
 }

@@ -41,6 +41,8 @@
             void start_quest1(st_global *ad);
         // QUESTS_CALLER.C
             void check_quest(st_global *ad);
+        // QUEST2.C
+            void quest_2_initialise(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
@@ -381,7 +383,7 @@
             void attack_2(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
-            void display_big_message(char *msg, int delay, st_global *ad);
+            void display_big_message(char *msg, int delay, st_global *ad, sfColor color);
             // LIST_BOSS_QUEUE
                 int size_list_boss(list_boss li);
                 void push_back_boss(list_boss *li, int duration, int atk_type);
