@@ -38,6 +38,9 @@
             void target_quest(st_global *ad);
         // QUEST1.C
             void quest_1_initialise(st_global *ad);
+        // QUESTS_CALLER.C
+            void check_quest(st_global *ad);
+            
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
