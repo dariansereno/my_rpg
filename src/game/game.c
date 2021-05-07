@@ -52,6 +52,7 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->nebula, ad->paralax->nebulapos);
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
+    display_boss_bg(ad);
     print_spaceobj_list(ad->space_obj->li, ad->window->window, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     print_planet_list_little(ad->planets->planets, ad->window->window, ad);
@@ -64,6 +65,7 @@ void check_status(st_global *ad)
     can_upgrade(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     print_list_drop(&ad->drop, ad);
+    boss_appear(ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \

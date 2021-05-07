@@ -31,6 +31,11 @@
 #include <math.h>
 
 // GAME
+    // BOSS
+        // BOSS
+            st_boss *generate_boss(st_global *ad);
+            void boss_appear(st_global *ad);
+            void display_boss_bg(st_global *ad);
     // QUEST
         // GENERATE_QUEST.C
             void generate_random_quest(list_planet *planet, st_global *ad);
