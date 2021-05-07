@@ -79,6 +79,7 @@ st_game_var *ini_var()
     var->boss_generated = false;
     var->created = false;
     var->msg = false;
+    var->msg2 = false;
     var->kills = 0;
     return (var);
 }
