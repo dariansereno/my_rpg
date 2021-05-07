@@ -56,6 +56,9 @@ void dialogue_text(st_global *global)
 
 void add_message(st_global *g, char *str, int delay)
 {
+    g->text->c->begin = 0;
+    g->text->c->end = 0;
+    g->text->c->len = 0;
     sfSprite_setTexture(g->text->arrow_s, g->text->arrow_t, sfTrue);
     g->text->str = str;
     g->text->delay = delay;
