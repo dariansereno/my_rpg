@@ -21,7 +21,7 @@ void display_boss(st_global *ad)
 {
     sfSprite_setPosition(ad->boss->boss->sprite, ad->boss->boss->pos);
     sfSprite_setOrigin(ad->boss->boss->sprite, (sfVector2f){24, 24});
-    sfSprite_setScale(ad->boss->boss->sprite, (sfVector2f){15, 15});
+    sfSprite_setScale(ad->boss->boss->sprite, (sfVector2f){10, 10});
     sfRenderWindow_drawSprite(ad->window->window ,ad->boss->boss->sprite, NULL);
 }
 
@@ -39,7 +39,7 @@ void display_boss_target(st_global *ad, sfVector2f pos)
 void boss_appear(st_global *ad)
 {
     if (ad->var_game->is_boss && !ad->var_game->boss_generated) {
-        ad->boss = generate_boss(ad);
+        ad->boss = generate_boss_fight(ad);
         ad->var_game->boss_generated = true;
     }
     if (ad->var_game->is_boss) {

@@ -26,6 +26,7 @@ bool rand_pl_colonise(list_planet pl)
         if (rand) {
             pl->planet.colonized = true;
             pl->planet.tradable = true;
+            pl->planet.start = true;
             return (true);
         }
     }

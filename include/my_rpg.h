@@ -31,11 +31,6 @@
 #include <math.h>
 
 // GAME
-    // BOSS
-        // BOSS
-            st_boss *generate_boss(st_global *ad);
-            void boss_appear(st_global *ad);
-            void display_boss_bg(st_global *ad);
     // QUEST
         // GENERATE_QUEST.C
             void generate_random_quest(list_planet *planet, st_global *ad);
@@ -43,6 +38,12 @@
             void target_quest(st_global *ad);
         // QUEST1.C
             void quest_1_initialise(st_global *ad);
+            void start_quest1(st_global *ad);
+        // QUESTS_CALLER.C
+            void check_quest(st_global *ad);
+        // QUEST2.C
+            void quest_2_initialise(st_global *ad);
+            
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
@@ -133,6 +134,7 @@
                 st_ennemies *e, st_global *ad, int r);
                 int direction_ennemie(st_ennemies ennemies, sfVector2f target,
                 st_global *ad);
+                float heuristic(sfVector2f start, sfVector2f end);
             // MOVE_ENNEMIES
                 st_ennemies move_enn_up(st_ennemies e, st_global *ad);
                 st_ennemies move_enn_down(st_ennemies e, st_global *ad);
@@ -330,7 +332,7 @@
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
     moula_t *money_ini(void);
-    items_t *item_ini(void);
+    quest_t *item_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);
@@ -365,10 +367,33 @@
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
         // BOSS
-            // st_boss *generate_boss(void);
-            // void boss_life(st_global *g);
-            // void destroy_boss(st_boss *boss);
-            // void rect_set_boss(st_global *g);
+            st_boss *generate_boss_fight(st_global *ad);
+            st_boss *generate_boss(void);
+            void boss_appear(st_global *ad);
+            void display_boss_bg(st_global *ad);
+            void boss_life(st_global *g);
+            void destroy_boss(st_boss *boss);
+            void rect_set_boss(st_global *g);
+            void atk_queue_boss(st_global *ad);
+            void boss_atk(st_global *ad);
+            void boss_fight(st_global *ad);
+            sfVector2f calculate_target_vector(sfVector2f start, sfVector2f end,
+            int velo);
+            void attack_1(st_global *ad);
+            void attack_2(st_global *ad);
+            void boss_handling(st_global *ad);
+            void boss_red(st_global *ad);
+            void display_big_message(char *msg, int delay, st_global *ad, sfColor color);
+            // LIST_BOSS_QUEUE
+                int size_list_boss(list_boss li);
+                void push_back_boss(list_boss *li, int duration, int atk_type);
+                list_boss pop_front_boss(list_boss li);
+                void destroy_list_boss(list_boss *li);
+                void destroy_boss_fight(st_global *ad);
+            // LIST BOSS SHOOT
+                int size_list_timer_b(list_timer_b li);
+                void push_back_timer_b(list_timer_b *li, sfVector2f dir, sfVector2f pos);
+                void print_list_shoot_b(list_timer_b *li, sfSprite *sprite, st_global *ad);
     // PLANET_CARD
         // PLANET_CARD
             void display_planet_card(st_global *g);
