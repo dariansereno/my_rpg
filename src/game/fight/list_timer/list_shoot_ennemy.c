@@ -8,19 +8,18 @@
 #include "my_rpg.h"
 
 
-void ciao_nous(st_global *ad, list_planet *pl)
+void ciao_nous(st_global *ad)
 {
     if (ad->var_game->life <= 0) {
         printf("YOU DIED\n");
-    }    
+    }
 }
 
-void check_collision_ship(st_global *ad, list_timer *shoot,
-list_planet *pl)
+void check_collision_ship(st_global *ad, list_timer *shoot)
 {
     if (circle_contains(15, ad->ship->bshippos, (*shoot)->pos)) {
         ad->var_game->life -= ad->enn_damage;
-        ciao_nous(ad, pl);
+        ciao_nous(ad);
         (*shoot)->destroy = true;
     }
     if (is_on_planet(ad, (*shoot)->pos))
@@ -33,7 +32,7 @@ void collision_shoot_enn(st_global *ad, list_timer *shoot)
 
     while (pl != NULL) {
         if (pl->on_screen == true && pl->planet.kind == TECH)
-            check_collision_ship(ad, shoot, &pl);
+            check_collision_ship(ad, shoot);
         pl = pl->next;
     }
 }

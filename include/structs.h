@@ -153,6 +153,16 @@ typedef struct list_elem_timer_s {
     struct list_elem_timer_s *next;
 } *list_timer, list_elem_timer;
 
+typedef struct list_elem_timer_b_s {
+    st_timer timer;
+    int index;
+    sfVector2f pos;
+    sfVector2f dir;
+    int it;
+    bool destroy;
+    struct list_elem_timer_b_s *next;
+} *list_timer_b, list_elem_timer_b;
+
 typedef struct list_elem_drop_s {
     st_drop drop;
     st_timer timer;
@@ -240,14 +250,36 @@ typedef struct st_game_var_s {
     int kills;
 } st_game_var;
 
+typedef struct list_elem_boss_s {
+    int type;
+    st_timer *time;
+    int duration;
+    struct list_elem_boss_s *next;
+} *list_boss, list_elem_boss;
+
 typedef struct st_boss_s {
-    float life;
     int atk_mode;
     st_object *boss;
     st_object *bg;
     //sfRectangleShape *life;
     sfRectangleShape *outline;
     float life_f;
+    list_boss atk_li;
+    list_boss current;
+    st_timer *clock;
+    st_timer *atk_timer;
+    list_timer_b shoot;
+    sfClock *reload;
+    float reload_normal;
+    float reload_fast_atk;
+    sfSprite *sprite;
+    sfTexture *texture;
+    int shake;
+    bool circle;
+    int radius;
+    bool red;
+    sfSprite *red_sp;
+    sfTexture *red_tex;
 } st_boss;
 
 typedef struct ship_s {
@@ -297,6 +329,7 @@ typedef struct list_elem_ennemies_s
     int index;
     struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
+
 
 typedef struct keys_s {
     int up;
@@ -639,6 +672,8 @@ typedef struct st_global_s {
     st_upgrade *upgrade;
     st_game_var *var_game;
     st_boss *boss;
+    sfClock *big_msg;
+    bool big_msg_generated;
 } st_global;
 
 #endif /* !STRUCTS_H_ */
