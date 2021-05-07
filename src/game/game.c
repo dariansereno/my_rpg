@@ -97,7 +97,6 @@ void check_status(st_global *ad)
     if (ad->var_game->xp >= ad->var_game->max_xp)
         ad->var_game->xp = ad->var_game->max_xp;
     check_quest(ad);
-    display_msg(ad->window->window, ad);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);

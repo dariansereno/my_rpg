@@ -43,6 +43,7 @@
             void check_quest(st_global *ad);
         // QUEST2.C
             void quest_2_initialise(st_global *ad);
+            void  start_quest2(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
