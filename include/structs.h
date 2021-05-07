@@ -237,6 +237,7 @@ typedef struct st_game_var_s {
     bool boss_generated;
     bool msg;
     bool created;
+    int kills;
 } st_game_var;
 
 typedef struct st_boss_s {
@@ -244,7 +245,7 @@ typedef struct st_boss_s {
     int atk_mode;
     st_object *boss;
     st_object *bg;
-    sfRectangleShape *life;
+    //sfRectangleShape *life;
     sfRectangleShape *outline;
     float life_f;
 } st_boss;
@@ -597,14 +598,10 @@ typedef struct st_global_sfx_s
     sfSound *explosion;
 } st_global_sfx;
 
-typedef struct items_s {
-    sfSprite *ingot;
-    sfSprite *bm;
-    sfSprite *crystal;
-    sfTexture *ingott;
-    sfTexture *bmt;
-    sfTexture *crystalt;
-} items_t;
+typedef struct quest_s {
+    sfText *quest_advancement;
+    sfVector2f quest_text_pos;
+} quest_t;
 
 typedef struct st_upgrade_s {
     int *upgrade_tab;
@@ -638,7 +635,7 @@ typedef struct st_global_s {
     st_global_spaceobj *space_obj;
     list_drop drop;
     sfCircleShape *circle;
-    items_t *itemsss;
+    quest_t *quest;
     st_upgrade *upgrade;
     st_game_var *var_game;
     st_boss *boss;

@@ -43,6 +43,7 @@
             void target_quest(st_global *ad);
         // QUEST1.C
             void quest_1_initialise(st_global *ad);
+            void start_quest1(st_global *ad);
         // QUESTS_CALLER.C
             void check_quest(st_global *ad);
             
@@ -333,7 +334,7 @@
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
     moula_t *money_ini(void);
-    items_t *item_ini(void);
+    quest_t *item_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);
@@ -368,7 +369,7 @@
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
         // BOSS
-            st_boss *generate_boss(void);
+            //st_boss *generate_boss(void);
             void boss_life(st_global *g);
             void destroy_boss(st_boss *boss);
             void rect_set_boss(st_global *g);

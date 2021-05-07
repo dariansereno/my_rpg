@@ -79,6 +79,7 @@ st_game_var *ini_var()
     var->boss_generated = false;
     var->created = false;
     var->msg = false;
+    var->kills = 0;
     return (var);
 }
 
@@ -143,6 +144,7 @@ st_global *ini(void)
     all->enn_damage = 5;
     all->money = money_ini();
     all->win = false;
+    all->quest = item_ini();
     all->items = generate_items();
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);

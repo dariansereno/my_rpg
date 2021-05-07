@@ -30,4 +30,6 @@ void check_quest(st_global *ad)
         }
         pl = pl->next;
     }
+    if (ad->var_game->msg == true)
+        start_quest1(ad);
 }

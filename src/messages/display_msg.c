@@ -12,7 +12,6 @@ void display_msg(sfRenderWindow *window, st_global *global)
     int c = 0;
 
     if (global->var_game->msg && global->text->existing == sfTrue) {
-        sfRenderWindow_clear(global->window->window, sfWhite);
         c = backslash_n_counter(global);
         clock_dialogue_text_line1(global);
         clock_dialogue_text_line2(global);
