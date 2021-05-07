@@ -45,7 +45,7 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 1;
+    window->screen = 4;
     window->music_volume = 100.0;
     window->width_volume_pause = 253;
     window->width_volume = 506;
@@ -75,7 +75,7 @@ st_game_var *ini_var()
     var->reload_time = 0.18;
     var->quests = 1;
     var->mul_xp = 1.0;
-    var->is_boss = true;
+    var->is_boss = false;
     var->boss_generated = false;
     return (var);
 }
@@ -147,6 +147,7 @@ st_global *ini(void)
     all->drop = NULL;
     all->var_game = ini_var();
     all->circle = sfCircleShape_create();
+    all->big_msg_generated = false;
     sfCircleShape_setRadius(all->circle, 500);
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle, sfTransparent);
@@ -159,5 +160,6 @@ void destroy_global(st_global *global)
     sfMusic_destroy(global->window->music);
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
+    destroy_boss_fight(global);
     global = NULL;
 }
