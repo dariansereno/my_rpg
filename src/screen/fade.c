@@ -11,7 +11,7 @@ st_fade *generate_fade(void)
 {
     st_fade *fade = my_malloc(sizeof(*fade));
 
-    fade->fade = true;
+    fade->fade = false;
     fade->rect[0] = sfRectangleShape_create();
     fade->rect[1] = sfRectangleShape_create();
     sfRectangleShape_setSize(fade->rect[0], (sfVector2f){1920, 540});
