@@ -257,6 +257,13 @@ typedef struct st_game_var_s {
     bool created;
     int kills;
     bool msg2;
+    bool quest2_completed;
+    bool msg3;
+    bool quest3_completed;
+    bool msg4;
+    bool quest4_completed;
+    bool msg5;
+    bool quest5_completed;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
@@ -266,30 +273,30 @@ typedef struct list_elem_boss_s {
     struct list_elem_boss_s *next;
 } *list_boss, list_elem_boss;
 
-typedef struct st_boss_s {
-    int atk_mode;
-    st_object *boss;
-    st_object *bg;
-    //sfRectangleShape *life;
-    sfRectangleShape *outline;
-    float life_f;
-    list_boss atk_li;
-    list_boss current;
-    st_timer *clock;
-    st_timer *atk_timer;
-    list_timer_b shoot;
-    sfClock *reload;
-    float reload_normal;
-    float reload_fast_atk;
-    sfSprite *sprite;
-    sfTexture *texture;
-    int shake;
-    bool circle;
-    int radius;
-    bool red;
-    sfSprite *red_sp;
-    sfTexture *red_tex;
-} st_boss;
+// typedef struct st_boss_s {
+//     int atk_mode;
+//     st_object *boss;
+//     st_object *bg;
+//     //sfRectangleShape *life;
+//     sfRectangleShape *outline;
+//     float life_f;
+//     list_boss atk_li;
+//     list_boss current;
+//     st_timer *clock;
+//     st_timer *atk_timer;
+//     list_timer_b shoot;
+//     sfClock *reload;
+//     float reload_normal;
+//     float reload_fast_atk;
+//     sfSprite *sprite;
+//     sfTexture *texture;
+//     int shake;
+//     bool circle;
+//     int radius;
+//     bool red;
+//     sfSprite *red_sp;
+//     sfTexture *red_tex;
+// } st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;
@@ -339,6 +346,36 @@ typedef struct list_elem_ennemies_s
     struct list_elem_ennemies_s *next;
 } list_elem_ennemies, *list_ennemies;
 
+typedef struct st_boss_s {
+    int atk_mode;
+    st_object *boss;
+    st_object *bg;
+    sfRectangleShape *life;
+    sfRectangleShape *outline;
+    float life_f;
+    list_boss atk_li;
+    list_boss current;
+    st_timer *clock;
+    float incr_speed_atk;
+    float decr_speed_atk;
+    float mid_incr_speed_atk;
+    float mid_decr_speed_atk;
+    st_timer *atk_timer;
+    list_timer_b shoot;
+    sfClock *reload;
+    sfClock *clock_g;
+    list_ennemies enn;
+    float reload_normal;
+    float reload_fast_atk;
+    sfSprite *sprite;
+    sfTexture *texture;
+    int shake;
+    bool circle;
+    int radius;
+    bool red;
+    sfSprite *red_sp;
+    sfTexture *red_tex;
+} st_boss;
 
 typedef struct keys_s {
     int up;

@@ -10,13 +10,10 @@
 void boss_red(st_global *ad)
 {
     if (ad->boss->red) {
-        printf("lol\n");
-        sfCircleShape_setOrigin(ad->circle, (sfVector2f){240, 240});
-        sfCircleShape_setPosition(ad->circle, ad->boss->boss->pos);
-        sfCircleShape_setFillColor(ad->circle, (sfColor){255,0,0, 100});
-        sfCircleShape_setOutlineThickness(ad->circle, 0);
-        sfCircleShape_setRadius(ad->circle, 240);
-        sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
+        sfSprite_setOrigin(ad->boss->red_sp, (sfVector2f){24, 24});
+        sfSprite_setScale(ad->boss->red_sp, (sfVector2f){10, 10});
+        sfSprite_setPosition(ad->boss->red_sp, ad->boss->boss->pos);
+        sfRenderWindow_drawSprite(ad->window->window, ad->boss->red_sp, NULL);
     }
 }
 
@@ -58,31 +55,27 @@ void attack_2_circle(st_global *ad)
 
 void attack_2_shaking(st_global *ad)
 {
-    if (ad->boss->clock->seconds > 0.05) {
+    if (ad->boss->current->time->seconds > 0.05) {
         ad->boss->boss->pos.x += ad->boss->shake;
         if (ad->boss->shake == 4)
             ad->boss->shake = 8;
         ad->boss->shake *= -1;
-        sfClock_restart(ad->boss->clock->clock);
+        sfClock_restart(ad->boss->current->time->clock);
     }
 }
 
 void attack_2(st_global *ad)
 {
-    sfTime time;
-    float second;
-
     if ( ad->boss->current == NULL || ad->boss->current->type != 2)
         return;
-    time = sfClock_getElapsedTime(ad->boss->current->time->clock);
-    second = time.microseconds / 1000000.0;
-    if (second < 3)
+    ad->boss->current->time->time = sfClock_getElapsedTime(ad->boss->current->time->clock);
+    ad->boss->current->time->seconds = ad->boss->current->time->time.microseconds / 1000000.0;
+    ad->boss->clock->time = sfClock_getElapsedTime(ad->boss->clock->clock);
+    ad->boss->clock->seconds = ad->boss->clock->time.microseconds / 1000000.0;
+    if (ad->boss->clock->seconds < 3)
         attack_2_shaking(ad);
     else if (ad->boss->circle)
         attack_2_circle(ad);
     else
         attack_2_red(ad);
-    // else {
-    //     ad->boss->current = NULL;
-    // }
 }

@@ -72,6 +72,7 @@ void set_width_volume_pause_settings(st_global *g)
     int x = 0;
     int y = 0;
 
+    
     if (g->window->event.type == sfEvtMouseButtonPressed && \
     g->window->event.mouseButton.button == sfMouseLeft)
         g->ui->pause_settings->pressed = true;
