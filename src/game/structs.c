@@ -171,5 +171,6 @@ void destroy_global(st_global *global)
     if (global->var_game->boss_generated)
         destroy_boss_fight(global);
     destroy_sound(global->window->sfx);
+    destroy_message(global);
     global = NULL;
 }

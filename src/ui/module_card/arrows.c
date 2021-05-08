@@ -42,6 +42,11 @@ void arrow_events_module(st_global *g)
             g->ui->module_card->pressed = false;
         }
     }
+    arrow_up_module_card(g);
+}
+
+void arrow_up_module_card(st_global *g)
+{
     if (g->window->event.type == sfEvtKeyPressed && \
     g->window->event.key.code == sfKeyUp)
             g->ui->module_card->pressed = true;
