@@ -87,11 +87,13 @@ void set_width_volume_pause_settings(st_global *g)
     int x = sfMouse_getPosition(g->window->window).x;
     int y = sfMouse_getPosition(g->window->window).y;
 
+    
     if (g->window->event.type == sfEvtMouseButtonPressed && \
     g->window->event.mouseButton.button == sfMouseLeft)
         g->ui->pause_settings->pressed = true;
     if (g->window->event.type == sfEvtMouseButtonReleased && \
     g->window->event.mouseButton.button == sfMouseLeft) {
+        printf("x==>%d\n y==>%d\n", g->window->event.mouseButton.x, g->window->event.mouseButton.y);
         if (g->ui->pause_settings->pressed) {
             if (x >= 772 && y >= 374 && x <= 826 && y <= 402 && \
             g->ui->pause_settings->ui[2]->rect.width <= 253) {
