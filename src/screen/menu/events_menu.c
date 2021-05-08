@@ -43,6 +43,7 @@ int menu_choice(st_global *g)
             return (0);
         case 2:
             g->window->width_volume = g->ui->settings->music->rect.width;
+            g->window->width_sfx = g->ui->settings->sfx->rect.width;
             g->window->screen = 3;
             return (0);
         case 3:

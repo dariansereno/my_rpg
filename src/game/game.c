@@ -122,7 +122,7 @@ int game_loop(void)
     generate_trade(ad, &ad->planets->planets);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
-    sfMusic_setVolume(ad->window->music, 0);
+    sfMusic_setVolume(ad->window->music, ad->window->music_volume);
     while (sfRenderWindow_isOpen(ad->window->window))
         screen(ad);
     destroy_global(ad);
