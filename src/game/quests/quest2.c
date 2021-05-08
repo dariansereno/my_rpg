@@ -20,7 +20,7 @@ void display_second_message(st_global *ad)
  every 15 seconds which will be useful for your next objective and,\
  finaly, the population module will decrease the time needed for all\
  other modules to complete their operations. Come back to us once all\
- of your modules are upgraded", 20);
+ of your modules are upgraded", 1000);
         ad->var_game->created = false;
 }
 
