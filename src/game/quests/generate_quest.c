@@ -28,7 +28,11 @@ void generate_random_quest(list_planet *planet, st_global *ad)
 
     while (!is_good) {
         while (pl != NULL) {
-            is_good = rand_pl_quest(pl);
+            if (pl->planet.colonized) {
+                pl->planet.quest = true;
+                is_good = true;
+            }
+            //is_good = rand_pl_quest(pl);
             if (is_good)
                 break;
             pl = pl->next;
