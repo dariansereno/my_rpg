@@ -53,6 +53,9 @@
         // QUEST5.C
             void quest_5_initialise(st_global *ad);
             void start_quest5(st_global *ad);
+        // QUEST6.C
+            void quest_6_initialise(st_global *ad);
+            void start_quest6(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
