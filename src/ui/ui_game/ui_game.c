@@ -51,11 +51,11 @@ void display_ui_game(st_global *g)
 {
     set_position_ui_game(g);
     sfRectangleShape_setSize(g->ui->ui->life, \
-    (sfVector2f){g->var_game->life * 263 / g->var_game->max_health, 10});
+    (sfVector2f){g->var_game->life * 263 / g->var_game->max_health, 8});
     sfRectangleShape_setSize(g->ui->ui->credits, \
-    (sfVector2f){g->money->money * 263 / 10000, 10});
+    (sfVector2f){g->money->money * 263 / 10000, 8});
     sfRectangleShape_setSize(g->ui->ui->xp, \
-    (sfVector2f){g->var_game->xp * 263 / g->var_game->max_xp, 10});
+    (sfVector2f){g->var_game->xp * 263 / g->var_game->max_xp, 8});
     sfSprite_setPosition(g->ui->ui->map->sprite, (sfVector2f)
     {sfSprite_getPosition(g->ui->ui->map->sprite).x +\
     g->ship->viewrect.left, \

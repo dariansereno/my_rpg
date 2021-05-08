@@ -32,8 +32,7 @@ void screen_loading(st_global *g)
 {
     sfRenderWindow_clear(g->window->window, sfWhite);
     while (sfRenderWindow_pollEvent(g->window->window, &g->window->event)) {
-        if (g->window->event.type == sfEvtClosed || (g->window->event.type ==
-        sfEvtKeyPressed && g->window->event.key.code == sfKeyEscape))
+        if (g->window->event.type == sfEvtClosed)
         sfRenderWindow_close(g->window->window);
     }
     clock_loading_bar(g);
