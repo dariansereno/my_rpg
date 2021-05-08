@@ -52,7 +52,7 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->nebula, ad->paralax->nebulapos);
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
-    //display_boss_bg(ad);
+    display_boss_bg(ad);
     print_spaceobj_list(ad->space_obj->li, ad->window->window, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     print_planet_list_little(ad->planets->planets, ad->window->window, ad);
@@ -79,9 +79,11 @@ void check_status(st_global *ad)
         colonise_planet(ad);
         ennemies_spawning(ad);
         print_list_explo(&ad->shoot->li_explo, ad);
+        print_list_particle_explo(&ad->particle->particles, ad);
         effect_extract_module(ad);
         effect_com_module(ad);
         effect_health_module(ad);
+        print_list_particle(&ad->particle->particles, ad);
         print_planet_list_big(ad->planets->planets, ad->window->window, ad);
         display_upgrade(ad);
         choose_upgrade(ad);
@@ -92,7 +94,6 @@ void check_status(st_global *ad)
         target_quest(ad);
         print_target_indicator(ad);
         display_msg(ad);
-        // boss_life(ad);
     }
     if (ad->var_game->boss_generated) {
         print_list_explo_boss(&ad->boss->li_big_explo, ad);
@@ -100,6 +101,7 @@ void check_status(st_global *ad)
     }
     if (ad->var_game->xp >= ad->var_game->max_xp)
         ad->var_game->xp = ad->var_game->max_xp;
+    add_particles(ad);
     check_quest(ad);
     display_planet_card(ad);
     display_trade_card(ad);

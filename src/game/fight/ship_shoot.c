@@ -23,6 +23,9 @@ void ship_shoot(st_global *ad)
 void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
 {
     if (en->ennemies.life <= 0){
+        for (int i = 0; i < 10; i++)
+            push_back_particle_explo(&ad->particle->particles, ad->particle,
+            en->ennemies.pos);
         drop(ad, en);
         push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
@@ -51,7 +54,10 @@ void ciao_ennemy_boss(list_ennemies en, st_global *ad)
 {
     if (en->ennemies.life <= 0){
         drop(ad, en);
-        push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
+        for (int i = 0; i < 30; i++)
+            push_back_particle_explo(&ad->particle->particles, ad->particle,
+            en->ennemies.pos);
+        push_back_timer(&ad->shoot->li_explo, en->ennemies.pos, -1);
         pop_position_ennemies(&ad->boss->enn, en->index);
         reindex_ennemies(&ad->boss->enn);
         if (ad->var_game->quests == 1)

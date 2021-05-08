@@ -15,10 +15,10 @@ void buy_module(st_global *g, list_planet pl)
         if (g->money->money > pl->planet.mod_price[g->ui->module_card->pos_rect
         - 1]) {
             pl->planet.modules[g->ui->module_card->pos_rect - 1] += 1;
-            pl->planet.mod_price[g->ui->module_card->pos_rect - 1] =
-            (int)pl->planet.mod_price[g->ui->module_card->pos_rect - 1] * 1.5;
             g->money->money -= pl->planet.mod_price[g->ui->module_card->pos_rect
             - 1];
+            pl->planet.mod_price[g->ui->module_card->pos_rect - 1] =
+            (int)pl->planet.mod_price[g->ui->module_card->pos_rect - 1] * 1.5;
             g->var_game->xp += random_between(5, 15) * g->var_game->mul_xp;
         }
         if (g->ui->module_card->pos_rect == 4)

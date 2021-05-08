@@ -10,26 +10,26 @@
 void effect_com_module(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-    sfTime time = sfClock_getElapsedTime(ad->planets->gen_mod->clock);
+    sfTime time = sfClock_getElapsedTime(ad->planets->com);
     float seconds = time.microseconds / 1000000.0;
 
     if (seconds > 10) {
         while (pl != NULL) {
             if (pl->planet.colonized) {
                 for (int i = 0; i < pl->planet.modules[1]; i++) {
-                    ad->money->money += (int)30 * pl->planet.mul_housing; // ajouter multiplicateur du module habitation
+                    ad->money->money += (int)30 * pl->planet.mul_housing;
                 }
             }
             pl = pl->next;
         }
-        sfClock_restart(ad->planets->gen_mod->clock);
+        sfClock_restart(ad->planets->com);
     }
 }
 
 void effect_extract_module(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-    sfTime time = sfClock_getElapsedTime(ad->planets->gen_mod->clock);
+    sfTime time = sfClock_getElapsedTime(ad->planets->extract);
     float seconds = time.microseconds / 1000000.0;
     int rand;
 
@@ -48,6 +48,6 @@ void effect_extract_module(st_global *ad)
             }
             pl = pl->next;
         }
-        sfClock_restart(ad->planets->gen_mod->clock);
+        sfClock_restart(ad->planets->extract);
     }
 }
