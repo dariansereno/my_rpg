@@ -17,7 +17,7 @@ be to colonise another planet in order to be able to gain more ressources \
 faster. You must first get 3 Deep space ingots, 3 crystals and 3 black matter \
 samples and then press the 'J' key to craft a colony. once this is done you \
 must head to a colonisable planet and press the 'C' key to deploy your colony \
-on it. Colonising a planet also gives Come back to us once this is done", 1000);
+on it. Colonising a planet also gives some XP. Come back to us once this is done", 6000);
         ad->var_game->created = false;
     }
 }

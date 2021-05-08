@@ -43,5 +43,7 @@ void check_quest(st_global *ad)
         start_quest4(ad);
     if (ad->var_game->msg5)
         start_quest5(ad);
+    if (ad->var_game->msg6)
+        start_quest6(ad);
     check_msg_nb(ad);
 }
