@@ -43,7 +43,9 @@ void boss_appear(st_global *ad)
         ad->var_game->boss_generated = true;
     }
     if (ad->var_game->is_boss) {
-        display_boss(ad);
-        display_boss_target(ad, ad->boss->boss->pos);
+            display_boss(ad);
+        if (!is_on_screen(ad, (sfVector2i){(int)ad->boss->boss->pos.x,
+        (int)ad->boss->boss->pos.y}))
+            display_boss_target(ad, ad->boss->boss->pos);
     }
 }

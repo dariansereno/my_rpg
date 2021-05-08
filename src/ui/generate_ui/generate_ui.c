@@ -37,7 +37,6 @@ void generate_ui_bis(st_ui *ui)
     ui->fade = generate_fade();
     ui->settings = generate_settings();
     ui->pause_settings = generate_pause_settings();
-    // ui->boss = generate_boss();
 }
 
 void destroy_ui(st_ui *ui)

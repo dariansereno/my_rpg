@@ -45,7 +45,7 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 4;
+    window->screen = 1;
     window->music_volume = 100.0;
     window->width_volume_pause = 253;
     window->width_volume = 506;
@@ -64,11 +64,12 @@ st_game_var *ini_var()
     st_game_var *var = malloc(sizeof(*var));
 
     var->special_atk = false;
-    var->range = 15;
+    var->range = 30;
     var->speed = 5;
     var->max_health = 200;
     var->attack = 10;
-    var->life = 100;
+    var->life = 200;
+    var->max_money = 10000;
     var->lvl = 0;
     var->max_xp = 100;
     var->price_sett = 3;
@@ -83,7 +84,26 @@ st_game_var *ini_var()
     var->msg = false;
     var->msg2 = false;
     var->kills = 0;
+    var->destroy_boss = false;
     return (var);
+}
+
+void generate_paths(ship_t *ship)
+{
+    ship->path = my_malloc(sizeof(char *) * 5);
+    ship->path_t = my_malloc(sizeof(char *) * 5);
+
+    ship->path[0] = "contents/ships_game/blue.png";
+    ship->path[1] = "contents/ships_game/orange.png";
+    ship->path[2] = "contents/ships_game/dark.png";
+    ship->path[3] = "contents/ships_game/metalic.png";
+    ship->path[4] = "contents/ships_game/green.png";
+    ship->path_t[0] = "contents/ships_game/blue_t.png";
+    ship->path_t[1] = "contents/ships_game/orange_t.png";
+    ship->path_t[2] = "contents/ships_game/dark_t.png";
+    ship->path_t[3] = "contents/ships_game/metalic_t.png";
+    ship->path_t[4] = "contents/ships_game/green_t.png";
+    ship->ship_choosen = 0;
 }
 
 ship_t *ship_ini(void)
@@ -117,6 +137,7 @@ ship_t *ship_ini(void)
     ship->firstcollisionQlim = false;
     ship->acceleration = (sfVector2f){0, 0};
     ship->velocity = (sfVector2f){0, 0};
+    generate_paths(ship);
     return (ship);
 }
 
@@ -160,6 +181,12 @@ st_global *ini(void)
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle, sfTransparent);
     sfCircleShape_setOutlineThickness(all->circle, 10);
+    all->circle_health;
+    all->circle_health = sfCircleShape_create();
+    sfCircleShape_setRadius(all->circle_health, 500);
+    sfCircleShape_setOrigin(all->circle_health, (sfVector2f){500, 500});
+    sfCircleShape_setFillColor(all->circle_health, sfTransparent);
+    sfCircleShape_setOutlineThickness(all->circle_health, 10);
     return (all);
 }
 

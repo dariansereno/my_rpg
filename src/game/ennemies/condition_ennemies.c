@@ -24,6 +24,13 @@ bool is_on_planet(st_global *ad, sfVector2f object)
     return (false);
 }
 
+bool is_on_boss(st_global *ad, sfVector2f object)
+{
+    if (circle_contains(260, ad->boss->boss->pos, object))
+        return (true);
+    return (false);
+}
+
 bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object)
 {
     list_ennemies li = ennemies;

@@ -7,6 +7,22 @@
 
 #include "my_rpg.h"
 
+void choose_player(st_global *g)
+{
+    if (g->window->event.type == sfEvtKeyPressed &&
+    g->window->event.key.code == sfKeyRight) {
+        g->ship->ship_choosen += 1;
+        if (g->ship->ship_choosen >= 5)
+            g->ship->ship_choosen = 0;
+    }
+    if (g->window->event.type == sfEvtKeyPressed &&
+    g->window->event.key.code == sfKeyLeft) {
+        g->ship->ship_choosen -= 1;
+        if (g->ship->ship_choosen <= 0)
+            g->ship->ship_choosen = 4;
+    }
+}
+
 void events_menu(st_global *g)
 {
     while (sfRenderWindow_pollEvent(g->window->window, &g->window->event)) {
@@ -16,6 +32,7 @@ void events_menu(st_global *g)
         if (g->window->event.type == sfEvtMouseButtonReleased && \
         g->window->event.mouseButton.button == sfMouseLeft)
             get_global_bounds_menu(g);
+        choose_player(g);
     }
 }
 

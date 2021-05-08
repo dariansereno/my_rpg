@@ -7,6 +7,21 @@
 
 #include "my_rpg.h"
 
+void generate_arw(st_menu *menu)
+{
+    sfTexture *arw_r_tex = sfTexture_createFromFile(
+        "contents/ui/buttons/arw_right.png", NULL);
+    sfTexture *arw_l_tex = sfTexture_createFromFile(
+        "contents/ui/buttons/arw_left.png", NULL);
+
+    menu->arw_right = sfSprite_create();
+    sfSprite_setTexture(menu->arw_right, arw_r_tex, sfTrue);
+    sfSprite_setScale(menu->arw_right, (sfVector2f){0.025, 0.025});
+    menu->arw_left = sfSprite_create();
+    sfSprite_setTexture(menu->arw_left, arw_l_tex, sfTrue);
+    sfSprite_setScale(menu->arw_left, (sfVector2f){0.025, 0.025});
+}
+
 st_menu *generate_menu(void)
 {
     st_menu *menu = my_malloc(sizeof(*menu));
@@ -26,6 +41,7 @@ st_menu *generate_menu(void)
     menu->bounds[1] = (sfFloatRect){0, 0, 0, 0};
     menu->bounds[2] = (sfFloatRect){0, 0, 0, 0};
     menu->menu = 0;
+    generate_arw(menu);
     return (menu);
 }
 
@@ -39,9 +55,13 @@ void parallax_menu(st_global *g)
     sfSprite_setPosition(g->ship->bship, g->ship->bshippos);
     sfSprite_setPosition(g->paralax->nebula, g->paralax->nebulapos);
     sfSprite_setPosition(g->paralax->star, g->paralax->starpos);
+    sfSprite_setPosition(g->ui->menu->arw_left, (sfVector2f){g->ship->viewrect.left + 837, g->ship->viewrect.top + 530});
+    sfSprite_setPosition(g->ui->menu->arw_right, (sfVector2f){g->ship->viewrect.left + 1073, g->ship->viewrect.top + 530});
     sfRenderWindow_drawSprite(g->window->window, g->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->paralax->star, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
+    sfRenderWindow_drawSprite(g->window->window, g->ui->menu->arw_left, NULL);
+    sfRenderWindow_drawSprite(g->window->window, g->ui->menu->arw_right, NULL);
     move_up(g);
 }
 
@@ -69,10 +89,25 @@ void items_menu(st_global *g)
     g->ui->menu->items[3]->sprite, NULL);
 }
 
+void init_ship_by_choosen(st_global *ad)
+{
+    sfTexture_destroy(ad->texture->load);
+    ad->texture->load = sfTexture_createFromFile
+    (ad->ship->path[ad->ship->ship_choosen], NULL);
+    sfTexture_destroy(ad->texture->th);
+    ad->texture->th = sfTexture_createFromFile
+    (ad->ship->path_t[ad->ship->ship_choosen], NULL);
+    ad->ship->bshipt = sfTexture_createFromFile(ad->ship->path
+    [ad->ship->ship_choosen], NULL);
+
+    sfSprite_setTexture(ad->ship->bship, ad->texture->load, sfTrue);
+}
+
 void screen_menu(st_global *g)
 {
     sfRenderWindow_clear(g->window->window, sfBlue);
     sfRenderWindow_setView(g->window->window, g->ui->menu->view);
+    init_ship_by_choosen(g);
     parallax_menu(g);
     items_menu(g);
     events_menu(g);

@@ -160,6 +160,7 @@
             sfTexture **enn_textures();
         // ENNEMIES_CONDITION.C
             bool is_on_planet(st_global *ad, sfVector2f object);
+            bool is_on_boss(st_global *ad, sfVector2f object);
             bool is_on_ennemies(st_global *ad, list_ennemies ennemies,
             sfVector2f object);
         // LIST
@@ -269,6 +270,9 @@
     // INTERACTING
         // COLLISIONS.C
             void planet_collision(st_global *ad);
+            void ZQ_collisions(st_global *ad);
+            void SD_collisions(st_global *ad);
+            void renitialise_collisions(st_global *ad);
             void collision_by_first(bool c, st_global *ad);
             int circle_contains(int r, sfVector2f p, sfVector2f s);
             void ZQ_collisions(st_global *ad);
@@ -394,10 +398,17 @@
             void attack_2(st_global *ad);
             void attack_3(st_global *ad);
             void attack_4(st_global *ad);
+            void attack_5(st_global *ad);
+            void attack_5_shield(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
             void display_big_message(char *msg, int delay, st_global *ad, \
             sfColor color);
+            void explo_die(st_global *ad);
+        // BOSS COLLISION
+            void boss_collision(st_global *ad);
+            void check_good_collision_boss(st_global *ad);
+            int change_radius_if_shield(st_global *ad);
             // LIST_BOSS_QUEUE
                 int size_list_boss(list_boss li);
                 void push_back_boss(list_boss *li, int duration, int atk_type);
@@ -405,6 +416,8 @@
                 void destroy_list_boss(list_boss *li);
                 void destroy_boss_fight(st_global *ad);
             // LIST BOSS SHOOT
+                void print_list_explo_lil_boss(list_timer *li, st_global *ad);
+                void print_list_explo_boss(list_timer *li, st_global *ad);
                 int size_list_timer_b(list_timer_b li);
                 void push_back_timer_b(list_timer_b *li, sfVector2f dir, \
                 sfVector2f pos);

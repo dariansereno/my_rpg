@@ -45,8 +45,9 @@ void attack_4(st_global *ad)
     second = time.microseconds / 1000000.0;
     time_s = sfClock_getElapsedTime(ad->boss->reload);
     second_s = time_s.microseconds / 1000000.0;
-    if (second < ad->boss->current->duration && size_list_ennemies(ad->boss->enn) < 5) {
-        if (second_s > 0.6) {
+    if (second < ad->boss->current->duration &&
+    size_list_ennemies(ad->boss->enn) < 15) {
+        if (second_s > 1) {
             push_back_ennemies(&ad->boss->enn, generate_ennemies_boss(ad));
             sfClock_restart(ad->boss->reload);
         }
