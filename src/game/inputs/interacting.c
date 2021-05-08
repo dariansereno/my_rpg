@@ -70,7 +70,7 @@ void interaction_input(st_global *ad)
         planets = planets->next;
     }
     if (ad->window->event.type == sfEvtKeyPressed && \
-        ad->window->event.key.code == sfKeyP) {
+        ad->window->event.key.code == sfKeyEscape) {
         if (ad->ui->pause->existing && ad->ui->trade_card->existing == false &&
         ad->ui->module_card->existing == false && \
         ad->ui->planet_card->existing == false && \

@@ -200,6 +200,7 @@
         void switch_screen_one(st_global *g, sfVideoMode mode);
         void switch_screen_two(st_global *g);
         void switch_screen_four(st_global *g);
+        void switch_screen_five(st_global *g);
     // FADE.C
         st_fade *generate_fade(void);
         void display_fade(st_global *g);

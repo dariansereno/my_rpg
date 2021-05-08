@@ -33,12 +33,27 @@ void switch_screen_two(st_global *g)
 
 void switch_screen_four(st_global *g)
 {
-    if (g->window->bool_game == true) {
+    if (g->window->bool_game) {
         sfRenderWindow_destroy(g->window->window);
         g->window->window = sfRenderWindow_create(g->window->mode, "Space Civ",
         sfTitlebar | sfClose | sfResize, NULL);
         sfRenderWindow_setFramerateLimit(g->window->window, 120);
         sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
         g->window->bool_game = false;
+    }
+}
+
+void switch_screen_five(st_global *g)
+{
+    sfVideoMode mode = {700, 1000, 32};
+
+    if (g->window->bool_menu) {
+        sfRenderWindow_destroy(g->window->window);
+        g->window->window = sfRenderWindow_create(mode, "Space Civ",
+        sfTitlebar | sfClose | sfResize, NULL);
+        g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
+        {g->ship->viewrect.left + 560, \
+        g->ship->viewrect.top, 800, 1080});
+        g->window->bool_menu = false;
     }
 }
