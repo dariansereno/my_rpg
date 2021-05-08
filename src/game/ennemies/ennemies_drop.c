@@ -20,7 +20,7 @@ int drop_id(st_global *ad)
 void drop_money(st_global *ad, list_ennemies en)
 {
     st_drop drop;
-    drop.xp = random_xp();
+    drop.xp = random_xp(ad);
     drop.amount = random_money();
 
     drop.mode = 1;
@@ -35,7 +35,7 @@ void drop_ressources(st_global *ad, list_ennemies en)
     st_drop drop;
     drop.id = random_ressources();
     drop.nb = random_nb_ressources();
-    drop.xp = random_xp();
+    drop.xp = random_xp(ad);
 
     ad->ressources[drop.id].nb += drop.nb;
     drop.mode = 0;
