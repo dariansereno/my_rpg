@@ -257,6 +257,13 @@ typedef struct st_game_var_s {
     bool created;
     int kills;
     bool msg2;
+    bool quest2_completed;
+    bool msg3;
+    bool quest3_completed;
+    bool msg4;
+    bool quest4_completed;
+    bool msg5;
+    bool quest5_completed;
 } st_game_var;
 
 typedef struct list_elem_boss_s {

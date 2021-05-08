@@ -29,7 +29,7 @@ void automatically_set_text_max(st_global *g)
             s1 = manage_copy_n(s1, g);
         g->text->c->len = 0;
     }
-    printf("%s\n", s1);
+    //printf("%s\n", s1);
     g->text->str = s1;
 }
 
