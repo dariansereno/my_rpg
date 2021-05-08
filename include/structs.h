@@ -256,6 +256,7 @@ typedef struct st_game_var_s {
     bool msg;
     bool created;
     int kills;
+    bool msg2;
 } st_game_var;
 
 typedef struct list_elem_boss_s {

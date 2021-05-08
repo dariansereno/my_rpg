@@ -33,4 +33,6 @@ void check_quest(st_global *ad)
     }
     if (ad->var_game->msg == true)
         start_quest1(ad);
+    if (ad->var_game->msg2 == true)
+        start_quest2(ad);
 }
