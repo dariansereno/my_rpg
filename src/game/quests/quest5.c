@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void display_second_message(st_global *ad)
+void display_fifth_message(st_global *ad)
 {
     if (ad->var_game->created == true) {
         add_message(ad, "Thanks you for helping us out! Our enemies will take a\
@@ -26,44 +26,38 @@ void display_second_message(st_global *ad)
     }
 }
 
-void start_quest2(st_global *ad)
+void start_quest5(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-
-    while (pl != NULL && ad->var_game->quest2_completed == false &&
-    ad->var_game->quests == 2) {
-        if (pl->planet.start && pl->planet.modules[0] >= 1 &&
-        pl->planet.modules[1] >= 1 && pl->planet.modules[2]
-        >= 1 && pl->planet.modules[3] >= 1) {
-            ad->var_game->quest2_completed = true;
-        }
-        pl = pl->next;
-    }
-    if (ad->var_game->quest2_completed && ad->var_game->quests == 2)
+    int x = 0;
+    
+    if (ad->ressources[3].nb == 1)
+        ad->var_game->quest5_completed = true;
+    if (ad->var_game->quest5_completed && ad->var_game->quests == 5)
         display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfYellow);
-    if (ad->big_msg == NULL && ad->var_game->quests == 2 &&
-    ad->var_game->quest2_completed) {
+    if (ad->big_msg == NULL && ad->var_game->quests == 5 &&
+    ad->var_game->quest5_completed) {
         ad->var_game->xp += 50;
-        ad->var_game->quests = 5;
+        ad->var_game->quests = 3;
         ad->quest->is_on_quest = false;
-        ad->var_game->msg2 = false;
+        ad->var_game->msg5 = false;
     }
 }
 
-void quest_2_initialise(st_global *ad)
+void quest_5_initialise(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
     bool is_done = false;
 
-    if (ad->var_game->quests != 2)
+    if (ad->var_game->quests != 5)
         return;
     while (pl != NULL) {
         if (pl->can_interact && pl->planet.quest && ad->key_pressed.X &&
         !ad->quest->is_on_quest) {
             ad->var_game->created = true;
             ad->quest->is_on_quest = true;
-            display_second_message(ad);
-            ad->var_game->msg2 = true;
+            display_fifth_message(ad);
+            ad->var_game->msg5 = true;
         }
         pl = pl->next;
     }

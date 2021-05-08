@@ -9,16 +9,18 @@
 
 void quest_caller(st_global *ad)
 {
-    // appeller les fonctions des quests et mettre if ad->var_game->quest == 1
-    // dans les fonctions direct.
-
-    // QUEST 1
     quest_1_initialise(ad);
     quest_2_initialise(ad);
-    // QUEST 2
-
-    // QUEST 3
+    quest_3_initialise(ad);
+    quest_4_initialise(ad);
+    quest_5_initialise(ad);
     return;
+}
+
+void check_msg_nb(st_global *ad)
+{
+    if (ad->var_game->msg6)
+        start_quest6(ad);
 }
 
 void check_quest(st_global *ad)
@@ -31,8 +33,15 @@ void check_quest(st_global *ad)
         }
         pl = pl->next;
     }
-    if (ad->var_game->msg == true)
+    if (ad->var_game->msg)
         start_quest1(ad);
-    if (ad->var_game->msg2 == true)
+    if (ad->var_game->msg2)
         start_quest2(ad);
+    if (ad->var_game->msg3)
+        start_quest3(ad);
+    if (ad->var_game->msg4)
+        start_quest4(ad);
+    if (ad->var_game->msg5)
+        start_quest5(ad);
+    check_msg_nb(ad);
 }

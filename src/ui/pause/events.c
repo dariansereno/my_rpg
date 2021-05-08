@@ -63,12 +63,18 @@ void events_redirect_pause(st_global *g)
         switch (g->ui->pause->pos_rect) {
             case 1:
                 g->ui->pause->existing = false;
-                break;
+                g->window->bool_menu = true;
+                g->window->bool_game = true;
+                g->ui->pause->pressed = false;
+                g->window->screen = 2;
+                g->key_pressed.Enter = false;
+                switch_screen_five(g);
+                return;
             case 2:
                 switch_volume_settings(g);
                 break;
             case 3:
-                screen_game(g);
+                sfRenderWindow_close(g->window->window);
                 g->ui->pause->existing = false;
                 break;
             default:
@@ -82,7 +88,7 @@ void text_pause(st_global *g)
 {
     sfText_setCharacterSize(g->ui->pause->text, 50);
     sfText_setColor(g->ui->pause->text, sfColor_fromRGB(179, 130, 188));
-    sfText_setString(g->ui->pause->text, "play game");
+    sfText_setString(g->ui->pause->text, "menu game");
     sfText_setPosition(g->ui->pause->text, \
     (sfVector2f){g->ship->viewrect.left + 844, g->ship->viewrect.top + 312});
     sfRenderWindow_drawText(g->window->window, g->ui->pause->text, NULL);

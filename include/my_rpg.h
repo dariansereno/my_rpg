@@ -43,7 +43,19 @@
             void check_quest(st_global *ad);
         // QUEST2.C
             void quest_2_initialise(st_global *ad);
-            void  start_quest2(st_global *ad);
+            void start_quest2(st_global *ad);
+        // QUEST3.C
+            void quest_3_initialise(st_global *ad);
+            void start_quest3(st_global *ad);
+        // QUEST4.C
+            void quest_4_initialise(st_global *ad);
+            void start_quest4(st_global *ad);
+        // QUEST5.C
+            void quest_5_initialise(st_global *ad);
+            void start_quest5(st_global *ad);
+        // QUEST6.C
+            void quest_6_initialise(st_global *ad);
+            void start_quest6(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
@@ -189,6 +201,7 @@
         void switch_screen_one(st_global *g, sfVideoMode mode);
         void switch_screen_two(st_global *g);
         void switch_screen_four(st_global *g);
+        void switch_screen_five(st_global *g);
     // FADE.C
         st_fade *generate_fade(void);
         void display_fade(st_global *g);
