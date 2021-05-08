@@ -17,6 +17,12 @@ void quest_caller(st_global *ad)
     return;
 }
 
+void check_msg_nb(st_global *ad)
+{
+    if (ad->var_game->msg6)
+        start_quest6(ad);
+}
+
 void check_quest(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
@@ -37,4 +43,5 @@ void check_quest(st_global *ad)
         start_quest4(ad);
     if (ad->var_game->msg5)
         start_quest5(ad);
+    check_msg_nb(ad);
 }
