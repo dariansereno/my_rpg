@@ -378,6 +378,8 @@
             int velo);
             void attack_1(st_global *ad);
             void attack_2(st_global *ad);
+            void attack_3(st_global *ad);
+            void attack_4(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
             void display_big_message(char *msg, int delay, st_global *ad);
