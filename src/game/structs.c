@@ -50,10 +50,12 @@ structs_t *all_dat(void)
     window->width_volume_pause = 253;
     window->width_volume = 506;
     window->sfx_volume = 100;
-    window->width_sfx = 253;
+    window->width_sfx_pause = 253;
+    window->width_sfx = 506;
     window->bool_load = true;
     window->bool_game = true;
     window->bool_menu = true;
+    window->sfx = generate_sound();
     return (window);
 }
 
@@ -166,5 +168,6 @@ void destroy_global(st_global *global)
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
     destroy_boss_fight(global);
+    destroy_sound(global->window->sfx);
     global = NULL;
 }

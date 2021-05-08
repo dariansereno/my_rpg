@@ -524,4 +524,10 @@
         void dialogue_text(st_global *global);
         void add_message(st_global *global, char *str, int delay);
 
+// SOUNDS
+    // SOUNDS
+        st_global_sfx *generate_sound(void);
+        void set_volume_sfx(st_global *g, float volume);
+        void destroy_sound(st_global_sfx *sound);
+
 #endif /* !MY_RPG_H_ */
