@@ -10,7 +10,7 @@
 void print_upgrade_fire_damage(st_global *g)
 {
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
-    g->ship->viewrect.left + 10, g->ship->viewrect.top + 1080 - 177});
+    g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - 177});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->ui->upgrade->sprite, NULL);
     sfText_setString(g->ressources[0].text, "press r");
@@ -28,7 +28,7 @@ void print_upgrade_fire_damage(st_global *g)
 void print_upgrade_fire_speed(st_global *g)
 {
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
-    g->ship->viewrect.left + 10, g->ship->viewrect.top + 1080 - (177 * 2)});
+    g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 2)});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->ui->upgrade->sprite, NULL);
     sfText_setString(g->ressources[0].text, "press t");
@@ -46,7 +46,7 @@ void print_upgrade_fire_speed(st_global *g)
 void print_upgrade_speed(st_global *g)
 {
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
-    g->ship->viewrect.left + 10, g->ship->viewrect.top + 1080 - (177 * 3)});
+    g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 3)});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->ui->upgrade->sprite, NULL);
     sfText_setString(g->ressources[0].text, "press y");
@@ -64,7 +64,7 @@ void print_upgrade_speed(st_global *g)
 void print_upgrade_health(st_global *g)
 {
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
-    g->ship->viewrect.left + 10, g->ship->viewrect.top + 1080 - (177 * 4)});
+    g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 4)});
     sfRenderWindow_drawSprite(g->window->window, \
     g->ui->ui->upgrade->sprite, NULL);
     sfText_setString(g->ressources[0].text, "press u");

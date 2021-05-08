@@ -19,9 +19,9 @@ void draw_big_msg(char *msg, int delay, st_global *ad, sfColor color)
     sfText_setCharacterSize(ad->ressources[0].text, 150);
     sfText_setColor(ad->ressources[0].text, color);
     sfText_setPosition(ad->ressources[0].text, (sfVector2f){
-    ad->ship->viewrect.left + (1920 -
+    ad->ship->viewrect.left + (WIDTH -
     sfText_getLocalBounds(ad->ressources[0].text).width) / 2,
-    ad->ship->viewrect.top + ((1080 - sfText_getLocalBounds(
+    ad->ship->viewrect.top + ((HEIGHT - sfText_getLocalBounds(
     ad->ressources[0].text).height) / 2)});
     sfRenderWindow_drawText(ad->window->window, ad->ressources[0].text,
     NULL);

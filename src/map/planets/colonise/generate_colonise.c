@@ -38,8 +38,8 @@ void set_spawn_point(list_planet pl, st_global *ad)
     while (pl != NULL) {
         if (pl->planet.colonized) {
             printf("planet no %d\n", pl->index);
-            ad->ship->bshippos = (sfVector2f){pl->planet.pos.x - 300 + (1920 / 2),
-            pl->planet.pos.y - 300 + (1080 / 2)};
+            ad->ship->bshippos = (sfVector2f){pl->planet.pos.x - 300 + (WIDTH / 2),
+            pl->planet.pos.y - 300 + (HEIGHT / 2)};
             ad->paralax->nebulapos = (sfVector2f){pl->planet.pos.x - 300, pl->planet.
             pos.y - 300};
             ad->paralax->starpos = (sfVector2f){pl->planet.pos.x - 300, pl->planet.

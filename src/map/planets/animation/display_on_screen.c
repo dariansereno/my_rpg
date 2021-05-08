@@ -14,9 +14,9 @@ void display_on_view(st_global *ad)
 
     while (planets != NULL) {
         if (planets->planet.pos.x >= ad->ship->viewrect.left - 1200 &&
-        planets->planet.pos.x <= ad->ship->viewrect.left + 1920 + 1200
+        planets->planet.pos.x <= ad->ship->viewrect.left + WIDTH + 1200
         && planets->planet.pos.y >= ad->ship->viewrect.top - 1200 &&
-        planets->planet.pos.y <= ad->ship->viewrect.top + 1080 + 1200)
+        planets->planet.pos.y <= ad->ship->viewrect.top + HEIGHT + 1200)
             planets->on_screen = true;
         else
             planets->on_screen = false;
