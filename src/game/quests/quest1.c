@@ -13,8 +13,8 @@ void display_message(st_global *ad)
         add_message(ad, "Hello dear Space traveller, we have been under attack \
 for the past two weeks. Most of our forces have been killed trying to \
 defend our planet and we desperatly need help...\
-Could you please kill 10 enemy ships, it would help us a lot\
-and give us some time to prepare our troops...", 6000);
+ Could you please kill 10 enemy ships, it would help us a lot\
+ and give us some time to prepare our troops...", 6000);
         ad->var_game->created = false;
 }
 
