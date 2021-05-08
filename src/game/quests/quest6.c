@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void display_fifth_message(st_global *ad)
+void display_sixth_message(st_global *ad)
 {
     if (ad->var_game->created == true) {
         add_message(ad, "Thanks you for helping us out! Our enemies will take a\
@@ -26,7 +26,7 @@ void display_fifth_message(st_global *ad)
     }
 }
 
-void start_quest5(st_global *ad)
+void start_quest6(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
     int x = 0;
@@ -44,7 +44,7 @@ void start_quest5(st_global *ad)
     }
 }
 
-void quest_5_initialise(st_global *ad)
+void quest_6_initialise(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
     bool is_done = false;
@@ -56,7 +56,7 @@ void quest_5_initialise(st_global *ad)
         !ad->quest->is_on_quest) {
             ad->var_game->created = true;
             ad->quest->is_on_quest = true;
-            display_fifth_message(ad);
+            display_sixth_message(ad);
             ad->var_game->msg5 = true;
         }
         pl = pl->next;
