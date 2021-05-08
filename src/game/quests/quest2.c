@@ -11,16 +11,16 @@ void display_second_message(st_global *ad)
 {
     if (ad->var_game->created == true)
         add_message(ad, "Thanks you for helping us out! Our enemies will take a\
-while to recover from the blow you dealt them! We don't have much to\
-give you but we will give you some advice. Your next objective will be\
-to upgrade all of your first planet's modules to level 1. The\
-commercial module will give you 30 credits every 15 seconds. The\
-healing module will slowly regenerate your life when you are in the\
-module's reach. The extraction module will give you a random ressource\
-every 15 seconds which will be useful for your next objective and,\
-finaly, the population module will decrease the time needed for all\
-other modules to complete their operations. Come back to us once all\
-of your modules are upgraded", 20);
+ while to recover from the blow you dealt them! We don't have much to\
+ give you but we will give you some advice. Your next objective will be\
+ to upgrade all of your first planet's modules to level 1. The\
+ commercial module will give you 30 credits every 15 seconds. The\
+ healing module will slowly regenerate your life when you are in the\
+ module's reach. The extraction module will give you a random ressource\
+ every 15 seconds which will be useful for your next objective and,\
+ finaly, the population module will decrease the time needed for all\
+ other modules to complete their operations. Come back to us once all\
+ of your modules are upgraded", 20);
         ad->var_game->created = false;
 }
 
