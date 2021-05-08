@@ -32,7 +32,6 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
         indicator = (sfVector2f){-pad_size.x / 2, slope * -pad_size.x / 2};
     else if (indicator.x > pad_size.x / 2)
         indicator = (sfVector2f){pad_size.x / 2, slope * pad_size.x / 2};
-
     indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left + (WIDTH / 2),
     indicator.y + ad->ship->viewrect.top + (HEIGHT / 2)};
     return (indicator);

@@ -7,11 +7,6 @@
 
 #include "my_rpg.h"
 
-void count_items(void)
-{
-
-}
-
 void arrow_events_trade(st_global *g)
 {
     if (g->window->event.type == sfEvtKeyPressed && \

@@ -37,9 +37,6 @@ void display_pause(st_global *g)
         sfRenderWindow_setMouseCursorVisible(g->window->window, sfTrue);
         hover(g);
         events_pause_up(g);
-        events_pause_down(g);
-        events_redirect_pause(g);
-        rect_position_pause(g);
         for (int i = 0; i < 2; i++) {
             sfSprite_setPosition(g->ui->pause->ui[i]->sprite, (sfVector2f) \
             {sfSprite_getPosition(g->ui->pause->ui[i]->sprite).x + \

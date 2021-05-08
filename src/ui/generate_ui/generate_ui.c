@@ -20,6 +20,12 @@ st_ui *generate_ui(void)
     (sfIntRect){0, 0, 78, 78}, "contents/img/sp/selectorsun.png");
     ui->selector[2] = generate_object((sfVector2f){0, 0},
     (sfIntRect){0, 0, 63, 64}, "contents/img/sp/selectorbh.png");
+    generate_ui_bis(ui);
+    return (ui);
+}
+
+void generate_ui_bis(st_ui *ui)
+{
     ui->planet_card = generate_planet_card();
     ui->trade_card = generate_trade_card();
     ui->module_card = generate_module_card();
@@ -32,7 +38,6 @@ st_ui *generate_ui(void)
     ui->settings = generate_settings();
     ui->pause_settings = generate_pause_settings();
     // ui->boss = generate_boss();
-    return (ui);
 }
 
 void destroy_ui(st_ui *ui)
