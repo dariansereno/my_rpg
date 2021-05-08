@@ -31,12 +31,14 @@ void events_pause_settings(st_global *g)
         switch (g->ui->pause_settings->pos_rect) {
             case 1:
                 sfMusic_setVolume(g->window->music, g->window->music_volume);
+                set_volume_sfx(g, g->window->sfx_volume);
                 g->ui->pause_settings->ui[2]->rect.width = \
                 g->window->width_volume_pause;
+                g->ui->pause_settings->ui[3]->rect.width = \
+                g->window->width_sfx_pause;
                 g->ui->pause_settings->existing = false;
                 break;
             case 2:
-            // save
                 g->ui->pause_settings->existing = false;
                 break;
             default:
@@ -118,19 +120,26 @@ void set_width_volume_pause_settings(st_global *g)
             if (x >= 782 && y >= 548 && x <= 821 && y <= 574 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
                 g->ui->pause_settings->ui[3]->rect.width -= 26;
-                if (g->ui->pause_settings->ui[3]->rect.width < 14)
+                set_volume_sfx(g, \
+                sfSound_getVolume(g->window->sfx->explosion) - 10);
+                if (g->ui->pause_settings->ui[3]->rect.width < 14) {
                     g->ui->pause_settings->ui[3]->rect.width = 0;
+                    set_volume_sfx(g, 0);
+                }
             }
             if (x >= 1116 && y >= 546 && x <= 1155 && y <= 578 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
-                if (g->ui->pause_settings->ui[3]->rect.width < 14) {
-                    g->ui->pause_settings->ui[3]->rect.width = 14;
+                if (g->ui->pause_settings->ui[3]->rect.width < 13) {
+                    g->ui->pause_settings->ui[3]->rect.width = 13;
+                    set_volume_sfx(g, 10);
                     g->ui->pause_settings->pressed = false;
                     return;
                 }
                 g->ui->pause_settings->ui[3]->rect.width += 27;
                 if (g->ui->pause_settings->ui[3]->rect.width > 253)
                     g->ui->pause_settings->ui[3]->rect.width = 253;
+                set_volume_sfx(g, \
+                sfSound_getVolume(g->window->sfx->explosion) + 10);
             }
             g->ui->pause_settings->pressed = false;
         }
