@@ -392,6 +392,8 @@
             int velo);
             void attack_1(st_global *ad);
             void attack_2(st_global *ad);
+            void attack_3(st_global *ad);
+            void attack_4(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
             void display_big_message(char *msg, int delay, st_global *ad, \
@@ -494,6 +496,7 @@
             void rectangle_display_ui_game_bis(st_global *g);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
+            void item_craft_ui_game(st_global *g);
     // PAUSE
         // GENERATE_PAUSE
             pause_s *generate_pause(void);
