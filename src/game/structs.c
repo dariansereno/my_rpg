@@ -13,13 +13,13 @@ paralax_t *paralax_ini(void)
 
     paralax->nebula = sfSprite_create();
     paralax->nebulat = sfTexture_createFromFile("ressources/space.png", NULL);
-    paralax->paralaxr = (sfIntRect) {.height = 1080, .left = 1920, .top = 1080,
-    .width = 1920};
+    paralax->paralaxr = (sfIntRect) {.height = HEIGHT, .left = WIDTH, .top = HEIGHT,
+    .width = WIDTH};
     paralax->paralo = sfClock_create();
     paralax->star = sfSprite_create();
     paralax->start = sfTexture_createFromFile("ressources/stars.png", NULL);
-    paralax->starr = (sfIntRect) {.height = 1080, .left = 1920, .top = 1080,
-    .width = 1920};
+    paralax->starr = (sfIntRect) {.height = HEIGHT, .left = WIDTH, .top = HEIGHT,
+    .width = WIDTH};
     paralax->staro = sfClock_create();
     paralax->clock = sfClock_create();
     paralax->nebulapos = (sfVector2f) {0, 0};
@@ -35,8 +35,8 @@ structs_t *all_dat(void)
 {
     structs_t *window = malloc(sizeof(structs_t));
 
-    window->mode.width = 1920;
-    window->mode.height = 1080;
+    window->mode.width = WIDTH;
+    window->mode.height = HEIGHT;
     window->mode.bitsPerPixel = 32;
     window->window = sfRenderWindow_create(window->mode, "my_rpg",
     sfTitlebar | sfClose, NULL);
@@ -77,12 +77,19 @@ st_game_var *ini_var()
     var->reload_time = 0.18;
     var->quests = 1;
     var->mul_xp = 1.0;
-    var->is_boss = false;
+    var->is_boss = true;
     var->boss_generated = false;
     var->created = false;
     var->msg = false;
     var->msg2 = false;
     var->kills = 0;
+    var->quest2_completed = false;
+    var->msg3 = false;
+    var->quest3_completed = false;
+    var->msg4 = false;
+    var->quest4_completed = false;
+    var->msg5 = false;
+    var->quest5_completed = false;
     return (var);
 }
 
@@ -94,8 +101,8 @@ ship_t *ship_ini(void)
     ship->bshipt = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
     sfSprite_setOrigin(ship->bship, (sfVector2f){22.5, 22.5});
     ship->bshippos = (sfVector2f) {.x = 960, .y = 540};
-    ship->viewrect = (sfFloatRect) {.height = 1080, .left = 0, .top = 0,
-    .width = 1920};
+    ship->viewrect = (sfFloatRect) {.height = HEIGHT, .left = 0, .top = 0,
+    .width = WIDTH};
     ship->view = sfView_createFromRect(ship->viewrect);
     ship->reload = malloc(sizeof(*ship->reload));
     ship->reload->clock = sfClock_create();
@@ -168,7 +175,8 @@ void destroy_global(st_global *global)
     sfMusic_destroy(global->window->music);
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
-    destroy_boss_fight(global);
+    if (global->var_game->boss_generated)
+        destroy_boss_fight(global);
     destroy_sound(global->window->sfx);
     destroy_message(global);
     global = NULL;

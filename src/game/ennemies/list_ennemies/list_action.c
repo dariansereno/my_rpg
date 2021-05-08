@@ -18,14 +18,14 @@ void push_back_ennemies(list_ennemies *li, st_ennemies ennemies)
     node->ennemies.sprite = ennemies.sprite;
     node->ennemies.life = 50;
     node->ennemies.dir = 0;
-    node->shootcl = malloc(sizeof(*node->shootcl));
+    node->shootcl = my_malloc(sizeof(*node->shootcl));
     node->shootcl->clock = sfClock_create();
     node->li_shoot = NULL;
     node->index = 0;
     node->index = size_list_ennemies(*li);
-    node->timer = malloc(sizeof(*node->timer));
+    node->timer = my_malloc(sizeof(*node->timer));
     node->timer->clock = sfClock_create();
-    node->ennemies.path_table = malloc(sizeof(float) * 8);
+    node->ennemies.path_table = my_malloc(sizeof(float) * 8);
     node->next = NULL;
     if (*li == NULL)
         *li = node;

@@ -13,9 +13,9 @@ void display_on_view_spaceobj(st_global *ad)
 
     while (obj != NULL) {
         if (obj->pos.x >= ad->ship->viewrect.left - 1200 &&
-        obj->pos.x <= ad->ship->viewrect.left + 1920 + 1200
+        obj->pos.x <= ad->ship->viewrect.left + WIDTH + 1200
         && obj->pos.y >= ad->ship->viewrect.top - 1200 &&
-        obj->pos.y <= ad->ship->viewrect.top + 1080 + 1200)
+        obj->pos.y <= ad->ship->viewrect.top + HEIGHT + 1200)
             obj->on_screen = true;
         else
             obj->on_screen = false;

@@ -45,11 +45,18 @@ int random_nb_ressources()
 int random_xp(st_global *ad)
 {
     int rand = random_between(0, 10);
+    int res = 0;
 
-    if (rand < 7)
-        return ((int)(random_between(5, 10) * ad->var_game->mul_xp));
-    else if(rand >= 7 && rand <= 9)
-        return ((int)(random_between(10, 15) * ad->var_game->mul_xp));
-    else
-        return ((int)(random_between(15, 25) * ad->var_game->mul_xp));
+    if (rand < 7){
+        res = (int)(random_between(5, 10) * ad->var_game->mul_xp);
+        return (res);
+    }
+    else if(rand >= 7 && rand <= 9) {
+        res = (int)(random_between(10, 15) * ad->var_game->mul_xp);
+        return (res);
+    }
+    else {
+        res = (int)(random_between(15, 25) * ad->var_game->mul_xp);
+        return (res);
+    }
 }

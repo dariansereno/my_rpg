@@ -43,7 +43,16 @@
             void check_quest(st_global *ad);
         // QUEST2.C
             void quest_2_initialise(st_global *ad);
-            void  start_quest2(st_global *ad);
+            void start_quest2(st_global *ad);
+        // QUEST3.C
+            void quest_3_initialise(st_global *ad);
+            void start_quest3(st_global *ad);
+        // QUEST4.C
+            void quest_4_initialise(st_global *ad);
+            void start_quest4(st_global *ad);
+        // QUEST5.C
+            void quest_5_initialise(st_global *ad);
+            void start_quest5(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
@@ -392,6 +401,8 @@
             int velo);
             void attack_1(st_global *ad);
             void attack_2(st_global *ad);
+            void attack_3(st_global *ad);
+            void attack_4(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
             void display_big_message(char *msg, int delay, st_global *ad, \
