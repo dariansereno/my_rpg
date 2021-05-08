@@ -1,11 +1,11 @@
-/*
-** EPITECH PROJECT, 2021
-** my_rpg
-** File description:
-** boss
-*/
+// /*
+// ** EPITECH PROJECT, 2021
+// ** my_rpg
+// ** File description:
+// ** boss
+// */
 
-#include "my_rpg.h"
+// #include "my_rpg.h"
 
 // st_boss *generate_boss(void)
 // {

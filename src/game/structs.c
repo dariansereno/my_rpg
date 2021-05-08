@@ -50,10 +50,12 @@ structs_t *all_dat(void)
     window->width_volume_pause = 253;
     window->width_volume = 506;
     window->sfx_volume = 100;
-    window->width_sfx = 253;
+    window->width_sfx_pause = 253;
+    window->width_sfx = 506;
     window->bool_load = true;
     window->bool_game = true;
     window->bool_menu = true;
+    window->sfx = generate_sound();
     return (window);
 }
 
@@ -79,6 +81,8 @@ st_game_var *ini_var()
     var->boss_generated = false;
     var->created = false;
     var->msg = false;
+    var->msg2 = false;
+    var->kills = 0;
     return (var);
 }
 
@@ -143,6 +147,7 @@ st_global *ini(void)
     all->enn_damage = 5;
     all->money = money_ini();
     all->win = false;
+    all->quest = item_ini();
     all->items = generate_items();
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
@@ -150,6 +155,7 @@ st_global *ini(void)
     all->var_game = ini_var();
     all->circle = sfCircleShape_create();
     all->big_msg_generated = false;
+    all->text = generate_message();
     sfCircleShape_setRadius(all->circle, 500);
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle, sfTransparent);
@@ -163,5 +169,6 @@ void destroy_global(st_global *global)
     destroy_ui(global->ui);
     destroy_global_planet(global->planets);
     destroy_boss_fight(global);
+    destroy_sound(global->window->sfx);
     global = NULL;
 }

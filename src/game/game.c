@@ -52,7 +52,7 @@ void check_status(st_global *ad)
     sfSprite_setPosition(ad->paralax->nebula, ad->paralax->nebulapos);
     sfSprite_setPosition(ad->paralax->star, ad->paralax->starpos);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->nebula, NULL);
-    display_boss_bg(ad);
+    //display_boss_bg(ad);
     print_spaceobj_list(ad->space_obj->li, ad->window->window, ad);
     sfRenderWindow_drawSprite(ad->window->window, ad->paralax->star, NULL);
     print_planet_list_little(ad->planets->planets, ad->window->window, ad);
@@ -65,7 +65,7 @@ void check_status(st_global *ad)
     can_upgrade(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     print_list_drop(&ad->drop, ad);
-    boss_handling(ad);
+    //boss_handling(ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -91,10 +91,12 @@ void check_status(st_global *ad)
         display_items_inventory(ad);
         craft_settler(ad);
         display_stats_ship(ad);
+        display_msg(ad);
         // boss_life(ad);
     }
+    if (ad->var_game->xp >= ad->var_game->max_xp)
+        ad->var_game->xp = ad->var_game->max_xp;
     check_quest(ad);
-    display_msg(ad->window->window, ad);
     display_planet_card(ad);
     display_trade_card(ad);
     display_module_card(ad);
@@ -120,7 +122,7 @@ int game_loop(void)
     generate_trade(ad, &ad->planets->planets);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
-    sfMusic_setVolume(ad->window->music, 0);
+    sfMusic_setVolume(ad->window->music, ad->window->music_volume);
     while (sfRenderWindow_isOpen(ad->window->window))
         screen(ad);
     destroy_global(ad);

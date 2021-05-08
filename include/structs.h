@@ -29,6 +29,7 @@ typedef struct cpy_backslash_t {
 typedef struct st_text_s {
     sfSprite *arrow_s;
     sfTexture *arrow_t;
+    sfRectangleShape *white_btm;
     sfRectangleShape *whi_r;
     sfRectangleShape *whi_r2;
     sfRectangleShape *text_r1;
@@ -37,7 +38,7 @@ typedef struct st_text_s {
     sfRectangleShape *text_r4;
     sfText *text;
     sfFont *font;
-    sfBool existing;
+    bool existing;
     sfClock *clock;
     cpy_backslash_s *c;
     char *str;
@@ -209,15 +210,22 @@ typedef struct st_planet_stat_s {
     int pressure;
 } st_planet_stat;
 
+typedef struct st_global_sfx_s {
+    sfSound *click_vol;
+    sfSoundBuffer *buff_click_vol;
+} st_global_sfx;
+
 typedef struct structs_s {
     sfRenderWindow *window;
     sfEvent event;
     sfVideoMode mode;
     sfMusic *music;
+    st_global_sfx *sfx;
     float music_volume;
     int width_volume_pause;
     int width_volume;
     float sfx_volume;
+    int width_sfx_pause;
     int width_sfx;
     int screen;
     bool created;
@@ -247,6 +255,8 @@ typedef struct st_game_var_s {
     bool boss_generated;
     bool msg;
     bool created;
+    int kills;
+    bool msg2;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
@@ -255,6 +265,31 @@ typedef struct list_elem_boss_s {
     int duration;
     struct list_elem_boss_s *next;
 } *list_boss, list_elem_boss;
+
+typedef struct st_boss_s {
+    int atk_mode;
+    st_object *boss;
+    st_object *bg;
+    //sfRectangleShape *life;
+    sfRectangleShape *outline;
+    float life_f;
+    list_boss atk_li;
+    list_boss current;
+    st_timer *clock;
+    st_timer *atk_timer;
+    list_timer_b shoot;
+    sfClock *reload;
+    float reload_normal;
+    float reload_fast_atk;
+    sfSprite *sprite;
+    sfTexture *texture;
+    int shake;
+    bool circle;
+    int radius;
+    bool red;
+    sfSprite *red_sp;
+    sfTexture *red_tex;
+} st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;
@@ -423,6 +458,7 @@ typedef struct st_planet_s {
     int *modules;
     int mul_housing;
     bool quest;
+    bool start;
 } st_planet;
 
 typedef struct list_elem_planet_s {
@@ -630,19 +666,11 @@ typedef struct st_global_shoot_s
     list_timer li_explo;
 } st_global_shoot;
 
-typedef struct st_global_sfx_s
-{
-    sfSound *explosion;
-} st_global_sfx;
-
-typedef struct items_s {
-    sfSprite *ingot;
-    sfSprite *bm;
-    sfSprite *crystal;
-    sfTexture *ingott;
-    sfTexture *bmt;
-    sfTexture *crystalt;
-} items_t;
+typedef struct quest_s {
+    sfText *quest_advancement;
+    sfVector2f quest_text_pos;
+    bool is_on_quest;
+} quest_t;
 
 typedef struct st_upgrade_s {
     int *upgrade_tab;
@@ -676,7 +704,7 @@ typedef struct st_global_s {
     st_global_spaceobj *space_obj;
     list_drop drop;
     sfCircleShape *circle;
-    items_t *itemsss;
+    quest_t *quest;
     st_upgrade *upgrade;
     st_game_var *var_game;
     st_boss *boss;

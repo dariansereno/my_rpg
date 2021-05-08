@@ -28,6 +28,8 @@ void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
         reindex_ennemies(&(*pl)->planet.ennemies);
         reindex_ennemies(&(*pl)->planet.ennemies);
+        if (ad->var_game->quests == 1)
+            ad->var_game->kills += 1;
     }
 }
 

@@ -14,6 +14,7 @@ void quest_caller(st_global *ad)
 
     // QUEST 1
     quest_1_initialise(ad);
+    quest_2_initialise(ad);
     // QUEST 2
 
     // QUEST 3
@@ -25,9 +26,13 @@ void check_quest(st_global *ad)
     list_planet pl = ad->planets->planets;
 
     while (pl != NULL) {
-        if (pl->can_interact == true && ad->key_pressed.X) {
+        if (pl->planet.quest == true && ad->key_pressed.X) {
             quest_caller(ad);
         }
         pl = pl->next;
     }
+    if (ad->var_game->msg == true)
+        start_quest1(ad);
+    if (ad->var_game->msg2 == true)
+        start_quest2(ad);
 }

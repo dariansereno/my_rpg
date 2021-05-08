@@ -80,4 +80,18 @@ void interaction_input(st_global *ad)
         }
         ad->ui->pause->existing = true;
     }
+    if (ad->key_pressed.Enter) {
+        if (ad->text->existing) {
+            int counter = backslash_n_counter(ad);
+            if (counter >= 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0) {
+                sfRectangleShape_setSize(ad->text->text_r1, (sfVector2f){1160, -40});
+                sfRectangleShape_setSize(ad->text->text_r2, (sfVector2f){1160, -40});
+                sfRectangleShape_setSize(ad->text->text_r3, (sfVector2f){1160, -40});
+                ad->text->str = cpy_to_up_text(ad);
+                sfText_setString(ad->text->text, ad->text->str);
+            }
+            if (counter < 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
+                destroy_message(ad);
+        }
+    }
 }
