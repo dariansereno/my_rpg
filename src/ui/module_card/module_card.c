@@ -47,7 +47,6 @@ void display_module_card(st_global *g)
         arrow_events_module(g);
         set_init_position_module(g);
         rect_module_position(g);
-        // buy_apparence();
         for (int i = 2; i >= 1; i--) {
             sfSprite_setPosition(g->ui->module_card->ui[i]->sprite, (sfVector2f)
             {sfSprite_getPosition(g->ui->module_card->ui[i]->sprite).x +\
@@ -97,14 +96,5 @@ void display_texts_module_card(st_global *g, list_planet planets)
     (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 574});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
-    sfText_setString(g->ui->module_card->text, "Health Module");
-    sfText_setPosition(g->ui->module_card->text, \
-    (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 659});
-    sfRenderWindow_drawText(g->window->window, \
-    g->ui->module_card->text, NULL);
-    sfText_setString(g->ui->module_card->text, "Extraction Module");
-    sfText_setPosition(g->ui->module_card->text, \
-    (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 745});
-    sfRenderWindow_drawText(g->window->window, \
-    g->ui->module_card->text, NULL);
+    display_texts_module_card_bis(g);
 }
