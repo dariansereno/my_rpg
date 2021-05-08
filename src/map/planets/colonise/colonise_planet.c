@@ -81,6 +81,7 @@ void colonise_planet(st_global *ad)
         && ad->window->event.type == sfEvtKeyPressed
         && ad->window->event.key.code == sfKeyC) {
             pl->planet.colonized = true;
+            pl->planet.tradable = true;
             ad->var_game->xp += random_between(10, 50) * ad->var_game->mul_xp;
             ad->ressources[3].nb -= 1;
             break;

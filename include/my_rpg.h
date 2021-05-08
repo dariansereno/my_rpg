@@ -38,8 +38,12 @@
             void target_quest(st_global *ad);
         // QUEST1.C
             void quest_1_initialise(st_global *ad);
+            void start_quest1(st_global *ad);
         // QUESTS_CALLER.C
             void check_quest(st_global *ad);
+        // QUEST2.C
+            void quest_2_initialise(st_global *ad);
+            void  start_quest2(st_global *ad);
             
     // UPGRADE
         // UPGRADE.C
@@ -329,7 +333,7 @@
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
     moula_t *money_ini(void);
-    items_t *item_ini(void);
+    quest_t *item_ini(void);
 // OBJECT.C
     st_object *generate_object(sfVector2f pos, sfIntRect rect,
     char *texturepath);
@@ -382,7 +386,7 @@
             void attack_4(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
-            void display_big_message(char *msg, int delay, st_global *ad);
+            void display_big_message(char *msg, int delay, st_global *ad, sfColor color);
             // LIST_BOSS_QUEUE
                 int size_list_boss(list_boss li);
                 void push_back_boss(list_boss *li, int duration, int atk_type);
@@ -504,14 +508,15 @@
         char *cpy_to_up_text(st_global *g);
     // BACKSLASH_ADD
         cpy_backslash_s *generate_cpy(void);
-        char *automatically_set_text_max(st_global *g);
+        void automatically_set_text_max(st_global *g);
         char *manage_copy_n(char *str, st_global *g);
         char *add_backslash_n_to_space(char *str, st_global *g);
         char *add_backslash_n(char *str, st_global *g);
     // DESTROY_MSG
         void destroy_message(st_global *global);
     // DISPLAY_MSG
-        void display_msg(sfRenderWindow *window, st_global *global);
+        st_text *generate_message(void);
+        void display_msg(st_global *g);
         void clock_dialogue_text_line1(st_global *g);
         void clock_dialogue_text_line2(st_global *g);
         void clock_dialogue_text_line3(st_global *g);
@@ -522,22 +527,10 @@
         void dialogue_text(st_global *global);
         void add_message(st_global *global, char *str, int delay);
 
-int game_loop_2();
-void dialogue_text(st_global *global);
-void display_msg(sfRenderWindow *window, st_global *global);
-void clock_dialogue_text_line1(st_global *global);
-void clock_dialogue_text_line2(st_global *global);
-void clock_dialogue_text_line3(st_global *global);
-char *automatically_set_text_max(st_global *g);
-cpy_backslash_s *generate_cpy();
-char *manage_copy_n(char *str, st_global *g);
-char *add_backslash_n_to_space(char *str, st_global *g);
-char *add_backslash_n(char *str, st_global *g);
-char *cpy_to_up_text(st_global *global);
-void dialogue_text_settings(st_global *global);
-int backslash_n_counter(st_global *global);
-void add_message(st_global *global, char *str, int delay);
-void destroy_message(st_global *global);
-void dialogue_rectangle_settings_bis(st_global *g);
+// SOUNDS
+    // SOUNDS
+        st_global_sfx *generate_sound(void);
+        void set_volume_sfx(st_global *g, float volume);
+        void destroy_sound(st_global_sfx *sound);
 
 #endif /* !MY_RPG_H_ */
