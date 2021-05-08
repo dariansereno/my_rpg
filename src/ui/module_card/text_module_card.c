@@ -49,6 +49,11 @@ void text_price_module_card(st_global *g, list_planet pl)
     (sfVector2f){g->ship->viewrect.left + 941, g->ship->viewrect.top + 552});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
+    text_price_module_card_bis(g, pl);
+}
+
+void text_price_module_card_bis(st_global *g, list_planet pl)
+{
     sfText_setString(g->ui->module_card->text, int_to_str_price(pl->
     planet.mod_price[2]));
     sfText_setPosition(g->ui->module_card->text, \
@@ -59,6 +64,20 @@ void text_price_module_card(st_global *g, list_planet pl)
     planet.mod_price[3]));
     sfText_setPosition(g->ui->module_card->text, \
     (sfVector2f){g->ship->viewrect.left + 941, g->ship->viewrect.top + 726});
+    sfRenderWindow_drawText(g->window->window, \
+    g->ui->module_card->text, NULL);
+}
+
+void display_texts_module_card_bis(st_global *g)
+{
+    sfText_setString(g->ui->module_card->text, "Health Module");
+    sfText_setPosition(g->ui->module_card->text, \
+    (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 659});
+    sfRenderWindow_drawText(g->window->window, \
+    g->ui->module_card->text, NULL);
+    sfText_setString(g->ui->module_card->text, "Extraction Module");
+    sfText_setPosition(g->ui->module_card->text, \
+    (sfVector2f){g->ship->viewrect.left + 417, g->ship->viewrect.top + 745});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->module_card->text, NULL);
 }

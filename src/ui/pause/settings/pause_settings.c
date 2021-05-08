@@ -38,7 +38,8 @@ void display_pause_settings(st_global *g)
         set_width_volume_pause_settings(g);
         set_rect_texture_pause_settings(g);
         for (int i = 0; i < 4; i++) {
-            sfSprite_setPosition(g->ui->pause_settings->ui[i]->sprite, (sfVector2f) \
+            sfSprite_setPosition(g->ui->pause_settings->ui[i]->sprite, \
+            (sfVector2f) \
             {sfSprite_getPosition(g->ui->pause_settings->ui[i]->sprite).x + \
             g->ship->viewrect.left, \
             sfSprite_getPosition(g->ui->pause_settings->ui[i]->sprite).y + \

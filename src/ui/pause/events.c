@@ -22,6 +22,9 @@ void events_pause_up(st_global *g)
             g->ui->pause->pressed = false;
         }
     }
+    events_pause_down(g);
+    events_redirect_pause(g);
+    rect_position_pause(g);
 }
 
 void events_pause_down(st_global *g)
@@ -41,6 +44,18 @@ void events_pause_down(st_global *g)
     }
 }
 
+void switch_volume_settings(st_global *g)
+{
+    g->ui->pause_settings->existing = true;
+    g->window->music_volume = sfMusic_getVolume(g->window->music);
+    g->window->width_volume_pause = \
+    g->ui->pause_settings->ui[2]->rect.width;
+    g->window->sfx_volume = \
+    sfSound_getVolume(g->window->sfx->click_vol);
+    g->window->width_sfx_pause = \
+    g->ui->pause_settings->ui[3]->rect.width;
+}
+
 void events_redirect_pause(st_global *g)
 {
     if (g->key_pressed.Enter) {
@@ -50,14 +65,7 @@ void events_redirect_pause(st_global *g)
                 g->ui->pause->existing = false;
                 break;
             case 2:
-                g->ui->pause_settings->existing = true;
-                g->window->music_volume = sfMusic_getVolume(g->window->music);
-                g->window->width_volume_pause = \
-                g->ui->pause_settings->ui[2]->rect.width;
-                g->window->sfx_volume = \
-                sfSound_getVolume(g->window->sfx->click_vol);
-                g->window->width_sfx_pause = \
-                g->ui->pause_settings->ui[3]->rect.width;
+                switch_volume_settings(g);
                 break;
             case 3:
                 screen_game(g);

@@ -65,10 +65,12 @@ void rect_position_end(st_global *g)
 {
     switch (g->ui->end->pos_rect) {
         case 1:
-            sfSprite_setPosition(g->ui->end->ui[3]->sprite, (sfVector2f){596, 675});
+            sfSprite_setPosition(g->ui->end->ui[3]->sprite, \
+            (sfVector2f){596, 675});
             break;
         case 2:
-            sfSprite_setPosition(g->ui->end->ui[3]->sprite, (sfVector2f){1024, 675});
+            sfSprite_setPosition(g->ui->end->ui[3]->sprite, \
+            (sfVector2f){1024, 675});
             break;
         default:
             break;
