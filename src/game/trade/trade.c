@@ -50,20 +50,25 @@ st_ressources **trade(st_global *ad)
 {
     bool is_good = false;
     int nb_ressources = random_between(1, 3);
-    st_ressources **tab = malloc(sizeof(st_ressources **) * (nb_ressources + 1
-    ));
+    st_ressources **tab = my_malloc(sizeof(st_ressources *) * (4));
     int j = 0;
+    int i = 0;
 
-    for (int i = 0; i < nb_ressources; i++)
+    for (i = 0; i < nb_ressources; i++)
     {
-        tab[i] = malloc(sizeof(*tab[i]));
+        tab[i] = my_malloc(sizeof(*tab[i]));
         tab[i]->id = random_between(0, 2);
         j = 0;
         check_double(is_good, tab, i, j);
         tab[i]->price = prices(ad, tab[i]->id);
         tab[i]->nb = stock(ad, tab[i]->id);
     }
-    tab[nb_ressources] = malloc(sizeof(st_ressources *));
+    for (; i < 4 - nb_ressources; i++) {
+        tab[i] = my_malloc(sizeof(*tab[i]));
+        tab[i]->id = -1;
+        tab[i]->price = -1;
+    }
+    tab[nb_ressources] = malloc(sizeof(*tab[nb_ressources]));
     tab[nb_ressources]->id = -1;
     tab[nb_ressources]->price = -1;
     return (tab);
