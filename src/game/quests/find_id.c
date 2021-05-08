@@ -13,7 +13,8 @@ void target_quest(st_global *ad)
     sfVector2f questpos = {0, 0};
 
     while (pl != NULL) {
-        if (pl->planet.quest == true && !is_on_screen(ad, pl->planet.pos)) {
+        if (pl->planet.quest == true && !is_on_screen(ad, pl->planet.pos) &&
+        ad->quest->is_on_quest == false) {
             questpos = target_indicator(ad, (sfVector2f)
             {(float)pl->planet.pos.x, (float)pl->planet.pos.y});
             sfText_setString(ad->ressources[0].text, "!");

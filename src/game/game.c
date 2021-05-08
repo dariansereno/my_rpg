@@ -30,8 +30,7 @@ char *life_to_str(int life)
 void check_event(st_global *ad)
 {
     colonise_planet(ad);
-    if (ad->window->event.type == sfEvtClosed || (ad->window->event.type ==
-    sfEvtKeyPressed &&  ad->window->event.key.code == sfKeyEscape))
+    if (ad->window->event.type == sfEvtClosed)
         sfRenderWindow_close(ad->window->window);
     interaction_input(ad);
     if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
@@ -129,7 +128,6 @@ int game_loop(void)
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, ad->window->music_volume);
-    sfMusic_setVolume(ad->window->music, 0);
     while (sfRenderWindow_isOpen(ad->window->window))
         screen(ad);
     destroy_global(ad);

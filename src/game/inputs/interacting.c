@@ -70,7 +70,7 @@ void interaction_input(st_global *ad)
         planets = planets->next;
     }
     if (ad->window->event.type == sfEvtKeyPressed && \
-        ad->window->event.key.code == sfKeyP) {
+        ad->window->event.key.code == sfKeyEscape) {
         if (ad->ui->pause->existing && ad->ui->trade_card->existing == false &&
         ad->ui->module_card->existing == false && \
         ad->ui->planet_card->existing == false && \
@@ -90,7 +90,11 @@ void interaction_input(st_global *ad)
                 ad->text->str = cpy_to_up_text(ad);
                 sfText_setString(ad->text->text, ad->text->str);
             }
-            if (counter < 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
+            if (counter == 2 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
+                ad->text->existing = false;
+            if (counter == 1 && sfRectangleShape_getSize(ad->text->text_r2).x <= 0)
+                ad->text->existing = false;
+            if (counter == 0 && sfRectangleShape_getSize(ad->text->text_r1).x <= 0)
                 ad->text->existing = false;
         }
     }

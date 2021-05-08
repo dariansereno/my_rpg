@@ -30,7 +30,8 @@ void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
         push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
         reindex_ennemies(&(*pl)->planet.ennemies);
-        if (ad->var_game->quests == 1)
+        reindex_ennemies(&(*pl)->planet.ennemies);
+        if (ad->var_game->quests == 1 && ad->quest->is_on_quest == true)
             ad->var_game->kills += 1;
     }
 }
