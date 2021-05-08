@@ -90,6 +90,8 @@ st_game_var *ini_var()
     var->quest4_completed = false;
     var->msg5 = false;
     var->quest5_completed = false;
+    var->msg6 = false;
+    var->quest6_completed = false;
     return (var);
 }
 

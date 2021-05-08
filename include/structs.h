@@ -264,6 +264,8 @@ typedef struct st_game_var_s {
     bool quest4_completed;
     bool msg5;
     bool quest5_completed;
+    bool msg6;
+    bool quest6_completed;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
