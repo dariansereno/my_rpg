@@ -7,11 +7,6 @@
 
 #include "my_rpg.h"
 
-// double rad(double degree)
-// {
-//     return (degree * (M_PI / 180));
-// }
-
 float heuristic(sfVector2f start, sfVector2f end)
 {
     float result = fabsf(end.x - start.x) + fabsf(end.y - start.y);
@@ -20,7 +15,7 @@ float heuristic(sfVector2f start, sfVector2f end)
 
 float note_case(sfVector2f start, sfVector2f end, st_global *ad)
 {
-    if (is_on_planet(ad, start))
+    if (is_on_planet(ad, start) || is_on_boss(ad, start))
         return (2147483647);
     else
         return (heuristic(start, end));

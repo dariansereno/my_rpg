@@ -14,7 +14,8 @@ void move_up(st_global *ad)
 
     setkeyup(ad);
     ad->ship->velocity.y = (int)-ad->var_game->speed;
-    ad->ship->bshipt = ad->texture->th[0];
+    ad->ship->bshipt = ad->texture->th;
+    sfSprite_setRotation(ad->ship->bship, 0);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top -= (int)ad->var_game->speed / 2;
         if (ad->paralax->paralaxr.top <= 0)
@@ -31,7 +32,8 @@ void move_down(st_global *ad)
 
     setkeydown(ad);
     ad->ship->velocity.y = (int)ad->var_game->speed;
-    ad->ship->bshipt = ad->texture->th[6];
+    ad->ship->bshipt = ad->texture->th;
+    sfSprite_setRotation(ad->ship->bship, 180);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.top += (int)ad->var_game->speed / 2;
         if (ad->paralax->paralaxr.top >= 2160)
@@ -47,7 +49,8 @@ void move_left(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     ad->ship->velocity.x = (int)-ad->var_game->speed;
-    ad->ship->bshipt = ad->texture->th[7];
+    ad->ship->bshipt = ad->texture->th;
+    sfSprite_setRotation(ad->ship->bship, 270);
     setkeyleft(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left -= (int)ad->var_game->speed / 2;
@@ -64,7 +67,8 @@ void move_right(st_global *ad)
     float secondso = timeo.microseconds / 1000000.0;
 
     ad->ship->velocity.x = (int)ad->var_game->speed;
-    ad->ship->bshipt = ad->texture->th[5];
+    ad->ship->bshipt = ad->texture->th;
+    sfSprite_setRotation(ad->ship->bship, 90);
     setkeyright(ad);
     if (secondso > 0.01) {
         ad->paralax->paralaxr.left += (int)ad->var_game->speed / 2;

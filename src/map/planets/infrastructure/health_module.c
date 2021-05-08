@@ -23,12 +23,12 @@ void health_contains(st_global *ad, int seconds, list_planet pl)
 {
     if (circle_contains(500, (sfVector2f){pl->planet.pos.x,
     pl->planet.pos.y}, ad->ship->bshippos) && pl->planet.modules[2] > 0) {
-        sfCircleShape_setPosition(ad->circle, (sfVector2f){(float)pl->planet.pos.x, (float)pl->planet.pos.y});
-        sfCircleShape_setFillColor(ad->circle, sfTransparent);
-        sfCircleShape_setOutlineThickness(ad->circle, 10);
-        sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
+        sfCircleShape_setPosition(ad->circle_health, (sfVector2f){(float)pl->planet.pos.x, (float)pl->planet.pos.y});
+        sfCircleShape_setFillColor(ad->circle_health, sfTransparent);
+        sfCircleShape_setOutlineThickness(ad->circle_health, 10);
+        sfRenderWindow_drawCircleShape(ad->window->window, ad->circle_health, NULL);
+        health_contains_2(ad, seconds, pl);
     }
-    health_contains_2(ad, seconds, pl);
 }
 
 void effect_health_module(st_global *ad)

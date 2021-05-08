@@ -11,7 +11,8 @@
 void ciao_nous(st_global *ad)
 {
     if (ad->var_game->life <= 0) {
-        printf("YOU DIED\n");
+        ad->ui->end->existing = true;
+        ad->win = false;
     }
 }
 
@@ -30,6 +31,7 @@ void collision_shoot_enn(st_global *ad, list_timer *shoot)
 {
     list_planet pl = ad->planets->planets;
 
+    check_collision_ship(ad, shoot);
     while (pl != NULL) {
         if (pl->on_screen == true && pl->planet.kind == TECH)
             check_collision_ship(ad, shoot);

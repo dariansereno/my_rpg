@@ -31,5 +31,6 @@ void atk_queue_boss(st_global *ad)
         attack_2(ad);
         attack_3(ad);
         attack_4(ad);
+        attack_5(ad);
     }
 }

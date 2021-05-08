@@ -65,7 +65,7 @@ void check_status(st_global *ad)
     can_upgrade(ad);
     print_planet_list_normal(ad->planets->planets, ad->window->window, ad);
     print_list_drop(&ad->drop, ad);
-    //boss_handling(ad);
+    boss_handling(ad);
     if (ad->ui->planet_card->existing == false && \
     ad->ui->trade_card->existing == false && \
     ad->ui->module_card->existing == false && \
@@ -83,16 +83,20 @@ void check_status(st_global *ad)
         effect_com_module(ad);
         effect_health_module(ad);
         print_planet_list_big(ad->planets->planets, ad->window->window, ad);
-        target_quest(ad);
-        print_target_indicator(ad);
         display_upgrade(ad);
         choose_upgrade(ad);
         display_ui_game(ad);
         display_items_inventory(ad);
         craft_settler(ad);
         display_stats_ship(ad);
+        target_quest(ad);
+        print_target_indicator(ad);
         display_msg(ad);
         // boss_life(ad);
+    }
+    if (ad->var_game->boss_generated) {
+        print_list_explo_boss(&ad->boss->li_big_explo, ad);
+        print_list_explo_lil_boss(&ad->boss->li_lil_explo, ad);
     }
     if (ad->var_game->xp >= ad->var_game->max_xp)
         ad->var_game->xp = ad->var_game->max_xp;
@@ -123,6 +127,7 @@ int game_loop(void)
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);
     sfMusic_setVolume(ad->window->music, ad->window->music_volume);
+    sfMusic_setVolume(ad->window->music, 0);
     while (sfRenderWindow_isOpen(ad->window->window))
         screen(ad);
     destroy_global(ad);

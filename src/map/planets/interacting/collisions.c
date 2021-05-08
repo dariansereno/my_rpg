@@ -69,6 +69,20 @@ void planet_collision(st_global *ad)
     renitialise_collisions(ad);
     bool c = false;
 
+    if (ad->var_game->boss_generated && !ad->var_game->destroy_boss) {
+        ad->boss->radius_col = change_radius_if_shield(ad);
+        if (circle_contains(ad->boss->radius_col, ad->boss->boss->pos, ad->ship->
+        bshippos) && !ad->ship->firstcollisionS && !ad->ship->firstcollisionD &&
+        !ad->ship-> firstcollisionZ && !ad->ship->firstcollisionQ) {
+            SD_collisions(ad);
+            ZQ_collisions(ad);
+        }
+        if (circle_contains(ad->boss->radius_col, ad->boss->boss->pos,
+        ad->ship->bshippos)) {
+            c = true;
+            check_good_collision_boss(ad);
+        }
+    }
     while (planet != NULL) {
         if (circle_contains(155, sfSprite_getPosition(planet->planet.sprite),
         sfSprite_getPosition(ad->ship->bship)) && ad->ship->firstcollisionS

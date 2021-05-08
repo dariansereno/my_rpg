@@ -29,7 +29,7 @@ void craft_settler(st_global *ad)
 {
     if (ad->key_pressed.J && ad->var_game->craft && ad->var_game->clicked) {
         ad->var_game->clicked = false;
-        for (int i = 0; i < ad->var_game->price_sett; i++)
+        for (int i = 0; i < 3; i++)
             ad->ressources[i].nb -= ad->var_game->price_sett;
         ad->ressources[3].nb += 1;
         ad->var_game->price_sett += 1;

@@ -24,14 +24,14 @@ void upgrade_damage(st_global *ad)
     }
 }
 
-void upgrade_range(st_global *ad)
+void upgrade_reload(st_global *ad)
 {
     if (ad->key_pressed.T && ad->upgrade->can_upgrade && \
     ad->upgrade->upgrade_tab[1] < 3) {
         ad->var_game->lvl += 1;
         ad->var_game->xp = 0.0;
         ad->var_game->max_xp *= 1.3;
-        ad->var_game->range *= 1.5;
+        ad->var_game->reload_time -= 0.03;
         ad->upgrade->upgrade_tab[1] += 1;
         ad->upgrade->can_upgrade = false;
         ad->enn_damage *= 1.2;
@@ -72,7 +72,7 @@ void upgrade_health(st_global *ad)
 void choose_upgrade(st_global *ad)
 {
     upgrade_damage(ad);
-    upgrade_range(ad);
+    upgrade_reload(ad);
     upgrade_speed(ad);
     upgrade_health(ad);
 }

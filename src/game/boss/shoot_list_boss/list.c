@@ -93,6 +93,10 @@ void check_collision_ship_b(st_global *ad, list_timer_b *shoot)
 {
     if (circle_contains(15, ad->ship->bshippos, (*shoot)->pos)) {
         ad->var_game->life -= ad->enn_damage;
+        if (ad->var_game->life <= 0) {
+            ad->win = false;
+            ad->ui->end->existing = true;
+        }
         (*shoot)->destroy = true;
     }
     if (is_on_planet(ad, (*shoot)->pos))

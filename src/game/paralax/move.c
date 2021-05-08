@@ -61,14 +61,6 @@ void paralax_move(st_global *ad)
     ad->paralax->starpos.x += ad->ship->velocity.x;
     ad->paralax->nebulapos.y += ad->ship->velocity.y;
     ad->paralax->nebulapos.x += ad->ship->velocity.x;
-    // if (ad->ship->velocity.y != 0 && ad->ship->velocity.y > 0)
-    //     ad->boss->bg->pos.y += ad->ship->velocity.y - 1;
-    // else if (ad->ship->velocity.y != 0 && ad->ship->velocity.y < 0)
-    //     ad->boss->bg->pos.y += ad->ship->velocity.y + 1;
-    // if (ad->ship->velocity.x != 0 && ad->ship->velocity.x > 0)
-    //     ad->boss->bg->pos.x += ad->ship->velocity.x - 1;
-    // else if (ad->ship->velocity.x != 0 && ad->ship->velocity.x < 0)
-    //     ad->boss->bg->pos.x += ad->ship->velocity.x + 1;
     ad->ship->velocity.x = 0;
     ad->ship->velocity.y = 0;
     if (ad->key_pressed.D == false && ad->key_pressed.Q == false &&

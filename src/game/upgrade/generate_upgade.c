@@ -23,7 +23,7 @@ st_object **generate_icon()
     obj[0] = generate_object((sfVector2f){0, 0}, \
     (sfIntRect){0, 0, 32, 32}, "contents/upgrade/damage.png");
     obj[1] = generate_object((sfVector2f){0, 0}, \
-    (sfIntRect){0, 0, 32, 32}, "contents/upgrade/range.png");
+    (sfIntRect){0, 0, 32, 32}, "contents/upgrade/reload.png");
     obj[2] = generate_object((sfVector2f){0, 0}, \
     (sfIntRect){0, 0, 60, 60}, "contents/upgrade/speed.png");
     obj[3] = generate_object((sfVector2f){0, 0}, \

@@ -66,7 +66,7 @@ int *generate_mod_price()
 st_planet_global *generate_all_map(void)
 {
     scatter math = {.germ = 469880, .interval = 80000, .kmax =
-    random_between(2000, 2500) , .p = 1288, .q = 1664713};
+    random_between(2000, 2500), .p = 1288, .q = 1664713};
     sfVector2i *pos = scatter_plot(math);
     st_planet_global *planets = my_malloc(sizeof(*planets));
     planets->planets = NULL;
@@ -76,6 +76,8 @@ st_planet_global *generate_all_map(void)
     planets->limit = init_limit_map();
     planets->col_lim = false;
     planets->gen_mod = my_malloc(sizeof(st_timer *));
+    planets->com = sfClock_create();
+    planets->extract = sfClock_create();
     planets->health_mod = my_malloc(sizeof(st_timer *));
     planets->ext_mod = my_malloc(sizeof(st_timer *));
     planets->gen_mod->clock = sfClock_create();

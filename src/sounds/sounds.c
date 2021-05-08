@@ -27,5 +27,5 @@ void set_volume_sfx(st_global *g, float volume)
 void destroy_sound(st_global_sfx *sound)
 {
     sfSound_destroy(sound->click_vol);
-    sfSoundBuffer_destroy(sound->click_vol_buff);
+    sfSoundBuffer_destroy(sound->buff_click_vol);
 }

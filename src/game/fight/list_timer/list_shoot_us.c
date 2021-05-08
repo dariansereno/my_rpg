@@ -17,6 +17,8 @@ void push_back_timer(list_timer *li, sfVector2f pos, int dir)
     node->timer.clock = sfClock_create();
     node->timer.seconds = 0;
     node->destroy = false;
+    node->rect = (sfIntRect){.height = 46, .width = 46, .left = 0,
+    .top = 0};
     node->pos = pos;
     node->dir = dir;
     node->next = NULL;

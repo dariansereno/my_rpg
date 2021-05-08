@@ -65,5 +65,7 @@ st_global_shoot *generate_shoot()
     shoot->explo_tmr->clock = sfClock_create();
     shoot->sprite_ship = generate_ship_shoot();
     shoot->sprite_enn = generate_enn_shoot();
+    shoot->explo_sp2 = sfSprite_create();
+    sfSprite_setTexture(shoot->explo_sp2, texture, sfTrue);
     return (shoot);
 }

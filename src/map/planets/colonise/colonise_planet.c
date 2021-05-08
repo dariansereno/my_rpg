@@ -53,17 +53,14 @@ void print_can_quest(st_global *ad)
 
     while (pl != NULL) {
         if (pl->can_interact && pl->size == 2 && pl->planet.quest) {
-            if (pl->planet.type >= 7 && pl->planet.type <= 20 && pl->can_interact \
-            && pl->size == 2 && !pl->planet.colonized && \
-            ad->ressources[3].nb >= 1)
+            if (pl->planet.type >= 7 && pl->planet.type <= 20 &&
+            !pl->planet.colonized && ad->ressources[3].nb >= 1)
                 print += 30;
-            if (pl->planet.type >= 7 && pl->planet.type <= 20 && pl->can_interact \
-            && pl->size == 2 && !pl->planet.colonized && \
-            ad->ressources[3].nb >= 1)
+            if (pl->planet.tradable)
                 print += 30;
             sfText_setPosition(ad->ressources[0].text, (sfVector2f) \
             {pl->planet.pos.x - 97, pl->planet.pos.y - print});
-            sfText_setString(ad->ressources[0].text, "Press X to interact");
+            sfText_setString(ad->ressources[0].text, "   Press X to interact");
             sfRenderWindow_drawText(ad->window->window, ad->ressources[0].text,
             NULL);
         }

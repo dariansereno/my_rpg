@@ -148,6 +148,7 @@ typedef struct list_elem_timer_s {
     st_timer timer;
     int index;
     sfVector2f pos;
+    sfIntRect rect;
     int dir;
     int it;
     bool destroy;
@@ -257,6 +258,8 @@ typedef struct st_game_var_s {
     bool created;
     int kills;
     bool msg2;
+    int max_money;
+    bool destroy_boss;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
@@ -316,6 +319,9 @@ typedef struct ship_s {
     sfVector2f velocity;
     sfVector2f acceleration;
     st_timer *reload;
+    int ship_choosen;
+    char **path;
+    char **path_t;
 }ship_t;
 
 typedef struct st_ennemies_s
@@ -362,12 +368,24 @@ typedef struct st_boss_s {
     float reload_fast_atk;
     sfSprite *sprite;
     sfTexture *texture;
+    sfSprite *shield_sp;
+    sfTexture *shield_tex;
     int shake;
     bool circle;
     int radius;
     bool red;
+    bool shield;
+    int take_dmg;
+    int radius_col;
     sfSprite *red_sp;
     sfTexture *red_tex;
+    list_timer li_big_explo;
+    list_timer li_lil_explo;
+    int damage;
+    bool is_die;
+    bool big_explo;
+    bool lil_explo;
+    int it;
 } st_boss;
 
 typedef struct keys_s {
@@ -382,8 +400,8 @@ typedef struct keys_s {
 } keys_t;
 
 typedef struct load_s {
-    sfTexture **load;
-    sfTexture **th;
+    sfTexture *load;
+    sfTexture *th;
 } load_t;
 
 typedef struct paralax_s {
@@ -489,6 +507,8 @@ typedef struct st_global_planet_s {
     sfVertexArray **limit;
     bool col_lim;
     st_timer *gen_mod;
+    sfClock *com;
+    sfClock *extract;
     st_timer *health_mod;
     st_timer *ext_mod;
     sfText *mark;
@@ -583,6 +603,8 @@ typedef struct st_menu_t {
     st_object *cursor;
     st_object *items[4];
     sfFloatRect bounds[3];
+    sfSprite *arw_right;
+    sfSprite *arw_left;
     int menu;
 } st_menu;
 
@@ -626,7 +648,6 @@ typedef struct st_ui {
     st_end *end;
     st_fade *fade;
     st_settings *settings;
-    st_boss *boss;
 } st_ui;
 
 typedef struct st_variable_s {
@@ -661,6 +682,7 @@ typedef struct st_global_shoot_s
     sfSprite **sprite_ship;
     sfSprite **sprite_enn;
     sfSprite *explo_sp;
+    sfSprite *explo_sp2;
     st_timer *explo_tmr;
     sfIntRect explo_rect;
     list_timer li_explo;
@@ -709,6 +731,7 @@ typedef struct st_global_s {
     st_game_var *var_game;
     st_boss *boss;
     sfClock *big_msg;
+    sfCircleShape *circle_health;
     bool big_msg_generated;
 } st_global;
 

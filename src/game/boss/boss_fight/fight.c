@@ -26,7 +26,6 @@ void print_ennemies_list_boss(list_ennemies li, sfRenderWindow *window, st_globa
             clock_move_ennemies(li, ad);
             if (li->shootcl->seconds > 1) {
                 push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
-                reindex_timer(li);
                 sfClock_restart(li->shootcl->clock);
             }
         print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
@@ -44,10 +43,18 @@ void print_ennemies_list_boss(list_ennemies li, sfRenderWindow *window, st_globa
 
 void boss_handling(st_global *ad)
 {
-    if (ad->var_game->boss_generated)
+    if (ad->var_game->boss_generated) {
+        explo_die(ad);
+        if (ad->var_game->destroy_boss)
+            return;
         print_list_shoot_b(&ad->boss->shoot, ad->boss->sprite, ad);
+        // printf("[%f]\n", ad->boss->life_f);
+    }
     boss_fight(ad);
     boss_appear(ad);
+    boss_life(ad);
+    if (ad->boss->current != NULL && ad->boss->shield)
+        attack_5_shield(ad);
     if (ad->boss->current != NULL && ad->boss->enn != NULL)
         print_ennemies_list_boss(ad->boss->enn, ad->window->window, ad);
     if (ad->var_game->is_boss && ad->var_game->boss_generated &&
