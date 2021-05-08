@@ -14,7 +14,7 @@ void display_fourth_message(st_global *ad)
 XP, you can kill ennemies, colonise planets, buy modules on your colonised \
 planets or complete quests. Your next job is to get enough XP to levelup to \
 level 5. Don't forget to upgrade your stats once you have enough XP because \
-your XP will be reset when you levelup.", 1000);
+your XP will be reset when you levelup.", 6000);
         ad->var_game->created = false;
     }
 }
