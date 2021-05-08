@@ -80,7 +80,25 @@ void interaction_input(st_global *ad)
         }
         ad->ui->pause->existing = true;
     }
-    if (ad->key_pressed.Enter) {
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code == sfKeyB)
+    add_message(ad, "Hello dear Space traveller, we have been under attack \
+for the past two weeks. Most of our forces have been killed trying to \
+defend our planet and we desperatly need help...\
+ Could you please kill 10 enemy ships, it would help us a lot\
+ and give us some time to prepare our troops...", 6000);
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code == sfKeyL)
+        add_message(ad, "Thanks you for helping us out! Our enemies will take a\
+ while to recover from the blow you dealt them! We don't have much to\
+ give you but we will give you some advice. Your next objective will be\
+ to upgrade all of your first planet's modules to level 1. The\
+ commercial module will give you 30 credits every 15 seconds. The\
+ healing module will slowly regenerate your life when you are in the\
+ module's reach. The extraction module will give you a random ressource\
+ every 15 seconds which will be useful for your next objective and,\
+ finaly, the population module will decrease the time needed for all\
+ other modules to complete their operations. Come back to us once all\
+ of your modules are upgraded", 6000);
+    if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code == sfKeyN) {
         if (ad->text->existing) {
             int counter = backslash_n_counter(ad);
             if (counter >= 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0) {
@@ -90,7 +108,11 @@ void interaction_input(st_global *ad)
                 ad->text->str = cpy_to_up_text(ad);
                 sfText_setString(ad->text->text, ad->text->str);
             }
-            if (counter < 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
+            if (counter == 2 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
+                ad->text->existing = false;
+            if (counter == 1 && sfRectangleShape_getSize(ad->text->text_r2).x <= 0)
+                ad->text->existing = false;
+            if (counter == 0 && sfRectangleShape_getSize(ad->text->text_r1).x <= 0)
                 ad->text->existing = false;
         }
     }
