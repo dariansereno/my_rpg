@@ -18,14 +18,15 @@ defend our planet and we desperatly need help...\
         ad->var_game->created = false;
 }
 
-void  start_quest1(st_global *ad)
+void start_quest1(st_global *ad)
 {
     if (ad->var_game->kills >= 1) {
-        ad->var_game->xp += 50;
-        display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfGreen);
+        display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfYellow);
         if (ad->big_msg == NULL) {
             ad->var_game->kills = 0;
+            ad->var_game->xp += 50;
             ad->var_game->quests = 2;
+            ad->var_game->msg = false;
         }
         ad->quest->is_on_quest = false;
     }

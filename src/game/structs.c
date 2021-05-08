@@ -83,6 +83,13 @@ st_game_var *ini_var()
     var->msg = false;
     var->msg2 = false;
     var->kills = 0;
+    var->quest2_completed = false;
+    var->msg3 = false;
+    var->quest3_completed = false;
+    var->msg4 = false;
+    var->quest4_completed = false;
+    var->msg5 = false;
+    var->quest5_completed = false;
     return (var);
 }
 
