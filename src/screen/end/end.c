@@ -30,11 +30,7 @@ st_end *generate_end(void)
 
 void position_end(st_global *g)
 {
-    if (g->window->event.type == sfEvtKeyPressed && \
-    g->window->event.key.code == sfKeyM)
-        g->ui->end->pressed = true;
-    if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyM)
+    if (g->key_pressed.Enter)
         if (g->ui->end->pressed) {
             switch (g->ui->end->pos_rect) {
                 case 1:
