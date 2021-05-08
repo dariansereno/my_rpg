@@ -91,7 +91,7 @@ void interaction_input(st_global *ad)
                 sfText_setString(ad->text->text, ad->text->str);
             }
             if (counter < 3 && sfRectangleShape_getSize(ad->text->text_r3).x <= 0)
-                destroy_message(ad);
+                ad->text->existing = false;
         }
     }
 }
