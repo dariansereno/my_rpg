@@ -494,6 +494,7 @@
             void rectangle_display_ui_game_bis(st_global *g);
             void display_ui_game(st_global *g);
             void rectangle_display_ui_game(st_global *g);
+            void item_craft_ui_game(st_global *g);
     // PAUSE
         // GENERATE_PAUSE
             pause_s *generate_pause(void);
