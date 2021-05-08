@@ -55,7 +55,7 @@ void events_redirect_pause(st_global *g)
                 g->window->width_volume_pause = \
                 g->ui->pause_settings->ui[2]->rect.width;
                 g->window->sfx_volume = \
-                sfSound_getVolume(g->window->sfx->explosion);
+                sfSound_getVolume(g->window->sfx->click_vol);
                 g->window->width_sfx_pause = \
                 g->ui->pause_settings->ui[3]->rect.width;
                 break;

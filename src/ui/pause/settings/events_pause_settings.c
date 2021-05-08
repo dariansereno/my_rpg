@@ -95,6 +95,7 @@ void set_width_volume_pause_settings(st_global *g)
         if (g->ui->pause_settings->pressed) {
             if (x >= 772 && y >= 374 && x <= 826 && y <= 402 && \
             g->ui->pause_settings->ui[2]->rect.width <= 253) {
+                sfSound_play(g->window->sfx->click_vol);
                 g->ui->pause_settings->ui[2]->rect.width -= 26;
                 sfMusic_setVolume(g->window->music, \
                 sfMusic_getVolume(g->window->music) - 10);
@@ -105,6 +106,7 @@ void set_width_volume_pause_settings(st_global *g)
             }
             if (x >= 1116 && y >= 366 && x <= 1155 && y <= 400 && \
             g->ui->pause_settings->ui[2]->rect.width <= 253) {
+                sfSound_play(g->window->sfx->click_vol);
                 if (g->ui->pause_settings->ui[2]->rect.width < 13) {
                     g->ui->pause_settings->ui[2]->rect.width = 13;
                     sfMusic_setVolume(g->window->music, 10);
@@ -119,9 +121,10 @@ void set_width_volume_pause_settings(st_global *g)
             }
             if (x >= 782 && y >= 548 && x <= 821 && y <= 574 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
+                sfSound_play(g->window->sfx->click_vol);
                 g->ui->pause_settings->ui[3]->rect.width -= 26;
                 set_volume_sfx(g, \
-                sfSound_getVolume(g->window->sfx->explosion) - 10);
+                sfSound_getVolume(g->window->sfx->click_vol) - 10);
                 if (g->ui->pause_settings->ui[3]->rect.width < 14) {
                     g->ui->pause_settings->ui[3]->rect.width = 0;
                     set_volume_sfx(g, 0);
@@ -129,6 +132,7 @@ void set_width_volume_pause_settings(st_global *g)
             }
             if (x >= 1116 && y >= 546 && x <= 1155 && y <= 578 && \
             g->ui->pause_settings->ui[3]->rect.width <= 253) {
+                sfSound_play(g->window->sfx->click_vol);
                 if (g->ui->pause_settings->ui[3]->rect.width < 13) {
                     g->ui->pause_settings->ui[3]->rect.width = 13;
                     set_volume_sfx(g, 10);
@@ -139,7 +143,7 @@ void set_width_volume_pause_settings(st_global *g)
                 if (g->ui->pause_settings->ui[3]->rect.width > 253)
                     g->ui->pause_settings->ui[3]->rect.width = 253;
                 set_volume_sfx(g, \
-                sfSound_getVolume(g->window->sfx->explosion) + 10);
+                sfSound_getVolume(g->window->sfx->click_vol) + 10);
             }
             g->ui->pause_settings->pressed = false;
         }
