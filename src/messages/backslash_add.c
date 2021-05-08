@@ -25,11 +25,10 @@ void automatically_set_text_max(st_global *g)
     my_strcpy(s1, g->text->str);
     for (g->text->c->end = 0; s1[g->text->c->end]; g->text->c->end++, \
     g->text->c->len = (g->text->c->end - g->text->c->begin) * 13.8) {
-        if (g->text->c->len > 1140)
+        if (g->text->c->len > 1060)
             s1 = manage_copy_n(s1, g);
         g->text->c->len = 0;
     }
-    //printf("%s\n", s1);
     g->text->str = s1;
 }
 
@@ -49,7 +48,7 @@ char *manage_copy_n(char *str, st_global *g)
 
 char *add_backslash_n_to_space(char *str, st_global *g)
 {
-    for (int j = g->text->c->end, k = 0; k < 10; j--, k++) {
+    for (int j = g->text->c->end, k = 0; k < 20; j--, k++) {
         if (j == 0) {
             return (str);
         }
