@@ -14,10 +14,10 @@ st_fade *generate_fade(void)
     fade->fade = false;
     fade->rect[0] = sfRectangleShape_create();
     fade->rect[1] = sfRectangleShape_create();
-    sfRectangleShape_setSize(fade->rect[0], (sfVector2f){1920, 540});
-    sfRectangleShape_setSize(fade->rect[1], (sfVector2f){1920, -540});
+    sfRectangleShape_setSize(fade->rect[0], (sfVector2f){WIDTH, 540});
+    sfRectangleShape_setSize(fade->rect[1], (sfVector2f){WIDTH, -540});
     sfRectangleShape_setPosition(fade->rect[0], (sfVector2f){0, 0});
-    sfRectangleShape_setPosition(fade->rect[1], (sfVector2f){0, 1080});
+    sfRectangleShape_setPosition(fade->rect[1], (sfVector2f){0, HEIGHT});
     sfRectangleShape_setFillColor(fade->rect[0], sfBlack);
     sfRectangleShape_setFillColor(fade->rect[1], sfBlack);
     fade->timer.clock = sfClock_create();
@@ -49,7 +49,7 @@ void background_space_fade(st_global *g)
     sfRectangleShape_setPosition(g->ui->fade->rect[0], (sfVector2f)\
     {g->ship->viewrect.left, g->ship->viewrect.top});
     sfRectangleShape_setPosition(g->ui->fade->rect[1], (sfVector2f)\
-    {g->ship->viewrect.left, g->ship->viewrect.top + 1080});
+    {g->ship->viewrect.left, g->ship->viewrect.top + HEIGHT});
     sfSprite_setTexture(g->ship->bship, g->ship->bshipt, sfTrue);
     sfSprite_setTexture(g->paralax->nebula, g->paralax->nebulat, sfTrue);
     sfSprite_setTexture(g->paralax->star, g->paralax->start, sfTrue);

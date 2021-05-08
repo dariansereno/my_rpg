@@ -28,7 +28,7 @@ void screen(st_global *g)
                 sfView_destroy(g->ui->menu->view);
                 g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
                 {g->ship->viewrect.left + 560, \
-                g->ship->viewrect.top, 800, 1080});
+                g->ship->viewrect.top, 800, HEIGHT});
                 g->window->bool_menu = false;
             }
             screen_menu(g);

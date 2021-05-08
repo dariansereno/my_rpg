@@ -266,30 +266,30 @@ typedef struct list_elem_boss_s {
     struct list_elem_boss_s *next;
 } *list_boss, list_elem_boss;
 
-typedef struct st_boss_s {
-    int atk_mode;
-    st_object *boss;
-    st_object *bg;
-    //sfRectangleShape *life;
-    sfRectangleShape *outline;
-    float life_f;
-    list_boss atk_li;
-    list_boss current;
-    st_timer *clock;
-    st_timer *atk_timer;
-    list_timer_b shoot;
-    sfClock *reload;
-    float reload_normal;
-    float reload_fast_atk;
-    sfSprite *sprite;
-    sfTexture *texture;
-    int shake;
-    bool circle;
-    int radius;
-    bool red;
-    sfSprite *red_sp;
-    sfTexture *red_tex;
-} st_boss;
+// typedef struct st_boss_s {
+//     int atk_mode;
+//     st_object *boss;
+//     st_object *bg;
+//     //sfRectangleShape *life;
+//     sfRectangleShape *outline;
+//     float life_f;
+//     list_boss atk_li;
+//     list_boss current;
+//     st_timer *clock;
+//     st_timer *atk_timer;
+//     list_timer_b shoot;
+//     sfClock *reload;
+//     float reload_normal;
+//     float reload_fast_atk;
+//     sfSprite *sprite;
+//     sfTexture *texture;
+//     int shake;
+//     bool circle;
+//     int radius;
+//     bool red;
+//     sfSprite *red_sp;
+//     sfTexture *red_tex;
+// } st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;
