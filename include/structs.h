@@ -210,15 +210,22 @@ typedef struct st_planet_stat_s {
     int pressure;
 } st_planet_stat;
 
+typedef struct st_global_sfx_s {
+    sfSound *click_vol;
+    sfSoundBuffer *buff_click_vol;
+} st_global_sfx;
+
 typedef struct structs_s {
     sfRenderWindow *window;
     sfEvent event;
     sfVideoMode mode;
     sfMusic *music;
+    st_global_sfx *sfx;
     float music_volume;
     int width_volume_pause;
     int width_volume;
     float sfx_volume;
+    int width_sfx_pause;
     int width_sfx;
     int screen;
     bool created;
@@ -628,11 +635,6 @@ typedef struct st_global_shoot_s
     sfIntRect explo_rect;
     list_timer li_explo;
 } st_global_shoot;
-
-typedef struct st_global_sfx_s
-{
-    sfSound *explosion;
-} st_global_sfx;
 
 typedef struct quest_s {
     sfText *quest_advancement;
