@@ -184,6 +184,10 @@
         void screen(st_global *g);
         void screen_game(st_global *ad);
         void fade_update_size(st_global *g, int nb);
+    // SWITCH_SCREEN.C
+        void switch_screen_one(st_global *g, sfVideoMode mode);
+        void switch_screen_two(st_global *g);
+        void switch_screen_four(st_global *g);
     // FADE.C
         st_fade *generate_fade(void);
         void display_fade(st_global *g);
@@ -219,6 +223,10 @@
             int settings_choice(st_global *g);
             void control_volumes_settings(st_global *g);
             void animate_buttons_settings(st_global *g);
+        // CONDITIONS_SETTINGS
+            void condition_volume_settings(st_global *g, int x, int y);
+            void switch_settings_one(st_global *g);
+            void switch_settings_two(st_global *g);
     // END
         // END
             st_end *generate_end(void);
@@ -323,7 +331,8 @@
         // TRADE.C
             st_ressources **trade(st_global *ad);
             void generate_trade(st_global *ad, list_planet *planets);
-            st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j);
+            st_ressources **check_double(bool is_good, st_ressources **tab, \
+            int i, int j);
             int prices(st_global *ad, int id);
             int stock(st_global *ad, int id);
 // STRUCTS
@@ -343,6 +352,7 @@
         // GENERATE_UI
             void destroy_ui(st_ui *ui);
             st_ui *generate_ui(void);
+            void generate_ui_bis(st_ui *ui);
     // GAME
         // FIGHT
             // GENERATE
@@ -384,7 +394,8 @@
             void attack_2(st_global *ad);
             void boss_handling(st_global *ad);
             void boss_red(st_global *ad);
-            void display_big_message(char *msg, int delay, st_global *ad, sfColor color);
+            void display_big_message(char *msg, int delay, st_global *ad, \
+            sfColor color);
             // LIST_BOSS_QUEUE
                 int size_list_boss(list_boss li);
                 void push_back_boss(list_boss *li, int duration, int atk_type);
@@ -393,8 +404,10 @@
                 void destroy_boss_fight(st_global *ad);
             // LIST BOSS SHOOT
                 int size_list_timer_b(list_timer_b li);
-                void push_back_timer_b(list_timer_b *li, sfVector2f dir, sfVector2f pos);
-                void print_list_shoot_b(list_timer_b *li, sfSprite *sprite, st_global *ad);
+                void push_back_timer_b(list_timer_b *li, sfVector2f dir, \
+                sfVector2f pos);
+                void print_list_shoot_b(list_timer_b *li, sfSprite *sprite, \
+                st_global *ad);
     // PLANET_CARD
         // PLANET_CARD
             void display_planet_card(st_global *g);
@@ -434,9 +447,19 @@
         // TEXT_TRADE_CARD
             char *int_to_str_credits(int money);
             char *int_to_str_price(int money);
-            void items_text_trade_card(st_global *g, int y);
-            void text_title_credits_trade_card(st_global *g, list_planet planets);
+            void text_title_credits_trade_card(st_global *g, \
+            list_planet planets);
             void check_buy(st_global *g, list_planet planets);
+            void check_buy_bis(st_global *g, list_planet planets);
+        // ITEM_POSITION_TRADE_CARD
+            void item_position_trade_card_one(st_global *g, int i, int x, \
+            list_planet planets);
+            void item_position_trade_card_two(st_global *g, int i, int x, \
+            list_planet planets);
+            void item_position_trade_card_three(st_global *g, int i, int x, \
+            list_planet planets);
+            void items_placement_trade_card(st_global *g, int i, int y, \
+            list_planet planets);
     // MODULE_CARD
         // GENERATE_MODULE_CARD
             module_card_s *generate_module_card(void);
@@ -450,10 +473,14 @@
             void rect_module_position(st_global *g);
             void print_nb(st_global *g, list_planet pl);
         // TEXT_MODULE_CARD
-            void text_title_credits_module_card(st_global *g, list_planet planets);
+            void text_title_credits_module_card(st_global *g, \
+            list_planet planets);
             void text_price_module_card(st_global *g, list_planet pl);
+            void text_price_module_card_bis(st_global *g, list_planet pl);
+            void display_texts_module_card_bis(st_global *g);
         // ARROWS
             void arrow_events_module(st_global *g);
+            void arrow_up_module_card(st_global *g);
     // UI_GAME
         // GENERATE_UI_GAME
             ui_game_s *generate_ui_game(void);
@@ -479,6 +506,7 @@
             void events_pause_up(st_global *g);
             void events_redirect_pause(st_global *g);
             void text_pause(st_global *g);
+            void switch_volume_settings(st_global *g);
         // HOVER
             void hover(st_global *g);
         // SETTINGS
@@ -495,6 +523,12 @@
                 void events_pause_settings_left(st_global *g);
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
+            // VOLUME_EVENTS_SETTINGS
+                void switch_pause_settings(st_global *g);
+                void volume_top_less(st_global *g, int x, int y);
+                void volume_top_more(st_global *g, int x, int y);
+                void volume_bottom_less(st_global *g, int x, int y);
+                void volume_bottom_more(st_global *g, int x, int y);
         // TARGET_INDICATOR
                 sfVector2f target_indicator(st_global *ad, sfVector2f obj);
                 void print_target_indicator(st_global *ad);

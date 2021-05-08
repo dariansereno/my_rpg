@@ -17,6 +17,11 @@ void events_settings(st_global *g)
         if (g->window->event.type == sfEvtMouseButtonReleased && \
         g->window->event.mouseButton.button == sfMouseLeft) {
             get_global_bounds_settings(g);
+            sfSprite_setTextureRect(g->ui->settings->cancel->sprite, \
+            g->ui->settings->cancel->rect);
+            sfSprite_setTextureRect(g->ui->settings->save->sprite, \
+            g->ui->settings->save->rect);
+            g->ui->settings->settings = settings_choice(g);
             control_volumes_settings(g);
         }
         if (g->window->event.type == sfEvtMouseButtonPressed && \
@@ -43,32 +48,16 @@ void get_global_bounds_settings(st_global *g)
                 g->ui->settings->save->rect.left = 0;
             g->ui->settings->settings = i + 1;
         }
-    sfSprite_setTextureRect(g->ui->settings->cancel->sprite, \
-    g->ui->settings->cancel->rect);
-    sfSprite_setTextureRect(g->ui->settings->save->sprite, \
-    g->ui->settings->save->rect);
-    g->ui->settings->settings = settings_choice(g);
 }
 
 int settings_choice(st_global *g)
 {
     switch (g->ui->settings->settings) {
         case 1:
-            sfMusic_setVolume(g->window->music, g->window->music_volume);
-            g->ui->settings->music->rect.width = \
-            (sfMusic_getVolume(g->window->music) * 15 / 100) * 32;
-            set_volume_sfx(g, g->window->sfx_volume);
-            g->ui->settings->sfx->rect.width = \
-            (sfSound_getVolume(g->window->sfx->click_vol) * 15 / 100) * 32;
-            g->window->screen = 2;
+            switch_settings_one(g);
             return (0);
         case 2:
-            g->window->music_volume = sfMusic_getVolume(g->window->music);
-            g->ui->settings->music->rect.width = g->window->width_volume;
-            g->window->sfx_volume = \
-            sfSound_getVolume(g->window->sfx->click_vol);
-            g->ui->settings->sfx->rect.width = g->window->width_sfx;
-            g->window->screen = 2;
+            switch_settings_two(g);
             return (0);
         case 3:
             sfRenderWindow_close(g->window->window);
@@ -83,24 +72,7 @@ void control_volumes_settings(st_global *g)
     int x = g->window->event.mouseButton.x;
     int y = g->window->event.mouseButton.y;
 
-    if (x >= 83 && y >= 516 && x <= 127 && y <= 560)
-        if (g->ui->settings->music->rect.width >= 58) {
-            g->ui->settings->music->rect.width -= 32;
-            sfMusic_setVolume(g->window->music, \
-            sfMusic_getVolume(g->window->music) - 6.66);
-        }
-    if (x >= 671 && y >= 517 && x <= 715 && y <= 562)
-        if (g->ui->settings->music->rect.width <= 474) {
-            g->ui->settings->music->rect.width += 32;
-            sfMusic_setVolume(g->window->music, \
-            sfMusic_getVolume(g->window->music) + 6.66);
-        }
-    if (x >= 82 && y >= 676 && x <= 127 && y <= 721)
-        if (g->ui->settings->sfx->rect.width >= 58)
-            g->ui->settings->sfx->rect.width -= 32; {
-            set_volume_sfx(g, \
-            sfSound_getVolume(g->window->sfx->click_vol) - 6.66);
-            }
+    condition_volume_settings(g, x, y);
     if (x >= 670 && y >= 676 && x <= 715 && y <= 720)
         if (g->ui->settings->sfx->rect.width <= 474) {
             g->ui->settings->sfx->rect.width += 32;
