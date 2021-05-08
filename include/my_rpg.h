@@ -243,6 +243,18 @@
             void text_position_end(st_global *g);
 
 // MAP
+    // PARTICLE
+        st_global_particle *generate_particle(void);
+        void push_back_particle(list_particle *li, st_global_particle *g,
+        sfVector2f pos);
+        void add_particles(st_global *ad);
+        int size_list_particle(list_particle li);
+        void print_list_particle(list_particle *li, st_global *ad);
+        void push_back_particle_explo(list_particle *li, st_global_particle *g,
+        sfVector2f pos);
+        void print_list_particle_explo(list_particle *li, st_global *ad);
+        void pop_position_particle(list_particle *list, int index);
+        void reindex_particle(list_particle *li);
     // SPACE_OBJ
         st_global_spaceobj *generate_space_obj();
         void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id);

@@ -45,7 +45,7 @@ structs_t *all_dat(void)
     (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
     (window->mode.height / 2))});
     window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 1;
+    window->screen = 4;
     window->music_volume = 100.0;
     window->width_volume_pause = 253;
     window->width_volume = 506;
@@ -183,6 +183,7 @@ st_global *ini(void)
     sfCircleShape_setOutlineThickness(all->circle, 10);
     all->circle_health;
     all->circle_health = sfCircleShape_create();
+    all->particle = generate_particle();
     sfCircleShape_setRadius(all->circle_health, 500);
     sfCircleShape_setOrigin(all->circle_health, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle_health, sfTransparent);

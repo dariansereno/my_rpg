@@ -55,8 +55,10 @@ void parallax_menu(st_global *g)
     sfSprite_setPosition(g->ship->bship, g->ship->bshippos);
     sfSprite_setPosition(g->paralax->nebula, g->paralax->nebulapos);
     sfSprite_setPosition(g->paralax->star, g->paralax->starpos);
-    sfSprite_setPosition(g->ui->menu->arw_left, (sfVector2f){g->ship->viewrect.left + 837, g->ship->viewrect.top + 530});
-    sfSprite_setPosition(g->ui->menu->arw_right, (sfVector2f){g->ship->viewrect.left + 1073, g->ship->viewrect.top + 530});
+    sfSprite_setPosition(g->ui->menu->arw_left, (sfVector2f){
+    g->ship->viewrect.left + 837, g->ship->viewrect.top + 530});
+    sfSprite_setPosition(g->ui->menu->arw_right, (sfVector2f){
+    g->ship->viewrect.left + 1073, g->ship->viewrect.top + 530});
     sfRenderWindow_drawSprite(g->window->window, g->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->paralax->star, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);

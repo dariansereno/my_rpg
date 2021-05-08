@@ -700,6 +700,34 @@ typedef struct st_upgrade_s {
     st_object **upgrade_icon;
 } st_upgrade;
 
+typedef struct st_particle_s {
+    int nb;
+    sfColor color;
+    float lifetime;
+    sfVector2f vel;
+    size_t radius;
+    sfVector2f emitter;
+    sfClock *clock;
+    int alpha;
+    float elapsed;
+    float start_time;
+} st_particle;
+
+typedef struct list_elem_particle_s {
+    st_particle particle;
+    st_timer timer;
+    int index;
+    bool destroy;
+    struct list_elem_particle_s *next;
+} *list_particle, list_elem_particle;
+
+typedef struct st_global_particle_s {
+    list_particle particles;
+    sfClock *clock;
+    sfClock *generation;
+    sfCircleShape *circle;
+} st_global_particle;
+
 typedef struct st_global_s {
     st_text *text;
     st_planet_global *planets;
@@ -733,6 +761,7 @@ typedef struct st_global_s {
     sfClock *big_msg;
     sfCircleShape *circle_health;
     bool big_msg_generated;
+    st_global_particle *particle;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

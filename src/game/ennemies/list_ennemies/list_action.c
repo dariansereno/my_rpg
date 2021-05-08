@@ -94,9 +94,8 @@ st_planet pl)
             clock_move_ennemies(li, ad);
             if (li->shootcl->seconds > 1) {
                 push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
-                reindex_timer(li);
                 sfClock_restart(li->shootcl->clock);
-            }
+        }
         print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
         }
         else
