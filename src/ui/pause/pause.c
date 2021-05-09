@@ -31,7 +31,7 @@ void rect_position_pause(st_global *g)
 
 void display_pause(st_global *g)
 {
-    if (g->ui->pause->existing) {
+    if (g->ui->pause->existing && g->ui->end->existing == false) {
         if (g->ui->pause_settings->existing)
             return;
         sfRenderWindow_setMouseCursorVisible(g->window->window, sfTrue);
