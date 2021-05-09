@@ -26,7 +26,6 @@ int print_list_explo_lil_boss_rect(list_timer *temp, list_timer *li)
 void print_list_explo_lil_boss(list_timer *li, st_global *ad)
 {
     list_timer temp = *li;
-    list_timer buff = *li;
 
     if (temp == NULL)
         return ;
@@ -64,7 +63,6 @@ int print_list_explo_rect(list_timer *temp, list_timer *li)
 void print_list_explo(list_timer *li, st_global *ad)
 {
     list_timer temp = *li;
-    list_timer buff = *li;
 
     if (temp == NULL)
         return ;
