@@ -47,21 +47,22 @@ void attack_2_circle(st_global *ad)
         sfClock_restart(ad->boss->current->time->clock);
 
     }
-    if (second > 0.007) {
-        sfCircleShape_setRadius(ad->circle, ad->boss->radius);
-        sfCircleShape_setOrigin(ad->circle, (sfVector2f){
-        (float)ad->boss->radius, (float)ad->boss->radius});
-        sfCircleShape_setPosition(ad->circle, ad->boss->boss->pos);
-        ad->boss->radius += 5;
-        sfClock_restart(ad->boss->reload);
-    }
-    sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
-    if (ad->boss->radius >= 1000) {
-        ad->boss->shake = 4;
-        ad->boss->radius = 230;
-        ad->boss->circle = false;
-        return;
-    }
+    attack_2_circle_2(ad, second);
+    // if (second > 0.007) {
+    //     sfCircleShape_setRadius(ad->circle, ad->boss->radius);
+    //     sfCircleShape_setOrigin(ad->circle, (sfVector2f){
+    //     (float)ad->boss->radius, (float)ad->boss->radius});
+    //     sfCircleShape_setPosition(ad->circle, ad->boss->boss->pos);
+    //     ad->boss->radius += 5;
+    //     sfClock_restart(ad->boss->reload);
+    // }
+    // sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
+    // if (ad->boss->radius >= 1000) {
+    //     ad->boss->shake = 4;
+    //     ad->boss->radius = 230;
+    //     ad->boss->circle = false;
+    //     return;
+    // }
 }
 
 void attack_2_shaking(st_global *ad)

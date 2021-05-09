@@ -46,13 +46,11 @@ st_ressources **check_double(bool is_good, st_ressources **tab, int i, int j)
     return (tab);
 }
 
-st_ressources **trade(st_global *ad)
+void fill_tab_ressources(st_global *ad, int nb_ressources, st_ressources **tab)
 {
     bool is_good = false;
-    int nb_ressources = random_between(1, 3);
-    st_ressources **tab = my_malloc(sizeof(st_ressources *) * (4));
-    int j = 0;
     int i = 0;
+    int j = 0;
 
     for (i = 0; i < nb_ressources; i++)
     {
@@ -68,19 +66,17 @@ st_ressources **trade(st_global *ad)
         tab[i]->id = -1;
         tab[i]->price = -1;
     }
+}
+
+st_ressources **trade(st_global *ad)
+{
+    int nb_ressources = random_between(1, 3);
+    st_ressources **tab = my_malloc(sizeof(st_ressources *) * (4));
+    int j = 0;
+
+    fill_tab_ressources(ad, nb_ressources, tab);
     tab[nb_ressources] = malloc(sizeof(*tab[nb_ressources]));
     tab[nb_ressources]->id = -1;
     tab[nb_ressources]->price = -1;
     return (tab);
-}
-
-void generate_trade(st_global *ad, list_planet *planets)
-{
-    list_planet pl = *planets;
-
-    while (pl != NULL) {
-        if (pl->planet.tradable == true)
-            pl->trade = trade(ad);
-        pl = pl->next;
-    }
 }

@@ -80,6 +80,7 @@
             void craft_settler(st_global *ad);
     // PARALAX
         // MOVE.C
+            void move_ship(st_global *ad);
             void go_right(st_global *ad);
             void go_left(st_global *ad);
             void go_down(st_global *ad);
@@ -193,6 +194,11 @@
     void check_status(st_global *ad);
     void check_event(st_global *ad);
     int game_loop(void);
+    void draw_window_game(st_global *ad);
+    void display_back_object(st_global *ad);
+    void display_if_not_menu_2(st_global *ad);
+    void display_if_not_menu(st_global *ad);
+    void print_forground_and_event(st_global *ad);
 // SCREEN
     // SCREENS.C
         void screen(st_global *g);
@@ -295,6 +301,9 @@
             void display_on_view(st_global *ad);
     // INTERACTING
         // COLLISIONS.C
+            void check_good_collision(st_global *ad, list_planet planet);
+            void good_collision(st_global *ad, bool *c);
+            void planet_collision_content(st_global *ad, list_planet *planet, bool *c);
             void planet_collision(st_global *ad);
             void ZQ_collisions(st_global *ad);
             void SD_collisions(st_global *ad);
@@ -310,6 +319,7 @@
             void display_selector(st_object *selector, st_global *ad,
             list_planet planets, sfVector2f origin);
         // MAP_LIMIT.C
+            void check_good_collision_lim(st_global *ad);
             sfVertexArray **init_limit_map(void);
             void draw_map_limit(st_global *ad);
             void collision_limit(st_global *ad);
@@ -330,9 +340,19 @@
             int random_between(int start, int stop);
             int random_piped(void);
         // GENERATE_PLANET_TYPE.C
+            st_planet_stat generate_planet_stat2(st_planet planet);
+            st_planet_stat generate_planet_stat(st_planet planet);
+            planet_climate climate_from_type(planet_type planet);
+            planet_animation animation_from_type(planet_type planet);
             st_planet *general_all_planets(sfVector2i *pos, int size);
             sfTexture **generates_planets_textures(void);
         // STAT_PLANETS.C
+            planet_kind generate_kind(int type);
+            void selector_colonized_pl(st_planet_global *planets);
+            int *generate_mod_price(void);
+            st_planet_global *generate_planet_global(void);
+            void *generate_list_planets(st_planet_global *planets, scatter math,
+            sfVector2i *pos);
             st_planet_stat stats_for_gas(st_planet_stat planet);
             st_planet_stat stats_for_ocean(st_planet_stat planet);
             st_planet_stat stats_for_terran(st_planet_stat planet);
@@ -366,8 +386,11 @@
             int prices(st_global *ad, int id);
             int stock(st_global *ad, int id);
 // STRUCTS
+    paralax_t *paralax_ini(void);
+    void generate_paths(ship_t *ship);
     st_global *ini(void);
     structs_t *all_dat(void);
+    st_game_var *ini_var(void);
     void destroy_global(st_global *global);
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
@@ -423,6 +446,7 @@
             int velo);
             void attack_1(st_global *ad);
             void attack_2(st_global *ad);
+            void attack_2_circle_2(st_global *ad, float second);
             void attack_3(st_global *ad);
             void attack_4(st_global *ad);
             void attack_5(st_global *ad);

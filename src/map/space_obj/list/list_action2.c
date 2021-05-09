@@ -1,55 +1,84 @@
-// /*
-// ** EPITECH PROJECT, 2021
-// ** GALAXY
-// ** File description:
-// ** list_action2
-// */
+/*
+** EPITECH PROJECT, 2021
+** GALAXY
+** File description:
+** list_action2
+*/
 
-// #include "my_rpg.h"
+#include "my_rpg.h"
 
-// list_planet pop_back_planet(list_planet list)
-// {
-//     list_elem_planet *temp = NULL;
-//     list_elem_planet *buf = NULL;
+void paralax_spaceobj_diagonal_2(st_global *ad, list_spaceobj *li)
+{
+    if (((ad->key_pressed.Q && ad->key_pressed.S) && (!ad->key_pressed.Z &&
+    !ad->key_pressed.D) && (!ad->ship->collisionQlim && !ad->ship->
+    collisionSlim) && (!ad->ship->collisionQ && !ad->ship->collisionS))) {
+        (*li)->pos.y += 2;
+        (*li)->pos.x -= 2;
+    }
+    else if (((ad->key_pressed.Z && ad->key_pressed.Q) && (!ad->key_pressed
+    .S && !ad->key_pressed.D) && (!ad->ship->collisionZlim && !ad->ship->
+    collisionQlim) && (!ad->ship->collisionZ && !ad->ship->collisionQ))) {
+        (*li)->pos.y -= 2;
+        (*li)->pos.x -= 2;
+    }
+}
 
-//     if (list == NULL)
-//         return (NULL);
-//     if (list->next == NULL) {
-//         free(list);
-//         list = NULL;
-//         return (NULL);
-//     }
-//     temp = list;
-//     buf = list;
-//     while (temp->next != NULL) {
-//         buf = temp;
-//         temp = temp->next;
-//     }
-//     buf->next = NULL;
-//     destroy_planet(temp);
-//     free(temp);
-//     temp = NULL;
-//     return (list);
-// }
+void paralax_spaceobj_diagonal_1(st_global *ad, list_spaceobj *li)
+{
+    if (((ad->key_pressed.Z && ad->key_pressed.D) && (!ad->key_pressed.Q
+    && !ad->key_pressed.S) && (!ad->ship->collisionZlim && !ad->ship->
+    collisionDlim) && (!ad->ship->collisionZ && !ad->ship->collisionD))) {
+        (*li)->pos.y -= 2;
+        (*li)->pos.x += 2;
+    }
+    else if (((ad->key_pressed.S && ad->key_pressed.D) && (!ad->key_pressed.
+    Z && !ad->key_pressed.Q) && (!ad->ship->collisionSlim && !ad->ship->
+    collisionDlim) && (!ad->ship->collisionS && !ad->ship->collisionD))) {
+        (*li)->pos.y += 2;
+        (*li)->pos.x += 2;
+    }
+}
 
-// list_planet planet_from_index(int index, list_planet li)
-// {
-//     list_planet temp = li;
+void paralax_spaceobj(st_global *ad, list_spaceobj *li)
+{
+    if (ad->key_pressed.Z && !ad->key_pressed.D && !ad->key_pressed.Q
+        && !ad->key_pressed.S && !ad->ship->collisionZlim &&
+    !ad->ship->collisionZ)
+        (*li)->pos.y -= 2;
+    else if (ad->key_pressed.S && !ad->key_pressed.D && !ad->key_pressed.Q
+    && !ad->key_pressed.Z && !ad->ship->collisionSlim &&
+    !ad->ship->collisionS)
+        (*li)->pos.y += 2;
+    if (ad->key_pressed.D && !ad->key_pressed.Z && !ad->key_pressed.Q &&
+    !ad->key_pressed.S && !ad->ship->collisionDlim &&
+    !ad->ship->collisionD)
+        (*li)->pos.x += 2;
+    else if (ad->key_pressed.Q && !ad->key_pressed.D && !ad->key_pressed.Z
+    && !ad->key_pressed.S && !ad->ship->collisionQlim &&
+    !ad->ship->collisionQ)
+        (*li)->pos.x -= 2;
+}
 
-//     if (temp == NULL)
-//         return (NULL);
-//     while (temp->index != index)
-//         temp = temp->next;
-//     if (temp == NULL)
-//         return (NULL);
-//     return (temp);
-// }
+void check_size(list_spaceobj *li)
+{
+    sfSprite_setScale((*li)->sprite, (sfVector2f){10, 10});
+    if ((*li)->id >= 4 && (*li)->id <= 7)
+        sfSprite_setScale((*li)->sprite, (sfVector2f){1, 1});
+}
 
-// void print_planet_list_stat(list_planet li)
-// {
-//     while (li != NULL){
-//         printf("%d, %d, %d, %d, %d, %d, %d, %d\n", li->planet.stats.co2, li->planet.stats.h2o, li->planet.stats.h,
-//         li->planet.stats.n2, li->planet.stats.N, li->planet.stats.o, li->planet.stats.pressure, li->planet.climate);
-//         li = li->next;
-//     }
-// }
+void print_spaceobj_list(list_spaceobj li, sfRenderWindow *window,
+st_global *ad)
+{
+    while (li != NULL){
+        if (li->on_screen == true) {
+            check_size(&li);
+            paralax_spaceobj(ad, &li);
+            paralax_spaceobj_diagonal_1(ad, &li);
+            paralax_spaceobj_diagonal_2(ad, &li);
+            sfSprite_setPosition(li->sprite,
+            (sfVector2f){(float)li->pos.x, (float)li->pos.y});
+            sfRenderWindow_drawSprite(window, li->sprite, NULL);
+        }
+        li = li->next;
+    }
+}

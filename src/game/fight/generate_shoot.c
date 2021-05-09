@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-sfSprite **generate_enn_shoot()
+sfSprite **generate_enn_shoot(void)
 {
     sfTexture **tex = malloc(sizeof(sfTexture *) * 8);
     sfSprite **spr = malloc(sizeof(sfSprite *) * 8);
@@ -28,7 +28,7 @@ sfSprite **generate_enn_shoot()
     return (spr);
 }
 
-sfSprite **generate_ship_shoot()
+sfSprite **generate_ship_shoot(void)
 {
     sfTexture **tex = malloc(sizeof(sfTexture *) * 8);
     sfSprite **spr = malloc(sizeof(sfSprite *) * 8);
@@ -49,7 +49,7 @@ sfSprite **generate_ship_shoot()
     return (spr);
 }
 
-st_global_shoot *generate_shoot()
+st_global_shoot *generate_shoot(void)
 {
     st_global_shoot *shoot = malloc(sizeof(*shoot));
     sfTexture *texture = sfTexture_createFromFile(
