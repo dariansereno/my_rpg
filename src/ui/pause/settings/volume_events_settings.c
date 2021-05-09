@@ -29,6 +29,7 @@ void switch_pause_settings(st_global *g)
 
 void volume_top_less(st_global *g, int x, int y)
 {
+    printf("%d %d\n", x, y);
     if (x >= 772 && y >= 374 && x <= 826 && y <= 402 && \
     g->ui->pause_settings->ui[2]->rect.width <= 253) {
         sfSound_play(g->window->sfx->click_vol);
