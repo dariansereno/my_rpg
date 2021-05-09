@@ -64,13 +64,10 @@ list_timer_b pop_front_shoot_b(list_timer_b li)
 
     if (li == NULL)
         return (li);
-
     elem = my_malloc(sizeof(*elem));
-
     elem = li->next;
     sfClock_destroy(li->timer.clock);
     li = NULL;
-
     return (elem);
 }
 

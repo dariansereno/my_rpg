@@ -25,7 +25,7 @@ void display_items_inventory(st_global *ad)
 {
     for (int i = 0; i < 4; i++) {
         display_item(ad, ad->ressources[i], (sfVector2f){
-            ad->ship->viewrect.left + 870 + (i * 70), ad->ship->viewrect.top
-            + 1010});
+        ad->ship->viewrect.left + 870 + (i * 70), ad->ship->viewrect.top
+        + 1010});
     }
 }
