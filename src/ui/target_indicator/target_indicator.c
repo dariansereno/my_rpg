@@ -7,6 +7,25 @@
 
 #include "my_rpg.h"
 
+sfVector2f target_indicator_2(sfVector2f tar_ctr, sfVector2f pad_size,
+float slope)
+{
+    sfVector2f indicator;
+
+    if (tar_ctr.y < 0)
+        indicator = (sfVector2f){(-pad_size.y / 2) / slope,
+        (-pad_size.y / 2)};
+    else if (tar_ctr.y > 0)
+        indicator = (sfVector2f){(pad_size.y / 2) / slope,
+        (pad_size.y / 2)};
+
+    if (indicator.x < -pad_size.x / 2)
+        indicator = (sfVector2f){-pad_size.x / 2, slope * -pad_size.x / 2};
+    else if (indicator.x > pad_size.x / 2)
+        indicator = (sfVector2f){pad_size.x / 2, slope * pad_size.x / 2};
+    return (indicator);
+}
+
 sfVector2f target_indicator(st_global *ad, sfVector2f obj)
 {
     sfVector2f tar_scr = (sfVector2f){obj.x - ad->ship->viewrect.left,
@@ -21,17 +40,7 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
     rotation = rotation * 180 / M_PI;
     slope = tar_ctr.y / tar_ctr.x;
     pad_size = (sfVector2f){WIDTH - 100, HEIGHT - 100};
-    if (tar_ctr.y < 0)
-        indicator = (sfVector2f){(-pad_size.y / 2) / slope,
-        (-pad_size.y / 2)};
-    else if (tar_ctr.y > 0)
-        indicator = (sfVector2f){(pad_size.y / 2) / slope,
-        (pad_size.y / 2)};
-
-    if (indicator.x < -pad_size.x / 2)
-        indicator = (sfVector2f){-pad_size.x / 2, slope * -pad_size.x / 2};
-    else if (indicator.x > pad_size.x / 2)
-        indicator = (sfVector2f){pad_size.x / 2, slope * pad_size.x / 2};
+    indicator = target_indicator_2(tar_ctr, pad_size, slope);
     indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left + (WIDTH / 2),
     indicator.y + ad->ship->viewrect.top + (HEIGHT / 2)};
     return (indicator);
