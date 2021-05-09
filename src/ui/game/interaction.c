@@ -62,7 +62,7 @@ void display_interaction(st_global *ad)
 
     while (planets != NULL) {
         if (planets->can_interact == true)
-            selected = display_interaction_boss(ad, disp, planets, max);
+            selected = display_interaction_boss_bis(ad, disp, planets, max);
         else {
             planets->can_interact = false;
             planets->interact = false;
@@ -73,7 +73,7 @@ void display_interaction(st_global *ad)
     selector_interaction(selected, ad);
 }
 
-list_planet display_interaction_boss(st_global *ad, sfVector2f disp, \
+list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, \
 list_planet planets, int max)
 {
     list_planet selected = NULL;

@@ -33,16 +33,20 @@ void arrow_events_module(st_global *g)
     g->window->event.key.code == sfKeyDown)
         g->ui->module_card->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyDown) {
-        if (g->ui->module_card->pressed) {
-            if (g->ui->module_card->pos_rect <= 4)
-                g->ui->module_card->pos_rect += 1;
-            if (g->ui->module_card->pos_rect == 5)
-                g->ui->module_card->pos_rect = 4;
-            g->ui->module_card->pressed = false;
-        }
-    }
+    g->window->event.key.code == sfKeyDown)
+        arrow_events_module_down(g);
     arrow_up_module_card(g);
+}
+
+void arrow_events_module_down(st_global *g)
+{
+    if (g->ui->module_card->pressed) {
+        if (g->ui->module_card->pos_rect <= 4)
+            g->ui->module_card->pos_rect += 1;
+        if (g->ui->module_card->pos_rect == 5)
+            g->ui->module_card->pos_rect = 4;
+        g->ui->module_card->pressed = false;
+    }
 }
 
 void arrow_up_module_card(st_global *g)
@@ -51,13 +55,17 @@ void arrow_up_module_card(st_global *g)
     g->window->event.key.code == sfKeyUp)
             g->ui->module_card->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyUp) {
-        if (g->ui->module_card->pressed) {
-            if (g->ui->module_card->pos_rect >= 1)
-                g->ui->module_card->pos_rect -= 1;
-            if (g->ui->module_card->pos_rect == 0)
-                g->ui->module_card->pos_rect = 1;
-            g->ui->module_card->pressed = false;
-        }
+    g->window->event.key.code == sfKeyUp)
+        arrow_up_module(g);
+}
+
+void arrow_up_module(st_global *g)
+{
+    if (g->ui->module_card->pressed) {
+        if (g->ui->module_card->pos_rect >= 1)
+            g->ui->module_card->pos_rect -= 1;
+        if (g->ui->module_card->pos_rect == 0)
+            g->ui->module_card->pos_rect = 1;
+        g->ui->module_card->pressed = false;
     }
 }

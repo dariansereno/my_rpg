@@ -54,6 +54,5 @@ void destroy_ui(st_ui *ui)
     destroy_settings(ui->settings);
     destroy_pause(ui->pause);
     destroy_pause_settings(ui->pause_settings);
-    // destroy_boss(ui->boss);
     ui = NULL;
 }
