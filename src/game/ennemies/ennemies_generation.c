@@ -9,7 +9,7 @@
 
 sfTexture **enn_textures(void)
 {
-    sfTexture **textures = malloc(sizeof(sfTexture *) * 8);
+    sfTexture **textures = my_malloc(sizeof(sfTexture *) * 8);
 
     textures[0] = sfTexture_createFromFile("contents/sbr/et.png", NULL);
     textures[1] = sfTexture_createFromFile("contents/sbr/etr.png", NULL);

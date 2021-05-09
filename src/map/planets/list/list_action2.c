@@ -58,7 +58,7 @@ void init_planet(list_planet *node, list_planet *li, st_planet planet)
 
 void push_back_planet(list_planet *li, st_planet planet)
 {
-    list_planet node = malloc(sizeof(*node));
+    list_planet node = my_malloc(sizeof(*node));
     list_planet lastnode = *li;
 
     node->planet = planet;

@@ -75,7 +75,7 @@ st_ressources **trade(st_global *ad)
     int j = 0;
 
     fill_tab_ressources(ad, nb_ressources, tab);
-    tab[nb_ressources] = malloc(sizeof(*tab[nb_ressources]));
+    tab[nb_ressources] = my_malloc(sizeof(*tab[nb_ressources]));
     tab[nb_ressources]->id = -1;
     tab[nb_ressources]->price = -1;
     return (tab);

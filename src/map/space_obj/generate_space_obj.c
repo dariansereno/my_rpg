@@ -9,7 +9,7 @@
 
 sfTexture **generate_space_obj_texture()
 {
-    sfTexture **textures = malloc(sizeof(sfTexture *) * 16);
+    sfTexture **textures = my_malloc(sizeof(sfTexture *) * 16);
 
     textures[0] = sfTexture_createFromFile("contents/spaceobj/gal1.png", NULL);
     textures[1] = sfTexture_createFromFile("contents/spaceobj/gal2.png", NULL);
@@ -44,7 +44,7 @@ void generate_space_obj_li(list_spaceobj *li, st_global_spaceobj *objs)
 
 st_global_spaceobj *generate_space_obj()
 {
-    st_global_spaceobj *space_obj = malloc(sizeof(*space_obj));
+    st_global_spaceobj *space_obj = my_malloc(sizeof(*space_obj));
 
     space_obj->textures = generate_space_obj_texture();
     space_obj->li = NULL;

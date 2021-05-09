@@ -9,7 +9,7 @@
 
 void push_back_timer(list_timer *li, sfVector2f pos, int dir)
 {
-    list_timer node = malloc(sizeof(*node));
+    list_timer node = my_malloc(sizeof(*node));
     list_timer lastnode = *li;
 
     node->it = 0;

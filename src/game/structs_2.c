@@ -23,7 +23,7 @@ void all_dat_2(structs_t *window)
 
 structs_t *all_dat(void)
 {
-    structs_t *window = malloc(sizeof(structs_t));
+    structs_t *window = my_malloc(sizeof(structs_t));
 
     window->mode.width = WIDTH;
     window->mode.height = HEIGHT;
@@ -62,7 +62,7 @@ void ini_var_2(st_game_var *var)
 
 st_game_var *ini_var(void)
 {
-    st_game_var *var = malloc(sizeof(*var));
+    st_game_var *var = my_malloc(sizeof(*var));
 
     var->special_atk = false;
     var->range = 30;
