@@ -35,7 +35,7 @@ moula_t *money_ini(void)
 {
     moula_t *money = my_malloc(sizeof(moula_t));
 
-    money->money = 10000;
+    money->money = 100;
     money->coinpos = (sfVector2f){1700, 50};
     money->moneytext = sfText_create();
     money->moneyfont = sfFont_createFromFile("contents/fonts/myfont.otf");

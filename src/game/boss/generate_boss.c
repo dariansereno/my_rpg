@@ -87,8 +87,6 @@ st_boss *generate_boss_fight(st_global *ad)
     st_boss *boss = my_malloc(sizeof(*boss));
     sfVector2f pos = boss_spawning(ad);
 
-    pos = ad->ship->bshippos;
-    pos.x += 400;
     boss->life_f = 10;
     boss->boss = generate_object(pos, (sfIntRect){0, 0, 48, 48},
     "contents/img/sp/boss.png");

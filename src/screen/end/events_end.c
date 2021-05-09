@@ -14,16 +14,9 @@ void end_rect_left(st_global *g)
             g->ui->end->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyLeft) {
-        if (g->ui->end->pressed) {
-            if (g->ui->end->pos_rect >= 1)
-                g->ui->end->pos_rect -= 1;
-            if (g->ui->end->pos_rect == 0)
-                g->ui->end->pos_rect = 1;
-            g->ui->end->pressed = false;
-        }
+        end_rect_left_2(g);
     }
 }
-
 void end_rect_right(st_global *g)
 {
     if (g->window->event.type == sfEvtKeyPressed && \
@@ -31,13 +24,7 @@ void end_rect_right(st_global *g)
         g->ui->end->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyRight) {
-        if (g->ui->end->pressed) {
-            if (g->ui->end->pos_rect <= 2)
-                g->ui->end->pos_rect += 1;
-            if (g->ui->end->pos_rect == 3)
-                g->ui->end->pos_rect = 2;
-            g->ui->end->pressed = false;
-        }
+        end_rect_right_2(g);
     }
 }
 

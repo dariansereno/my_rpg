@@ -178,6 +178,7 @@
             void ennemies_spawning(st_global *ad);
             sfTexture **enn_textures(void);
         // ENNEMIES_CONDITION.C
+            void spawn_boss_condition(st_global *ad);
             bool is_on_planet(st_global *ad, sfVector2f object);
             bool is_on_boss(st_global *ad, sfVector2f object);
             bool is_on_ennemies(st_global *ad, list_ennemies ennemies,
@@ -257,6 +258,9 @@
             void switch_settings_two(st_global *g);
     // END
         // END
+            void end_rect_left_2(st_global *g);
+            void end_rect_right_2(st_global *g);
+            void position_end_2(st_global *g);
             st_end *generate_end(void);
             void position_end(st_global *g);
             void display_end(st_global *g);
@@ -445,9 +449,10 @@
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
             list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, list_planet planets, int max);
-        // 
+        // BOSS
             int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);
+            void victory(st_global *ad);
             st_boss *generate_boss(void);
             void boss_appear(st_global *ad);
             void display_boss_bg(st_global *ad);
