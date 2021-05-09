@@ -7,6 +7,21 @@
 
 #include "my_rpg.h"
 
+st_global_sfx *generate_sound_2(st_global_sfx *sound)
+{
+    sound->buff_explo = \
+    sfSoundBuffer_createFromFile("contents/sounds/explo.wav");
+    sound->explo = sfSound_create();
+    sfSound_setBuffer(sound->explo, sound->buff_explo);
+    sfSound_setVolume(sound->explo, 100);
+    sound->buff_big_explo = \
+    sfSoundBuffer_createFromFile("contents/sounds/big_explo.wav");
+    sound->big_explo = sfSound_create();
+    sfSound_setBuffer(sound->big_explo, sound->buff_big_explo);
+    sfSound_setVolume(sound->big_explo, 100);
+    return (sound);
+}
+
 st_global_sfx *generate_sound(void)
 {
     st_global_sfx *sound = my_malloc(sizeof(*sound));
@@ -21,17 +36,7 @@ st_global_sfx *generate_sound(void)
     sound->shoot = sfSound_create();
     sfSound_setBuffer(sound->shoot, sound->buff_shoot);
     sfSound_setVolume(sound->shoot, 100);
-    sound->buff_explo = \
-    sfSoundBuffer_createFromFile("contents/sounds/explo.wav");
-    sound->explo = sfSound_create();
-    sfSound_setBuffer(sound->explo, sound->buff_explo);
-    sfSound_setVolume(sound->explo, 100);
-    sound->buff_big_explo = \
-    sfSoundBuffer_createFromFile("contents/sounds/big_explo.wav");
-    sound->big_explo = sfSound_create();
-    sfSound_setBuffer(sound->big_explo, sound->buff_big_explo);
-    sfSound_setVolume(sound->big_explo, 100);
-    return (sound);
+    return (generate_sound_2(sound));
 }
 
 void set_volume_sfx(st_global *g, float volume)

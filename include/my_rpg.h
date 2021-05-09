@@ -55,7 +55,7 @@
             void start_quest5(st_global *ad);
         // QUEST6.C
             void quest_6_initialise(st_global *ad);
-            void start_quest6(st_global *ad);  
+            void start_quest6(st_global *ad);
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
@@ -312,7 +312,8 @@
             void print_can_quest(st_global *ad);
             void colonise_planet(st_global *ad);
         // PRINT_CAN_COLONISE.C
-            int check_can_colonise_text(st_global *ad, list_planet pl, int print);
+            int check_can_colonise_text(st_global *ad, list_planet pl,
+            int print);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
@@ -322,7 +323,8 @@
         // COLLISIONS.C
             void check_good_collision(st_global *ad, list_planet planet);
             void good_collision(st_global *ad, bool *c);
-            void planet_collision_content(st_global *ad, list_planet *planet, bool *c);
+            void planet_collision_content(st_global *ad, list_planet *planet,
+            bool *c);
             void planet_collision(st_global *ad);
             void ZQ_collisions(st_global *ad);
             void SD_collisions(st_global *ad);
@@ -342,7 +344,7 @@
             sfVertexArray **init_limit_map(void);
             void draw_map_limit(st_global *ad);
             void collision_limit(st_global *ad);
-    // INFRASTRUCTURE 
+    // INFRASTRUCTURE
         // MODULE
             void effect_com_module(st_global *ad);
             void effect_extract_module(st_global *ad);
@@ -451,7 +453,8 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
-            list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, list_planet planets, int max);
+            list_planet display_interaction_boss_bis(st_global *ad, sfVector2f
+            disp, list_planet planets, int max);
         // BOSS
             int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);
