@@ -244,6 +244,7 @@
             void destroy_settings(st_settings *settings);
             void set_position_settings(st_global *g);
             void parallax_settings(st_global *g);
+            void parallax_menu(st_global *g);
         // EVENTS_SETTINGS
             void events_settings(st_global *g);
             void get_global_bounds_settings(st_global *g);
@@ -399,6 +400,8 @@
 // STRUCTS
     paralax_t *paralax_ini(void);
     void generate_paths(ship_t *ship);
+    void init_ship_by_choosen(st_global *ad);
+    void items_menu(st_global *g);
     st_global *ini(void);
     structs_t *all_dat(void);
     st_game_var *ini_var(void);
@@ -563,6 +566,7 @@
             void text_price_module_card_bis(st_global *g, list_planet pl);
             void display_texts_module_card_bis(st_global *g);
         // ARROWS
+            void arrow_events_module_down(st_global *g);
             void arrow_events_module(st_global *g);
             void arrow_up_module_card(st_global *g);
             void arrow_up_module_card(st_global *g);
