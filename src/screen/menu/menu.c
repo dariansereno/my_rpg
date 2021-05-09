@@ -36,7 +36,7 @@ st_menu *generate_menu(void)
     (sfIntRect){0, 0, 398, 150}, "contents/ui/menu/start_btn.png");
     menu->items[3] = generate_object((sfVector2f){721, 131}, \
     (sfIntRect){0, 0, 467, 177}, "contents/ui/menu/spaceciv.png");
-    menu->view = sfView_createFromRect((sfFloatRect){560, 0, 800, HEIGHT});
+    menu->view = sfView_createFromRect((sfFloatRect){610, 0, 700, HEIGHT});
     menu->bounds[0] = (sfFloatRect){0, 0, 0, 0};
     menu->bounds[1] = (sfFloatRect){0, 0, 0, 0};
     menu->bounds[2] = (sfFloatRect){0, 0, 0, 0};

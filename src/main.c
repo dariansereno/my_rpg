@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-int main(int argc, char **argv)
+void main(void)
 {
     game_loop();
 }
