@@ -65,7 +65,8 @@ void attack_2(st_global *ad)
 {
     if ( ad->boss->current == NULL || ad->boss->current->type != 2)
         return;
-    ad->boss->duration->time = sfClock_getElapsedTime(ad->boss->duration->clock);
+    ad->boss->duration->time = sfClock_getElapsedTime
+    (ad->boss->duration->clock);
     ad->boss->duration->seconds = ad->boss->duration->time.microseconds \
     / 1000000.0;
     ad->boss->clock->time = sfClock_getElapsedTime(ad->boss->clock->clock);

@@ -52,8 +52,7 @@ void fill_tab_ressources(st_global *ad, int nb_ressources, st_ressources **tab)
     int i = 0;
     int j = 0;
 
-    for (i = 0; i < nb_ressources; i++)
-    {
+    for (i = 0; i < nb_ressources; i++) {
         tab[i] = my_malloc(sizeof(*tab[i]));
         tab[i]->id = random_between(0, 2);
         j = 0;

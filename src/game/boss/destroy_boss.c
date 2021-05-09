@@ -7,6 +7,17 @@
 
 #include "my_rpg.h"
 
+void destroy_boss_fight2(st_global *ad)
+{
+    sfClock_destroy(ad->boss->reload);
+    sfSprite_destroy(ad->boss->sprite);
+    sfSprite_destroy(ad->boss->red_sp);
+    sfSprite_destroy(ad->boss->shield_sp);
+    sfTexture_destroy(ad->boss->texture);
+    sfTexture_destroy(ad->boss->shield_tex);
+    sfTexture_destroy(ad->boss->red_tex);
+}
+
 void destroy_boss_fight(st_global *ad)
 {
     destroy_object(ad->boss->bg);
@@ -23,11 +34,4 @@ void destroy_boss_fight(st_global *ad)
     destroy_list_timer(&ad->boss->li_big_explo);
     destroy_list_timer(&ad->boss->li_lil_explo);
     destroy_ennemies_list(&ad->boss->enn);
-    sfClock_destroy(ad->boss->reload);
-    sfSprite_destroy(ad->boss->sprite);
-    sfSprite_destroy(ad->boss->red_sp);
-    sfSprite_destroy(ad->boss->shield_sp);
-    sfTexture_destroy(ad->boss->texture);
-    sfTexture_destroy(ad->boss->shield_tex);
-    sfTexture_destroy(ad->boss->red_tex);
 }

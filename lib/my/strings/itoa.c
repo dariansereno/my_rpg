@@ -16,7 +16,7 @@ void reverse_str(char str[], int len)
         *(str + end) = temp;
     }
 }
- 
+
 char* itoa(int nb, char* str, int base)
 {
     int i = 0;
