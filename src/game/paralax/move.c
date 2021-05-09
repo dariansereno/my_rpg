@@ -13,6 +13,8 @@ void go_up(st_global *ad)
     ad->key_pressed.Q == false) && ad->paralax->j == 0
     && ad->ship->collisionZ == false && ad->ship->collisionZlim == false) {
         move_up(ad);
+        if (ad->var_game->boss_generated)
+            ad->boss->bg->pos.y -= 4;
     }
 }
 
@@ -22,6 +24,8 @@ void go_down(st_global *ad)
     ad->key_pressed.D == false) && ad->paralax->i == 0
     && ad->ship->collisionS == false && ad->ship->collisionSlim == false) {
         move_down(ad);
+        if (ad->var_game->boss_generated)
+            ad->boss->bg->pos.y += 4;
     }
 }
 
@@ -31,6 +35,8 @@ void go_left(st_global *ad)
     ad->key_pressed.S == false) && ad->paralax->k == 0
     && ad->ship->collisionQ == false && ad->ship->collisionQlim == false) {
         move_left(ad);
+        if (ad->var_game->boss_generated)
+            ad->boss->bg->pos.x -= 4;
     }
 }
 
@@ -40,6 +46,8 @@ void go_right(st_global *ad)
     ad->key_pressed.S == false) && ad->paralax->l == 0
     && ad->ship->collisionD == false && ad->ship->collisionDlim == false) {
         move_right(ad);
+        if (ad->var_game->boss_generated)
+            ad->boss->bg->pos.x += 4;
     }
 }
 

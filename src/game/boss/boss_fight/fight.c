@@ -59,9 +59,11 @@ void boss_handling(st_global *ad)
     boss_fight(ad);
     boss_appear(ad);
     boss_life(ad);
-    if (ad->boss->current != NULL && ad->boss->shield)
+    if (ad->var_game->boss_generated && ad->boss->current != NULL &&
+    ad->boss->shield)
         attack_5_shield(ad);
-    if (ad->boss->current != NULL && ad->boss->enn != NULL)
+    if (ad->var_game->boss_generated && ad->boss->current != NULL &
+    ad->boss->enn != NULL)
         print_ennemies_list_boss(ad->boss->enn, ad->window->window, ad);
     if (ad->var_game->is_boss && ad->var_game->boss_generated &&
     ad->boss->current != NULL)

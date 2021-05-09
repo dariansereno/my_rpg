@@ -269,6 +269,8 @@ typedef struct st_game_var_s {
     bool quest6_completed;
     int max_money;
     bool destroy_boss;
+    sfClock *victory_clock;
+    bool died;
 } st_game_var;
 
 typedef struct list_elem_boss_s {
@@ -276,31 +278,6 @@ typedef struct list_elem_boss_s {
     int duration;
     struct list_elem_boss_s *next;
 } *list_boss, list_elem_boss;
-
-// typedef struct st_boss_s {
-//     int atk_mode;
-//     st_object *boss;
-//     st_object *bg;
-//     //sfRectangleShape *life;
-//     sfRectangleShape *outline;
-//     float life_f;
-//     list_boss atk_li;
-//     list_boss current;
-//     st_timer *clock;
-//     st_timer *atk_timer;
-//     list_timer_b shoot;
-//     sfClock *reload;
-//     float reload_normal;
-//     float reload_fast_atk;
-//     sfSprite *sprite;
-//     sfTexture *texture;
-//     int shake;
-//     bool circle;
-//     int radius;
-//     bool red;
-//     sfSprite *red_sp;
-//     sfTexture *red_tex;
-// } st_boss;
 
 typedef struct ship_s {
     sfSprite *bship;
@@ -771,6 +748,7 @@ typedef struct st_global_s {
     sfCircleShape *circle_health;
     bool big_msg_generated;
     st_global_particle *particle; //
+    bool msg_boss;
 } st_global;
 
 #endif /* !STRUCTS_H_ */

@@ -42,22 +42,22 @@ void display_back_object(st_global *ad)
 
 void display_if_not_menu_2(st_global *ad)
 {
-        print_list_explo(&ad->shoot->li_explo, ad);
-        print_list_particle_explo(&ad->particle->particles, ad);
-        effect_extract_module(ad);
-        effect_com_module(ad);
-        effect_health_module(ad);
-        print_list_particle(&ad->particle->particles, ad);
-        print_planet_list_big(ad->planets->planets, ad->window->window, ad);
-        display_upgrade(ad);
-        choose_upgrade(ad);
-        display_ui_game(ad);
-        display_items_inventory(ad);
-        craft_settler(ad);
-        display_stats_ship(ad);
-        target_quest(ad);
-        print_target_indicator(ad);
-        display_msg(ad);
+    print_list_explo(&ad->shoot->li_explo, ad);
+    print_list_particle_explo(&ad->particle->particles, ad);
+    effect_extract_module(ad);
+    effect_com_module(ad);
+    effect_health_module(ad);
+    print_list_particle(&ad->particle->particles, ad);
+    print_planet_list_big(ad->planets->planets, ad->window->window, ad);
+    display_upgrade(ad);
+    choose_upgrade(ad);
+    display_ui_game(ad);
+    display_items_inventory(ad);
+    craft_settler(ad);
+    display_stats_ship(ad);
+    target_quest(ad);
+    print_target_indicator(ad);
+    display_msg(ad);
 }
 
 void display_if_not_menu(st_global *ad)

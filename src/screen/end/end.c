@@ -33,17 +33,7 @@ void position_end(st_global *g)
     if (g->key_pressed.Enter) {
         g->key_pressed.Enter = false;
         g->ui->end->pressed = true;
-        switch (g->ui->end->pos_rect) {
-            case 1:
-                sfRenderWindow_close(g->window->window);
-                g->ui->end->existing = false;
-                break;
-            case 2:
-                switch_screen_five(g);
-                return;
-            default:
-                break;
-        }
+        position_end_2(g);
         g->ui->end->pressed = false;
     }
 }

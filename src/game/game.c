@@ -43,6 +43,12 @@ void check_status(st_global *ad)
     draw_window_game(ad);
     display_back_object(ad);
     display_if_not_menu(ad);
+    spawn_boss_condition(ad);
+    victory(ad);
+    if (ad->money->money > ad->var_game->max_money)
+        ad->money->money = ad->var_game->max_money;
+    if (ad->var_game->life > ad->var_game->max_health)
+        ad->var_game->life = ad->var_game->max_health;
     if (ad->var_game->boss_generated) {
         print_list_explo_boss(&ad->boss->li_big_explo, ad);
         print_list_explo_lil_boss(&ad->boss->li_lil_explo, ad);
