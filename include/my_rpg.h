@@ -296,6 +296,8 @@
             void print_can_trade(st_global *ad);
             void print_can_quest(st_global *ad);
             void colonise_planet(st_global *ad);
+        // PRINT_CAN_COLONISE.C
+            int check_can_colonise_text(st_global *ad, list_planet pl, int print);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);

@@ -28,7 +28,7 @@ void generate_random_quest2(list_planet *pl, st_global *ad, bool *is_good)
             (*pl)->planet.quest = true;
             *is_good = true;
         }
-        //is_good = rand_pl_quest(pl);
+        //*is_good = rand_pl_quest(pl);
         if (*is_good)
             break;
         (*pl) = (*pl)->next;
@@ -42,6 +42,7 @@ void generate_random_quest(list_planet *planet, st_global *ad)
 
     while (!is_good) {
         generate_random_quest2(&pl, ad, &is_good);
+        printf("%d\n", is_good);
         if (is_good)
             break;
         pl = *planet;
