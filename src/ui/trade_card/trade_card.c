@@ -29,7 +29,7 @@ void rect_trade_position(st_global *g)
 
 void set_init_position_trade(st_global *g)
 {
-    arrow_events_trade(g);
+    arrow_events_trade_down(g);
     sfSprite_setPosition(g->ui->trade_card->ui[0]->sprite, \
     (sfVector2f){1422, 548});
     sfSprite_setPosition(g->ui->trade_card->ui[1]->sprite, \
