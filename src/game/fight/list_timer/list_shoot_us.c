@@ -9,7 +9,7 @@
 
 void push_back_timer(list_timer *li, sfVector2f pos, int dir)
 {
-    list_timer node = malloc(sizeof(*node));
+    list_timer node = my_malloc(sizeof(*node));
     list_timer lastnode = *li;
 
     node->it = 0;
@@ -42,7 +42,6 @@ void pop_position_timer(list_timer *list, int index)
         return ;
     if (index == 0) {
         *list = temp->next;
-        free(temp);
         return ;
     }
     for (; temp != NULL && temp->next->index != index ;)
@@ -50,7 +49,6 @@ void pop_position_timer(list_timer *list, int index)
     if (temp == NULL || temp->next == NULL)
         return;
     next = temp->next->next;
-    free(temp->next);
     temp->next = next;
 }
 
