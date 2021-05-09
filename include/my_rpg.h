@@ -256,6 +256,9 @@
             void condition_volume_settings(st_global *g, int x, int y);
             void switch_settings_one(st_global *g);
             void switch_settings_two(st_global *g);
+        // MORE_EVENTS_SETTINGS.C
+            void more_settings_event(st_global *g, int i);
+            void more_button_pressed_event(st_global *g, int i);
     // END
         // END
             void end_rect_left_2(st_global *g);
