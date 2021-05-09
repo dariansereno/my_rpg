@@ -9,19 +9,24 @@
 
 void display_second_message(st_global *ad)
 {
+    char *str = "Thank you for helping us out! Our enemies will take a while to"
+    " recover from the blow you dealt them! We don't have much to give you but "
+    "we will give you some advice. When you are close to a colonised planet and"
+    " you press the 'F' key, you can open the module interface and buy "
+    "different kind of modules. You can buy the trading module which will give "
+    "you 30 credits every 10 seconds at level one. You can also buy the "
+    "extraction module which will give you one random ressource every 60 "
+    "seconds at level 1. The third module is the Healing module. If you have a "
+    "healing module and you stay in the circle around your planet you will "
+    "regenerate some health. The last module you can buy is the population "
+    "module. This module will reduce the time needed by all other modules to "
+    "complete their actions. Every module can be upgraded infinitely to improve"
+    " it's efficiency. Your next task will be to upgrade all of the four "
+    "modules to level one on your starting planet. "
+    "Come back once this is done.";
+
     if (ad->var_game->created == true) {
-        add_message(ad, "Thanks you for helping us out! Our enemies will take a\
- while to recover from the blow you dealt them! We don't have much to\
- give you but we will give you some advice. Your next objective will be\
- to upgrade all of your first planet's modules to level 1. The\
- commercial module will give you 30 credits every 15 seconds. The\
- healing module will slowly regenerate your life when you are in the\
- module's reach. The extraction module will give you a random ressource\
- every 15 seconds which will be useful for your next objective and,\
- finaly, the population module will decrease the time needed for all\
- other modules to complete their operations. When upgrading your\
- modules you also gain XP which you can use to upgrade your skills.\
- Come back to us once all of your modules are upgraded", 6000);
+        add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
 }

@@ -44,9 +44,9 @@ int deduct_dir_3(st_global *ad)
     case 7:
         if (ad->key_pressed.Z == true && ad->key_pressed.Q == true
         && ad->key_pressed.S == false && ad->key_pressed.D == false)
-            return (7); 
+            return (7);
     }
-    return(deduct_dir_from_last_key(ad));
+    return (deduct_dir_from_last_key(ad));
 }
 
 int deduct_dir_2(st_global *ad)
@@ -70,7 +70,7 @@ int deduct_dir_2(st_global *ad)
             return (5);
         x++;
     }
-    return(deduct_dir_3(ad));
+    return (deduct_dir_3(ad));
 }
 
 int deduct_dir(st_global *ad)
@@ -94,5 +94,5 @@ int deduct_dir(st_global *ad)
             return (2);
         x++;
     }
-    return(deduct_dir_2(ad));
+    return (deduct_dir_2(ad));
 }

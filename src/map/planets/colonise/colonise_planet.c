@@ -32,8 +32,8 @@ void print_can_trade(st_global *ad)
 
     while (pl != NULL) {
         if (pl->can_interact && pl->size == 2 && pl->planet.tradable) {
-            if (pl->planet.type >= 7 && pl->planet.type <= 20 && pl->can_interact \
-            && pl->size == 2 && !pl->planet.colonized && \
+            if (pl->planet.type >= 7 && pl->planet.type <= 20 && pl->
+            can_interact && pl->size == 2 && !pl->planet.colonized && \
             ad->ressources[3].nb >= 1)
                 print = 210;
             sfText_setPosition(ad->ressources[0].text, (sfVector2f) \

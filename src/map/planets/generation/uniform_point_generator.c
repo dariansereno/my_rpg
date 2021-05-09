@@ -19,10 +19,10 @@ double alea(int *n, int p, int q)
     return ((double)(*n - 1) / (q - 2));
 }
 
-int random_piped()
+int random_piped(void)
 {
     int x = random_between(0, 10);
-    
+
     if (x < 2)
         return (1);
     else if (x >= 2 && x <= 8)

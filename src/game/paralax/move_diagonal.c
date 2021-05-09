@@ -33,7 +33,7 @@ void go_upleft(st_global *ad)
 
     if (x <= 2 && ad->key_pressed.Q == true && ad->key_pressed.Z == true
     && ad->ship->collisionQ == false && ad->ship->collisionZ == false
-     && ad->ship->collisionQlim == false && ad->ship->collisionZlim == false)
+    && ad->ship->collisionQlim == false && ad->ship->collisionZlim == false)
         move_upleft(ad);
 }
 

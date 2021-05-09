@@ -7,11 +7,11 @@
 
 #include "my_rpg.h"
 
-st_object **generate_items()
+st_object **generate_items(void)
 {
     st_object **items = my_malloc(sizeof(**items) * 4);
 
-    items[0] = generate_object((sfVector2f){0, 0}, (sfIntRect){0, 0, 199, 208}, 
+    items[0] = generate_object((sfVector2f){0, 0}, (sfIntRect){0, 0, 199, 208},
     "contents/ui/items/black_matter.png");
     sfSprite_setScale(items[0]->sprite, (sfVector2f){0.22, 0.22});
     items[1] = generate_object((sfVector2f){0, 0}, (sfIntRect){0, 0, 35, 44},
@@ -30,7 +30,7 @@ st_object **generate_items()
 st_ressources generate_ressource(int id, st_global *ad)
 {
     st_ressources res;
-    
+
     res.id = id;
     res.nb = 0;
     res.stack = 32;

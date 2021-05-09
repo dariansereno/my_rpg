@@ -27,20 +27,6 @@ list_ressources pop_back_ressources(list_ressources list)
     }
     buf->next = NULL;
     // destroy_ressources(temp); a faire
-    free(temp);
     temp = NULL;
     return (list);
 }
-
-// list_ressources ressources_from_index(int index, list_ressources li)
-// {
-//     list_ressources temp = li;
-
-//     if (temp == NULL)
-//         return (NULL);
-//     while (temp->index != index)
-//         temp = temp->next;
-//     if (temp == NULL)
-//         return (NULL);
-//     return (temp);
-// }

@@ -7,19 +7,6 @@
 
 #include "my_rpg.h"
 
-void ship_shoot(st_global *ad)
-{
-    sfTime time = sfClock_getElapsedTime(ad->ship->reload->clock);
-    float seconds = time.microseconds / 1000000.0;
-
-    if (seconds > ad->var_game->reload_time) {
-        push_back_timer(&ad->shoot->li_shoot, ad->ship->bshippos,
-        deduct_dir(ad));
-        reindex_timer(&ad->shoot->li_shoot);
-        sfClock_restart(ad->ship->reload->clock);
-    }
-}
-
 void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
 {
     if (en->ennemies.life <= 0){
