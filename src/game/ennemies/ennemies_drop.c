@@ -15,7 +15,7 @@ int drop_id(void)
         return (0);
     if (rand > 7)
         return (1);
-    return(-1);
+    return (-1);
 }
 
 void drop_money(st_global *ad, list_ennemies en)
