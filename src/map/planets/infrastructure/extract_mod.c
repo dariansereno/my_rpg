@@ -7,19 +7,22 @@
 
 #include "my_rpg.h"
 
+void extract(st_global *ad, list_planet *pl)
+{
+    int rand = random_between(0, 10);
+
+    if (rand <= 5)
+            ad->ressources[0].nb += 1;
+    else if (rand > 5 && rand <= 8)
+        ad->ressources[1].nb += (int)1 * (*pl)->planet.mul_housing;
+    else
+        ad->ressources[2].nb += (int)1 * (*pl)->planet.mul_housing;
+}
+
 void effect_extract_module_content_2(st_global *ad, list_planet *pl)
 {
-    int rand;
-
-    for (int i = 0; i < (*pl)->planet.modules[3]; i++) {
-        rand = random_between(0, 10);
-        if (rand <= 5)
-            ad->ressources[0].nb += 1;
-        else if (rand > 5 && rand <= 8)
-            ad->ressources[1].nb += (int)1 * (*pl)->planet.mul_housing;
-        else
-            ad->ressources[2].nb += (int)1 * (*pl)->planet.mul_housing;
-    }
+    for (int i = 0; i < (*pl)->planet.modules[3]; i++)
+        extract(ad, pl);
 }
 
 void effect_extract_module_content(st_global *ad, list_planet *pl)
