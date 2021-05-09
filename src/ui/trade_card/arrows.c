@@ -64,11 +64,6 @@ void arrow_texture(st_global *g)
         else
             sfRenderWindow_drawSprite(g->window->window, \
             g->ui->trade_card->ui[2]->sprite, NULL);
-        if (g->ui->trade_card->first_cell > 1)
-            sfRenderWindow_drawSprite(g->window->window, \
-            g->ui->trade_card->ui[1]->sprite, NULL);
-        else
-            sfRenderWindow_drawSprite(g->window->window, \
-            g->ui->trade_card->ui[0]->sprite, NULL);
+        arrow_texture_bis(g);
     }
 }

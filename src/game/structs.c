@@ -101,7 +101,7 @@ st_global *ini(void)
     all->other = my_malloc(sizeof(*all->other));
     all->other->planet_text = sfText_create();
     all->other->font = sfFont_createFromFile
-    ("contents/fonts/dogica/TTF/dogica.ttf");
+    ("contents/fonts/dogica/ttf/dogica.ttf");
     sfText_setFont(all->other->planet_text, all->other->font);
     all->var = my_malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
