@@ -37,7 +37,7 @@ bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object)
 
     while (li != NULL) {
         if (circle_contains(70, (sfVector2f){(float)li->ennemies.pos.x
-        ,(float)li->ennemies.pos.y}, object))
+        , (float)li->ennemies.pos.y}, object))
             return (true);
         li = li->next;
     }

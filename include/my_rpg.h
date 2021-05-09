@@ -55,15 +55,14 @@
             void start_quest5(st_global *ad);
         // QUEST6.C
             void quest_6_initialise(st_global *ad);
-            void start_quest6(st_global *ad);
-            
+            void start_quest6(st_global *ad);  
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
             void destroy_upgrade(st_upgrade *up);
             void can_upgrade(st_global *ad);
-            int *generate_tab_upgrade();
-            st_upgrade *generate_upgrade();
+            int *generate_tab_upgrade(void);
+            st_upgrade *generate_upgrade(void);
             void display_upgrade(st_global *ad);
             void choose_upgrade(st_global *ad);
     // ANIMATIONS
@@ -71,7 +70,7 @@
             void print_list_explo(list_timer *li, st_global *ad);
     // INVENTORY
         // GENERATE_INVENTORY.C
-            st_object **generate_items();
+            st_object **generate_items(void);
             st_ressources *generate_inventory(st_global *ad);
         // DISPLAY_INVENTORY
             void display_items_inventory(st_global *ad);
@@ -80,6 +79,7 @@
             void craft_settler(st_global *ad);
     // PARALAX
         // MOVE.C
+            void move_ship(st_global *ad);
             void go_right(st_global *ad);
             void go_left(st_global *ad);
             void go_down(st_global *ad);
@@ -131,15 +131,19 @@
             void plus_key_change(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
+        // MORT_INTERACT.C
+            int interact_input6(st_global *ad);
+            void interact_input7(st_global *ad, int counter);
     // ENNEMIES
         // PATH_FINDING
             // DROP
                 void drop(st_global *ad, list_ennemies en);
-                int random_money();
-                int random_ressources();
-                int random_nb_ressources();
-                int random_xp();
+                int random_money(void);
+                int random_ressources(void);
+                int random_nb_ressources(void);
+                int random_xp(st_global *ad);
             // LIST DROP
+                void pop_position_drop(list_drop *list, int index);
                 void push_back_drop(list_drop *li, st_drop drop);
                 void print_list_drop(list_drop *li, st_global *ad);
             // CIRCLE_INTERSECTION
@@ -169,7 +173,7 @@
             sfVector2f position_generate_near_planet(list_planet planet,
             st_global *ad, float radius);
             void ennemies_spawning(st_global *ad);
-            sfTexture **enn_textures();
+            sfTexture **enn_textures(void);
         // ENNEMIES_CONDITION.C
             bool is_on_planet(st_global *ad, sfVector2f object);
             bool is_on_boss(st_global *ad, sfVector2f object);
@@ -192,6 +196,11 @@
     void check_status(st_global *ad);
     void check_event(st_global *ad);
     int game_loop(void);
+    void draw_window_game(st_global *ad);
+    void display_back_object(st_global *ad);
+    void display_if_not_menu_2(st_global *ad);
+    void display_if_not_menu(st_global *ad);
+    void print_forground_and_event(st_global *ad);
 // SCREEN
     // SCREENS.C
         void screen(st_global *g);
@@ -210,7 +219,7 @@
         void background_space_fade(st_global *g);
     // LOADING
         // LOADING
-            st_loading *generate_loading_board();
+            st_loading *generate_loading_board(void);
             void screen_loading(st_global *g);
             void clock_planet_loading(st_global *g);
             void clock_loading_bar(st_global *g);
@@ -269,7 +278,7 @@
         void pop_position_particle(list_particle *list, int index);
         void reindex_particle(list_particle *li);
     // SPACE_OBJ
-        st_global_spaceobj *generate_space_obj();
+        st_global_spaceobj *generate_space_obj(void);
         void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id);
         void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
         void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
@@ -294,6 +303,9 @@
             void display_on_view(st_global *ad);
     // INTERACTING
         // COLLISIONS.C
+            void check_good_collision(st_global *ad, list_planet planet);
+            void good_collision(st_global *ad, bool *c);
+            void planet_collision_content(st_global *ad, list_planet *planet, bool *c);
             void planet_collision(st_global *ad);
             void ZQ_collisions(st_global *ad);
             void SD_collisions(st_global *ad);
@@ -309,7 +321,8 @@
             void display_selector(st_object *selector, st_global *ad,
             list_planet planets, sfVector2f origin);
         // MAP_LIMIT.C
-            sfVertexArray **init_limit_map();
+            void check_good_collision_lim(st_global *ad);
+            sfVertexArray **init_limit_map(void);
             void draw_map_limit(st_global *ad);
             void collision_limit(st_global *ad);
     // INFRASTRUCTURE 
@@ -327,11 +340,21 @@
         // MATH.C
             sfVector2i *scatter_plot(scatter math);
             int random_between(int start, int stop);
-            int random_piped();
+            int random_piped(void);
         // GENERATE_PLANET_TYPE.C
+            st_planet_stat generate_planet_stat2(st_planet planet);
+            st_planet_stat generate_planet_stat(st_planet planet);
+            planet_climate climate_from_type(planet_type planet);
+            planet_animation animation_from_type(planet_type planet);
             st_planet *general_all_planets(sfVector2i *pos, int size);
-            sfTexture **generates_planets_textures();
+            sfTexture **generates_planets_textures(void);
         // STAT_PLANETS.C
+            planet_kind generate_kind(int type);
+            void selector_colonized_pl(st_planet_global *planets);
+            int *generate_mod_price(void);
+            st_planet_global *generate_planet_global(void);
+            void *generate_list_planets(st_planet_global *planets, scatter math,
+            sfVector2i *pos);
             st_planet_stat stats_for_gas(st_planet_stat planet);
             st_planet_stat stats_for_ocean(st_planet_stat planet);
             st_planet_stat stats_for_terran(st_planet_stat planet);
@@ -365,8 +388,11 @@
             int prices(st_global *ad, int id);
             int stock(st_global *ad, int id);
 // STRUCTS
+    paralax_t *paralax_ini(void);
+    void generate_paths(ship_t *ship);
     st_global *ini(void);
     structs_t *all_dat(void);
+    st_game_var *ini_var(void);
     void destroy_global(st_global *global);
     keys_t *key_ini(st_global *ad);
     load_t *texture_ini(void);
@@ -385,7 +411,7 @@
     // GAME
         // FIGHT
             // GENERATE
-                st_global_shoot *generate_shoot();
+                st_global_shoot *generate_shoot(void);
                 int deduct_dir(st_global *ad);
                 void ship_shoot(st_global *ad);
                 sfVector2f change_pos_by_dir(int dir, sfVector2f pos);
@@ -406,7 +432,8 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
-        // BOSS
+        // 
+            int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);
             st_boss *generate_boss(void);
             void boss_appear(st_global *ad);
@@ -421,6 +448,7 @@
             int velo);
             void attack_1(st_global *ad);
             void attack_2(st_global *ad);
+            void attack_2_circle_2(st_global *ad, float second);
             void attack_3(st_global *ad);
             void attack_4(st_global *ad);
             void attack_5(st_global *ad);
@@ -448,6 +476,8 @@
                 sfVector2f pos);
                 void print_list_shoot_b(list_timer_b *li, sfSprite *sprite, \
                 st_global *ad);
+                void pop_position_timer_b(list_timer_b *list, int index);
+                void reindex_timer_b(list_timer_b *li);
     // PLANET_CARD
         // PLANET_CARD
             void display_planet_card(st_global *g);
@@ -475,7 +505,7 @@
             trade_card_s *generate_trade_card_bools(trade_card_s *trade_card);
             void destroy_trade_card(trade_card_s *trade_card);
         // ARROWS
-            void count_items();
+            void count_items(void);
             void arrow_events_trade(st_global *g);
             void arrow_texture(st_global *g);
         // TRADE_CARD

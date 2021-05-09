@@ -45,14 +45,7 @@ void go_right(st_global *ad)
 
 void paralax_move(st_global *ad)
 {
-    go_up(ad);
-    go_down(ad);
-    go_left(ad);
-    go_right(ad);
-    go_upright(ad);
-    go_upleft(ad);
-    go_downleft(ad);
-    go_downright(ad);
+    move_ship(ad);
     ad->ship->bshippos.y += ad->ship->velocity.y;
     ad->ship->bshippos.x += ad->ship->velocity.x;
     ad->ship->viewrect.top += ad->ship->velocity.y;

@@ -15,7 +15,6 @@ list_planet pop_back_planet(list_planet list)
     if (list == NULL)
         return (NULL);
     if (list->next == NULL) {
-        free(list);
         list = NULL;
         return (NULL);
     }
@@ -27,7 +26,6 @@ list_planet pop_back_planet(list_planet list)
     }
     buf->next = NULL;
     destroy_planet(temp);
-    free(temp);
     temp = NULL;
     return (list);
 }
@@ -45,11 +43,32 @@ list_planet planet_from_index(int index, list_planet li)
     return (temp);
 }
 
-void print_planet_list_stat(list_planet li)
+void init_planet(list_planet *node, list_planet *li, st_planet planet)
 {
-    while (li != NULL){
-        printf("%d, %d, %d, %d, %d, %d, %d, %d\n", li->planet.stats.co2, li->planet.stats.h2o, li->planet.stats.h,
-        li->planet.stats.n2, li->planet.stats.N, li->planet.stats.o, li->planet.stats.pressure, li->planet.climate);
-        li = li->next;
+    (*node)->size = random_piped();
+    (*node)->timer.clock = sfClock_create();
+    (*node)->move.clock = sfClock_create();
+    (*node)->spawning.clock = sfClock_create();
+    (*node)->direction = random_between(0, 7);
+    (*node)->index = size_list_planet(*li);
+    (*node)->ennemies_spawn = random_between(5, 15);
+    (*node)->sc = random_between(9, 13);
+    (*node)->can_interact = false;
+}
+
+void push_back_planet(list_planet *li, st_planet planet)
+{
+    list_planet node = malloc(sizeof(*node));
+    list_planet lastnode = *li;
+
+    node->planet = planet;
+    init_planet(&node, li, planet);
+    node->next = NULL;
+    if (*li == NULL)
+        *li = node;
+    else {
+        while (lastnode->next != NULL)
+            lastnode = lastnode->next;
+        lastnode->next = node;
     }
 }

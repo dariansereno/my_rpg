@@ -7,31 +7,6 @@
 
 #include "my_rpg.h"
 
-void push_back_planet(list_planet *li, st_planet planet)
-{
-    list_planet node = malloc(sizeof(*node));
-    list_planet lastnode = *li;
-
-    node->planet = planet;
-    node->size = random_piped();
-    node->timer.clock = sfClock_create();
-    node->move.clock = sfClock_create();
-    node->spawning.clock = sfClock_create();
-    node->direction = random_between(0, 7);
-    node->index = size_list_planet(*li);
-    node->ennemies_spawn = random_between(5, 15);
-    node->sc = random_between(9, 13);
-    node->can_interact = false;
-    node->next = NULL;
-    if (*li == NULL)
-        *li = node;
-    else {
-        while (lastnode->next != NULL)
-            lastnode = lastnode->next;
-        lastnode->next = node;
-    }
-}
-
 void set_texture_planets(list_planet *li, st_planet_global *g)
 {
     list_planet node = malloc(sizeof(*node));
@@ -93,126 +68,12 @@ void print_planet_normal(list_planet li, sfRenderWindow *window, st_global *ad)
     }
 }
 
-void print_planet_big(list_planet li, sfRenderWindow *window, st_global *ad)
-{
-    if (li->size == 3) {
-        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
-        sfSprite_setScale(li->planet.sprite, (sfVector2f){li->sc, li->sc});
-        
-        if (ad->key_pressed.Z && !ad->key_pressed.D && !ad->key_pressed.Q && !ad->key_pressed.S && !ad->ship->collisionZlim &&
-        !ad->ship->collisionZ)
-            li->planet.pos.y += 3;
-        else if (ad->key_pressed.S && !ad->key_pressed.D && !ad->key_pressed.Q && !ad->key_pressed.Z && !ad->ship->collisionSlim &&
-        !ad->ship->collisionS)
-            li->planet.pos.y -= 3;
-        if (ad->key_pressed.D && !ad->key_pressed.Z && !ad->key_pressed.Q && !ad->key_pressed.S && !ad->ship->collisionDlim &&
-        !ad->ship->collisionD)
-            li->planet.pos.x -= 3;
-        else if (ad->key_pressed.Q && !ad->key_pressed.D && !ad->key_pressed.Z && !ad->key_pressed.S && !ad->ship->collisionQlim &&
-        !ad->ship->collisionQ)
-            li->planet.pos.x += 3;
-        
-        if (((ad->key_pressed.Z && ad->key_pressed.D) && (!ad->key_pressed.Q && !ad->key_pressed.S) 
-        && (!ad->ship->collisionZlim && ! ad->ship->collisionDlim) && (!ad->ship->collisionZ && ! ad->ship->collisionD))) {
-            li->planet.pos.y += 3;
-            li->planet.pos.x -= 3;
-        }
-        else if (((ad->key_pressed.S && ad->key_pressed.D) && (!ad->key_pressed.Q && !ad->key_pressed.Z) 
-        && (!ad->ship->collisionSlim && ! ad->ship->collisionDlim) && (!ad->ship->collisionS && ! ad->ship->collisionD))) {
-            li->planet.pos.y -= 3;
-            li->planet.pos.x -= 3;
-        }
-        if (((ad->key_pressed.Q && ad->key_pressed.S) && (!ad->key_pressed.Z && !ad->key_pressed.D) 
-        && (!ad->ship->collisionQlim && ! ad->ship->collisionSlim) && (!ad->ship->collisionQ && ! ad->ship->collisionS))) {
-            li->planet.pos.y -= 3;
-            li->planet.pos.x += 3;
-        }
-        else if (((ad->key_pressed.Z && ad->key_pressed.Q) && (!ad->key_pressed.S && !ad->key_pressed.D) 
-        && (!ad->ship->collisionZlim && ! ad->ship->collisionQlim) && (!ad->ship->collisionZ && ! ad->ship->collisionQ))) {
-            li->planet.pos.y += 3;
-            li->planet.pos.x += 3;
-        }
-        sfSprite_setPosition(li->planet.sprite,
-        (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
-        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
-    }
-}
-
 void print_planet_list_normal(list_planet li, sfRenderWindow *window,
 st_global *ad)
 {
     while (li != NULL){
-       if (li->on_screen == true)
-           print_planet_normal(li, window, ad);
-        li = li->next;
-    }
-}
-
-void print_planet_list_big(list_planet li, sfRenderWindow *window,
-st_global *ad)
-{
-    while (li != NULL){
-       if (li->on_screen == true)
-           print_planet_big(li, window, ad);
-        li = li->next;
-    }
-}
-
-void print_planet_lil(list_planet li, sfRenderWindow *window, st_global *ad)
-{
-    int rand = random_between(0, 1);
-
-    if (li->size == 1) {
-        sfSprite_setTextureRect(li->planet.sprite, li->planet.rect);
-        sfSprite_setScale(li->planet.sprite, (sfVector2f){(float)(li->sc * 2) /
-        10.0, (float)(li->sc * 2) / 10.0});
-
-        if (ad->key_pressed.Z && !ad->key_pressed.D && !ad->key_pressed.Q && !ad->key_pressed.S && !ad->ship->collisionZlim &&
-        !ad->ship->collisionZ)
-            li->planet.pos.y -= 1;
-        else if (ad->key_pressed.S && !ad->key_pressed.D && !ad->key_pressed.Q && !ad->key_pressed.Z && !ad->ship->collisionSlim &&
-        !ad->ship->collisionS)
-            li->planet.pos.y += 1;
-        if (ad->key_pressed.D && !ad->key_pressed.Z && !ad->key_pressed.Q && !ad->key_pressed.S && !ad->ship->collisionDlim &&
-        !ad->ship->collisionD)
-            li->planet.pos.x += 1;
-        else if (ad->key_pressed.Q && !ad->key_pressed.D && !ad->key_pressed.Z && !ad->key_pressed.S && !ad->ship->collisionQlim &&
-        !ad->ship->collisionQ)
-            li->planet.pos.x -= 1;
-        
-        if (((ad->key_pressed.Z && ad->key_pressed.D) && (!ad->key_pressed.Q && !ad->key_pressed.S) 
-        && (!ad->ship->collisionZlim && ! ad->ship->collisionDlim) && (!ad->ship->collisionZ && ! ad->ship->collisionD))) {
-            li->planet.pos.y -= 1;
-            li->planet.pos.x += 1;
-        }
-        else if (((ad->key_pressed.S && ad->key_pressed.D) && (!ad->key_pressed.Q && !ad->key_pressed.Z) 
-        && (!ad->ship->collisionSlim && ! ad->ship->collisionDlim) && (!ad->ship->collisionS && ! ad->ship->collisionD))) {
-            li->planet.pos.y += 1;
-            li->planet.pos.x += 1;
-        }
-        if (((ad->key_pressed.Q && ad->key_pressed.S) && (!ad->key_pressed.Z && !ad->key_pressed.D) 
-        && (!ad->ship->collisionQlim && ! ad->ship->collisionSlim) && (!ad->ship->collisionQ && ! ad->ship->collisionS))) {
-            li->planet.pos.y += 1;
-            li->planet.pos.x -= 1;
-        }
-        else if (((ad->key_pressed.Z && ad->key_pressed.Q) && (!ad->key_pressed.S && !ad->key_pressed.D) 
-        && (!ad->ship->collisionZlim && ! ad->ship->collisionQlim) && (!ad->ship->collisionZ && ! ad->ship->collisionQ))) {
-            li->planet.pos.y -= 1;
-            li->planet.pos.x -= 1;
-        }
-
-        sfSprite_setPosition(li->planet.sprite,
-        (sfVector2f){(float)li->planet.pos.x, (float)li->planet.pos.y});
-        sfRenderWindow_drawSprite(window, li->planet.sprite, NULL);
-    }
-}
-
-void print_planet_list_little(list_planet li, sfRenderWindow *window,
-st_global *ad)
-{
-    while (li != NULL){
         if (li->on_screen == true)
-            print_planet_lil(li, window, ad);
+            print_planet_normal(li, window, ad);
         li = li->next;
     }
 }

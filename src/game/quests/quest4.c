@@ -9,12 +9,15 @@
 
 void display_fourth_message(st_global *ad)
 {
+    char *str = "Great job! you now know of quite a few ways to gain XP, you "
+    "can kill ennemies, colonise planets, buy modules on your colonised "
+    "planets or complete quests. Your next job will be to get enough XP to "
+    "levelup to level 5. Don't forget to upgrade your stats once you have "
+    "enough XP because your XP will be reset once you upgrade one of your "
+    "stats.";
+
     if (ad->var_game->created == true) {
-        add_message(ad, "Great job! you now know of quite a few ways to gain \
-XP, you can kill ennemies, colonise planets, buy modules on your colonised \
-planets or complete quests. Your next job is to get enough XP to levelup to \
-level 5. Don't forget to upgrade your stats once you have enough XP because \
-your XP will be reset when you levelup.", 6000);
+        add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
 }
@@ -23,7 +26,7 @@ void start_quest4(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
     int x = 0;
-    
+
     if (ad->var_game->lvl == 5)
         ad->var_game->quest4_completed = true;
     if (ad->var_game->quest4_completed && ad->var_game->quests == 4)

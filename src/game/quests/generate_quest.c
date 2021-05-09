@@ -21,22 +21,27 @@ bool rand_pl_quest(list_planet pl)
     return (false);
 }
 
+void generate_random_quest2(list_planet *pl, st_global *ad, bool *is_good)
+{
+    while ((*pl) != NULL) {
+        if ((*pl)->planet.colonized) {
+            (*pl)->planet.quest = true;
+            *is_good = true;
+        }
+        //is_good = rand_pl_quest(pl);
+        if (*is_good)
+            break;
+        (*pl) = (*pl)->next;
+    }
+}
+
 void generate_random_quest(list_planet *planet, st_global *ad)
 {
     bool is_good = false;
     list_planet pl = *planet;
 
     while (!is_good) {
-        while (pl != NULL) {
-            if (pl->planet.colonized) {
-                pl->planet.quest = true;
-                is_good = true;
-            }
-            //is_good = rand_pl_quest(pl);
-            if (is_good)
-                break;
-            pl = pl->next;
-        }
+        generate_random_quest2(&pl, ad, &is_good);
         if (is_good)
             break;
         pl = *planet;

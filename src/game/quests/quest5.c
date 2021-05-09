@@ -9,8 +9,18 @@
 
 void display_fifth_message(st_global *ad)
 {
+    char *str = "Good job! Now that all of your modules are upgraded you should"
+    "be able to regenerate health at your base and gain some passive income"
+    " aswell as some ressources now and then. Your next objective will be to "
+    "get enough ressources to colonise another planet. The ressources needed "
+    "for your second colony are 3 of each material and every time you craft a "
+    "new colony the price of the next one will increase by one of each material"
+    ". Your next objective will be to craft a colony. Gather all the needed "
+    "ressources and press the 'J' key to craft a colony. Come back once this is"
+    " done.";
+
     if (ad->var_game->created == true) {
-        add_message(ad, "MOUSTACHE A EVAN BITE ITALIANO", 6000);
+        add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
 }
@@ -19,7 +29,7 @@ void start_quest5(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
     int x = 0;
-    
+
     if (ad->ressources[3].nb == 1)
         ad->var_game->quest5_completed = true;
     if (ad->var_game->quest5_completed && ad->var_game->quests == 5)

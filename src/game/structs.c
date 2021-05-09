@@ -7,112 +7,22 @@
 
 #include "my_rpg.h"
 
-paralax_t *paralax_ini(void)
+void ship_ini_2(ship_t *ship)
 {
-    paralax_t *paralax = malloc(sizeof(paralax_t));
-
-    paralax->nebula = sfSprite_create();
-    paralax->nebulat = sfTexture_createFromFile("ressources/space.png", NULL);
-    paralax->paralaxr = (sfIntRect) {.height = HEIGHT, .left = WIDTH, .top = HEIGHT,
-    .width = WIDTH};
-    paralax->paralo = sfClock_create();
-    paralax->star = sfSprite_create();
-    paralax->start = sfTexture_createFromFile("ressources/stars.png", NULL);
-    paralax->starr = (sfIntRect) {.height = HEIGHT, .left = WIDTH, .top = HEIGHT,
-    .width = WIDTH};
-    paralax->staro = sfClock_create();
-    paralax->clock = sfClock_create();
-    paralax->nebulapos = (sfVector2f) {0, 0};
-    paralax->starpos = (sfVector2f) {0, 0};
-    paralax->i = 0;
-    paralax->j = 0;
-    paralax->k = 0;
-    paralax->l = 0;
-    return (paralax);
-}
-
-structs_t *all_dat(void)
-{
-    structs_t *window = malloc(sizeof(structs_t));
-
-    window->mode.width = WIDTH;
-    window->mode.height = HEIGHT;
-    window->mode.bitsPerPixel = 32;
-    window->window = sfRenderWindow_create(window->mode, "my_rpg",
-    sfTitlebar | sfClose, NULL);
-    sfRenderWindow_setPosition(window->window, \
-    (sfVector2i){(sfVideoMode_getDesktopMode().width / 2) - \
-    (window->mode.width / 2), ((sfVideoMode_getDesktopMode().height / 2) - \
-    (window->mode.height / 2))});
-    window->music = sfMusic_createFromFile("ressources/loop.ogg");
-    window->screen = 1;
-    window->music_volume = 100.0;
-    window->width_volume_pause = 253;
-    window->width_volume = 506;
-    window->sfx_volume = 100;
-    window->width_sfx_pause = 253;
-    window->width_sfx = 506;
-    window->bool_load = true;
-    window->bool_game = true;
-    window->bool_menu = true;
-    window->sfx = generate_sound();
-    return (window);
-}
-
-st_game_var *ini_var()
-{
-    st_game_var *var = malloc(sizeof(*var));
-
-    var->special_atk = false;
-    var->range = 30;
-    var->speed = 5;
-    var->max_health = 200;
-    var->attack = 10;
-    var->life = 200;
-    var->max_money = 10000;
-    var->lvl = 0;
-    var->max_xp = 100;
-    var->price_sett = 3;
-    var->xp = 90;
-    var->craft = false;
-    var->reload_time = 0.18;
-    var->quests = 1;
-    var->mul_xp = 1.0;
-    var->is_boss = true;
-    var->boss_generated = false;
-    var->created = false;
-    var->msg = false;
-    var->msg2 = false;
-    var->kills = 0;
-    var->quest2_completed = false;
-    var->msg3 = false;
-    var->quest3_completed = false;
-    var->msg4 = false;
-    var->quest4_completed = false;
-    var->msg5 = false;
-    var->quest5_completed = false;
-    var->msg6 = false;
-    var->quest6_completed = false;
-    var->destroy_boss = false;
-    return (var);
-}
-
-void generate_paths(ship_t *ship)
-{
-    ship->path = my_malloc(sizeof(char *) * 5);
-    ship->path_t = my_malloc(sizeof(char *) * 5);
-
-    ship->path[0] = "contents/ships_game/blue.png";
-    ship->path[1] = "contents/ships_game/orange.png";
-    ship->path[2] = "contents/ships_game/dark.png";
-    ship->path[3] = "contents/ships_game/metalic.png";
-    ship->path[4] = "contents/ships_game/green.png";
-    ship->path_t[0] = "contents/ships_game/blue_t.png";
-    ship->path_t[1] = "contents/ships_game/orange_t.png";
-    ship->path_t[2] = "contents/ships_game/dark_t.png";
-    ship->path_t[3] = "contents/ships_game/metalic_t.png";
-    ship->path_t[4] = "contents/ships_game/green_t.png";
-    ship->ship_choosen = 0;
+    ship->firstcollisionD = false;
+    ship->firstcollisionS = false;
+    ship->firstcollisionQ = false;
+    ship->collisionZlim = false;
+    ship->collisionDlim = false;
+    ship->collisionSlim = false;
+    ship->collisionQlim = false;
+    ship->firstcollisionZlim = false;
+    ship->firstcollisionDlim = false;
+    ship->firstcollisionSlim = false;
+    ship->firstcollisionQlim = false;
+    ship->acceleration = (sfVector2f){0, 0};
+    ship->velocity = (sfVector2f){0, 0};
+    generate_paths(ship);
 }
 
 ship_t *ship_ini(void)
@@ -133,21 +43,45 @@ ship_t *ship_ini(void)
     ship->collisionS = false;
     ship->collisionQ = false;
     ship->firstcollisionZ = false;
-    ship->firstcollisionD = false;
-    ship->firstcollisionS = false;
-    ship->firstcollisionQ = false;
-    ship->collisionZlim = false;
-    ship->collisionDlim = false;
-    ship->collisionSlim = false;
-    ship->collisionQlim = false;
-    ship->firstcollisionZlim = false;
-    ship->firstcollisionDlim = false;
-    ship->firstcollisionSlim = false;
-    ship->firstcollisionQlim = false;
-    ship->acceleration = (sfVector2f){0, 0};
-    ship->velocity = (sfVector2f){0, 0};
-    generate_paths(ship);
+    ship_ini_2(ship);
     return (ship);
+}
+
+void ini_3(st_global *all)
+{
+    all->var_game = ini_var();
+    all->circle = sfCircleShape_create();
+    all->big_msg_generated = false;
+    all->text = generate_message();
+    sfCircleShape_setRadius(all->circle, 500);
+    sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
+    sfCircleShape_setFillColor(all->circle, sfTransparent);
+    sfCircleShape_setOutlineThickness(all->circle, 10);
+    all->circle_health;
+    all->circle_health = sfCircleShape_create();
+    all->particle = generate_particle();
+    sfCircleShape_setRadius(all->circle_health, 500);
+    sfCircleShape_setOrigin(all->circle_health, (sfVector2f){500, 500});
+    sfCircleShape_setFillColor(all->circle_health, sfTransparent);
+    sfCircleShape_setOutlineThickness(all->circle_health, 10);
+}
+
+void ini_2(st_global *all)
+{
+    all->var->drop_cl = my_malloc(sizeof(*all->var->drop_cl));
+    all->var->drop_cl->clock = sfClock_create();
+    all->enn_texture = enn_textures();
+    all->texture = texture_ini();
+    all->key = key_ini(all);
+    all->enn_damage = 5;
+    all->money = money_ini();
+    all->win = false;
+    all->quest = item_ini();
+    all->items = generate_items();
+    all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
+    all->ressources = generate_inventory(all);
+    all->drop = NULL;
+    ini_3(all);
 }
 
 st_global *ini(void)
@@ -169,45 +103,6 @@ st_global *ini(void)
     sfText_setFont(all->other->planet_text, all->other->font);
     all->var = malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
-    all->var->drop_cl = my_malloc(sizeof(*all->var->drop_cl));
-    all->var->drop_cl->clock = sfClock_create();
-    all->enn_texture = enn_textures();
-    all->texture = texture_ini();
-    all->key = key_ini(all);
-    all->enn_damage = 5;
-    all->money = money_ini();
-    all->win = false;
-    all->quest = item_ini();
-    all->items = generate_items();
-    all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
-    all->ressources = generate_inventory(all);
-    all->drop = NULL;
-    all->var_game = ini_var();
-    all->circle = sfCircleShape_create();
-    all->big_msg_generated = false;
-    all->text = generate_message();
-    sfCircleShape_setRadius(all->circle, 500);
-    sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
-    sfCircleShape_setFillColor(all->circle, sfTransparent);
-    sfCircleShape_setOutlineThickness(all->circle, 10);
-    all->circle_health;
-    all->circle_health = sfCircleShape_create();
-    all->particle = generate_particle();
-    sfCircleShape_setRadius(all->circle_health, 500);
-    sfCircleShape_setOrigin(all->circle_health, (sfVector2f){500, 500});
-    sfCircleShape_setFillColor(all->circle_health, sfTransparent);
-    sfCircleShape_setOutlineThickness(all->circle_health, 10);
+    ini_2(all);
     return (all);
-}
-
-void destroy_global(st_global *global)
-{
-    sfMusic_destroy(global->window->music);
-    destroy_ui(global->ui);
-    destroy_global_planet(global->planets);
-    if (global->var_game->boss_generated)
-        destroy_boss_fight(global);
-    destroy_sound(global->window->sfx);
-    destroy_message(global);
-    global = NULL;
 }
