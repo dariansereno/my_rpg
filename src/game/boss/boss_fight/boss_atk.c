@@ -7,6 +7,26 @@
 
 #include "my_rpg.h"
 
+int random_piped_five_part_2(void)
+{
+    int x = 2;
+
+    switch (x) {
+        case 2:
+        if (rand > 12 && rand <= 18)
+            return (3);
+        x++;
+    case 3:
+        if (rand > 18 && rand <= 24)
+            return (5);
+        x++;
+    case 4:
+        if (rand > 24)
+            return (4);
+        x++;
+    }
+}
+
 int random_piped_five(void)
 {
     int rand = random_between(1, 25);
@@ -22,17 +42,7 @@ int random_piped_five(void)
             return (2);
         x++;
     case 2:
-        if (rand > 12 && rand <= 18)
-            return (3);
-        x++;
-    case 3:
-        if (rand > 18 && rand <= 24)
-            return (4);
-        x++;
-    case 4:
-        if (rand > 24)
-            return (5);
-        x++;
+        return (random_piped_five_part_2());
     }
 }
 
