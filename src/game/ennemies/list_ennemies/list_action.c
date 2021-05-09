@@ -60,6 +60,7 @@ void move_ennemies(list_ennemies li, st_global *ad, st_planet pl)
     (float)pl.pos.y}, ad->ship->bshippos)) {
         clock_move_ennemies(li, ad);
         if (li->shootcl->seconds > 1) {
+            sfSound_play(ad->window->sfx->shoot);
             push_back_timer(&li->li_shoot, li->ennemies.pos,
             li->ennemies.dir);
             sfClock_restart(li->shootcl->clock);

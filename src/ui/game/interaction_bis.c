@@ -15,7 +15,7 @@ sfVector2f origin)
     sfSprite_setOrigin(selector->sprite, origin);
     sfSprite_setScale(selector->sprite, (sfVector2f){5, 5});
     sfRenderWindow_drawSprite(ad->window->window, selector->sprite
-    ,NULL);
+    , NULL);
 }
 
 char *create_planet_string(int index)

@@ -7,17 +7,18 @@
 
 void reverse_str(char str[], int len)
 {
-    int start, end;
+    int start;
+    int end;
     char temp;
 
-    for (start=0, end = len - 1; start < end; start++, end--) {
+    for (start = 0, end = len - 1; start < end; start++, end--) {
         temp = *(str + start);
         *(str + start) = *(str + end);
         *(str + end) = temp;
     }
 }
 
-char* itoa(int nb, char* str, int base)
+char *itoa(int nb, char* str, int base)
 {
     int i = 0;
     int is_neg = nb < 0 && base == 10 ? 1 : 0;
