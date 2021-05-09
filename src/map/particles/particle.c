@@ -9,7 +9,7 @@
 
 st_global_particle *generate_particle(void)
 {
-    st_global_particle *particle = malloc(sizeof(*particle));
+    st_global_particle *particle = my_malloc(sizeof(*particle));
 
     particle->clock = sfClock_create();
     particle->generation = sfClock_create();
