@@ -15,16 +15,7 @@ void display_planet_card(st_global *g)
         planets = g->planets->planets;
         sfRenderWindow_drawSprite(g->window->window, \
         g->ui->planet_card->mockup_s, NULL);
-        while (planets != NULL) {
-            if (planets->interact == true) {
-                sfSprite_setPosition(planets->planet.sprite, \
-                (sfVector2f){g->ship->viewrect.left + 965, \
-                g->ship->viewrect.top + 440});
-                sfRenderWindow_drawSprite(g->window->window, \
-                planets->planet.sprite, NULL);
-            }
-            planets = planets->next;
-        }
+        display_planet_card_bis(g, planets);
         planet_card_display_sprite_text(g);
     }
 }
@@ -66,4 +57,18 @@ void text_draw_planet_card(st_global *g)
     g->ui->planet_card->t_pres, NULL);
     sfRenderWindow_drawText(g->window->window, \
     g->ui->planet_card->title, NULL);
+}
+
+void display_planet_card_bis(st_global *g, list_planet planets)
+{
+    while (planets != NULL) {
+        if (planets->interact == true) {
+            sfSprite_setPosition(planets->planet.sprite, \
+            (sfVector2f){g->ship->viewrect.left + 965, \
+            g->ship->viewrect.top + 440});
+            sfRenderWindow_drawSprite(g->window->window, \
+            planets->planet.sprite, NULL);
+        }
+        planets = planets->next;
+    }
 }

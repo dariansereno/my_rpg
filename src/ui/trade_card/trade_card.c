@@ -29,6 +29,7 @@ void rect_trade_position(st_global *g)
 
 void set_init_position_trade(st_global *g)
 {
+    arrow_events_trade(g);
     sfSprite_setPosition(g->ui->trade_card->ui[0]->sprite, \
     (sfVector2f){1422, 548});
     sfSprite_setPosition(g->ui->trade_card->ui[1]->sprite, \
@@ -45,7 +46,6 @@ void display_trade_card(st_global *g)
 {
     g->ui->trade_card->counter = 3;
     if (g->ui->trade_card->existing && g->ui->end->existing == false) {
-        arrow_events_trade(g);
         set_init_position_trade(g);
         rect_trade_position(g);
         for (int i = 5; i >= 0; i--) {
@@ -103,7 +103,6 @@ void display_texts_trade_card(st_global *g, list_planet planets)
             NULL);
         }
         items_placement_trade_card(g, i, y, planets);
-        //ad->ressources[id + 1];
         y += 87;
     }
 }
