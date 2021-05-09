@@ -600,6 +600,8 @@
             void switch_volume_settings(st_global *g);
             void events_pause_up_bis(st_global *g);
             void events_pause_down_bis(st_global *g);
+        // EVENTS2.C
+            void check_pressed_enter_menu(st_global *g);
         // HOVER
             void hover(st_global *g);
         // SETTINGS

@@ -15,7 +15,7 @@ void display_message(st_global *ad)
     "ships, it would help us a lot and give us some time to prepare our"
     " troops...";
 
-    if (ad->var_game->created == true) {
+    if (ad->var_game->created == true && ad->var_game->quests == 1) {
         add_message(ad, str, 6000);
         ad->var_game->created = false;
     }

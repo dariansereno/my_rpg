@@ -54,26 +54,25 @@ void reindex_ennemies(list_ennemies *list)
 
 void move_ennemies(list_ennemies li, st_global *ad, st_planet pl)
 {
-        if (circle_contains(1200, (sfVector2f){(float)pl.pos.x,
-        (float)pl.pos.y},
-        li->ennemies.pos) && circle_contains(1200, (sfVector2f){(float)pl.pos.x,
-        (float)pl.pos.y}, ad->ship->bshippos)) {
-            clock_move_ennemies(li, ad);
-            if (li->shootcl->seconds > 1) {
-                push_back_timer(&li->li_shoot, li->ennemies.pos,
-                li->ennemies.dir);
-                sfClock_restart(li->shootcl->clock);
+    if (circle_contains(1200, (sfVector2f){(float)pl.pos.x,
+    (float)pl.pos.y},
+    li->ennemies.pos) && circle_contains(1200, (sfVector2f){(float)pl.pos.x,
+    (float)pl.pos.y}, ad->ship->bshippos)) {
+        clock_move_ennemies(li, ad);
+        if (li->shootcl->seconds > 1) {
+            push_back_timer(&li->li_shoot, li->ennemies.pos,
+            li->ennemies.dir);
+            sfClock_restart(li->shootcl->clock);
         }
-        print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
-        }
-        else
-            clock_move_ennemies_to_base(li, ad);
+    print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
+    } else
+        clock_move_ennemies_to_base(li, ad);
 }
 
 void print_ennemies_list(list_ennemies li, sfRenderWindow *window,
 st_global *ad, st_planet pl)
 {
-    while (li != NULL){
+    while (li != NULL) {
         li->shootcl->time = sfClock_getElapsedTime(li->shootcl->clock);
         li->shootcl->seconds = li->shootcl->time.microseconds / 1000000.0;
         move_ennemies(li, ad, pl);

@@ -26,7 +26,6 @@ list_ressources pop_back_ressources(list_ressources list)
         temp = temp->next;
     }
     buf->next = NULL;
-    // destroy_ressources(temp); a faire
     temp = NULL;
     return (list);
 }

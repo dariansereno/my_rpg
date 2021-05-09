@@ -15,7 +15,6 @@ planet_card_s *generate_planet_card(void)
     return (planet_card);
 }
 
-
 void create_planet_card(st_global *g, sfVector2f position_view, \
 list_planet planets)
 {

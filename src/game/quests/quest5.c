@@ -19,7 +19,7 @@ void display_fifth_message(st_global *ad)
     "ressources and press the 'J' key to craft a colony. Come back once this is"
     " done.";
 
-    if (ad->var_game->created == true) {
+    if (ad->var_game->created == true && ad->var_game->quests == 5) {
         add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
