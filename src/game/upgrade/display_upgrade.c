@@ -9,6 +9,8 @@
 
 void print_upgrade_fire_damage(st_global *g)
 {
+    if (g->upgrade->upgrade_tab[0] >= 3)
+        return;
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
     g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - 177});
     sfRenderWindow_drawSprite(g->window->window, \
@@ -28,6 +30,8 @@ void print_upgrade_fire_damage(st_global *g)
 
 void print_upgrade_fire_speed(st_global *g)
 {
+    if (g->upgrade->upgrade_tab[1] >= 3)
+        return;
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
     g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 2)});
     sfRenderWindow_drawSprite(g->window->window, \
@@ -47,6 +51,8 @@ void print_upgrade_fire_speed(st_global *g)
 
 void print_upgrade_speed(st_global *g)
 {
+    if (g->upgrade->upgrade_tab[2] >= 3)
+        return;
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
     g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 3)});
     sfRenderWindow_drawSprite(g->window->window, \
@@ -66,6 +72,8 @@ void print_upgrade_speed(st_global *g)
 
 void print_upgrade_health(st_global *g)
 {
+    if (g->upgrade->upgrade_tab[3] >= 3)
+        return;
     sfSprite_setPosition(g->ui->ui->upgrade->sprite, (sfVector2f){ \
     g->ship->viewrect.left + 10, g->ship->viewrect.top + HEIGHT - (177 * 4)});
     sfRenderWindow_drawSprite(g->window->window, \

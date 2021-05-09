@@ -33,6 +33,8 @@ bool is_on_planet(st_global *ad, sfVector2f object)
 
 bool is_on_boss(st_global *ad, sfVector2f object)
 {
+    if (!ad->var_game->boss_generated)
+        return (false);
     if (circle_contains(260, ad->boss->boss->pos, object))
         return (true);
     return (false);

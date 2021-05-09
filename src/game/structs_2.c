@@ -42,7 +42,7 @@ structs_t *all_dat(void)
 
 void ini_var_2(st_game_var *var)
 {
-    var->is_boss = true;
+    var->is_boss = false;
     var->boss_generated = false;
     var->created = false;
     var->msg = false;
@@ -58,6 +58,8 @@ void ini_var_2(st_game_var *var)
     var->msg6 = false;
     var->quest6_completed = false;
     var->destroy_boss = false;
+    var->died = false;
+    var->victory_clock = sfClock_create();
 }
 
 st_game_var *ini_var(void)
@@ -74,7 +76,7 @@ st_game_var *ini_var(void)
     var->lvl = 0;
     var->max_xp = 100;
     var->price_sett = 3;
-    var->xp = 90;
+    var->xp = 0;
     var->craft = false;
     var->reload_time = 0.18;
     var->quests = 1;
@@ -99,5 +101,6 @@ void destroy_global(st_global *global)
     sfCircleShape_destroy(global->circle_health);
     for (int i = 0; i < 8; i++)
         sfTexture_destroy(global->enn_texture[i]);
+    sfClock_destroy(global->var_game->victory_clock);
     global = NULL;
 }
