@@ -83,12 +83,13 @@ void ini_2(st_global *all)
     all->font_inv = sfFont_createFromFile("contents/fonts/Minecraft.ttf");
     all->ressources = generate_inventory(all);
     all->drop = NULL;
+    all->msg_boss = false;
     ini_3(all);
 }
 
 st_global *ini(void)
 {
-    st_global *all = malloc(sizeof(st_global));
+    st_global *all = my_malloc(sizeof(st_global));
 
     all->upgrade = generate_upgrade();
     all->window = all_dat();
@@ -98,12 +99,12 @@ st_global *ini(void)
     all->ship = ship_ini();
     all->shoot = generate_shoot();
     all->ui = generate_ui();
-    all->other = malloc(sizeof(*all->other));
+    all->other = my_malloc(sizeof(*all->other));
     all->other->planet_text = sfText_create();
     all->other->font = sfFont_createFromFile
     ("contents/fonts/dogica/TTF/dogica.ttf");
     sfText_setFont(all->other->planet_text, all->other->font);
-    all->var = malloc(sizeof(*all->var));
+    all->var = my_malloc(sizeof(*all->var));
     all->var->max_ennemies = 3;
     ini_2(all);
     return (all);

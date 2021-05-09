@@ -76,7 +76,7 @@ void collision_shoot(st_global *ad, list_timer *shoot)
 {
     list_planet pl = ad->planets->planets;
 
-    if (!ad->var_game->destroy_boss)
+    if (ad->var_game->boss_generated && !ad->var_game->destroy_boss)
         check_boss(ad, shoot);
     while (pl != NULL) {
         if (pl->on_screen == true && pl->planet.kind == TECH)
