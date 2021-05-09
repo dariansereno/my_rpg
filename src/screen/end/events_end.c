@@ -17,6 +17,7 @@ void end_rect_left(st_global *g)
         end_rect_left_2(g);
     }
 }
+
 void end_rect_right(st_global *g)
 {
     if (g->window->event.type == sfEvtKeyPressed && \

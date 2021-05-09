@@ -41,10 +41,7 @@ void get_global_bounds_settings(st_global *g)
         if (sfFloatRect_contains(&g->ui->settings->bounds[i], \
         g->window->event.mouseButton.x + 560 + g->ship->viewrect.left,
         g->window->event.mouseButton.y + g->ship->viewrect.top)) {
-            if (i == 0)
-                g->ui->settings->cancel->rect.left = 0;
-            else if (i == 1)
-                g->ui->settings->save->rect.left = 0;
+            more_settings_event(g, i);
             g->ui->settings->settings = i + 1;
         }
 }
@@ -93,12 +90,8 @@ void animate_buttons_settings(st_global *g)
     for (int i = 0; i < 2; i++)
         if (sfFloatRect_contains(&g->ui->settings->bounds[i], \
         g->window->event.mouseButton.x + 560 + g->ship->viewrect.left,
-        g->window->event.mouseButton.y + g->ship->viewrect.top)) {
-            if (i == 0)
-                g->ui->settings->cancel->rect.left = 141;
-            else if (i == 1)
-                g->ui->settings->save->rect.left = 141;
-        }
+        g->window->event.mouseButton.y + g->ship->viewrect.top))
+            more_button_pressed_event(g, i);
     sfSprite_setTextureRect(g->ui->settings->cancel->sprite, \
     g->ui->settings->cancel->rect);
     sfSprite_setTextureRect(g->ui->settings->save->sprite, \

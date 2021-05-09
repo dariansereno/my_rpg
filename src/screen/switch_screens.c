@@ -26,7 +26,7 @@ void switch_screen_two(st_global *g)
         sfView_destroy(g->ui->menu->view);
         g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
         {g->ship->viewrect.left + 560, \
-        g->ship->viewrect.top, 800, 1080});
+        g->ship->viewrect.top, 700, 1000});
         g->window->bool_menu = false;
     }
 }
@@ -56,9 +56,10 @@ void switch_screen_five(st_global *g)
         sfRenderWindow_destroy(g->window->window);
         g->window->window = sfRenderWindow_create(mode, "Space Civ",
         sfTitlebar | sfClose | sfResize, NULL);
+        sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
         g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
         {g->ship->viewrect.left + 560, \
-        g->ship->viewrect.top, 800, 1080});
+        g->ship->viewrect.top, 700, 1000});
         g->window->bool_menu = false;
     }
 }
