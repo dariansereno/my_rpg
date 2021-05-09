@@ -7,7 +7,8 @@
 
 #include "my_rpg.h"
 
-void item_position_trade_card_one(st_global *g, int i, int x, list_planet planets)
+void item_position_trade_card_one(st_global *g, int i, int x, list_planet
+planets)
 {
     if (planets->trade[i]->id == 1 && i == 0) {
         sfSprite_setPosition(g->items[1]->sprite, (sfVector2f)
@@ -29,7 +30,8 @@ void item_position_trade_card_one(st_global *g, int i, int x, list_planet planet
     }
 }
 
-void item_position_trade_card_two(st_global *g, int i, int x, list_planet planets)
+void item_position_trade_card_two(st_global *g, int i, int x, list_planet
+planets)
 {
     if (planets->trade[i]->id == 2 && i == 0) {
         sfSprite_setPosition(g->items[2]->sprite, (sfVector2f)
@@ -51,7 +53,8 @@ void item_position_trade_card_two(st_global *g, int i, int x, list_planet planet
     }
 }
 
-void item_position_trade_card_three(st_global *g, int i, int x, list_planet planets)
+void item_position_trade_card_three(st_global *g, int i, int x, list_planet
+planets)
 {
     if (planets->trade[i]->id == 0 && i == 0) {
         sfSprite_setPosition(g->items[0]->sprite, (sfVector2f)

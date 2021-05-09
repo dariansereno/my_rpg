@@ -41,8 +41,8 @@ sfVector2f target_indicator(st_global *ad, sfVector2f obj)
     slope = tar_ctr.y / tar_ctr.x;
     pad_size = (sfVector2f){WIDTH - 100, HEIGHT - 100};
     indicator = target_indicator_2(tar_ctr, pad_size, slope);
-    indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left + (WIDTH / 2),
-    indicator.y + ad->ship->viewrect.top + (HEIGHT / 2)};
+    indicator = (sfVector2f){indicator.x + ad->ship->viewrect.left +
+    (WIDTH / 2), indicator.y + ad->ship->viewrect.top + (HEIGHT / 2)};
     return (indicator);
 }
 

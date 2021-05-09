@@ -11,19 +11,19 @@ void rect_module_position(st_global *g)
 {
     switch (g->ui->module_card->pos_rect) {
         case 1:
-            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)\
+            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)
             {388, 469});
             break;
         case 2:
-            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)\
+            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)
             {388, 556});
             break;
         case 3:
-            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)\
+            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)
             {388, 641});
             break;
         case 4:
-            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)\
+            sfSprite_setPosition(g->ui->module_card->ui[1]->sprite, (sfVector2f)
             {388, 727});
             break;
         default:
