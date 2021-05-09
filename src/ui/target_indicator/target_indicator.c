@@ -18,7 +18,6 @@ float slope)
     else if (tar_ctr.y > 0)
         indicator = (sfVector2f){(pad_size.y / 2) / slope,
         (pad_size.y / 2)};
-
     if (indicator.x < -pad_size.x / 2)
         indicator = (sfVector2f){-pad_size.x / 2, slope * -pad_size.x / 2};
     else if (indicator.x > pad_size.x / 2)
