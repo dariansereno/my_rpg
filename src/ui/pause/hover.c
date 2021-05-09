@@ -9,8 +9,8 @@
 
 void hover(st_global *g)
 {
-    int x = sfMouse_getPosition(g->window->window).x;
-    int y = sfMouse_getPosition(g->window->window).y;
+    int x = sfMouse_getPositionRenderWindow(g->window->window).x;
+    int y = sfMouse_getPositionRenderWindow(g->window->window).y;
 
     if (x >= 808 && y >= 315 && x <= 1112 && y <= 387)
         g->ui->pause->pos_rect = 1;

@@ -24,9 +24,6 @@ void display_fourth_message(st_global *ad)
 
 void start_quest4(st_global *ad)
 {
-    list_planet pl = ad->planets->planets;
-    int x = 0;
-
     if (ad->var_game->lvl == 5)
         ad->var_game->quest4_completed = true;
     if (ad->var_game->quest4_completed && ad->var_game->quests == 4)
@@ -43,7 +40,6 @@ void start_quest4(st_global *ad)
 void quest_4_initialise(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-    bool is_done = false;
 
     if (ad->var_game->quests != 4)
         return;

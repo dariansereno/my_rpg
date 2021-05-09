@@ -25,8 +25,6 @@ void display_sixth_message(st_global *ad)
 
 void start_quest6(st_global *ad)
 {
-    list_planet pl = ad->planets->planets;
-
     if (ad->var_game->quest6_completed && ad->var_game->quests == 6)
         display_big_message("       Gift Received!\n +100 XP +500 credits"
         , 8, ad, sfYellow);
@@ -43,7 +41,6 @@ void start_quest6(st_global *ad)
 void quest_6_initialise(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-    bool is_done = false;
 
     if (ad->var_game->quests != 6)
         return;

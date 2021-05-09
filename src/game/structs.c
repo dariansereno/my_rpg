@@ -57,7 +57,6 @@ void ini_3(st_global *all)
     sfCircleShape_setOrigin(all->circle, (sfVector2f){500, 500});
     sfCircleShape_setFillColor(all->circle, sfTransparent);
     sfCircleShape_setOutlineThickness(all->circle, 10);
-    all->circle_health;
     all->circle_health = sfCircleShape_create();
     all->particle = generate_particle();
     sfCircleShape_setRadius(all->circle_health, 500);

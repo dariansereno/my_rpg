@@ -53,8 +53,6 @@ st_ennemies generate_ennemies(st_global *ad, list_planet planet)
 
 void clock_ennemies_generation(list_planet li, st_global *ad)
 {
-    st_ennemies *ennemies;
-
     li->spawning.time = sfClock_getElapsedTime(li->spawning.clock);
     li->spawning.seconds = li->spawning.time.microseconds / 1000000.0;
     if (li->spawning.seconds > li->ennemies_spawn) {
