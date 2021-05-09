@@ -32,9 +32,7 @@ void atk_queue_boss(st_global *ad)
         ad->boss->current = ad->boss->atk_li;
         if (ad->boss->current != NULL){
             ad->boss->atk_li = pop_front_boss(ad->boss->atk_li);
-            sfClock_destroy(ad->boss->current->time->clock);
-            ad->boss->current->time->clock = sfClock_create();
-            sfClock_restart(ad->boss->current->time->clock);
+            sfClock_restart(ad->boss->duration->clock);
         }
     }
     throw_attack(ad);

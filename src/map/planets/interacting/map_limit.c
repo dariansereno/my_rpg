@@ -23,7 +23,7 @@ sfVertexArray *generate_line(sfVector2f pos1, sfVector2f pos2, sfColor color)
     return (array);
 }
 
-sfVertexArray **init_limit_map()
+sfVertexArray **init_limit_map(void)
 {
     sfVertexArray **lines = my_malloc(sizeof(sfVertexArray *) * 4);
 

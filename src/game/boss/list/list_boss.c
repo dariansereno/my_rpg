@@ -24,8 +24,6 @@ void push_back_boss(list_boss *li, int duration, int atk_type)
 
     node->duration = duration;
     node->type = atk_type;
-    node->time = malloc(sizeof(*node->time));
-    node->time->clock = sfClock_create();
     node->next = NULL;
     if (*li == NULL)
         *li = node;
@@ -53,11 +51,9 @@ list_boss pop_front_boss(list_boss li)
 
 void destroy_list_boss(list_boss *li)
 {
-    while (*li != NULL)
+    while ((*li) != NULL)
         *li = pop_front_boss(*li);
     if (*li != NULL) {
-        sfClock_destroy((*li)->time->clock);
-        free((*li)->time);
         *li = NULL;
     }
 }

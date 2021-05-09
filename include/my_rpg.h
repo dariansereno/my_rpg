@@ -129,6 +129,8 @@
             void change_key_press(st_global *ad);
             void last_key_pressed(st_global *ad);
             void plus_key_change(st_global *ad);
+            void generate_key_pressed(st_global *ad);
+            void generate_last_key_pressed(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
         // MORT_INTERACT.C
@@ -143,6 +145,7 @@
                 int random_nb_ressources(void);
                 int random_xp(st_global *ad);
             // LIST DROP
+                void destroy_list_drop(list_drop *li);
                 void pop_position_drop(list_drop *list, int index);
                 void push_back_drop(list_drop *li, st_drop drop);
                 void print_list_drop(list_drop *li, st_global *ad);
@@ -180,6 +183,7 @@
             bool is_on_ennemies(st_global *ad, list_ennemies ennemies,
             sfVector2f object);
         // LIST
+            void destroy_ennemies_list(list_ennemies *en);
             void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);
             void print_ennemies_list_pos(list_ennemies li);
             int size_list_ennemies(list_ennemies li);
@@ -269,6 +273,7 @@
         st_global_particle *generate_particle(void);
         void push_back_particle(list_particle *li, st_global_particle *g,
         sfVector2f pos);
+        void destroy_list_particle(list_particle *li);
         void add_particles(st_global *ad);
         int size_list_particle(list_particle li);
         void print_list_particle(list_particle *li, st_global *ad);
@@ -279,12 +284,14 @@
         void reindex_particle(list_particle *li);
     // SPACE_OBJ
         st_global_spaceobj *generate_space_obj(void);
+        void destroy_list_spaceobj(list_spaceobj *li);
         void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id);
         void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
         void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g);
         void print_spaceobj_list(list_spaceobj li, sfRenderWindow *window,
         st_global *ad);
         void display_on_view_spaceobj(st_global *ad);
+        void destroy_spaceobj(st_global_spaceobj *obj);
     // COLONISATION
         // GENERATE_COLONISATION.C
             void generate_random_colonised(list_planet *planet, st_global *ad);
@@ -296,6 +303,8 @@
             void print_can_trade(st_global *ad);
             void print_can_quest(st_global *ad);
             void colonise_planet(st_global *ad);
+        // PRINT_CAN_COLONISE.C
+            int check_can_colonise_text(st_global *ad, list_planet pl, int print);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
@@ -332,7 +341,7 @@
             void effect_health_module(st_global *ad);
     // GENERATION
         // DESTROY
-            void destroy_planet(list_elem_planet *planet);
+            void destroy_planet(list_planet pl);
             void destroy_global_planet(st_planet_global *planets);
         // GENERATION_MAP.C
             st_planet_global *generate_all_map(void);
@@ -441,6 +450,7 @@
             void boss_appear(st_global *ad);
             void display_boss_bg(st_global *ad);
             void boss_life(st_global *g);
+            void destroy_li_shoot_boss(list_timer_b *li);
             void destroy_boss(st_boss *boss);
             void rect_set_boss(st_global *g);
             void atk_queue_boss(st_global *ad);
@@ -471,6 +481,8 @@
                 void destroy_list_boss(list_boss *li);
                 void destroy_boss_fight(st_global *ad);
             // LIST BOSS SHOOT
+                list_timer pop_front_timer(list_timer li);
+                void destroy_list_timer(list_timer *li);
                 void print_list_explo_lil_boss(list_timer *li, st_global *ad);
                 void print_list_explo_boss(list_timer *li, st_global *ad);
                 int size_list_timer_b(list_timer_b li);
