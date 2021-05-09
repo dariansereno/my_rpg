@@ -29,7 +29,7 @@ void switch_pause_settings(st_global *g)
 
 void volume_top_less(st_global *g, int x, int y)
 {
-    if (x >= 772 && y >= 374 && x <= 826 && y <= 402 && \
+    if (x >= 762 && y >= 354 && x <= 826 && y <= 402 && \
     g->ui->pause_settings->ui[2]->rect.width <= 253) {
         sfSound_play(g->window->sfx->click_vol);
         g->ui->pause_settings->ui[2]->rect.width -= 26;
@@ -44,7 +44,7 @@ void volume_top_less(st_global *g, int x, int y)
 
 void volume_top_more(st_global *g, int x, int y)
 {
-    if (x >= 1116 && y >= 366 && x <= 1155 && y <= 400 && \
+    if (x >= 1084 && y >= 348 && x <= 1155 && y <= 400 && \
     g->ui->pause_settings->ui[2]->rect.width <= 253) {
         sfSound_play(g->window->sfx->click_vol);
         if (g->ui->pause_settings->ui[2]->rect.width < 13) {
@@ -63,7 +63,7 @@ void volume_top_more(st_global *g, int x, int y)
 
 void volume_bottom_less(st_global *g, int x, int y)
 {
-    if (x >= 782 && y >= 548 && x <= 821 && y <= 574 && \
+    if (x >= 761 && y >= 511 && x <= 821 && y <= 574 && \
     g->ui->pause_settings->ui[3]->rect.width <= 253) {
         sfSound_play(g->window->sfx->click_vol);
         g->ui->pause_settings->ui[3]->rect.width -= 26;
@@ -78,7 +78,7 @@ void volume_bottom_less(st_global *g, int x, int y)
 
 void volume_bottom_more(st_global *g, int x, int y)
 {
-    if (x >= 1116 && y >= 546 && x <= 1155 && y <= 578 && \
+    if (x >= 1086 && y >= 511 && x <= 1155 && y <= 578 && \
     g->ui->pause_settings->ui[3]->rect.width <= 253) {
         sfSound_play(g->window->sfx->click_vol);
         if (g->ui->pause_settings->ui[3]->rect.width < 13) {
