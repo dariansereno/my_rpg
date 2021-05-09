@@ -38,7 +38,6 @@ void start_quest1(st_global *ad)
 void quest_1_initialise(st_global *ad)
 {
     list_planet pl = ad->planets->planets;
-    bool is_done = false;
 
     if (ad->var_game->quests != 1)
         return;
