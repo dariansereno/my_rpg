@@ -303,6 +303,8 @@
             void print_can_trade(st_global *ad);
             void print_can_quest(st_global *ad);
             void colonise_planet(st_global *ad);
+        // PRINT_CAN_COLONISE.C
+            int check_can_colonise_text(st_global *ad, list_planet pl, int print);
     //ANIMATION
         // ANIMATION.C
             void animate_planets(st_global *ad);
@@ -439,6 +441,8 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
+            void display_interaction_boss(st_global *ad, sfVector2f disp, \
+            list_planet planets, int max);
         // 
             int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);

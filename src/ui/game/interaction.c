@@ -7,31 +7,6 @@
 
 #include "my_rpg.h"
 
-void display_selector(st_object *selector, st_global *ad, list_planet planets,
-sfVector2f origin)
-{
-    sfSprite_setPosition(selector->sprite, (sfVector2f)
-    {(float)planets->planet.pos.x, (float)planets->planet.pos.y});
-    sfSprite_setOrigin(selector->sprite, origin);
-    sfSprite_setScale(selector->sprite, (sfVector2f){5, 5});
-    sfRenderWindow_drawSprite(ad->window->window, selector->sprite
-    ,NULL);
-}
-
-char *create_planet_string(int index)
-{
-    char *str = "Entity n.";
-    char *nb = int_to_str(index);
-    char *res = my_malloc(sizeof(char) * (my_strlen(str) + my_strlen(nb) + 1));
-
-    res[0] = '\0';
-    if (index == 0)
-        return ("Entity n.0");
-    res = my_strcat(res, str);
-    res = my_strcat(res, nb);
-    return (res);
-}
-
 void display_planet_text(list_planet planets, st_global *ad)
 {
     create_planet_string(planets->index);
@@ -86,20 +61,8 @@ void display_interaction(st_global *ad)
     list_planet selected = NULL;
 
     while (planets != NULL) {
-        if (planets->can_interact == true) {
-            disp.x = ad->ship->viewrect.left + 1750;
-            disp.y = ad->ship->viewrect.top + 50;
-            sfSprite_setPosition(ad->ui->interacting->sprite, disp);
-            sfSprite_setScale(ad->ui->interacting->sprite, (sfVector2f){7, 7});
-            sfRenderWindow_drawSprite(ad->window->window,
-            ad->ui->interacting->sprite, NULL);
-            if (abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
-            abs(planets->planet.pos.y - (int)ad->ship->bshippos.y) < max){
-                max = abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
-                abs(planets->planet.pos.y - (int)ad->ship->bshippos.y);
-                selected = planets;
-            }
-        }
+        if (planets->can_interact == true)
+            selected = display_interaction_boss(ad, disp, planets, max);
         else {
             planets->can_interact = false;
             planets->interact = false;
@@ -108,4 +71,24 @@ void display_interaction(st_global *ad)
     }
     change_interact(ad, selected);
     selector_interaction(selected, ad);
+}
+
+list_planet display_interaction_boss(st_global *ad, sfVector2f disp, \
+list_planet planets, int max)
+{
+    list_planet selected = NULL;
+
+    disp.x = ad->ship->viewrect.left + 1750;
+    disp.y = ad->ship->viewrect.top + 50;
+    sfSprite_setPosition(ad->ui->interacting->sprite, disp);
+    sfSprite_setScale(ad->ui->interacting->sprite, (sfVector2f){7, 7});
+    sfRenderWindow_drawSprite(ad->window->window,
+    ad->ui->interacting->sprite, NULL);
+    if (abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
+    abs(planets->planet.pos.y - (int)ad->ship->bshippos.y) < max){
+        max = abs(planets->planet.pos.x - (int)ad->ship->bshippos.x) +
+        abs(planets->planet.pos.y - (int)ad->ship->bshippos.y);
+        selected = planets;
+    }
+    return (selected);
 }
