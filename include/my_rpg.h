@@ -441,8 +441,7 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
-            void display_interaction_boss(st_global *ad, sfVector2f disp, \
-            list_planet planets, int max);
+            list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, list_planet planets, int max);
         // 
             int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);
@@ -497,6 +496,7 @@
             void display_planet_card(st_global *g);
             void planet_card_display_sprite_text(st_global *g);
             void text_draw_planet_card(st_global *g);
+            void display_planet_card_bis(st_global *g, list_planet planets);
         // GENERATE_PLANET_CARD
             planet_card_s *generate_planet_card(void);
             void create_planet_card(st_global *g, sfVector2f position_view, \
@@ -565,6 +565,8 @@
         // ARROWS
             void arrow_events_module(st_global *g);
             void arrow_up_module_card(st_global *g);
+            void arrow_up_module_card(st_global *g);
+            void arrow_up_module(st_global *g);
     // UI_GAME
         // GENERATE_UI_GAME
             ui_game_s *generate_ui_game(void);
@@ -592,6 +594,8 @@
             void events_redirect_pause(st_global *g);
             void text_pause(st_global *g);
             void switch_volume_settings(st_global *g);
+            void events_pause_up_bis(st_global *g);
+            void events_pause_down_bis(st_global *g);
         // HOVER
             void hover(st_global *g);
         // SETTINGS
@@ -608,6 +612,8 @@
                 void events_pause_settings_left(st_global *g);
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
+                void events_pause_settings_right_bis(st_global *g);
+                void events_pause_settings_left_bis(st_global *g);
             // VOLUME_EVENTS_SETTINGS
                 void switch_pause_settings(st_global *g);
                 void volume_top_less(st_global *g, int x, int y);

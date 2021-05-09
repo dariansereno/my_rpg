@@ -39,15 +39,8 @@ void events_pause_settings_left(st_global *g)
     g->window->event.key.code == sfKeyLeft)
         g->ui->pause_settings->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyLeft) {
-        if (g->ui->pause_settings->pressed) {
-            if (g->ui->pause_settings->pos_rect >= 1)
-                g->ui->pause_settings->pos_rect -= 1;
-            if (g->ui->pause_settings->pos_rect == 0)
-                g->ui->pause_settings->pos_rect = 1;
-            g->ui->pause_settings->pressed = false;
-        }
-    }
+    g->window->event.key.code == sfKeyLeft)
+        events_pause_settings_left_bis(g);
 }
 
 void events_pause_settings_right(st_global *g)
@@ -57,13 +50,7 @@ void events_pause_settings_right(st_global *g)
         g->ui->pause_settings->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyRight) {
-        if (g->ui->pause_settings->pressed) {
-            if (g->ui->pause_settings->pos_rect <= 2)
-                g->ui->pause_settings->pos_rect += 1;
-            if (g->ui->pause_settings->pos_rect == 3)
-                g->ui->pause_settings->pos_rect = 2;
-            g->ui->pause_settings->pressed = false;
-        }
+        events_pause_settings_right_bis(g);
     }
 }
 

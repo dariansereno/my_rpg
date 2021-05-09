@@ -86,7 +86,5 @@ void items_placement_trade_card(st_global *g, int i, int y, list_planet planets)
     (sfVector2f){g->ship->viewrect.left + 945, g->ship->viewrect.top + y});
     sfRenderWindow_drawText(g->window->window, \
     g->ui->trade_card->text, NULL);
-    //sfRenderWindow_drawSprite(g->window->window, \
-    g->items[planets->trade[i]->id + 1], NULL);
     }
 }

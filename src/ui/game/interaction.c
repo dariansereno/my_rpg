@@ -53,27 +53,7 @@ void change_interact(st_global *ad, list_planet in)
     }
 }
 
-void display_interaction(st_global *ad)
-{
-    list_planet planets = ad->planets->planets;
-    sfVector2f disp = {0, 0};
-    int max = 10000;
-    list_planet selected = NULL;
-
-    while (planets != NULL) {
-        if (planets->can_interact == true)
-            selected = display_interaction_boss(ad, disp, planets, max);
-        else {
-            planets->can_interact = false;
-            planets->interact = false;
-        }
-        planets = planets->next;
-    }
-    change_interact(ad, selected);
-    selector_interaction(selected, ad);
-}
-
-list_planet display_interaction_boss(st_global *ad, sfVector2f disp, \
+list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, \
 list_planet planets, int max)
 {
     list_planet selected = NULL;
@@ -91,4 +71,24 @@ list_planet planets, int max)
         selected = planets;
     }
     return (selected);
+}
+
+void display_interaction(st_global *ad)
+{
+    list_planet planets = ad->planets->planets;
+    sfVector2f disp = {0, 0};
+    int max = 10000;
+    list_planet selected = NULL;
+
+    while (planets != NULL) {
+        if (planets->can_interact == true)
+            selected = display_interaction_boss_bis(ad, disp, planets, max);
+        else {
+            planets->can_interact = false;
+            planets->interact = false;
+        }
+        planets = planets->next;
+    }
+    change_interact(ad, selected);
+    selector_interaction(selected, ad);
 }
