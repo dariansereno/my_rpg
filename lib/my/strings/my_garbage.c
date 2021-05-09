@@ -40,7 +40,7 @@ my_garbage_t *add_ptr_to_garbage \
 void destroy_ptr_to_garbage(my_garbage_t *garbage)
 {
     my_garbage_t *node = NULL;
-    
+
     while (garbage != NULL) {
         node = garbage;
         free(garbage->mal);
