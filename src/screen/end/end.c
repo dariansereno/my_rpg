@@ -39,11 +39,6 @@ void position_end(st_global *g)
                 g->ui->end->existing = false;
                 break;
             case 2:
-                g->ui->end->existing = false;
-                g->window->bool_menu = true;
-                g->window->bool_game = true;
-                g->ui->end->pressed = false;
-                g->window->screen = 2;
                 switch_screen_five(g);
                 return;
             default:

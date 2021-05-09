@@ -47,6 +47,11 @@ void switch_screen_five(st_global *g)
 {
     sfVideoMode mode = {700, 1000, 32};
 
+    g->ui->end->existing = false;
+    g->window->bool_menu = true;
+    g->window->bool_game = true;
+    g->ui->end->pressed = false;
+    g->window->screen = 2;
     if (g->window->bool_menu) {
         sfRenderWindow_destroy(g->window->window);
         g->window->window = sfRenderWindow_create(mode, "Space Civ",
