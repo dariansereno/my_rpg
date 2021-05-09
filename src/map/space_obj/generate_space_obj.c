@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-sfTexture **generate_space_obj_texture()
+sfTexture **generate_space_obj_texture(void)
 {
     sfTexture **textures = my_malloc(sizeof(sfTexture *) * 16);
 
@@ -42,7 +42,7 @@ void generate_space_obj_li(list_spaceobj *li, st_global_spaceobj *objs)
     set_texture_spaceobjs(li, objs);
 }
 
-st_global_spaceobj *generate_space_obj()
+st_global_spaceobj *generate_space_obj(void)
 {
     st_global_spaceobj *space_obj = my_malloc(sizeof(*space_obj));
 
