@@ -21,6 +21,22 @@ sfVector2f pos)
     return ((sfVector2f){x, y});
 }
 
+void attack_3_action_push_shoot(st_global *ad)
+{
+    push_back_timer_b(&ad->boss->shoot, calculate_target_vector(ad->boss->
+    boss->pos, generate_point_on_circle(ad, 100, ad->boss->incr_speed_atk,
+    ad->boss->boss->pos), 5), ad->boss->boss->pos);
+    push_back_timer_b(&ad->boss->shoot, calculate_target_vector(ad->boss->
+    boss->pos, generate_point_on_circle(ad, 100, ad->boss->decr_speed_atk,
+    ad->boss->boss->pos), 5), ad->boss->boss->pos);
+    if (ad->boss->incr_speed_atk >= 1) {
+        ad->boss->incr_speed_atk = 0;
+        if (ad->boss->decr_speed_atk <= 0)
+            ad->boss->decr_speed_atk = 1;
+        sfClock_restart(ad->boss->reload);
+    }
+}
+
 void attack_3_action(st_global *ad)
 {
     sfTime time = sfClock_getElapsedTime(ad->boss->reload);
@@ -33,20 +49,8 @@ void attack_3_action(st_global *ad)
         ad->boss->decr_speed_atk -= 0.01;
         sfClock_restart(ad->boss->clock_g);
     }
-    if (second > 0.05) {
-        push_back_timer_b(&ad->boss->shoot,calculate_target_vector(ad->boss->
-        boss->pos, generate_point_on_circle(ad, 100, ad->boss->incr_speed_atk,
-        ad->boss->boss->pos), 5), ad->boss->boss->pos);
-        push_back_timer_b(&ad->boss->shoot, calculate_target_vector(ad->boss->
-        boss->pos, generate_point_on_circle(ad, 100, ad->boss->decr_speed_atk,
-        ad->boss->boss->pos), 5), ad->boss->boss->pos);
-        if (ad->boss->incr_speed_atk >= 1) {
-            ad->boss->incr_speed_atk = 0;
-        if (ad->boss->decr_speed_atk <= 0)
-            ad->boss->decr_speed_atk = 1;
-        sfClock_restart(ad->boss->reload);
-        }
-    }
+    if (second > 0.05)
+        attack_3_action_push_shoot(ad);
 }
 
 void attack_3(st_global *ad)

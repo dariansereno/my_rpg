@@ -7,10 +7,10 @@
 
 #include "my_rpg.h"
 
-sfTexture **enn_textures()
+sfTexture **enn_textures(void)
 {
     sfTexture **textures = malloc(sizeof(sfTexture *) * 8);
-    
+
     textures[0] = sfTexture_createFromFile("contents/sbr/et.png", NULL);
     textures[1] = sfTexture_createFromFile("contents/sbr/etr.png", NULL);
     textures[2] = sfTexture_createFromFile("contents/sbr/er.png", NULL);
@@ -42,7 +42,7 @@ float radius)
 st_ennemies generate_ennemies(st_global *ad, list_planet planet)
 {
     st_ennemies ennemies;
-    
+
     ennemies.pos = position_generate_near_planet(planet, ad,
     random_between(170, 260));
     ennemies.rect = (sfIntRect){0, 0, 48, 48};
