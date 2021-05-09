@@ -13,7 +13,8 @@ void display_boss_bg(st_global *ad)
         sfSprite_setScale(ad->boss->bg->sprite, (sfVector2f){2.3, 2.3});
         sfSprite_setPosition(ad->boss->bg->sprite, ad->boss->bg->pos);
         sfSprite_setOrigin(ad->boss->bg->sprite, (sfVector2f){480, 270});
-        sfRenderWindow_drawSprite(ad->window->window ,ad->boss->bg->sprite, NULL);
+        sfRenderWindow_drawSprite(ad->window->window, ad->boss->bg->sprite, \
+        NULL);
     }
 }
 
@@ -22,7 +23,7 @@ void display_boss(st_global *ad)
     sfSprite_setPosition(ad->boss->boss->sprite, ad->boss->boss->pos);
     sfSprite_setOrigin(ad->boss->boss->sprite, (sfVector2f){24, 24});
     sfSprite_setScale(ad->boss->boss->sprite, (sfVector2f){10, 10});
-    sfRenderWindow_drawSprite(ad->window->window ,ad->boss->boss->sprite, NULL);
+    sfRenderWindow_drawSprite(ad->window->window, ad->boss->boss->sprite, NULL);
 }
 
 void display_boss_target(st_global *ad, sfVector2f pos)

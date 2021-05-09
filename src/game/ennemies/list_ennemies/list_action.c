@@ -7,17 +7,22 @@
 
 #include "my_rpg.h"
 
-void push_back_ennemies(list_ennemies *li, st_ennemies ennemies)
+void push_back_copy_node(list_ennemies node, st_ennemies ennemies)
 {
-    list_ennemies node = malloc(sizeof(*node));
-    list_ennemies lastnode = *li;
-
     node->ennemies.pos = ennemies.pos;
     node->ennemies.spawn_pos = ennemies.pos;
     node->ennemies.rect = ennemies.rect;
     node->ennemies.sprite = ennemies.sprite;
     node->ennemies.life = 50;
     node->ennemies.dir = 0;
+}
+
+void push_back_ennemies(list_ennemies *li, st_ennemies ennemies)
+{
+    list_ennemies node = my_malloc(sizeof(*node));
+    list_ennemies lastnode = *li;
+
+    push_back_copy_node(node, ennemies);
     node->shootcl = my_malloc(sizeof(*node->shootcl));
     node->shootcl->clock = sfClock_create();
     node->li_shoot = NULL;
@@ -36,28 +41,6 @@ void push_back_ennemies(list_ennemies *li, st_ennemies ennemies)
     }
 }
 
-void pop_position_ennemies(list_ennemies *list, int index)
-{
-    list_ennemies temp = *list;
-    list_ennemies next = NULL;
-    int i = 0;
-
-    if (*list == NULL)
-        return;
-    if (index == 0) {
-        (*list) = temp->next;
-        free(temp);
-        return ;
-    }
-    for (int i = 0; temp != NULL && temp->next->index != index; i++)
-        temp = temp->next;
-    if (temp == NULL || temp->next == NULL)
-        return;
-    next = temp->next->next;
-    free(temp->next);
-    temp->next = next;
-}
-
 void reindex_ennemies(list_ennemies *list)
 {
     list_ennemies temp = *list;
@@ -69,37 +52,31 @@ void reindex_ennemies(list_ennemies *list)
     return ;
 }
 
-int size_list_ennemies(list_ennemies li)
+void move_ennemies(list_ennemies li, st_global *ad, st_planet pl)
 {
-    list_ennemies node = li;
-    int i = 0;
-    
-    if (node == NULL)
-        return (0);
-
-    for (; node != NULL; ++i){
-        node = node->next;}
-    return (i);
-}
-
-void print_ennemies_list(list_ennemies li, sfRenderWindow *window, st_global *ad,
-st_planet pl)
-{
-    while (li != NULL){
-        li->shootcl->time = sfClock_getElapsedTime(li->shootcl->clock);
-        li->shootcl->seconds = li->shootcl->time.microseconds / 1000000.0;
-        if (circle_contains(1200, (sfVector2f){(float)pl.pos.x, (float)pl.pos.y},
+        if (circle_contains(1200, (sfVector2f){(float)pl.pos.x,
+        (float)pl.pos.y},
         li->ennemies.pos) && circle_contains(1200, (sfVector2f){(float)pl.pos.x,
         (float)pl.pos.y}, ad->ship->bshippos)) {
             clock_move_ennemies(li, ad);
             if (li->shootcl->seconds > 1) {
-                push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
+                push_back_timer(&li->li_shoot, li->ennemies.pos,
+                li->ennemies.dir);
                 sfClock_restart(li->shootcl->clock);
         }
         print_list_shoot_enn(&li->li_shoot, ad->shoot->sprite_enn, ad);
         }
         else
             clock_move_ennemies_to_base(li, ad);
+}
+
+void print_ennemies_list(list_ennemies li, sfRenderWindow *window,
+st_global *ad, st_planet pl)
+{
+    while (li != NULL){
+        li->shootcl->time = sfClock_getElapsedTime(li->shootcl->clock);
+        li->shootcl->seconds = li->shootcl->time.microseconds / 1000000.0;
+        move_ennemies(li, ad, pl);
         sfSprite_setTextureRect(li->ennemies.sprite, li->ennemies.rect);
         sfSprite_setPosition(li->ennemies.sprite,
         (sfVector2f){(float)li->ennemies.pos.x, (float)li->ennemies.pos.y});
