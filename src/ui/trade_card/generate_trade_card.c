@@ -48,3 +48,13 @@ void destroy_trade_card(trade_card_s *trade_card)
     sfFont_destroy(trade_card->font);
     sfText_destroy(trade_card->text);
 }
+
+void arrow_texture_bis(st_global *g)
+{
+    if (g->ui->trade_card->first_cell > 1)
+        sfRenderWindow_drawSprite(g->window->window, \
+        g->ui->trade_card->ui[1]->sprite, NULL);
+    else
+        sfRenderWindow_drawSprite(g->window->window, \
+        g->ui->trade_card->ui[0]->sprite, NULL);
+}

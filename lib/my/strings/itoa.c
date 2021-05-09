@@ -18,7 +18,7 @@ void reverse_str(char str[], int len)
     }
 }
 
-char *itoa(int nb, char* str, int base)
+char *itoa(int nb, char *str, int base)
 {
     int i = 0;
     int is_neg = nb < 0 && base == 10 ? 1 : 0;

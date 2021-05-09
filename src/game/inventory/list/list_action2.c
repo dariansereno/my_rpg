@@ -15,7 +15,6 @@ list_ressources pop_back_ressources(list_ressources list)
     if (list == NULL)
         return (NULL);
     if (list->next == NULL) {
-        free(list);
         list = NULL;
         return (NULL);
     }

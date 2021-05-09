@@ -531,6 +531,7 @@
             trade_card_s *generate_trade_card(void);
             trade_card_s *generate_trade_card_bools(trade_card_s *trade_card);
             void destroy_trade_card(trade_card_s *trade_card);
+            void arrow_texture_bis(st_global *g);
         // ARROWS
             void arrow_events_trade_down(st_global *g);
             void arrow_events_trade_down_bis(st_global *g);
