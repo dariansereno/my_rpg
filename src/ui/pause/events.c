@@ -47,26 +47,7 @@ void events_redirect_pause(st_global *g)
 {
     if (g->key_pressed.Enter) {
         g->ui->pause->pressed = true;
-        switch (g->ui->pause->pos_rect) {
-            case 1:
-                g->ui->pause->existing = false;
-                g->window->bool_menu = true;
-                g->window->bool_game = true;
-                g->ui->pause->pressed = false;
-                g->window->screen = 2;
-                g->key_pressed.Enter = false;
-                switch_screen_five(g);
-                return;
-            case 2:
-                switch_volume_settings(g);
-                break;
-            case 3:
-                sfRenderWindow_close(g->window->window);
-                g->ui->pause->existing = false;
-                break;
-            default:
-                break;
-        }
+        check_pressed_enter_menu(g);
         g->ui->pause->pressed = false;
     }
 }

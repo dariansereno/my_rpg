@@ -16,7 +16,7 @@ void display_fourth_message(st_global *ad)
     "enough XP because your XP will be reset once you upgrade one of your "
     "stats.";
 
-    if (ad->var_game->created == true) {
+    if (ad->var_game->created == true && ad->var_game->quests == 4) {
         add_message(ad, str, 6000);
         ad->var_game->created = false;
     }

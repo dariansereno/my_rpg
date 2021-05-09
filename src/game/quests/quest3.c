@@ -15,7 +15,7 @@ void display_third_message(st_global *ad)
     "key. This will be your next objective. Come back to us once you have "
     "completed this task.";
 
-    if (ad->var_game->created == true) {
+    if (ad->var_game->created == true && ad->var_game->quests == 3) {
         add_message(ad, str, 6000);
         ad->var_game->created = false;
     }

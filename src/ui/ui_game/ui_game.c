@@ -62,8 +62,7 @@ void display_ui_game(st_global *g)
     sfSprite_getPosition(g->ui->ui->map->sprite).y + \
     g->ship->viewrect.top});
     sfRenderWindow_drawSprite(g->window->window, \
-    g->ui->ui->map->sprite, \
-    NULL);
+    g->ui->ui->map->sprite, NULL);
     sfSprite_setPosition(g->ship->bship, \
     (sfVector2f){163 + g->ship->viewrect.left + 100, 125 + \
     g->ship->viewrect.top});
