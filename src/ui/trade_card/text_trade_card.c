@@ -69,7 +69,7 @@ void text_title_credits_trade_card(st_global *g, list_planet planets)
 void check_buy(st_global *g, list_planet planets)
 {
     if (g->key_pressed.Enter == true) {
-        if (g->ui->trade_card->pos_rect == 0 && g->money->money >= 
+        if (g->ui->trade_card->pos_rect == 0 && g->money->money >=
         planets->trade[0]->price && planets->trade[0]->nb > 0 &&
         planets->trade[0]->price != -1) {
             g->money->money = g->money->money - planets->trade[0]->price;
@@ -77,7 +77,7 @@ void check_buy(st_global *g, list_planet planets)
             planets->trade[0]->nb--;
             g->key_pressed.Enter = false;
         }
-        if (g->ui->trade_card->pos_rect == 1 && g->money->money >= 
+        if (g->ui->trade_card->pos_rect == 1 && g->money->money >=
         planets->trade[1]->price && planets->trade[1]->nb > 0 &&
         planets->trade[1]->price != -1) {
             g->money->money = g->money->money - planets->trade[1]->price;
@@ -91,7 +91,7 @@ void check_buy(st_global *g, list_planet planets)
 
 void check_buy_bis(st_global *g, list_planet planets)
 {
-    if (g->ui->trade_card->pos_rect == 2 && g->money->money >= 
+    if (g->ui->trade_card->pos_rect == 2 && g->money->money >=
     planets->trade[2]->price && planets->trade[2]->nb > 0 &&
     planets->trade[2]->price != -1) {
         g->money->money = g->money->money - planets->trade[2]->price;
