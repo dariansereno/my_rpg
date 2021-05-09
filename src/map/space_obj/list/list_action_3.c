@@ -2,20 +2,19 @@
 ** EPITECH PROJECT, 2021
 ** GALAXY
 ** File description:
-** list_action2
+** list_action_3
 */
 
 #include "my_rpg.h"
 
-list_ressources pop_back_ressources(list_ressources list)
+list_spaceobj pop_back_spaceobj(list_spaceobj list)
 {
-    list_elem_ressources *temp = NULL;
-    list_elem_ressources *buf = NULL;
+    list_elem_spaceobj *temp = NULL;
+    list_elem_spaceobj *buf = NULL;
 
     if (list == NULL)
         return (NULL);
     if (list->next == NULL) {
-        free(list);
         list = NULL;
         return (NULL);
     }
@@ -26,7 +25,6 @@ list_ressources pop_back_ressources(list_ressources list)
         temp = temp->next;
     }
     buf->next = NULL;
-    // destroy_ressources(temp); a faire
     temp = NULL;
     return (list);
 }

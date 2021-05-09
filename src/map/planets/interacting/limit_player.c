@@ -7,30 +7,6 @@
 
 #include "my_rpg.h"
 
-void check_good_collision_lim(st_global *ad)
-{
-    if ((int)ad->ship->bshippos.x < 0 &&
-    (int)ad->ship->bshippos.y > 80000) {
-        ad->ship->collisionZlim = true;
-        ad->ship->collisionDlim = true;
-    }
-    if ((int)ad->ship->bshippos.x < 0 &&
-    (int)ad->ship->bshippos.y < 0) {
-        ad->ship->collisionSlim = true;
-        ad->ship->collisionDlim = true;
-    }
-    if ((int)ad->ship->bshippos.x > 80000 &&
-    (int)ad->ship->bshippos.y > 80000) {
-        ad->ship->collisionZlim = true;
-        ad->ship->collisionQlim = true;
-    }
-    if ((int)ad->ship->bshippos.x > 80000 &&
-    (int)ad->ship->bshippos.y < 0) {
-        ad->ship->collisionSlim = true;
-        ad->ship->collisionQlim = true;
-    }
-}
-
 void collision_by_first_lim(bool c, st_global *ad)
 {
     if (c == false) {
@@ -85,15 +61,14 @@ void renitialise_collisions_lim(st_global *ad)
 
 void collision_limit(st_global *ad)
 {
-
     renitialise_collisions_lim(ad);
     bool c = false;
 
     if (((ad->ship->bshippos.y >= 80000 || ad->ship->bshippos.y <= 0) ||
     (ad->ship->bshippos.x >= 80000 || ad->ship->bshippos.x <= 0))
-    && ad->ship->firstcollisionSlim == false && ad->ship->firstcollisionDlim ==
-    false && ad->ship->firstcollisionZlim == false && ad->ship->firstcollisionQlim
-    == false) {
+    && ad->ship->firstcollisionSlim == false && ad->ship->firstcollisionDlim
+    == false && ad->ship->firstcollisionZlim == false &&
+    ad->ship->firstcollisionQlim == false) {
         SD_collisions_lim(ad);
         ZQ_collisions_lim(ad);
     }
@@ -102,6 +77,5 @@ void collision_limit(st_global *ad)
         c = true;
         check_good_collision_lim(ad);
     }
-
     collision_by_first_lim(c, ad);
 }

@@ -7,6 +7,15 @@
 
 #include "my_rpg.h"
 
+sfTexture **generates_planets_textures3(sfTexture **texture)
+{
+    texture[28] = sfTexture_createFromFile("contents/img/sp/ast5.png", NULL);
+    texture[29] = sfTexture_createFromFile("contents/img/sp/bh1.png", NULL);
+    texture[30] = sfTexture_createFromFile("contents/img/sp/bh2.png", NULL);
+    texture[31] = sfTexture_createFromFile("contents/img/sp/bh3.png", NULL);
+    return (texture);
+}
+
 sfTexture **generates_planets_textures2(sfTexture **texture)
 {
     texture[16] = sfTexture_createFromFile("contents/img/sp/terran_nc1.png",
@@ -25,11 +34,7 @@ sfTexture **generates_planets_textures2(sfTexture **texture)
     texture[25] = sfTexture_createFromFile("contents/img/sp/ast2.png", NULL);
     texture[26] = sfTexture_createFromFile("contents/img/sp/ast3.png", NULL);
     texture[27] = sfTexture_createFromFile("contents/img/sp/ast4.png", NULL);
-    texture[28] = sfTexture_createFromFile("contents/img/sp/ast5.png", NULL);
-    texture[29] = sfTexture_createFromFile("contents/img/sp/bh1.png", NULL);
-    texture[30] = sfTexture_createFromFile("contents/img/sp/bh2.png", NULL);
-    texture[31] = sfTexture_createFromFile("contents/img/sp/bh3.png", NULL);
-    return (texture);
+    return (generates_planets_textures3(texture));
 }
 
 sfTexture **generates_planets_textures()

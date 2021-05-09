@@ -37,16 +37,26 @@ void set_spawn_point(list_planet pl, st_global *ad)
 {
     while (pl != NULL) {
         if (pl->planet.colonized) {
-            ad->ship->bshippos = (sfVector2f){pl->planet.pos.x - 300 + (WIDTH / 2),
-            pl->planet.pos.y - 300 + (HEIGHT / 2)};
-            ad->paralax->nebulapos = (sfVector2f){pl->planet.pos.x - 300, pl->planet.
-            pos.y - 300};
-            ad->paralax->starpos = (sfVector2f){pl->planet.pos.x - 300, pl->planet.
-            pos.y - 300};
+            ad->ship->bshippos = (sfVector2f){pl->planet.pos.x - 300 +
+            (WIDTH / 2), pl->planet.pos.y - 300 + (HEIGHT / 2)};
+            ad->paralax->nebulapos = (sfVector2f){pl->planet.pos.x - 300,
+            pl->planet.pos.y - 300};
+            ad->paralax->starpos = (sfVector2f){pl->planet.pos.x - 300,
+            pl->planet.pos.y - 300};
             ad->ship->viewrect.left = pl->planet.pos.x - 300;
             ad->ship->viewrect.top = pl->planet.pos.y - 300;
         }
         pl = pl->next;
+    }
+}
+
+void is_good_colonise(list_planet *pl, bool *is_good)
+{
+    while ((*pl) != NULL) {
+        *is_good = rand_pl_colonise((*pl));
+        if (*is_good)
+            break;
+        (*pl) = (*pl)->next;
     }
 }
 
@@ -56,12 +66,7 @@ void generate_random_colonised(list_planet *planet, st_global *ad)
     list_planet pl = *planet;
 
     while (!is_good) {
-        while (pl != NULL) {
-            is_good = rand_pl_colonise(pl);
-            if (is_good)
-                break;
-            pl = pl->next;
-        }
+        is_good_colonise(&pl, &is_good);
         if (is_good)
             break;
         pl = *planet;

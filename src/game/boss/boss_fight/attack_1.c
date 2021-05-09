@@ -7,6 +7,25 @@
 
 #include "my_rpg.h"
 
+void attack_2_circle_2(st_global *ad, float second)
+{
+    if (second > 0.007) {
+        sfCircleShape_setRadius(ad->circle, ad->boss->radius);
+        sfCircleShape_setOrigin(ad->circle, (sfVector2f){
+        (float)ad->boss->radius, (float)ad->boss->radius});
+        sfCircleShape_setPosition(ad->circle, ad->boss->boss->pos);
+        ad->boss->radius += 5;
+        sfClock_restart(ad->boss->reload);
+    }
+    sfRenderWindow_drawCircleShape(ad->window->window, ad->circle, NULL);
+    if (ad->boss->radius >= 1000) {
+        ad->boss->shake = 4;
+        ad->boss->radius = 230;
+        ad->boss->circle = false;
+        return;
+    }
+}
+
 void attack_1_action(st_global *ad)
 {
     sfTime time = sfClock_getElapsedTime(ad->boss->reload);
