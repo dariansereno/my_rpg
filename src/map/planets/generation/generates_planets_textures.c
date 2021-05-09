@@ -37,7 +37,7 @@ sfTexture **generates_planets_textures2(sfTexture **texture)
     return (generates_planets_textures3(texture));
 }
 
-sfTexture **generates_planets_textures()
+sfTexture **generates_planets_textures(void)
 {
     sfTexture **texture = my_malloc(sizeof(sfTexture *) * 32);
 

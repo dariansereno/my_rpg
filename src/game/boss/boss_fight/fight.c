@@ -21,6 +21,7 @@ void where_ennemies_go(list_ennemies li, st_global *ad)
     (float)ad->boss->boss->pos.y}, ad->ship->bshippos)) {
         clock_move_ennemies(li, ad);
         if (li->shootcl->seconds > 1) {
+            sfSound_play(ad->window->sfx->shoot);
             push_back_timer(&li->li_shoot, li->ennemies.pos, li->ennemies.dir);
             sfClock_restart(li->shootcl->clock);
         }
