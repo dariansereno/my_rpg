@@ -37,8 +37,6 @@ void set_init_position_module(st_global *g)
     (sfVector2f){1192, 497});
     sfSprite_setPosition(g->ui->module_card->ui[2]->sprite, \
     (sfVector2f){312, 167});
-    // sfSprite_setPosition(g->ui->module_card->ui[3]->sprite, \
-    // (sfVector2f){1339, 724});
 }
 
 void display_module_card(st_global *g)
