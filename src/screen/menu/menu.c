@@ -28,13 +28,13 @@ st_menu *generate_menu(void)
 
     menu->cursor = generate_object((sfVector2f){0, 0}, \
     (sfIntRect){0, 0, 37, 51}, "contents/ui/textures/cursor.png");
-    menu->items[0] = generate_object((sfVector2f){1257, 37}, \
+    menu->items[0] = generate_object((sfVector2f){1167, 37}, \
     (sfIntRect){0, 0, 59, 67}, "contents/ui/menu/cross.png");
-    menu->items[1] = generate_object((sfVector2f){888, 943}, \
+    menu->items[1] = generate_object((sfVector2f){838, 863}, \
     (sfIntRect){0, 0, 135, 103}, "contents/ui/menu/settings.png");
-    menu->items[2] = generate_object((sfVector2f){761, 775}, \
+    menu->items[2] = generate_object((sfVector2f){701, 695}, \
     (sfIntRect){0, 0, 398, 150}, "contents/ui/menu/start_btn.png");
-    menu->items[3] = generate_object((sfVector2f){721, 171}, \
+    menu->items[3] = generate_object((sfVector2f){671, 131}, \
     (sfIntRect){0, 0, 467, 177}, "contents/ui/menu/spaceciv.png");
     menu->view = sfView_createFromRect((sfFloatRect){560, 0, 800, HEIGHT});
     menu->bounds[0] = (sfFloatRect){0, 0, 0, 0};
@@ -52,13 +52,14 @@ void parallax_menu(st_global *g)
     sfSprite_setTexture(g->paralax->star, g->paralax->start, sfTrue);
     sfSprite_setTextureRect(g->paralax->star, g->paralax->starr);
     sfSprite_setTextureRect(g->paralax->nebula, g->paralax->paralaxr);
-    sfSprite_setPosition(g->ship->bship, g->ship->bshippos);
+    sfSprite_setPosition(g->ship->bship, (sfVector2f){g->ship->bshippos.x - 50,
+    g->ship->bshippos.y});
     sfSprite_setPosition(g->paralax->nebula, g->paralax->nebulapos);
     sfSprite_setPosition(g->paralax->star, g->paralax->starpos);
     sfSprite_setPosition(g->ui->menu->arw_left, (sfVector2f){
-    g->ship->viewrect.left + 837, g->ship->viewrect.top + 530});
+    g->ship->viewrect.left + 837 - 50, g->ship->viewrect.top + 530 - 20});
     sfSprite_setPosition(g->ui->menu->arw_right, (sfVector2f){
-    g->ship->viewrect.left + 1073, g->ship->viewrect.top + 530});
+    g->ship->viewrect.left + 1073 - 50, g->ship->viewrect.top + 530 - 20});
     sfRenderWindow_drawSprite(g->window->window, g->paralax->nebula, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->paralax->star, NULL);
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
