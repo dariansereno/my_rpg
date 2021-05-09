@@ -256,6 +256,9 @@
             void condition_volume_settings(st_global *g, int x, int y);
             void switch_settings_one(st_global *g);
             void switch_settings_two(st_global *g);
+        // MORE_EVENTS_SETTINGS.C
+            void more_settings_event(st_global *g, int i);
+            void more_button_pressed_event(st_global *g, int i);
     // END
         // END
             void end_rect_left_2(st_global *g);
@@ -527,8 +530,10 @@
             trade_card_s *generate_trade_card_bools(trade_card_s *trade_card);
             void destroy_trade_card(trade_card_s *trade_card);
         // ARROWS
-            void count_items(void);
-            void arrow_events_trade(st_global *g);
+            void arrow_events_trade_down(st_global *g);
+            void arrow_events_trade_down_bis(st_global *g);
+            void arrow_events_trade_up(st_global *g);
+            void arrow_events_trade_up_bis(st_global *g);
             void arrow_texture(st_global *g);
         // TRADE_CARD
             void rect_trade_position(st_global *g);
