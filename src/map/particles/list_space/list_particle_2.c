@@ -50,3 +50,31 @@ void print_list_particle(list_particle *li, st_global *ad)
         temp = temp->next;
     }
 }
+
+list_particle pop_front_particle(list_particle li)
+{
+    list_elem_particle *elem;
+
+    if (li == NULL)
+        return (li);
+
+    elem = my_malloc(sizeof(*elem));
+
+    elem = li->next;
+    sfClock_destroy(li->timer.clock);
+    sfClock_destroy(li->particle.clock);
+    li = NULL;
+
+    return (elem);
+}
+
+void destroy_list_particle(list_particle *li)
+{
+    while (*li != NULL)
+        *li = pop_front_particle(*li);
+    if (*li != NULL) {
+        sfClock_destroy((*li)->timer.clock);
+        sfClock_destroy((*li)->particle.clock);
+        *li = NULL;
+    }
+}

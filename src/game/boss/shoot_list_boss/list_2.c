@@ -57,3 +57,29 @@ void print_list_shoot_b(list_timer_b *li, sfSprite *sprite, st_global *ad)
         temp = temp->next;
     }
 }
+
+list_timer_b pop_front_shoot_b(list_timer_b li)
+{
+    list_elem_timer_b *elem;
+
+    if (li == NULL)
+        return (li);
+
+    elem = my_malloc(sizeof(*elem));
+
+    elem = li->next;
+    sfClock_destroy(li->timer.clock);
+    li = NULL;
+
+    return (elem);
+}
+
+void destroy_li_shoot_boss(list_timer_b *li)
+{
+    while (*li != NULL)
+        *li = pop_front_shoot_b(*li);
+    if (*li != NULL) {
+        sfClock_destroy((*li)->timer.clock);
+        *li = NULL;
+    }
+}
