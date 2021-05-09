@@ -7,7 +7,8 @@
 
 #include "my_rpg.h"
 
-void main(void)
+int main(void)
 {
     game_loop();
+    return (0);
 }

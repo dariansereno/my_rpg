@@ -21,7 +21,7 @@ bool rand_pl_quest(list_planet pl)
     return (false);
 }
 
-void generate_random_quest2(list_planet *pl, st_global *ad, bool *is_good)
+void generate_random_quest2(list_planet *pl, bool *is_good)
 {
     while ((*pl) != NULL) {
         *is_good = rand_pl_quest(*pl);
@@ -37,7 +37,7 @@ void generate_random_quest(list_planet *planet, st_global *ad)
     list_planet pl = *planet;
 
     while (!is_good) {
-        generate_random_quest2(&pl, ad, &is_good);
+        generate_random_quest2(&pl, &is_good);
         if (is_good)
             break;
         pl = *planet;
