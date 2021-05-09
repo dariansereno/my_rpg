@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-bool is_on_planet_content(st_global *ad, sfVector2f object, list_planet pl)
+bool is_on_planet_content(sfVector2f object, list_planet pl)
 {
     if (pl->on_screen == true)
         if (circle_contains(155, (sfVector2f){(float)pl->planet.pos.x,
@@ -24,7 +24,7 @@ bool is_on_planet(st_global *ad, sfVector2f object)
         return (false);
     pl = ad->planets->planets;
     while (pl != NULL) {
-        if (is_on_planet_content(ad, object, pl))
+        if (is_on_planet_content(object, pl))
             return (true);
         pl = pl->next;
     }
@@ -40,7 +40,7 @@ bool is_on_boss(st_global *ad, sfVector2f object)
     return (false);
 }
 
-bool is_on_ennemies(st_global *ad, list_ennemies ennemies, sfVector2f object)
+bool is_on_ennemies(list_ennemies ennemies, sfVector2f object)
 {
     list_ennemies li = ennemies;
 

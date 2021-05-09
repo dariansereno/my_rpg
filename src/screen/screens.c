@@ -9,7 +9,7 @@
 
 void screen(st_global *g)
 {
-    sfVideoMode mode = {700, 1000, 32};
+    sfVideoMode mode = {800, 1080, 32};
 
     switch (g->window->screen) {
         case 1:
