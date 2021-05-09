@@ -101,7 +101,6 @@ void init_ship_by_choosen(st_global *ad)
     (ad->ship->path_t[ad->ship->ship_choosen], NULL);
     ad->ship->bshipt = sfTexture_createFromFile(ad->ship->path
     [ad->ship->ship_choosen], NULL);
-
     sfSprite_setTexture(ad->ship->bship, ad->texture->load, sfTrue);
 }
 
@@ -114,7 +113,7 @@ void screen_menu(st_global *g)
     items_menu(g);
     events_menu(g);
     sfSprite_setPosition(g->ui->menu->cursor->sprite, \
-    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560 + \
+    (sfVector2f){sfMouse_getPositionRenderWindow(g->window->window).x + 560 +
     g->ship->viewrect.left, sfMouse_getPositionRenderWindow(g->window->window).y
     + g->ship->viewrect.top});
     sfRenderWindow_drawSprite(g->window->window, \

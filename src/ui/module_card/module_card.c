@@ -43,7 +43,7 @@ void set_init_position_module(st_global *g)
 
 void display_module_card(st_global *g)
 {
-    if (g->ui->module_card->existing) {
+    if (g->ui->module_card->existing && g->ui->end->existing == false) {
         arrow_events_module(g);
         set_init_position_module(g);
         rect_module_position(g);

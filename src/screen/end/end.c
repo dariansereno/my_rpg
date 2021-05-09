@@ -24,28 +24,33 @@ st_end *generate_end(void)
     sfText_setFont(end->text, end->font);
     end->existing = false;
     end->pressed = false;
-    end->pos_rect = 2;
+    end->pos_rect = 1;
     return (end);
 }
 
 void position_end(st_global *g)
 {
-    if (g->key_pressed.Enter)
-        if (g->ui->end->pressed) {
-            switch (g->ui->end->pos_rect) {
-                case 1:
-                    sfRenderWindow_close(g->window->window);
-                    g->ui->end->existing = false;
-                    break;
-                case 2:
-                    g->window->screen = 2;
-                    g->ui->end->existing = false;
-                    break;
-                default:
-                    break;
-            }
-            g->ui->end->pressed = false;
+    if (g->key_pressed.Enter) {
+        g->key_pressed.Enter = false;
+        g->ui->end->pressed = true;
+        switch (g->ui->end->pos_rect) {
+            case 1:
+                sfRenderWindow_close(g->window->window);
+                g->ui->end->existing = false;
+                break;
+            case 2:
+                g->ui->end->existing = false;
+                g->window->bool_menu = true;
+                g->window->bool_game = true;
+                g->ui->end->pressed = false;
+                g->window->screen = 2;
+                switch_screen_five(g);
+                return;
+            default:
+                break;
         }
+        g->ui->end->pressed = false;
+    }
 }
 
 void display_end(st_global *g)
