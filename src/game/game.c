@@ -66,7 +66,7 @@ int game_loop(void)
 
     ad->planets = generate_all_map();
     generate_random_colonised(&ad->planets->planets, ad);
-    generate_random_quest(&ad->planets->planets, ad);
+    generate_random_quest(&ad->planets->planets);
     generate_trade(ad, &ad->planets->planets);
     sfMusic_play(ad->window->music);
     sfMusic_setLoop(ad->window->music, sfTrue);

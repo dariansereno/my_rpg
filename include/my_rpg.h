@@ -33,7 +33,7 @@
 // GAME
     // QUEST
         // GENERATE_QUEST.C
-            void generate_random_quest(list_planet *planet, st_global *ad);
+            void generate_random_quest(list_planet *planet);
         // FIND_ID.C
             void target_quest(st_global *ad);
         // QUEST1.C

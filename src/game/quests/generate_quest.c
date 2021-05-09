@@ -31,7 +31,7 @@ void generate_random_quest2(list_planet *pl, bool *is_good)
     }
 }
 
-void generate_random_quest(list_planet *planet, st_global *ad)
+void generate_random_quest(list_planet *planet)
 {
     bool is_good = false;
     list_planet pl = *planet;
