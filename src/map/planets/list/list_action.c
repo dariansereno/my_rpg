@@ -39,7 +39,6 @@ void pop_position_planet(list_planet *list, sfVector2f pos)
     if (temp == NULL || temp->next == NULL)
         return;
     next = temp->next->next;
-    free(temp->next);
     temp->next = next;
 }
 
