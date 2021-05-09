@@ -1,9 +1,9 @@
-// /*
-// ** EPITECH PROJECT, 2021
-// ** my_rpg
-// ** File description:
-// ** boss
-// */
+/*
+** EPITECH PROJECT, 2021
+** my_rpg
+** File description:
+** boss
+*/
 
 #include "my_rpg.h"
 

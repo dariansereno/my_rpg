@@ -15,14 +15,15 @@ void display_message(st_global *ad)
     "ships, it would help us a lot and give us some time to prepare our"
     " troops...";
 
-    if (ad->var_game->created == true)
+    if (ad->var_game->created == true) {
         add_message(ad, str, 6000);
         ad->var_game->created = false;
+    }
 }
 
 void start_quest1(st_global *ad)
 {
-    if (ad->var_game->kills >= 1) {
+    if (ad->var_game->kills >= 10) {
         display_big_message("Quest Completed!\n\t    +50 XP", 8, ad, sfYellow);
         if (ad->big_msg == NULL) {
             ad->var_game->kills = 0;

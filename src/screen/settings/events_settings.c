@@ -92,7 +92,7 @@ void animate_buttons_settings(st_global *g)
     sfSprite_getGlobalBounds(g->ui->settings->save->sprite);
     for (int i = 0; i < 2; i++)
         if (sfFloatRect_contains(&g->ui->settings->bounds[i], \
-        g->window->event.mouseButton.x + 560 + g->ship->viewrect.left, 
+        g->window->event.mouseButton.x + 560 + g->ship->viewrect.left,
         g->window->event.mouseButton.y + g->ship->viewrect.top)) {
             if (i == 0)
                 g->ui->settings->cancel->rect.left = 141;

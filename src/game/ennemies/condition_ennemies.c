@@ -19,9 +19,9 @@ bool is_on_planet_content(st_global *ad, sfVector2f object, list_planet pl)
 bool is_on_planet(st_global *ad, sfVector2f object)
 {
     list_planet pl = NULL;
+
     if (ad->planets->planets == NULL)
         return (false);
-
     pl = ad->planets->planets;
     while (pl != NULL) {
         if (is_on_planet_content(ad, object, pl))
