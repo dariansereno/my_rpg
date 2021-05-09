@@ -33,7 +33,7 @@ load_t *texture_ini(void)
 
 moula_t *money_ini(void)
 {
-    moula_t *money = malloc(sizeof(moula_t));
+    moula_t *money = my_malloc(sizeof(moula_t));
 
     money->money = 10000;
     money->coinpos = (sfVector2f){1700, 50};
@@ -45,7 +45,7 @@ moula_t *money_ini(void)
 
 quest_t *item_ini(void)
 {
-    quest_t *quest = malloc(sizeof(quest_t));
+    quest_t *quest = my_malloc(sizeof(quest_t));
 
     quest->quest_advancement = sfText_create();
     quest->is_on_quest = false;

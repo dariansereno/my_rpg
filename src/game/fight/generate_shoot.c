@@ -9,8 +9,8 @@
 
 sfSprite **generate_enn_shoot(void)
 {
-    sfTexture **tex = malloc(sizeof(sfTexture *) * 8);
-    sfSprite **spr = malloc(sizeof(sfSprite *) * 8);
+    sfTexture **tex = my_malloc(sizeof(sfTexture *) * 8);
+    sfSprite **spr = my_malloc(sizeof(sfSprite *) * 8);
 
     tex[0] = sfTexture_createFromFile("contents/ships/proj/prt.png", NULL);
     tex[1] = sfTexture_createFromFile("contents/ships/proj/prtr.png", NULL);
@@ -30,8 +30,8 @@ sfSprite **generate_enn_shoot(void)
 
 sfSprite **generate_ship_shoot(void)
 {
-    sfTexture **tex = malloc(sizeof(sfTexture *) * 8);
-    sfSprite **spr = malloc(sizeof(sfSprite *) * 8);
+    sfTexture **tex = my_malloc(sizeof(sfTexture *) * 8);
+    sfSprite **spr = my_malloc(sizeof(sfSprite *) * 8);
 
     tex[0] = sfTexture_createFromFile("contents/ships/proj/pbt.png", NULL);
     tex[1] = sfTexture_createFromFile("contents/ships/proj/pbtr.png", NULL);
@@ -51,7 +51,7 @@ sfSprite **generate_ship_shoot(void)
 
 st_global_shoot *generate_shoot(void)
 {
-    st_global_shoot *shoot = malloc(sizeof(*shoot));
+    st_global_shoot *shoot = my_malloc(sizeof(*shoot));
     sfTexture *texture = sfTexture_createFromFile(
     "contents/ships/explo/sps.png", NULL);
 
@@ -61,7 +61,7 @@ st_global_shoot *generate_shoot(void)
     shoot->explo_rect = (sfIntRect){.height = 46, .width = 46, .left = 0,
     .top = 0};
     sfSprite_setTexture(shoot->explo_sp, texture, sfTrue);
-    shoot->explo_tmr = malloc(sizeof(*shoot->explo_tmr));
+    shoot->explo_tmr = my_malloc(sizeof(*shoot->explo_tmr));
     shoot->explo_tmr->clock = sfClock_create();
     shoot->sprite_ship = generate_ship_shoot();
     shoot->sprite_enn = generate_enn_shoot();

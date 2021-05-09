@@ -9,7 +9,7 @@
 
 int *generate_tab_upgrade(void)
 {
-    int *tab = malloc(sizeof(int) * 4);
+    int *tab = my_malloc(sizeof(int) * 4);
 
     for (int i = 0; i < 4; i++)
         tab[i] = 0;
@@ -18,7 +18,7 @@ int *generate_tab_upgrade(void)
 
 st_object **generate_icon(void)
 {
-    st_object **obj = malloc(sizeof(**obj) * 4);
+    st_object **obj = my_malloc(sizeof(**obj) * 4);
 
     obj[0] = generate_object((sfVector2f){0, 0}, \
     (sfIntRect){0, 0, 32, 32}, "contents/upgrade/damage.png");

@@ -9,7 +9,7 @@
 
 void set_texture_planets(list_planet *li, st_planet_global *g)
 {
-    list_planet node = malloc(sizeof(*node));
+    list_planet node = my_malloc(sizeof(*node));
     node = *li;
 
     while (node != NULL) {

@@ -27,7 +27,7 @@ void ship_ini_2(ship_t *ship)
 
 ship_t *ship_ini(void)
 {
-    ship_t *ship = malloc(sizeof(ship_t));
+    ship_t *ship = my_malloc(sizeof(ship_t));
 
     ship->bship = sfSprite_create();
     ship->bshipt = sfTexture_createFromFile("contents/sbr/b0.png", NULL);
@@ -36,7 +36,7 @@ ship_t *ship_ini(void)
     ship->viewrect = (sfFloatRect) {.height = HEIGHT, .left = 0, .top = 0,
     .width = WIDTH};
     ship->view = sfView_createFromRect(ship->viewrect);
-    ship->reload = malloc(sizeof(*ship->reload));
+    ship->reload = my_malloc(sizeof(*ship->reload));
     ship->reload->clock = sfClock_create();
     ship->collisionZ = false;
     ship->collisionD = false;

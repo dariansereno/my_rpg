@@ -9,7 +9,7 @@
 
 paralax_t *paralax_ini(void)
 {
-    paralax_t *paralax = malloc(sizeof(paralax_t));
+    paralax_t *paralax = my_malloc(sizeof(paralax_t));
 
     paralax->nebula = sfSprite_create();
     paralax->nebulat = sfTexture_createFromFile("ressources/space.png", NULL);
