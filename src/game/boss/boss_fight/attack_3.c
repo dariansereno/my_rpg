@@ -60,7 +60,7 @@ void attack_3(st_global *ad)
 
     if (ad->boss->current == NULL || ad->boss->current->type != 3)
         return;
-    time = sfClock_getElapsedTime(ad->boss->current->time->clock);
+    time = sfClock_getElapsedTime(ad->boss->duration->clock);
     second = time.microseconds / 1000000.0;
     if (second < ad->boss->current->duration) {
         attack_3_action(ad);

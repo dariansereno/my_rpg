@@ -68,6 +68,8 @@ void ini_3(st_global *all)
 
 void ini_2(st_global *all)
 {
+    generate_key_pressed(all);
+    generate_last_key_pressed(all);
     all->var->drop_cl = my_malloc(sizeof(*all->var->drop_cl));
     all->var->drop_cl->clock = sfClock_create();
     all->enn_texture = enn_textures();

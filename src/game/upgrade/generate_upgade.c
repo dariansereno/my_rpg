@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-int *generate_tab_upgrade()
+int *generate_tab_upgrade(void)
 {
     int *tab = malloc(sizeof(int) * 4);
 
@@ -16,7 +16,7 @@ int *generate_tab_upgrade()
     return (tab);
 }
 
-st_object **generate_icon()
+st_object **generate_icon(void)
 {
     st_object **obj = malloc(sizeof(**obj) * 4);
 
@@ -31,7 +31,7 @@ st_object **generate_icon()
     return (obj);
 }
 
-st_upgrade *generate_upgrade()
+st_upgrade *generate_upgrade(void)
 {
     st_upgrade *upgrade = my_malloc(sizeof(*upgrade));
 
@@ -39,13 +39,4 @@ st_upgrade *generate_upgrade()
     upgrade->can_upgrade = false;
     upgrade->upgrade_icon = generate_icon();
     return (upgrade);
-}
-
-void destroy_upgrade(st_upgrade *up)
-{
-    for (int i = 0; i < 4; i++)
-        destroy_object(up->upgrade_icon[i]);
-    free(up->upgrade_tab);
-    free(up);
-    up = NULL;
 }

@@ -29,7 +29,7 @@ void drop_copy_node(list_drop node, st_drop drop)
 
 void push_back_drop(list_drop *li, st_drop drop)
 {
-    list_drop node = malloc(sizeof(*node));
+    list_drop node = my_malloc(sizeof(*node));
     list_drop lastnode = *li;
 
     node->it = 0;
@@ -59,7 +59,7 @@ void pop_position_drop(list_drop *list, int index)
         return ;
     if (index == 0) {
         *list = temp->next;
-        free(temp);
+        sfClock_destroy(temp->timer.clock);
         return ;
     }
     for (; temp != NULL && temp->next->index != index ;)
@@ -67,6 +67,6 @@ void pop_position_drop(list_drop *list, int index)
     if (temp == NULL || temp->next == NULL)
         return;
     next = temp->next->next;
-    free(temp->next);
+    sfClock_destroy(temp->next->timer.clock);
     temp->next = next;
 }

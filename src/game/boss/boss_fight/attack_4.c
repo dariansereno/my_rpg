@@ -56,7 +56,7 @@ void attack_4(st_global *ad)
 
     if (ad->boss->current == NULL || ad->boss->current->type != 4)
         return;
-    time = sfClock_getElapsedTime(ad->boss->current->time->clock);
+    time = sfClock_getElapsedTime(ad->boss->duration->clock);
     second = time.microseconds / 1000000.0;
     time_s = sfClock_getElapsedTime(ad->boss->reload);
     second_s = time_s.microseconds / 1000000.0;
