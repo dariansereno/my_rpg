@@ -56,6 +56,7 @@ void switch_screen_five(st_global *g)
         sfRenderWindow_destroy(g->window->window);
         g->window->window = sfRenderWindow_create(mode, "Space Civ",
         sfTitlebar | sfClose | sfResize, NULL);
+        sfRenderWindow_setMouseCursorVisible(g->window->window, sfFalse);
         g->ui->menu->view = sfView_createFromRect((sfFloatRect)\
         {g->ship->viewrect.left + 560, \
         g->ship->viewrect.top, 700, 1000});
