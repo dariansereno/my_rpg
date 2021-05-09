@@ -7,6 +7,17 @@
 
 #include "my_rpg.h"
 
+void throw_attack(st_global *ad)
+{
+    if (ad->boss->current != NULL) {
+        attack_1(ad);
+        attack_2(ad);
+        attack_3(ad);
+        attack_4(ad);
+        attack_5(ad);
+    }
+}
+
 void atk_queue_boss(st_global *ad)
 {
     sfTime time;
@@ -26,11 +37,5 @@ void atk_queue_boss(st_global *ad)
             sfClock_restart(ad->boss->current->time->clock);
         }
     }
-    if (ad->boss->current != NULL) {
-        attack_1(ad);
-        attack_2(ad);
-        attack_3(ad);
-        attack_4(ad);
-        attack_5(ad);
-    }
+    throw_attack(ad);
 }
