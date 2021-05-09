@@ -7,6 +7,15 @@
 
 #include "my_rpg.h"
 
+bool is_on_planet_content(st_global *ad, sfVector2f object, list_planet pl)
+{
+    if (pl->on_screen == true)
+        if (circle_contains(155, (sfVector2f){(float)pl->planet.pos.x,
+        (float)pl->planet.pos.y}, object) && pl->size == 2)
+            return (true);
+    return (false);
+}
+
 bool is_on_planet(st_global *ad, sfVector2f object)
 {
     list_planet pl = NULL;
@@ -15,10 +24,8 @@ bool is_on_planet(st_global *ad, sfVector2f object)
 
     pl = ad->planets->planets;
     while (pl != NULL) {
-        if (pl->on_screen == true)
-            if (circle_contains(155, (sfVector2f){(float)pl->planet.pos.x,
-            (float)pl->planet.pos.y}, object) && pl->size == 2)
-                return (true);
+        if (is_on_planet_content(ad, object, pl))
+            return (true);
         pl = pl->next;
     }
     return (false);
