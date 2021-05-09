@@ -55,8 +55,7 @@
             void start_quest5(st_global *ad);
         // QUEST6.C
             void quest_6_initialise(st_global *ad);
-            void start_quest6(st_global *ad);
-            
+            void start_quest6(st_global *ad);  
     // UPGRADE
         // UPGRADE.C
             void display_stats_ship(st_global *ad);
@@ -132,6 +131,9 @@
             void plus_key_change(st_global *ad);
         // INTERACTION.C
             void interaction_input(st_global *ad);
+        // MORT_INTERACT.C
+            int interact_input6(st_global *ad);
+            void interact_input7(st_global *ad, int counter);
     // ENNEMIES
         // PATH_FINDING
             // DROP

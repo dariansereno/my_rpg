@@ -9,13 +9,17 @@
 
 void display_sixth_message(st_global *ad)
 {
+    char *str = "Well done! You have learned quickly and you helped us greatly."
+    " We will be forever thankful for what you have done for us. The rest of "
+    "the story is yours to write! You can choose whether to explore space "
+    "freely or you can complete side quests to gain XP faster, you can even "
+    "do both, it is entirely up to you! Good luck and take this gift as a sign "
+    "of gratitude. your last quest will be to get to level 12 but "
+    "it is up to you to decide how you want to do this. "
+    "Good luck Space Traveler!";
+
     if (ad->var_game->created) {
-        add_message(ad, "Well Done! you have learned quickly and you helped us\
- greatly we will be forever thankful for what you have done for us. The rest of\
- the story is yours to write. You can choose to either explore the galaxy\
- freely or you can complete side quests in order to gain XP faster, you can\
- even do both! It is now up to you to decide. Good luck and take this gift as a\
- reward for your actions. Good luck Space Traveler!", 6000);
+        add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
 }
@@ -25,8 +29,8 @@ void start_quest6(st_global *ad)
     list_planet pl = ad->planets->planets;
 
     if (ad->var_game->quest6_completed && ad->var_game->quests == 6)
-        display_big_message("Gift Received!\n\t+100 XP +500 credits", 8, ad,
-        sfYellow);
+        display_big_message("       Gift Received!\n +100 XP +500 credits"
+        , 8, ad, sfYellow);
     if (ad->big_msg == NULL && ad->var_game->quests == 6 &&
     ad->var_game->quest6_completed) {
         ad->var_game->xp += 100;
