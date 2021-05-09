@@ -14,6 +14,7 @@ void quest_caller(st_global *ad)
     quest_3_initialise(ad);
     quest_4_initialise(ad);
     quest_5_initialise(ad);
+    quest_6_initialise(ad);
     return;
 }
 
@@ -43,7 +44,5 @@ void check_quest(st_global *ad)
         start_quest4(ad);
     if (ad->var_game->msg5)
         start_quest5(ad);
-    if (ad->var_game->msg6)
-        start_quest6(ad);
     check_msg_nb(ad);
 }
