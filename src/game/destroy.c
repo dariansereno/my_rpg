@@ -20,5 +20,4 @@ void destroy_spaceobj(st_global_spaceobj *obj)
     for (int i = 0; i < 16; i++) {
         sfTexture_destroy(obj->textures[i]);
     }
-    
 }

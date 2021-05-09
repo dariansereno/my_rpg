@@ -568,7 +568,7 @@ typedef struct st_module_card_t {
     int mod_mul;
 } module_card_s;
 
-typedef struct st_ui_game {
+typedef struct st_ui_game_s {
     st_object *map;
     st_object *craft[2];
     st_object *item;
@@ -643,7 +643,7 @@ typedef struct st_settings_t {
     int settings;
 } st_settings;
 
-typedef struct st_ui {
+typedef struct st_ui_s {
     st_object *interacting;
     st_object **selector;
     planet_card_s *planet_card;
