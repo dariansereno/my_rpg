@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-int drop_id(st_global *ad)
+int drop_id(void)
 {
     int rand = random_between(0, 10);
 
@@ -15,14 +15,15 @@ int drop_id(st_global *ad)
         return (0);
     if (rand > 7)
         return (1);
+    return(-1);
 }
 
 void drop_money(st_global *ad, list_ennemies en)
 {
     st_drop drop;
+
     drop.xp = random_xp(ad);
     drop.amount = random_money();
-
     drop.mode = 1;
     drop.pos = (sfVector2f){en->ennemies.pos.x + 10, en->ennemies.pos.y};
     ad->money->money += drop.amount;
@@ -33,10 +34,10 @@ void drop_money(st_global *ad, list_ennemies en)
 void drop_ressources(st_global *ad, list_ennemies en)
 {
     st_drop drop;
+
     drop.id = random_ressources();
     drop.nb = random_nb_ressources();
     drop.xp = random_xp(ad);
-
     ad->ressources[drop.id].nb += drop.nb;
     drop.mode = 0;
     ad->var_game->xp += drop.xp;
@@ -46,8 +47,7 @@ void drop_ressources(st_global *ad, list_ennemies en)
 
 void drop(st_global *ad, list_ennemies en)
 {
-    int rand = random_between(0, 10);
-    int drop = drop_id(ad);
+    int drop = drop_id();
 
     if (drop)
         drop_ressources(ad, en);
