@@ -9,15 +9,14 @@
 
 void display_third_message(st_global *ad)
 {
+    char *str = "Good job! You should now be able to see that you have one "
+    "colony in your inventory represented by a small house. In order to deploy "
+    "your colony you must approach a colony suited for life and press the 'C' "
+    "key. This will be your next objective. Come back to us once you have "
+    "completed this task.";
+
     if (ad->var_game->created == true) {
-        add_message(ad, "Good job! you have upgraded all of your modules to \
-level 1 and you should now be able to regenerate health at your base and gain \
-some passive income aswell as some ressources now and then. Your next job will \
-be to colonise another planet in order to be able to gain more ressources \
-faster. You must first get 3 Deep space ingots, 3 crystals and 3 black matter \
-samples and then press the 'J' key to craft a colony. once this is done you \
-must head to a colonisable planet and press the 'C' key to deploy your colony \
-on it. Colonising a planet also gives some XP. Come back to us once this is done", 6000);
+        add_message(ad, str, 6000);
         ad->var_game->created = false;
     }
 }

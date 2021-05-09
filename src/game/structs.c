@@ -70,13 +70,13 @@ st_game_var *ini_var()
     var->attack = 10;
     var->life = 200;
     var->max_money = 10000;
-    var->lvl = 0;
+    var->lvl = 4;
     var->max_xp = 100;
     var->price_sett = 3;
     var->xp = 90;
     var->craft = false;
     var->reload_time = 0.18;
-    var->quests = 1;
+    var->quests = 6;
     var->mul_xp = 1.0;
     var->is_boss = true;
     var->boss_generated = false;
