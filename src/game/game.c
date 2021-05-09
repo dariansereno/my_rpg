@@ -34,8 +34,10 @@ void check_event(st_global *ad)
         sfRenderWindow_close(ad->window->window);
     interaction_input(ad);
     if (ad->window->event.type == sfEvtKeyPressed && ad->window->event.key.code
-    == sfKeySpace)
+    == sfKeySpace) {
+        sfSound_play(ad->window->sfx->shoot);
         ship_shoot(ad);
+    }
 }
 
 void check_status(st_global *ad)

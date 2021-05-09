@@ -214,6 +214,12 @@ typedef struct st_planet_stat_s {
 typedef struct st_global_sfx_s {
     sfSound *click_vol;
     sfSoundBuffer *buff_click_vol;
+    sfSound *shoot;
+    sfSoundBuffer *buff_shoot;
+    sfSound *explo;
+    sfSoundBuffer *buff_explo;
+    sfSound *big_explo;
+    sfSoundBuffer *buff_big_explo;
 } st_global_sfx;
 
 typedef struct structs_s {
