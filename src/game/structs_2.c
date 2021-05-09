@@ -92,5 +92,12 @@ void destroy_global(st_global *global)
         destroy_boss_fight(global);
     destroy_sound(global->window->sfx);
     destroy_message(global);
+    destroy_list_drop(&global->drop);
+    destroy_upgrade(global->upgrade);
+    destroy_spaceobj(global->space_obj);
+    sfCircleShape_destroy(global->circle);
+    sfCircleShape_destroy(global->circle_health);
+    for (int i = 0; i < 8; i++)
+        sfTexture_destroy(global->enn_texture[i]);
     global = NULL;
 }

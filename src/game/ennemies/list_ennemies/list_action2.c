@@ -14,10 +14,8 @@ list_ennemies pop_back_ennemies(list_ennemies list)
 
     if (list == NULL)
         return (NULL);
-    if (list->next == NULL) {
-        list = NULL;
+    if (list->next == NULL)
         return (NULL);
-    }
     temp = list;
     buf = list;
     while (temp->next != NULL) {
@@ -25,7 +23,9 @@ list_ennemies pop_back_ennemies(list_ennemies list)
         temp = temp->next;
     }
     buf->next = NULL;
-    // destroy_ennemies(temp); a faire
+    sfClock_destroy(buf->shootcl->clock);
+    sfClock_destroy(buf->timer->clock);
+    destroy_list_timer(&buf->li_shoot);
     temp = NULL;
     return (list);
 }
@@ -74,4 +74,16 @@ void pop_position_ennemies(list_ennemies *list, int index)
         return;
     next = temp->next->next;
     temp->next = next;
+}
+
+void destroy_ennemies_list(list_ennemies *en)
+{
+    while (*en != NULL)
+        *en = pop_back_ennemies(*en);
+    if (*en != NULL) {
+        sfClock_destroy((*en)->shootcl->clock);
+        sfClock_destroy((*en)->timer->clock);
+        destroy_list_timer(&(*en)->li_shoot);
+        *en = NULL;
+    }
 }

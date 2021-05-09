@@ -9,7 +9,7 @@
 
 void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id)
 {
-    list_spaceobj node = malloc(sizeof(*node));
+    list_spaceobj node = my_malloc(sizeof(*node));
     list_spaceobj lastnode = *li;
 
     node->pos = (sfVector2f){(float)pos.x, (float)pos.y};
@@ -28,7 +28,7 @@ void push_back_spaceobj(list_spaceobj *li, sfVector2i pos, int id)
 
 void set_texture_spaceobjs(list_spaceobj *li, st_global_spaceobj *g)
 {
-    list_spaceobj node = malloc(sizeof(*node));
+    list_spaceobj node = my_malloc(sizeof(*node));
     node = *li;
 
     while (node != NULL) {
@@ -55,7 +55,6 @@ void pop_position_spaceobj(list_spaceobj *list, sfVector2f pos)
     if (temp == NULL || temp->next == NULL)
         return;
     next = temp->next->next;
-    free(temp->next);
     temp->next = next;
 }
 
