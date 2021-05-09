@@ -7,72 +7,25 @@
 
 #include "my_rpg.h"
 
-st_planet_stat generate_planet_stat2(st_planet planet)
+planet_climate climate_from_type_2(planet_type planet)
 {
-    int i = 6;
-    switch (i) {
-    case 6: if (planet.type >= 21 && planet.type <= 23)
-                return (stats_for_tech(planet.stats));
-            i++;
-    case 7: if (planet.type == 20)
-                return (stats_for_ice(planet.stats));
-            i++;
-    case 8: if (planet.type >= 24 && planet.type <= 28)
-                return (stats_for_asteroid(planet.stats));
-            i++;
-    case 9: if (planet.type >= 29)
-                return (stats_for_blackhole(planet.stats));
-            i++;
-    }
-    return (planet.stats);
-}
-
-st_planet_stat generate_planet_stat(st_planet planet)
-{
-    int i = 1;
-
-    switch (i) {
-    case 1: if (planet.type >= 0 && planet.type <= 6)
-                return (stats_for_sun(planet.stats));
-            i++;
-    case 2: if (planet.type >= 7 && planet.type <= 9)
-                return (stats_for_lava(planet.stats));
-            i++;
-    case 3: if (planet.type >= 10 && planet.type <= 13)
-                return (stats_for_gas(planet.stats));
-            i++;
-    case 4: if (planet.type >= 14 && planet.type <= 15)
-                return (stats_for_ocean(planet.stats));
-            i++;
-    case 5: if (planet.type >= 16 && planet.type <= 19)
-                return (stats_for_terran(planet.stats));
-            i++;
-    }
-    return (generate_planet_stat2(planet));
+    if ((planet >= 14 && planet <= 19) || (planet >= 21 && planet <= 23))
+        return (NORMAL);
+    else if ((planet >= 24 && planet <= 28) || planet == 20)
+        return (COLD);
+    else
+        return (FROSTEN);
 }
 
 planet_climate climate_from_type(planet_type planet)
 {
     int i = 1;
-
-    switch (i) {
-    case 1: if (planet >= 0 && planet <= 6)
-                return (ARDENT);
-            i++;
-    case 2: if (planet >= 7 && planet <= 13)
-                return (WARM);
-            i++;
-    case 3: if ((planet >= 14 && planet <= 19) ||
-            (planet >= 21 && planet <= 23))
-                return (NORMAL);
-            i++;
-    case 4: if ((planet >= 24 && planet <= 28) || planet == 20)
-                return (COLD);
-            i++;
-    case 5: if (planet >= 29)
-                return (FROSTEN);
-            break;
-    }
+    if (planet >= 0 && planet <= 6)
+        return (ARDENT);
+    else if (planet >= 7 && planet <= 13)
+        return (WARM);
+    else
+        return (climate_from_type_2(planet));
 }
 
 planet_animation animation_from_type(planet_type planet)
