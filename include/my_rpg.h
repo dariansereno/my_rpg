@@ -181,8 +181,7 @@
             void spawn_boss_condition(st_global *ad);
             bool is_on_planet(st_global *ad, sfVector2f object);
             bool is_on_boss(st_global *ad, sfVector2f object);
-            bool is_on_ennemies(st_global *ad, list_ennemies ennemies,
-            sfVector2f object);
+            bool is_on_ennemies(list_ennemies ennemies, sfVector2f object);
         // LIST
             void destroy_ennemies_list(list_ennemies *en);
             void push_back_ennemies(list_ennemies *li, st_ennemies ennemies);

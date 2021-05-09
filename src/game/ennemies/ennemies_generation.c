@@ -33,8 +33,8 @@ float radius)
         angle = ((float)rand()/(float)(RAND_MAX/1)) * M_PI * 2;
         x = cos(angle) * radius + (float)planet->planet.pos.x;
         y = sin(angle) * radius + (float)planet->planet.pos.y;
-    } while (is_on_planet(ad, (sfVector2f){x, y}) && is_on_ennemies(ad,
-    planet->planet.ennemies, (sfVector2f){x, y}));
+    } while (is_on_planet(ad, (sfVector2f){x, y}) &&
+    is_on_ennemies(planet->planet.ennemies, (sfVector2f){x, y}));
 
     return ((sfVector2f){x, y});
 }
