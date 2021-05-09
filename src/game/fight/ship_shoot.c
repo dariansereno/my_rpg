@@ -13,6 +13,7 @@ void ciao_ennemy(list_ennemies en, st_global *ad, list_planet *pl)
         for (int i = 0; i < 10; i++)
             push_back_particle_explo(&ad->particle->particles, ad->particle,
             en->ennemies.pos);
+        sfSound_play(ad->window->sfx->explo);
         drop(ad, en);
         push_back_timer(&ad->shoot->li_explo,  en->ennemies.pos, -1);
         pop_position_ennemies(&(*pl)->planet.ennemies, en->index);
@@ -42,6 +43,7 @@ void ciao_ennemy_boss(list_ennemies en, st_global *ad)
 {
     if (en->ennemies.life <= 0){
         drop(ad, en);
+        sfSound_play(ad->window->sfx->big_explo);
         for (int i = 0; i < 30; i++)
             push_back_particle_explo(&ad->particle->particles, ad->particle,
             en->ennemies.pos);
