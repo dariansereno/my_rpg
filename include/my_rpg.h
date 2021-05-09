@@ -441,8 +441,7 @@
             char *int_to_str(int nb);
             char *number_and_string(int index, char *str);
             char *create_planet_string(int index);
-            void display_interaction_boss_bis(st_global *ad, sfVector2f disp, \
-            list_planet planets, int max);
+            list_planet display_interaction_boss_bis(st_global *ad, sfVector2f disp, list_planet planets, int max);
         // 
             int circle_intersect(sfVector2f c1, sfVector2f c2, int d1, int d2);
             st_boss *generate_boss_fight(st_global *ad);
@@ -614,7 +613,7 @@
                 void events_pause_settings_right(st_global *g);
                 void set_width_volume_pause_settings(st_global *g);
                 void events_pause_settings_right_bis(st_global *g);
-                void events_pause_settings_left_bis(st_global *g)
+                void events_pause_settings_left_bis(st_global *g);
             // VOLUME_EVENTS_SETTINGS
                 void switch_pause_settings(st_global *g);
                 void volume_top_less(st_global *g, int x, int y);
