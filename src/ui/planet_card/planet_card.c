@@ -11,7 +11,7 @@ void display_planet_card(st_global *g)
 {
     list_planet planets = NULL;
 
-    if (g->ui->planet_card->existing == true) {
+    if (g->ui->planet_card->existing && g->ui->end->existing == false) {
         planets = g->planets->planets;
         sfRenderWindow_drawSprite(g->window->window, \
         g->ui->planet_card->mockup_s, NULL);

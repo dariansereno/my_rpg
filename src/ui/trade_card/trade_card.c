@@ -44,7 +44,7 @@ void set_init_position_trade(st_global *g)
 void display_trade_card(st_global *g)
 {
     g->ui->trade_card->counter = 3;
-    if (g->ui->trade_card->existing) {
+    if (g->ui->trade_card->existing && g->ui->end->existing == false) {
         arrow_events_trade(g);
         set_init_position_trade(g);
         rect_trade_position(g);
