@@ -722,13 +722,13 @@ typedef struct st_global_particle_s {
 
 typedef struct st_global_s {
     st_text *text;
-    st_planet_global *planets; //
+    st_planet_global *planets;
     structs_t *window;
     paralax_t *paralax;
     key_pressed key_pressed;
     key_pressed last_key_pressed;
-    ship_t *ship; //
-    st_ui *ui; //
+    ship_t *ship;
+    st_ui *ui;
     sfTexture **enn_texture;
     st_variable *var;
     st_useful *other;
@@ -744,16 +744,16 @@ typedef struct st_global_s {
     sfFont *font_inv;
     char *nb_inv;
     st_global_spaceobj *space_obj;
-    list_drop drop; //
+    list_drop drop;
     sfCircleShape *circle;
     quest_t *quest;
-    st_upgrade *upgrade; //
-    st_game_var *var_game; //
-    st_boss *boss; //
+    st_upgrade *upgrade;
+    st_game_var *var_game;
+    st_boss *boss;
     sfClock *big_msg;
     sfCircleShape *circle_health;
     bool big_msg_generated;
-    st_global_particle *particle; //
+    st_global_particle *particle;
     bool msg_boss;
 } st_global;
 

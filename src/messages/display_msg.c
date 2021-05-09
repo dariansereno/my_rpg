@@ -23,7 +23,7 @@ st_text *generate_message(void)
     text->white_btm = sfRectangleShape_create();
     text->text = sfText_create();
     text->font = \
-    sfFont_createFromFile("contents/fonts/dogica/TTF/dogicapixel.ttf");
+    sfFont_createFromFile("contents/fonts/dogica/ttf/dogicapixel.ttf");
     text->clock = sfClock_create();
     text->c = generate_cpy();
     text->existing = false;
