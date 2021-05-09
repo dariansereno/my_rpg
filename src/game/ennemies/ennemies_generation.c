@@ -35,7 +35,6 @@ float radius)
         y = sin(angle) * radius + (float)planet->planet.pos.y;
     } while (is_on_planet(ad, (sfVector2f){x, y}) &&
     is_on_ennemies(planet->planet.ennemies, (sfVector2f){x, y}));
-
     return ((sfVector2f){x, y});
 }
 
