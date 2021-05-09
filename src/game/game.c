@@ -9,7 +9,7 @@
 
 char *life_to_str(int life)
 {
-    char *result = malloc(sizeof(char) * 7);
+    char *result = my_malloc(sizeof(char) * 7);
     char temp[8];
     int a = 0;
     int i = 0;
