@@ -14,13 +14,7 @@ void events_pause_up(st_global *g)
             g->ui->pause->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
     g->window->event.key.code == sfKeyUp) {
-        if (g->ui->pause->pressed) {
-            if (g->ui->pause->pos_rect >= 1)
-                g->ui->pause->pos_rect -= 1;
-            if (g->ui->pause->pos_rect == 0)
-                g->ui->pause->pos_rect = 1;
-            g->ui->pause->pressed = false;
-        }
+        events_pause_up_bis(g);
     }
     events_pause_down(g);
     events_redirect_pause(g);
@@ -33,15 +27,8 @@ void events_pause_down(st_global *g)
     g->window->event.key.code == sfKeyDown)
         g->ui->pause->pressed = true;
     if (g->window->event.type == sfEvtKeyReleased && \
-    g->window->event.key.code == sfKeyDown) {
-        if (g->ui->pause->pressed) {
-            if (g->ui->pause->pos_rect <= 3)
-                g->ui->pause->pos_rect += 1;
-            if (g->ui->pause->pos_rect == 4)
-                g->ui->pause->pos_rect = 3;
-            g->ui->pause->pressed = false;
-        }
-    }
+    g->window->event.key.code == sfKeyDown)
+        events_pause_down_bis(g);
 }
 
 void switch_volume_settings(st_global *g)

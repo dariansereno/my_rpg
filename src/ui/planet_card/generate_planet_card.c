@@ -20,7 +20,6 @@ void create_planet_card(st_global *g, sfVector2f position_view, \
 list_planet planets)
 {
     g->ui->planet_card = my_malloc(sizeof(*g->ui->planet_card));
-
     g->ui->planet_card->existing = true;
     g->ui->planet_card->mockup_s = sfSprite_create();
     g->ui->planet_card->mockup_t = \

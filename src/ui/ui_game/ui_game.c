@@ -65,7 +65,8 @@ void display_ui_game(st_global *g)
     g->ui->ui->map->sprite, \
     NULL);
     sfSprite_setPosition(g->ship->bship, \
-    (sfVector2f){163 + g->ship->viewrect.left + 100, 125 + g->ship->viewrect.top});
+    (sfVector2f){163 + g->ship->viewrect.left + 100, 125 + \
+    g->ship->viewrect.top});
     sfSprite_setScale(g->ship->bship, (sfVector2f){2, 2});
     sfRenderWindow_drawSprite(g->window->window, g->ship->bship, NULL);
     sfSprite_setScale(g->ship->bship, (sfVector2f){1, 1});
@@ -85,21 +86,25 @@ void rectangle_display_ui_game(st_global *g)
     {sfRectangleShape_getPosition(g->ui->ui->xp).x + g->ship->viewrect.left, \
     sfRectangleShape_getPosition(g->ui->ui->xp).y + g->ship->viewrect.top});
     sfRectangleShape_setPosition(g->ui->ui->life_outline, (sfVector2f)\
-    {sfRectangleShape_getPosition(g->ui->ui->life_outline).x + g->ship->viewrect.left,
-    sfRectangleShape_getPosition(g->ui->ui->life_outline).y + g->ship->viewrect.top});
-    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f)\
-    {sfRectangleShape_getPosition(g->ui->ui->credits_outline).x + \
-    g->ship->viewrect.left, \
-    sfRectangleShape_getPosition(g->ui->ui->credits_outline).y + \
+    {sfRectangleShape_getPosition(g->ui->ui->life_outline).x + \
+    g->ship->viewrect.left,
+    sfRectangleShape_getPosition(g->ui->ui->life_outline).y + \
     g->ship->viewrect.top});
     rectangle_display_ui_game_bis(g);
 }
 
 void rectangle_display_ui_game_bis(st_global *g)
 {
+    sfRectangleShape_setPosition(g->ui->ui->credits_outline, (sfVector2f)\
+    {sfRectangleShape_getPosition(g->ui->ui->credits_outline).x + \
+    g->ship->viewrect.left, \
+    sfRectangleShape_getPosition(g->ui->ui->credits_outline).y + \
+    g->ship->viewrect.top});
     sfRectangleShape_setPosition(g->ui->ui->xp_outline, (sfVector2f)\
-    {sfRectangleShape_getPosition(g->ui->ui->xp_outline).x + g->ship->viewrect.left, \
-    sfRectangleShape_getPosition(g->ui->ui->xp_outline).y + g->ship->viewrect.top});
+    {sfRectangleShape_getPosition(g->ui->ui->xp_outline).x + \
+    g->ship->viewrect.left, \
+    sfRectangleShape_getPosition(g->ui->ui->xp_outline).y + \
+    g->ship->viewrect.top});
     sfRenderWindow_drawRectangleShape(g->window->window, \
     g->ui->ui->life_outline, NULL);
     sfRenderWindow_drawRectangleShape(g->window->window, \
